@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319122353) do
+ActiveRecord::Schema.define(version: 20180319123513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20180319122353) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_food_items_on_category_id"
     t.index ["restaurant_id"], name: "index_food_items_on_restaurant_id"
+  end
+
+  create_table "home_deliveries", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "master_order_id"
+    t.bigint "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_home_deliveries_on_address_id"
+    t.index ["master_order_id"], name: "index_home_deliveries_on_master_order_id"
   end
 
   create_table "master_orders", force: :cascade do |t|
@@ -142,6 +152,8 @@ ActiveRecord::Schema.define(version: 20180319122353) do
 
   add_foreign_key "food_items", "categories"
   add_foreign_key "food_items", "restaurants"
+  add_foreign_key "home_deliveries", "addresses"
+  add_foreign_key "home_deliveries", "master_orders"
   add_foreign_key "master_orders", "restaurants"
   add_foreign_key "master_orders", "users"
   add_foreign_key "orders", "master_orders"
