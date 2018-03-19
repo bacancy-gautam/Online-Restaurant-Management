@@ -19,7 +19,11 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5 
+  timeout: 5000
+  username: postgres
+  password: postgres
+  host: localhost
 
 development:
   <<: *default
@@ -81,5 +85,3 @@ test:
 production:
   <<: *default
   database: OnlineRestaturantManagement_production
-  username: OnlineRestaturantManagement
-  password: <%= ENV['ONLINERESTATURANTMANAGEMENT_DATABASE_PASSWORD'] %>
