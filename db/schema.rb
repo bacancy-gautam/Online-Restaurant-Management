@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319114947) do
+ActiveRecord::Schema.define(version: 20180319122353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,31 @@ ActiveRecord::Schema.define(version: 20180319114947) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_food_items_on_category_id"
     t.index ["restaurant_id"], name: "index_food_items_on_restaurant_id"
+  end
+
+  create_table "master_orders", force: :cascade do |t|
+    t.float "total"
+    t.integer "order_type"
+    t.integer "payment_type"
+    t.integer "order_status"
+    t.integer "payment_status"
+    t.string "transaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_master_orders_on_restaurant_id"
+    t.index ["user_id"], name: "index_master_orders_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "order_datetime"
+    t.integer "quantity"
+    t.float "price"
+    t.bigint "master_order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["master_order_id"], name: "index_orders_on_master_order_id"
   end
 
   create_table "restaurant_tables", force: :cascade do |t|
@@ -117,6 +142,9 @@ ActiveRecord::Schema.define(version: 20180319114947) do
 
   add_foreign_key "food_items", "categories"
   add_foreign_key "food_items", "restaurants"
+  add_foreign_key "master_orders", "restaurants"
+  add_foreign_key "master_orders", "users"
+  add_foreign_key "orders", "master_orders"
   add_foreign_key "restaurant_tables", "restaurants"
   add_foreign_key "restaurants", "users"
 end
