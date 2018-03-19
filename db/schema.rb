@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319105108) do
-
-ActiveRecord::Schema.define(version: 20180319100107) do
+ActiveRecord::Schema.define(version: 20180319114947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +35,18 @@ ActiveRecord::Schema.define(version: 20180319100107) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "food_items", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.integer "food_type"
+    t.bigint "category_id"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_food_items_on_category_id"
+    t.index ["restaurant_id"], name: "index_food_items_on_restaurant_id"
+  end
+
   create_table "restaurant_tables", force: :cascade do |t|
     t.integer "table_capacity"
     t.boolean "availability"
@@ -56,12 +66,16 @@ ActiveRecord::Schema.define(version: 20180319100107) do
     t.string "branch_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["name", "branch_name"], name: "index_restaurants_on_name_and_branch_name", unique: true
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
   create_table "restaurants_categories", id: false, force: :cascade do |t|
     t.integer "restaurant_id"
     t.integer "category_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -93,8 +107,6 @@ ActiveRecord::Schema.define(version: 20180319100107) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "restaurant_tables", "restaurants"
-
   create_table "users_roles", id: false, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
@@ -103,4 +115,8 @@ ActiveRecord::Schema.define(version: 20180319100107) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "food_items", "categories"
+  add_foreign_key "food_items", "restaurants"
+  add_foreign_key "restaurant_tables", "restaurants"
+  add_foreign_key "restaurants", "users"
 end
