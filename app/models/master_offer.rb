@@ -1,0 +1,2 @@
+class MasterOffer < ApplicationRecord
+end

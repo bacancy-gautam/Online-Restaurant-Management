@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319123513) do
+ActiveRecord::Schema.define(version: 20180319124615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 20180319123513) do
     t.index ["master_order_id"], name: "index_home_deliveries_on_master_order_id"
   end
 
+  create_table "master_offers", force: :cascade do |t|
+    t.float "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "master_orders", force: :cascade do |t|
     t.float "total"
     t.integer "order_type"
@@ -70,6 +76,19 @@ ActiveRecord::Schema.define(version: 20180319123513) do
     t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_master_orders_on_restaurant_id"
     t.index ["user_id"], name: "index_master_orders_on_user_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.integer "quantity"
+    t.float "price"
+    t.bigint "restaurant_id"
+    t.bigint "food_item_id"
+    t.bigint "master_offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_item_id"], name: "index_offers_on_food_item_id"
+    t.index ["master_offer_id"], name: "index_offers_on_master_offer_id"
+    t.index ["restaurant_id"], name: "index_offers_on_restaurant_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -156,6 +175,9 @@ ActiveRecord::Schema.define(version: 20180319123513) do
   add_foreign_key "home_deliveries", "master_orders"
   add_foreign_key "master_orders", "restaurants"
   add_foreign_key "master_orders", "users"
+  add_foreign_key "offers", "food_items"
+  add_foreign_key "offers", "master_offers"
+  add_foreign_key "offers", "restaurants"
   add_foreign_key "orders", "master_orders"
   add_foreign_key "restaurant_tables", "restaurants"
   add_foreign_key "restaurants", "users"
