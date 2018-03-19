@@ -10,10 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319092516) do
+ActiveRecord::Schema.define(version: 20180319105108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.text "addressline"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "pincode"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurant_tables", force: :cascade do |t|
+    t.integer "table_capacity"
+    t.boolean "availability"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_tables_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_no"
+    t.string "email"
+    t.datetime "opening_time"
+    t.datetime "closing_time"
+    t.integer "delivery_types"
+    t.string "branch_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "branch_name"], name: "index_restaurants_on_name_and_branch_name", unique: true
+  end
+
+  create_table "restaurants_categories", id: false, force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.integer "category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,4 +83,5 @@ ActiveRecord::Schema.define(version: 20180319092516) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "restaurant_tables", "restaurants"
 end
