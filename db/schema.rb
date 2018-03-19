@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(version: 20180320064015) do
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
+<<<<<<< 62e83ed59bc80c721e0763a11f75c6ee7b5a0736
+=======
+  create_table "restaurants_categories", id: false, force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.integer "category_id"
+  end
+
+>>>>>>> home page theme integration
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -171,6 +179,7 @@ ActiveRecord::Schema.define(version: 20180320064015) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+<<<<<<< 62e83ed59bc80c721e0763a11f75c6ee7b5a0736
   add_foreign_key "food_items", "categories"
   add_foreign_key "food_items", "restaurants"
   add_foreign_key "home_deliveries", "addresses"
@@ -183,4 +192,7 @@ ActiveRecord::Schema.define(version: 20180320064015) do
   add_foreign_key "orders", "master_orders"
   add_foreign_key "restaurant_tables", "restaurants"
   add_foreign_key "restaurants", "users"
+=======
+  add_foreign_key "restaurant_tables", "restaurants"
+>>>>>>> home page theme integration
 end
