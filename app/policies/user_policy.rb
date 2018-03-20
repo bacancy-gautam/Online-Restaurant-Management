@@ -1,4 +1,4 @@
-class CategoryPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   # class Scope < Scope
   #   def resolve
   #     scope
@@ -6,15 +6,15 @@ class CategoryPolicy < ApplicationPolicy
   # end
 
   # def new?
-  # 	#user.has_role? :super_admin || user.has_role? :admin
+  # 	#user.has_role? :super_admin
   # end
   
   # def create?
-  # 	#true
+  # 	true
   
   # end
 
   # def index?
-  # 	#true
+  # 	true
   # end
 end
