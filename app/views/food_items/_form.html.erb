@@ -1,0 +1,38 @@
+<%=form_for @fooditem do |form| %>
+  <% if @fooditem.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@fooditem.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @fooditem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%=form.label :restaurant_id%>
+  <%#=form.text_field :restaurant_id %>
+  <%=form.collection_select :restaurant_id, Restaurant.order(:id), :id,:name %><br>
+
+  <%=form.label :category_id%>
+  <%#=form.text_field :%>
+  <%=form.collection_select :category_id, Category.order(:id), :id,:name %><br>
+
+  <%=form.label :food_name%>
+  <%=form.text_field :name%><br>
+  
+  <%= form.label :food_type %>
+  <%= form.radio_button :food_type, "veg" %>
+  <%= form.label :food_type, "veg" %>
+  <%= form.radio_button :food_type, "non-veg" %>
+  <%= form.label :food_type, "non-veg" %><br>
+
+  <%=form.label :price%>
+  <%=form.text_field :price%><br>
+
+  <%=form.submit%>  
+
+<% end %>

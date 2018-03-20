@@ -20,7 +20,6 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    
   end
   def update
     if @category.update(category_params)
@@ -42,3 +41,4 @@ class CategoriesController < ApplicationController
     @category=Category.find(params[:id])
   end
 end
+# 
