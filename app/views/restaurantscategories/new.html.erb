@@ -1,0 +1,15 @@
+<div class="field">
+  <h1>Category available in restaurant</h1>
+  <%= form_tag restaurantscategories_path do %>
+    <%= label_tag "restaurant"%><br />
+    <%= collection_select(:restaurant,:restaurant_id, Restaurant.where(user_id: current_user.id), :id, :branch_name ) %><br>
+    <%= label_tag "Category"%><br />
+    <%= collection_check_boxes :restaurant, :category_ids, Category.all, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+    <%= submit_tag "crete", 'data-disable-with' => "Please wait.." %>
+  <%end%>
+</div>
