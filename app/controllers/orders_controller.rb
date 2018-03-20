@@ -1,18 +1,27 @@
 class OrdersController < ApplicationController
 	 before_action :authenticate_user!
+	 #before_action :current_order
   def new
   	@order=Order.new
   end
   def create
-  	current_order
-  	#@master_order=session[:master_order_id]
-  	puts "-------------------------------------------------------"
-  		@order=session[:master_order_id].orders.create(order_params)
-  		puts "#{@order.errors.full_messages}"
-  		puts "---------------------------------------------"
-  
-  		exit
-  	
+  	# current_order
+  	# @master_order=session[:master_order_id]
+  	# master_id=session[:master_order_id]["id"]
+  	# masterorder=MasterOrder.find(master_id)
+  	# puts "-------------------------------------------------------"
+  	# 	@order=masterorder.orders.create(order_params)
+  	# 	puts "#{@order.errors.full_messages}"
+  	# 	puts "---------------------------------------------"
+  	# 	exit  
+  	  	@order= Order.create(order_params)
+  	  	puts ""
+  	  		# puts "------------------#{@order.errors.full_messages}"
+  	session[:order]=@order
+  	#session[:order] || = @order
+  	exit
+ 
+
   end
   def index
   end
@@ -21,17 +30,7 @@ class OrdersController < ApplicationController
   def show
   end
   private
-  def current_order
-  	if !session[:master_order_id].nil?
-  		puts "----------------------sessionstart-----------------------"
-      MasterOrder.find(session[:master_order_id])
-      puts "=====#{master_order.find(session[:master_order_id]).inspect}====="
-    else
-      @master_order=MasterOrder.create(user_id:current_user.id)
-
-      session[:master_order_id]=@master_order
-    end
-  end
+  
   def order_params
   end
 end
