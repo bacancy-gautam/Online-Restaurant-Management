@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
 
   resources :food_items
