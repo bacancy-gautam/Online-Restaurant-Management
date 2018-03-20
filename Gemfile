@@ -25,6 +25,9 @@ gem 'jquery-ui-rails'
 gem 'devise'
 gem 'pundit'
 gem "rolify"
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
