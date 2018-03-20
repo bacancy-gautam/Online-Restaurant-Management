@@ -19,4 +19,8 @@
 .byebug_history
 .rvmrc
 
+<<<<<<< 68a4d7dcaf61e99feefe63f9be5d024b5c982447
+=======
+
+>>>>>>> Restaurents CRUD
 /config/local_env.yml

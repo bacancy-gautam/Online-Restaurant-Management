@@ -6,16 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(username: 'jinal',email: 'jinal.vandara@bacancytechnology.com',password: '123456',password_confirmation: '123456')
-user2 = User.create(username: 'harshil',email: 'harshil.patel@bacancytechnology.com',password: '123456',password_confirmation: '123456')
-user1.add_role(:super_admin)
-<<<<<<< 0f5aa26d5d81c2542b936d95035872a82aa8e800
+user1 = User.create(username: 'jinal', 
+  email: 'jinal.vandara@bacancytechnology.com',
+  password: '123456',
+  password_confirmation: '123456')
 
-user2 = User.create(username: 'viren',
+user2 = User.create(username: 'harshil', 
+  email: 'harshil.patel@bacancytechnology.com',
+  password: '123456',
+  password_confirmation: '123456')
+
+
+user3 = User.create(username: 'viren',
   email: 'viren.dhanwani@bacancytechnology.com',
   password: '111111',
   password_confirmation: '111111')
+
+user1.add_role(:super_admin)
 user2.add_role(:super_admin)
-=======
-user1.add_role(:admin)
->>>>>>> New Restaurant page basic design
+user3.add_role(:super_admin)

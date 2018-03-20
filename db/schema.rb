@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 9e800abfd5341b3bc4efb2500996a798e9636a9c
 ActiveRecord::Schema.define(version: 20180320064015) do
+=======
+ActiveRecord::Schema.define(version: 20180320053017) do
+>>>>>>> Restaurents CRUD
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,8 +125,8 @@ ActiveRecord::Schema.define(version: 20180320064015) do
     t.string "name"
     t.string "phone_no"
     t.string "email"
-    t.datetime "opening_time"
-    t.datetime "closing_time"
+    t.time "opening_time"
+    t.time "closing_time"
     t.integer "delivery_types"
     t.string "branch_name"
     t.datetime "created_at", null: false
