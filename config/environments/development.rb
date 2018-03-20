@@ -52,7 +52,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
+  
+  config.active_record.dump_schema_after_migration = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 

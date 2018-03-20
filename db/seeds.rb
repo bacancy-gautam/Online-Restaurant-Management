@@ -8,3 +8,9 @@
 
 user1 = User.create(username: 'jinal',email: 'jinal.vandara@bacancytechnology.com',password: '123456',password_confirmation: '123456')
 user1.add_role(:super_admin)
+
+user2 = User.create(username: 'viren',
+  email: 'viren.dhanwani@bacancytechnology.com',
+  password: '111111',
+  password_confirmation: '111111')
+user2.add_role(:super_admin)

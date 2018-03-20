@@ -5,13 +5,11 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application','jquery.carouFredSel-6.2.1-packed', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  	<% if user_signed_in? %>
-  		<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  	<% end %>
+  	
     <%= yield %>
   </body>
 </html>
