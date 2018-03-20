@@ -60,8 +60,7 @@
           <nav class="collapse navbar-collapse" id="primary-menu">
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><%= link_to "Home", static_pages_home_path %></li>
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
-              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Sign Up / Login", new_user_registration_path %></li>
             </ul>
           </nav>
         </div>
@@ -74,17 +73,23 @@
       <header class="header-area overlay full-height relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
         <div class="container">
-          <div class="row v-center">
-            <div class="header-text">
-              <h2>It’s all about Promoting your Business</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero ex inventore vel error quibusdam animi fugiat, doloribus dolores consectetur nulla deleniti sint blanditiis quod debitis quis vitae officiis tempora numquam.</p>
-              <center><input type="text" id="form-name" name="form-name" placeholder="Your name" class="form-control" required="required"></center>
-              <a href="#" class="button white">Search</a>
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <h2>It’s all about Promoting your Business</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero ex inventore vel error quibusdam animi fugiat, doloribus dolores consectetur nulla deleniti sint blanditiis quod debitis quis vitae officiis tempora numquam.</p><input type="text" id="form-name" name="form-name" placeholder="Your name" class="form-control" required="required">
+                    <a href="#" class="button white">Search</a>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-5 text-right">
+                    <div class="screen-box screen-slider">
+                        <div class="item">
+                            <%= image_tag asset_path("location1.png") %>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
-            
-            </div>
-          </div>
-      </header>
+        </div>
+    </header>
       <!--Header-area/-->
 
 
