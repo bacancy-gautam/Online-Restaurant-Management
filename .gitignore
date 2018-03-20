@@ -19,3 +19,4 @@
 .byebug_history
 .rvmrc
 
+/config/local_env.yml
