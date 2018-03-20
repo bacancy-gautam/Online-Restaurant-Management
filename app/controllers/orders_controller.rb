@@ -14,14 +14,14 @@ class OrdersController < ApplicationController
   	# 	puts "#{@order.errors.full_messages}"
   	# 	puts "---------------------------------------------"
   	# 	exit  
-  	  	@order= Order.create(order_params)
-  	  	puts ""
-  	  		# puts "------------------#{@order.errors.full_messages}"
-  	session[:order]=@order
+  	if session[:order].blank?
+   		session[:order]={}
+ 		end
+  	@order= Order.create(order_params)
+  	# puts "------------------#{@order.errors.full_messages}"
+  	session[:order][@order.id]= {order_id:@order.id,quantity:@order.quantity}
   	#session[:order] || = @order
   	exit
- 
-
   end
   def index
   end
@@ -32,5 +32,6 @@ class OrdersController < ApplicationController
   private
   
   def order_params
+  	params.require(:orders).permit(:)
   end
 end
