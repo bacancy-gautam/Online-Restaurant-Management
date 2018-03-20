@@ -1,0 +1,19 @@
+<h1>Category available in restaurant</h1>
+<table>
+  <tr>
+    <th>branch name</th>
+  </tr>
+  <tr>
+    <% @restaurant.each do |restaurant| %>
+      <td><%= restaurant.branch_name%></td>
+      <%counter=0%>
+      <% @category[restaurant.id].each do |category| %>
+         <tr>
+            <td> <%=@category[restaurant.id][counter].name%></td>
+          </tr>
+         <%counter+=1%>
+      <%end%>
+ 
+    <%end%>
+</tr>
+</table>
