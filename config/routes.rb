@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   #root to: 'restaurants#new'
 
+
+
   devise_for :users,
              :controllers => { :registrations => "users/registrations",
              :omniauth_callbacks => 'users/omniauth_callbacks'}
