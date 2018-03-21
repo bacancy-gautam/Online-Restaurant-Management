@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
   resources :orders
   resources :master_orders
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+
   resources :food_items
   resources :categories
   resources :restaurants
