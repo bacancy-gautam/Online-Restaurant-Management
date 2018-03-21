@@ -1,0 +1,27 @@
+<h1>Category available in restaurant</h1>
+<table border="1  ">
+  <tr>
+    <th>branch name</th>
+    <th>category</th>
+    <th>show</th>
+    <th>edit</th>
+  </tr> 
+  <% @restaurant.each do |restaurant| %>
+    <tr>
+      <td>
+        <%= restaurant.branch_name%>
+      </td>
+      <%counter=0%>
+      <td>
+        <ul>
+        <% @category[restaurant.id].each do |category| %>
+          <li><%=@category[restaurant.id][counter].name%></li>
+          <%counter+=1%>
+        <%end%>
+      </li>
+      </td>
+      <td><%= link_to 'show',restaurantscategory_path(restaurant)%></td>
+      <td><%= link_to 'edit',edit_restaurantscategory_path(restaurant)%></td>
+    </tr>
+  <%end%> 
+</table>
