@@ -31,6 +31,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'rubocop', '~> 0.54.0', require: false
 
+gem "font-awesome-rails"
+gem 'bootstrap', '~> 4.0.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -65,3 +67,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  

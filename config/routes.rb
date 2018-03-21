@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+
+  get 'admin' => 'admin#index', :as => :admin_index
+
   resources :food_items
   resources :categories
   resources :restaurants
