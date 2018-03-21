@@ -4,15 +4,6 @@ class OrdersController < ApplicationController
     @order=Order.new
   end
   def create
-  	# current_order
-  	# @master_order=session[:master_order_id]
-  	# master_id=session[:master_order_id]["id"]
-  	# masterorder=MasterOrder.find(master_id)
-  	# puts "-------------------------------------------------------"
-  	# 	@order=masterorder.orders.create(order_params)
-  	# 	puts "#{@order.errors.full_messages}"
-  	# 	puts "---------------------------------------------"
-  	# 	exit  
   	if session[:order].blank?
    		session[:order]={}
  		end
@@ -26,7 +17,6 @@ class OrdersController < ApplicationController
   end
   def index
     @orders=Order.all
-  
   end
   def edit
   end
