@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
   
-<<<<<<< HEAD
-=======
 
   get 'admin' => 'admin#index', :as => :admin_index
-
->>>>>>> admin panel phase-1 complete in branch vishal-admin-site-layout
   resources :food_items
   resources :categories
   resources :restaurants
-
+  resources :restaurantscategories
+  resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'static_pages/home'
