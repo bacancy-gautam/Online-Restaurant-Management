@@ -82,20 +82,24 @@ p {
 // Navbar
 .nav-menu {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     right: 0;
     left: 0;
+    background: #909090;
     margin: 0 auto;
     // border-bottom: 1px solid #636363;
 }
 
 .nav-menu-2 {
     position: inherit;
+    background: #909090;
+
 }
 
 .navbar {
     padding: .5rem 0;
+    background: #909090;
 }
 
 .navbar-brand {
@@ -173,33 +177,15 @@ p {
     z-index: 1;
     @media (max-width: 992px) {
         border: none;
-        background: #252a33
+        background: #909090;
     }
 }
 
-// Dropdown Menu
-.dropdown-menu {
-    background: #030303;
-}
-
-.dropdown-item {
-    color: #aaaaaa;
-    transition: 0.3s;
-    &:hover {
-        color: #fff;
-        background: none;
-    }
-}
-
-.ti-plus {
-    font-size: 14px;
-    padding: 0 8px 0 0;
-}
 
 // slider
 .slider {
     background: url(../images/slider.jpg) no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
     min-height: 800px;
     @media (max-width: 992px) {
         min-height: 700px;
@@ -646,7 +632,10 @@ footer {
         }
     }
 }
-
+#map{
+    width: 350px;
+    height: 250px;
+}
 .detail-filter {
     text-align: right;
     @media (max-width: 992px) {
