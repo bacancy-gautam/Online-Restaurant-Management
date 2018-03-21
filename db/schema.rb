@@ -121,8 +121,8 @@ ActiveRecord::Schema.define(version: 20180320064015) do
     t.string "name"
     t.string "phone_no"
     t.string "email"
-    t.datetime "opening_time"
-    t.datetime "closing_time"
+    t.time "opening_time"
+    t.time "closing_time"
     t.integer "delivery_types"
     t.string "branch_name"
     t.datetime "created_at", null: false

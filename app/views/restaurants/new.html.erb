@@ -1,0 +1,27 @@
+<h1>New Restaurant</h1>
+<%= form_for @restaurant do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :phone_no %>
+  <%= f.text_field :phone_no %><br><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %><br><br>
+
+  <%= f.label :opening_time %>
+  <%= f.time_select :opening_time, {ampm: true} %><br><br>
+
+  <%= f.label :closing_time %>
+  <%= f.time_select :closing_time, {ampm: true} %><br><br>
+
+  <%= f.label :delivery_types %>
+  <%= select_tag :delivery_types, options_for_select(Restaurant.types.map {|k, v| [k, v]}) %><br><br>
+
+  <%= f.label :branch_name %>
+  <%= f.text_field :branch_name %>
+  <br><br>
+
+  <%= f.submit %>
+<% end %>
