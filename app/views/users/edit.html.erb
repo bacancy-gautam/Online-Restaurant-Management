@@ -1,0 +1,42 @@
+
+
+<%= form_for @user, :url=> url_for(controller: 'users', action: 'update') do |f| %>
+ 
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :firstname, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_name %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_no %><br />
+    <%= f.text_field :phoneno %>
+  </div>
+  <br>
+  
+  
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+<br>  
+
+
+
+<%= link_to "Back", root_path %>

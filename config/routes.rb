@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :restaurants
   resources :restaurantscategories
+  resources :users
 
 
   get :search, controller: :restaurants
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
+  get 'users/edit'
   root 'static_pages#home'
   #root 'restaurants#new'
 
