@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
-	 before_action :authenticate_user!
+	before_action :authenticate_user!
 	 #before_action :current_order
   def new
-  	@order=Order.new
+    @order=Order.new
   end
   def create
   	# current_order
@@ -39,7 +39,6 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
   private
-  
   def order_params
   	params.require(:order).permit(:order_datetime,:quantity,:price,:food_item_id)
   end
