@@ -12,23 +12,6 @@
  *
  *= require jquery-ui
  *= require_self
- *= require animate.min
- *= require bootstrap-theme.min
- *= require bootstrap
- *= require bootstrap.min
- *= require chosen.min
- *= require dataslider
- *= require magnific-popup
- *= require normalize
- *= require owl.carousel.min
- *= require prettyPhoto
- *= require responsive.css
- *= require metisMenu.min
- *= require sb-admin-2
- *= require morris
- *= require font-awesome
- *= require style
- *= require themify-icons
  *= require_tree .
  */
   
