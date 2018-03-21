@@ -1,2 +1,6 @@
-<h1>MasterOrders#index</h1>
-<p>Find me in app/views/master_orders/index.html.erb</p>
+<% @master_orders.each do |m|%>
+  Total amount::<%= m.total.to_i%>
+  <%= link_to "delete",master_order_path(m),method: "delete"%>
+  <%= link_to "show",master_order_path(m)%></br>
+<%end%>
+<%= link_to "sign out", destroy_user_session_path,method: "delete"%>
