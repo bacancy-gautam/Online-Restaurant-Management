@@ -21,17 +21,26 @@ class OrdersController < ApplicationController
   	# puts "------------------#{@order.errors.full_messages}"
   	session[:order][@order.id]= {order_id:@order.id,quantity:@order.quantity}
   	#session[:order] || = @order
-  	exit
+    redirect_to orders_path
   end
   def index
+    @orders=Order.all
   end
   def edit
   end
   def show
+    @order=Order.find(params[:id])
+  end
+  def destroy
+    @order=Order.find(params[:id])
+    @order.destroy
+    session[:order]["@order.id"]
+    exit  
+    redirect_to orders_path
   end
   private
   
   def order_params
-  	params.require(:orders).permit(:)
+  	params.require(:order).permit(:order_datetime,:quantity,:price,:food_item_id)
   end
 end

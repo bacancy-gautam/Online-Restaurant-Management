@@ -5,9 +5,8 @@
 	<%= order.label:food_item%>
 	<%= order.collection_select :food_item_id, FoodItem.order(:id), :id,:name %> </br>
 	<%= order.label:quantity%>
-	<%= order.number_field:quantity%></br>
-	<%= order.label:price%>
-	<%= order.text_field:price%></br>
+	<%= order.number_field:quantity,min:1%></br>
+	
 	<%= order.submit%>
 <%end%>
  
