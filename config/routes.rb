@@ -17,4 +17,12 @@ Rails.application.routes.draw do
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",
   					 :omniauth_callbacks => 'users/omniauth_callbacks'}
+
+  devise_for :delivery_boys, 
+              controllers: 
+              {
+                sessions: 'delivery_boys/sessions',
+                registrations: 'delivery_boys/registrations'
+              }
+
 end
