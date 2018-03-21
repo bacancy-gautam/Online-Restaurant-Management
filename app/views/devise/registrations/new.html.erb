@@ -1,381 +1,274 @@
-    <div class="wrapper">
-    
-        
-<header>
-    <div class=" container">
-        <section class="style-one-header top-area">
+
+            <!DOCTYPE html>
+            <html lang="en" >
+
+            <head>
+
+              <meta charset="UTF-8">
+              <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+              <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+              <title>CodePen - Material design sign up form</title>
+
+
+
+
+              <style>
+              @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+              *:focus {
+                outline: none;
+              }
+
+              body {
+                margin: 0;
+                padding: 0;
+                background: #DDD;
+                font-size: 16px;
+                color: #222;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+              }
+
+              #login-box {
+                position: relative;
+                margin: 5% auto;
+                width: 600px;
+                height: 900px;
+                background: #FFF;
+                border-radius: 2px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+              }
+
+              .left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                box-sizing: border-box;
+                padding: 40px;
+                width: 300px;
+                height: 400px;
+              }
+
+              h1 {
+                margin: 0 0 20px 0;
+                font-weight: 300;
+                font-size: 28px;
+              }
+
+              input[type="text"],
+              input[type="password"],
+              input[type="email"] {
+                display: block;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+                padding: 4px;
+                width: 220px;
+                height: 32px;
+                border: none;
+                border-bottom: 1px solid #AAA;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 15px;
+                transition: 0.2s ease;
+              }
+
+              input[type="text"]:focus,
+              input[type="password"]:focus,
+              input[type="email"]:focus {
+                border-bottom: 2px solid #16a085;
+                color: #16a085;
+                transition: 0.2s ease;
+              }
+
+              input[type="submit"] {
+                margin-top: 28px;
+                width: 120px;
+                height: 32px;
+                background: #16a085;
+                border: none;
+                border-radius: 2px;
+                color: #FFF;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                text-transform: uppercase;
+                transition: 0.1s ease;
+                cursor: pointer;
+              }
+
+              input[type="submit"]:hover,
+              input[type="submit"]:focus {
+                opacity: 0.8;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+                transition: 0.1s ease;
+              }
+
+              input[type="submit"]:active {
+                opacity: 1;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+                transition: 0.1s ease;
+              }
+
+              .or {
+                position: absolute;
+                top: 180px;
+                left: 280px;
+                width: 40px;
+                height: 40px;
+                background: #DDD;
+                border-radius: 50%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+                line-height: 40px;
+                text-align: center;
+              }
+
+              .right {
+                position: absolute;
+                top: 0;
+                right: 0;
+                box-sizing: border-box;
+                padding: 40px;
+                width: 300px;
+                height: 400px;
+                background: url('https://goo.gl/YbktSj');
+                background-size: cover;
+                background-position: center;
+                border-radius: 0 2px 2px 0;
+              }
+
+              .right .loginwith {
+                display: block;
+                margin-bottom: 40px;
+                font-size: 28px;
+                color: #FFF;
+                text-align: center;
+              }
+
+              button.social-signin {
+                margin-bottom: 20px;
+                width: 220px;
+                height: 36px;
+                border: none;
+                border-radius: 2px;
+                color: #FFF;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                transition: 0.2s ease;
+                cursor: pointer;
+              }
+
+              button.social-signin:hover,
+              button.social-signin:focus {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+                transition: 0.2s ease;
+              }
+
+              button.social-signin:active {
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+                transition: 0.2s ease;
+              }
+
+              button.social-signin.facebook {
+                background: #32508E;
+              }
+
+              button.social-signin.twitter {
+                background: #55ACEE;
+              }
+
+              button.social-signin.google {
+                background: #DD4B39;
+              }
+            </style>
+
+            <script>
+              window.console = window.console || function(t) {};
+            </script>
+
+
+
+            <script>
+              if (document.location.search.match(/type=embed/gi)) {
+                window.parent.postMessage("resize", "*");
+              }
+            </script>
+
+
+          </head>
+
+          <body translate="no" >
+
+            <div id="login-box">
+              <div class="left">
+                <h1>Sign up</h1>
+
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                
+      </header> 
+      <section class="section-signin-page">
+        <div class="container">
+          <div class="sign-in-holder">
+
             <div class="row">
-                <div class="col-sm-4 col-xs-12">
-                    <div class="login-menu-holder ic-sm-user">
-                                                    <a href="//barcelona.lemonstand.com/login">Login or Register</a>
-                                            </div>
-                    <div class="hotline-holder ic-sm-phone">
-                        <label>hotline:</label>
-                        <span>1-800-123-4567</span>
-                    </div>
-                </div>
-                <div class="top-logo-holder col-sm-4 col-xs-12">
+                      <div class="col-xs-12 col-sm-6">
 
-                    <div class="top-logo">
-                      <a href="//barcelona.lemonstand.com/"><img src="/resources/barcelona/images/barcelona-logo.png?1510760505" alt="" class="logo"></a>
-                    </div>
+                     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                     <%= devise_error_messages! %>
 
-                </div>
-                <div class="col-sm-4 col-xs-12">
-                    <div class="wish-cart-holder">
-                        <div class="top-cart-holder ic-sm-basket" id="mini-cart">
-                            <a href="//barcelona.lemonstand.com/cart">shopping cart</a>:
-<span class="top-cart-price">$0.00</span>
-<div class="total-buble">
-    <span>0</span>
-</div>
-
-
-                        </div>
-                        <div class="search-holder">
-                            <form  method="get" action="//barcelona.lemonstand.com/search">
-                                <input type="text" name="query" id="query" placeholder="Search" autocomplete="off" value="">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="top-menu visible-md visible-lg">
-    <ul>
-      <li class="">
-        <a href="/">Home</a>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" id="dropdownMenu1" href="/shop">shop</a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                                <li role="presentation">
-                      <a role="menuitem" tabindex="-1" href="/category/pants">
-                        Pants
-                      </a>
-                    </li>
-                                    <li role="presentation">
-                      <a role="menuitem" tabindex="-1" href="/category/shirts">
-                        Shirts
-                      </a>
-                    </li>
-                                      </ul>
-              </li>
-    </ul>
-    <ul>
-  <li class="">
-    <a href="/about">About</a>
-  </li>
-  <li class="">
-    <a href="/contact">Contact</a>
-  </li>
-  <li>
-    <a href="/archives/blog">Blog</a>
-  </li>
-</ul>
-    <ul>
-          </ul>
-</div>
-
-
-<select class="top-drop-menu  visible-sm visible-xs">
-    <option value="//barcelona.lemonstand.com/">
-        Home
-    </option>
-    <option value="//barcelona.lemonstand.com/shop">
-        Shop
-    </option>
-        <option value="//barcelona.lemonstand.com/about">
-        About
-    </option>
-    <option value="//barcelona.lemonstand.com/contact">
-        Contact
-    </option>
-    <option value="/archives/blog">
-    Blog
-</option>
-</select>
-
-    </div>
-</header> 
-        <section class="section-signin-page">
-    <div class="container">
-        <div class="sign-in-holder">
-            
-            <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                    <div class="field">
-                      <%= f.label :email%><br />
-                      <%= f.email_field :email,class: "md-input col-xs-12", autofocus: true, autocomplete: "email" %>
+                     <div class="field">
+                      <%= f.label :first_name %><br />
+                      <%= f.text_field :firstname, autofocus: true,class: "md-input col-xs-12" %>
                     </div>
 
                     <div class="field">
-                      <%= f.label :password %><br />
-                      <%= f.password_field :password, class: "md-input col-xs-12", autocomplete: "off" %>
+                      <%= f.label :Last_name %><br />
+                      <%= f.text_field :lastname, class: "md-input col-xs-12" %>
                     </div>
 
-                    <% if devise_mapping.rememberable? -%>
-                      <div class="field">
-                        <%= f.check_box :remember_me %>
-                        <%= f.label :remember_me %>
-                      </div>
-                    <% end -%>
+                    <div class="field">
+                      <%= f.label :user_name %><br />
+                      <%= f.text_field :username,class: "md-input col-xs-12" %>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :email %><br />
+                      <%= f.email_field :email, autocomplete: "email",class: "md-input col-xs-12" %>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :phone_no %><br />
+                      <%= f.text_field :phoneno,class: "md-input col-xs-12" %>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :password %>
+                      <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                      <% end %><br />
+                      <%= f.password_field :password, autocomplete: "off",class: "md-input col-xs-12" %>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :password_confirmation %><br />
+                      <%= f.password_field :password_confirmation, autocomplete: "off",class: "md-input col-xs-12" %>
+                    </div>
 
                     <div class="actions">
-                      <%= f.submit "Log in", class: "md-button narrow " %>
+                      <%= f.submit "Sign up", class:"md-button narrow" %>
                     </div>
-                  <% end %>
 
-                 <!--  <%= render "devise/shared/links" %> -->
+            <% end %>
+            <%= link_to "Already an user? Sign In", new_user_session_path%>
+          </div>
 
+          <div class="right">
+            <span class="loginwith">Sign in with<br />social network</span>
 
-
-
-
-                  <!--   <form  data-ajax-handler="shop:onLogin" data-validation-message="" method="post" action="/login">
-                        <h3>Login</h3>
-                        <input name="email" class="md-input col-xs-12" placeholder="e-mail" value="">
-                        <input type="password" name="password" class="md-input col-xs-12" placeholder="password">
-                        <a class=" forget-link" href="//barcelona.lemonstand.com/password-restore">forgot your password?</a>
-                        <button class="md-button narrow " type="submit">sign in</button>
-                        <input type="hidden" name="redirect" value="//barcelona.lemonstand.com/"/>
-                    </form> -->
-                </div>
-                <div class="col-xs-12 col-sm-6">
-
-                             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                        <%= devise_error_messages! %>
-
-                        <div class="field">
-                          <%= f.label :first_name %><br />
-                          <%= f.text_field :firstname, autofocus: true,class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="field">
-                          <%= f.label :Last_name %><br />
-                          <%= f.text_field :lastname, class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="field">
-                          <%= f.label :user_name %><br />
-                          <%= f.text_field :username,class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="field">
-                          <%= f.label :email %><br />
-                          <%= f.email_field :email, autocomplete: "email",class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="field">
-                          <%= f.label :phone_no %><br />
-                          <%= f.text_field :phoneno,class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="field">
-                          <%= f.label :password %>
-                          <% if @minimum_password_length %>
-                          <em>(<%= @minimum_password_length %> characters minimum)</em>
-                          <% end %><br />
-                          <%= f.password_field :password, autocomplete: "off",class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="field">
-                          <%= f.label :password_confirmation %><br />
-                          <%= f.password_field :password_confirmation, autocomplete: "off",class: "md-input col-xs-12" %>
-                        </div>
-
-                        <div class="actions">
-                          <%= f.submit "Sign up", class:"md-button narrow" %>
-                        </div>
-                      <% end %>
-
-                     <!--  <%= render "devise/shared/links" %> -->
-
-<!-- 
-                    <form  data-ajax-handler="shop:onSignup" data-validation-message="" method="post" action="/login">
-                        <h3>Register</h3>
-                        
-                        <input name="signup[first_name]" id="signup[first_name]" type="text" class="md-input col-xs-12" placeholder="First Name *" />
-
-                        <input name="signup[last_name]" id="signup[last_name]" type="text" class="md-input col-xs-12"  placeholder="Last Name *"/>
-                        
-                        <input id="signup[email]" type="text" name="signup[email]" class="md-input col-xs-12"  placeholder="Email *"/>
-                        
-                        <input name="signup[password]" id="signup[password]" type="password" class="md-input col-xs-12"  placeholder="Password *"/>
-                        
-                        <input name="signup[password_confirmation]" id="signup[password_confirmation]" type="password" class="md-input col-xs-12"  placeholder="Confirm Password *" style="margin-bottom: 15px"/><br>
-
-                        <input class="md-check" name="accepts_marketing" type="checkbox" id="accepts_marketing" checked/> Recieve promotional emails
-
-                        <input type="hidden" name="autologin" value="1" />
-                        <input type="hidden" name="redirect" value="//barcelona.lemonstand.com/registered"/>
-                        <button class="md-button narrow">submit</button> -->
-                    <!-- </form> -->
-                </div>
-            </div>
+            <button class="social-signin facebook">Log in with facebook</button>
+            <button class="social-signin google">Log in with Google+</button>
+          </div>
+          <div class="or">OR</div>
         </div>
-    </div>
-</section>
-        <section class="section-footer">
-    <div class="footer-holder">
-        <div class="container">
-            <div class="col-xs-offset-2 col-xs-8 col-sm-6 col-sm-offset-0  col-md-3">
-                <div class="footer-column adress-column">
-                    <h4>connect with us</h4>
 
-                    <div class="content">
-                        <p class="bold">Barcelona - eCommerce</p>
-                        <p>
-                            4 East 80th Street, new york,ny
-                            <br>1-800-123-4567
-                            <br>sales@lemonstand.com
-                        </p>
-                        <div class="footer-socials">
-                            <ul>
-                                <li>
-                                    <a href="http://facebook.com/lemonstand" class="fa fa-facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="http://twitter.com/" class="fa fa-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="http://www.pinterest.com/" class="fa fa-pinterest"></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="col-xs-offset-2 col-xs-8 col-sm-6 col-sm-offset-0  col-md-3">
-                <div class="footer-column">
-                    <h4>shop</h4>
-
-                    <div class="content">
-                            <ul class=" categories-group link-list ">
-                    <li>
-                <a href="/category/pants">Pants</a>
-                            </li>
-                    <li>
-                <a href="/category/shirts">Shirts</a>
-                    <ul class=" sub-category ">
-                    <li>
-                <a href="/category/shirts/tank-tops">Tank Tops</a>
-                            </li>
-            </ul>
-            </li>
-            </ul>
-
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="col-xs-offset-2 col-xs-8 col-sm-6 col-sm-offset-0  col-md-3">
-                <div class="footer-column">
-                    <h4>my account</h4>
-
-                    <div class="content">
-                        <ul class="link-list">
-                                                            <li><a href="//barcelona.lemonstand.com/login" title="Login / Register">Login / Register</a></li>
-                                                    </ul>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-xs-offset-2 col-xs-8 col-sm-6 col-sm-offset-0  col-md-3">
-  <div class="footer-column">
-    <h4>our support</h4>
-    <div class="content">
-      <ul class="link-list">
-        <li>
-          <a href="">terms &amp; conditions</a>
-        </li>
-
-        <li>
-          <a href="">delivery</a>
-        </li>
-        <li>
-          <a href="">secure payment</a>
-        </li>
-
-        <li>
-          <a href="/contact">contact us</a>
-        </li>
-
-        <li>
-          <a href="">refunds</a>
-        </li>
-
-        <li>
-          <a href="">track orders</a>
-        </li>
-        <li>
-          <a href="">services</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-        </div>
-    </div>
-
-    <div class="footer-payment-icons">
-        <ul class="list-inline">
-            <li>
-              <img  alt="paypal" src="//d2pm12cz12gs8x.cloudfront.net/store-barcelona-5371507c34a77/themes/barcelona/resources/images/payments-paypal.png " />
-            </li>
-            <li>
-              <img alt="visa" src="//d2pm12cz12gs8x.cloudfront.net/store-barcelona-5371507c34a77/themes/barcelona/resources/images/payments-visa.png " />
-            </li>
-            <li>
-              <img alt="master card" src="//d2pm12cz12gs8x.cloudfront.net/store-barcelona-5371507c34a77/themes/barcelona/resources/images/payments-mastercard.png " />
-            </li>
-            <li>
-              <img alt="discover" src="//d2pm12cz12gs8x.cloudfront.net/store-barcelona-5371507c34a77/themes/barcelona/resources/images/payments-discover.png " />
-            </li>
-            <li>
-              <img alt="amex" src="//d2pm12cz12gs8x.cloudfront.net/store-barcelona-5371507c34a77/themes/barcelona/resources/images/payments-amex.png " />
-            </li>
-        </ul>
-        <div class="powered pull-right">Powered by <a href="http://www.lemonstand.com">LemonStand</a></div>
-    </div>
-</section>
-    
-    </div>
-    
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </body>
+      </html>
+      
