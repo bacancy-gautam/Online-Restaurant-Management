@@ -2,19 +2,8 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-
   # after_action :verify_authorized, except: :index
   # after_action :verify_policy_scoped, only: :index
-
-  
-  def new
-    @category = Category.new 
-    # authorize @category
-  end
-  
-  def create
-    @category=@category=Category.new(category_params)  
-    # authorize @category 
 
   def new
     @category=Category.new  
