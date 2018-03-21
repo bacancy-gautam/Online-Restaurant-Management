@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
 
   resources :food_items
   resources :categories
@@ -10,7 +11,11 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
-  root 'static_pages#home'
+  #root 'static_pages#home'
+  #root 'restaurants#new'
+
+  root to: 'restaurants#new'
+
 
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",

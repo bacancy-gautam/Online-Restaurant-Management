@@ -44,6 +44,14 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
+  def new_release
+    @fooditem = FoodItem.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
   def restaurant_params
     params.require(:restaurant).permit(:name, :phone_no, :email, :opening_time, :closing_time, :delivery_types, :branch_name)
