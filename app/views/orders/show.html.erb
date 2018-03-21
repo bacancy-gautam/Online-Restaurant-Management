@@ -1,2 +1,6 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<p>
+	Time::<%= @order.order_datetime%><br>
+  Food_item::<%= @order.food_item.name%><br>
+  Quantity::<%= @order.quantity%><br>
+  Price::<%= @order.price%>
+</p>
