@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
   root 'static_pages#home'
 
+
+
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",
   					 :omniauth_callbacks => 'users/omniauth_callbacks'}
