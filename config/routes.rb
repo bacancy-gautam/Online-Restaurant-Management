@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  resources :food_items
+  resources :categories
+  resources :restaurants
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'static_pages/home'
