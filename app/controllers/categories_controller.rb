@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
 
 
   # after_action :verify_authorized, except: :index
@@ -16,6 +17,9 @@ class CategoriesController < ApplicationController
     @category=@category=Category.new(category_params)  
     # authorize @category 
 
+=======
+  
+>>>>>>> change the code according review and add gem rubocop
   def new
     @category=Category.new  
   end
