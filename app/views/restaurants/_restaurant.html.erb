@@ -1,0 +1,26 @@
+<h3><%= restaurant.name %></h3>
+
+<%= label_tag :name %>
+<%= link_to restaurant.name, restaurant_path(restaurant) %><br>
+
+<%= label_tag :phone_no %>
+<%= restaurant.phone_no %><br>
+
+<%= label_tag :email %>
+<%= restaurant.email %><br>
+
+<%= label_tag :opening_time %>
+<%= restaurant.opening_time.strftime("%I:%M %p") %><br>
+
+<%= label_tag :closing_time %>
+<%= restaurant.closing_time.strftime("%I:%M %p") %><br>
+
+<%= label_tag :delivery_types %>
+<%= restaurant.delivery_types %><br>
+
+<%= label_tag :branch_name %>
+<%= restaurant.branch_name %><br>
+
+<%= link_to 'Edit', edit_restaurant_path(restaurant) %>
+<%= link_to 'Destroy', restaurant_path(restaurant.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<br><br>
