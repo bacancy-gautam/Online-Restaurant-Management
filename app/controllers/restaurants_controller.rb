@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.user_id=current_user.id
     if @restaurant.save
       flash[:success] = "Restaurant created!"
       redirect_to restaurant_path(@restaurant)
