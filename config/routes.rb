@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
-
+  get 'offers/change_category'
   resources :food_items
   resources :categories
   resources :restaurants
@@ -28,7 +28,6 @@ Rails.application.routes.draw do
 
   #root to: 'restaurants#new'
 
-
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",
   					 :omniauth_callbacks => 'users/omniauth_callbacks'}
@@ -39,5 +38,4 @@ Rails.application.routes.draw do
                 sessions: 'delivery_boys/sessions',
                 registrations: 'delivery_boys/registrations'
               }
-
 end
