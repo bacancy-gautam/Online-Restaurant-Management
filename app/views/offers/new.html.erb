@@ -7,13 +7,16 @@
   <div id='category-list' remote: true>
     <%= render partial: 'category_list'%> <%#= f.text_field :city %> 
   </div>
-   <div id='food-list' remote: true>
+
+  <div id='food-list' remote: true>
     <%= render partial: 'food_list'%> <%#= f.text_field :city %> 
   </div>
+ 
 
 <%end%>
 
 <script type="text/javascript">
+
     $("#offer_restaurant_id").on("change", function()
     { 
       $.ajax({
@@ -26,19 +29,4 @@
         }
       });
     });
-
-    $("#offer_cate_id").on("change", function()
-    { 
-      alert("hello");
-      $.ajax({
-        url: 'change_foodlist.js',
-        method: 'GET',
-        data: 
-        {
-          food: $(this).val()
-
-        }
-      });
-    });
-
-  </script>
+</script>

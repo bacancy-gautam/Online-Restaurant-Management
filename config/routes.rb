@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
 
   get 'offers/change_category'
+  get 'offers/change_foodlist'
+  resources :offers
   resources :orders
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+  
   resources :master_orders
   resources :food_items
   resources :categories
@@ -20,7 +23,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'offers/change_category'
+  
   get :search, controller: :restaurants
   get :location, controller: :restaurants
   
@@ -33,7 +36,13 @@ Rails.application.routes.draw do
 
   #root to: 'restaurants#new'
   
-  
+  resources :delivery_boys, :path => 'deliveryboys' do
+    collection do
+      get :change_password_edit
+      patch :change_password_update
+    end
+  end
+
   devise_for :users,
   					 :controllers => { :registrations => "users/regiustrations",
   					 :omniauth_callbacks => 'users/omniauth_callbacks'}

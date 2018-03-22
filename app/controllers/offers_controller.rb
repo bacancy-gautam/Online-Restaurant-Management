@@ -12,10 +12,15 @@ class OffersController < ApplicationController
   def change_category
    @category=Restaurant.find(params[:category]).id
   end
-  def change_foodlist
-   @food=Category.find_by(name: params[:category])
 
+
+  def change_foodlist
+    name=params[:food]
+    @category=Category.find_by(name: name)
+    @food= @category.food_items
   end
+
+
 =begin
 params[:state]
     @state = CS.states(:in).key(params[:state])
