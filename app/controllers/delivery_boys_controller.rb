@@ -1,29 +1,29 @@
 class DeliveryBoysController < ApplicationController
   
   def index
-  	@delivery_boys = DeliveryBoy.all
+    @delivery_boys = DeliveryBoy.all
   end
 
   def show
-  	@delivery_boy = DeliveryBoy.find(params[:id]) 
+    @delivery_boy = DeliveryBoy.find(params[:id]) 
   end
 
   def edit
-  	@delivery_boy = DeliveryBoy.find(params[:id])
+    @delivery_boy = DeliveryBoy.find(params[:id])
   end
 
   def update
-  	@delivery_boy = DeliveryBoy.find(params[:id])
+    @delivery_boy = DeliveryBoy.find(params[:id])
 
-  	if @delivery_boy.update(delivery_boy_params)
-  		redirect_to @delivery_boy
-  	else
-  		render 'edit'
-  	end
+    if @delivery_boy.update(delivery_boy_params)
+      redirect_to @delivery_boy
+    else
+      render 'edit'
+    end
   end
 
   def delete
-  	
+    
   end
 
   def change_password_edit
@@ -43,9 +43,9 @@ class DeliveryBoysController < ApplicationController
   end
 
   private
-  	def delivery_boy_params
-  		params.require(:delivery_boy).permit(:firstname, :lastname, :username, :phoneno, :email)
-  	end
+    def delivery_boy_params
+      params.require(:delivery_boy).permit(:firstname, :lastname, :username, :phoneno, :email)
+    end
 
     def change_password_params
       params.require(:delivery_boy).permit(:current_password, :password, :password_confirmation)

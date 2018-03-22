@@ -9,10 +9,10 @@
   </head>
 
   <body>
-	  
-	  <% if delivery_boy_signed_in? %>
-	  	<%= link_to 'logout', destroy_delivery_boy_session_path , method: :delete %>
-	  <% end%>
+    
+    <% if delivery_boy_signed_in? %>
+      <%= link_to 'logout', destroy_delivery_boy_session_path , method: :delete %>
+    <% end%>
     
     <%= yield %>
   </body>

@@ -9,6 +9,6 @@ class DeliveryBoy < ApplicationRecord
   before_create :assign_default_status
 
   def assign_default_status
-  	self.status = "available"
+    self.status = "available"
   end
 end
