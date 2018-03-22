@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
-  #root 'static_pages#home'
+  root 'static_pages#home'
   #root 'restaurants#new'
 
-  root to: 'restaurants#new'
+  #root to: 'restaurants#new'
 
 
   devise_for :users,
