@@ -33,7 +33,6 @@ gem "rolify"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
-gem 'rubocop', '~> 0.54.0', require: false
 
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.0.0'
