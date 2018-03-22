@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320064015) do
+ActiveRecord::Schema.define(version: 20180320064609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20180320064015) do
 
   create_table "food_items", force: :cascade do |t|
     t.string "name"
-    t.float "price"
+    t.decimal "price"
     t.integer "food_type"
     t.bigint "category_id"
     t.bigint "restaurant_id"
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 20180320064015) do
   end
 
   create_table "master_offers", force: :cascade do |t|
-    t.float "total"
+    t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "master_orders", force: :cascade do |t|
-    t.float "total"
+    t.decimal "total"
     t.integer "order_type"
     t.integer "payment_type"
     t.integer "order_status"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20180320064015) do
 
   create_table "offers", force: :cascade do |t|
     t.integer "quantity"
-    t.float "price"
+    t.decimal "price"
     t.bigint "restaurant_id"
     t.bigint "food_item_id"
     t.bigint "master_offer_id"
@@ -101,10 +101,12 @@ ActiveRecord::Schema.define(version: 20180320064015) do
   create_table "orders", force: :cascade do |t|
     t.datetime "order_datetime"
     t.integer "quantity"
-    t.float "price"
+    t.decimal "price"
     t.bigint "master_order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "food_item_id"
+    t.index ["food_item_id"], name: "index_orders_on_food_item_id"
     t.index ["master_order_id"], name: "index_orders_on_master_order_id"
   end
 
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(version: 20180320064015) do
   add_foreign_key "offers", "food_items"
   add_foreign_key "offers", "master_offers"
   add_foreign_key "offers", "restaurants"
+  add_foreign_key "orders", "food_items"
   add_foreign_key "orders", "master_orders"
   add_foreign_key "restaurant_tables", "restaurants"
   add_foreign_key "restaurants", "users"
