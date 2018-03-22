@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users,
-  					 :controllers => { :registrations => "users/registrations",
+  					 :controllers => { :registrations => "users/regiustrations",
   					 :omniauth_callbacks => 'users/omniauth_callbacks'}
 
   devise_for :delivery_boys, 
