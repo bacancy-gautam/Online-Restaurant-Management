@@ -1,9 +1,44 @@
 <h2>create offer</h2>
 <h2><%= @restaurant.name%></h2>
 <%= form_for @offer do |form|%>
-  <%=form.label :select_food%>
-  <%=form.collection_select :food_item_id, FoodItem.order(:id), :id,:name %><br>
-  <%=form.label :Quentity%>
-<%=number_field_tag 'quantity', nil, min: 1%>
+  <%=form.label :select_branch%>
+  <%=form.collection_select :restaurant_id, Restaurant.where(user_id: current_user.id).order(:id), :id,:branch_name %><br>
+
+  <div id='category-list' remote: true>
+    <%= render partial: 'category_list'%> <%#= f.text_field :city %> 
+  </div>
+   <div id='food-list' remote: true>
+    <%= render partial: 'food_list'%> <%#= f.text_field :city %> 
+  </div>
 
 <%end%>
+
+<script type="text/javascript">
+    $("#offer_restaurant_id").on("change", function()
+    { 
+      $.ajax({
+        url: 'change_category.js',
+        method: 'GET',
+        data: 
+        {
+          category: $(this).val()
+
+        }
+      });
+    });
+
+    $("#offer_cate_id").on("change", function()
+    { 
+      alert("hello");
+      $.ajax({
+        url: 'change_foodlist.js',
+        method: 'GET',
+        data: 
+        {
+          food: $(this).val()
+
+        }
+      });
+    });
+
+  </script>

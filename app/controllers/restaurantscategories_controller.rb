@@ -24,7 +24,6 @@ class RestaurantscategoriesController < ApplicationController
     @category=Hash.new
     id=@restaurant.id
       @category[id]=@restaurant.categories
-    exit
   end
   def edit
     @restaurant=Restaurant.find(params[:id])
