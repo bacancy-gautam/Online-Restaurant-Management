@@ -1,0 +1,47 @@
+<h2>Edit</h2>
+
+<%= form_for @delivery_boy, :url=> url_for(controller: 'delivery_boys', action: 'update') do |f| %>
+  
+  <% if @delivery_boy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@delivery_boy.errors.count, "error") %> prohibited this borrower from being saved:</h2>
+
+      <ul>
+        <% @delivery_boy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :firstname, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_name %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phoneno %><br />
+    <%= f.text_field :phoneno %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Edit" %>
+  </div>
+<% end %>
+
+<%= link_to 'show details'  %>
