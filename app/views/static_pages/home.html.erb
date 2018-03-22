@@ -32,6 +32,7 @@
                     <ul class="nav navbar-nav navbar-right">
                      <% if user_signed_in? %>
                      <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
+                     <li> <%= link_to('Edit Profile', edit_user_path(current_user), class: "btn btn-outline-light top-btn") %></li>
                      <%else%>
                      <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
                      <li><%= link_to "Login",new_user_session_path, class: "btn btn-outline-light top-btn" %></li>
@@ -532,4 +533,3 @@
       </body>
 
       </html>
-      

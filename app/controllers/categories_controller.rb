@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   def new
     @category=Category.new  
   end
+
   def create
     @category=@category=Category.new(category_params)  
 
@@ -17,8 +18,6 @@ class CategoriesController < ApplicationController
       render 'new'
     end
   end
-
-  
 
   def show
   end
@@ -32,6 +31,7 @@ class CategoriesController < ApplicationController
 
   def edit
   end
+
   def update
     if @category.update(category_params)
       redirect_to categories_path

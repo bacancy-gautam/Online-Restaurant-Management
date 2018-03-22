@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :restaurantscategories
 
+  resources :users, :path => 'customers' do
+    collection do
+      get :change_password_edit
+      patch :change_password_update
+    end
+  end
+
+
 
   get :search, controller: :restaurants
   get :location, controller: :restaurants
@@ -22,6 +30,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
+  get 'users/edit'
   root 'static_pages#home'
   #root 'restaurants#new'
 
