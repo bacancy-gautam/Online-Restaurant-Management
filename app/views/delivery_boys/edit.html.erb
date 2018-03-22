@@ -3,16 +3,16 @@
 <%= form_for @delivery_boy, :url=> url_for(controller: 'delivery_boys', action: 'update') do |f| %>
   
   <% if @delivery_boy.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@delivery_boy.errors.count, "error") %> prohibited this borrower from being saved:</h2>
+    <div id="error_explanation">
+      <h2><%= pluralize(@delivery_boy.errors.count, "error") %> prohibited this borrower from being saved:</h2>
 
-			<ul>
-			  <% @delivery_boy.errors.full_messages.each do |message| %>
-			  	<li><%= message %></li>
-			  <% end %>
-			</ul>
-		</div>
-	<% end %>
+      <ul>
+        <% @delivery_boy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :first_name %><br />
