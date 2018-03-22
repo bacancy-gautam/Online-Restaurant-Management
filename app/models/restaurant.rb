@@ -1,7 +1,7 @@
 class Restaurant < ApplicationRecord
   enum type: [ :take_away, :home_delivery ]
 	
-  has_many :food_item
+  has_many :food_items
   has_many :addresses, as: :addressable
 	has_and_belongs_to_many :categories
 

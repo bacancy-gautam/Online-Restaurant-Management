@@ -1,0 +1,14 @@
+<li>
+  <%= label_tag :name %>
+  <%= label_tag food_item.name %><br>
+
+  <%= label_tag :price %>
+  <%= label_tag food_item.price %><br>
+
+  <%= label_tag :food_type %>
+  <% if food_item.food_type %>
+    <%= label_tag "Vegetarian" %><br>
+  <% else %>
+    <%= label_tag "Non - Vegetarian" %><br>
+  <% end %>
+</li>
