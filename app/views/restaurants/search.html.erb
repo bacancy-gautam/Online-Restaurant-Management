@@ -1,0 +1,17 @@
+ <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<div class="row">
+  <div class="col">
+    <h1>Restaurants</h1>
+    <% @restaurants.each do |restaurant| %>
+      <p><%= link_to restaurant.name, restaurant %></p>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <h1>Food Items</h1>
+    <% @fooditems.each do |food| %>
+      <p><%= link_to food.name, food %></p>
+    <% end %>
+  </div>
+</div>
+
