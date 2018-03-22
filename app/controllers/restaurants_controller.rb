@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!
 
   def new
     @restaurant = Restaurant.new
@@ -52,6 +51,33 @@ class RestaurantsController < ApplicationController
       format.js
     end
   end
+
+  def search
+    @restaurants =  Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
+    @fooditems =  FoodItem.ransack(name_cont: params[:term]).result(distinct: true)
+    respond_to do |format|
+      format.html {}
+      format.json {
+        @restaurants = @restaurants.limit(5)
+        @fooditems = @fooditems.limit(5)  
+
+      }
+    end
+
+  end
+
+def location
+    #@addresses =  Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
+    respond_to do |format|
+      format.html {}
+      format.json {
+        #@addresses = @addresses.limit(5)
+
+      }
+    end
+
+  end
+
 
   private
   def restaurant_params

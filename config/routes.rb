@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :restaurantscategories
 
+  get :search, controller: :restaurants
+  get :location, controller: :restaurants
+  
   get 'static_pages/home'
   get 'static_pages/index'
   get 'static_pages/about'
