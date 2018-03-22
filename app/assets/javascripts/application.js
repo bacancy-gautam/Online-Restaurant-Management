@@ -17,4 +17,9 @@
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap.min
+//= require flot-data
+//= require morris-data
+//= require popper
+//= require sb-admin
+//= require sb-admin-2
 //= require turbolinks
