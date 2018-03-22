@@ -27,6 +27,13 @@ Rails.application.routes.draw do
   #root 'restaurants#new'
 
   #root to: 'restaurants#new'
+  
+  resources :delivery_boys, :path => 'deliveryboys' do
+    collection do
+      get :change_password_edit
+      patch :change_password_update
+    end
+  end
 
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",
