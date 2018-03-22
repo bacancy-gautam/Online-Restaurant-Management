@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get "food_items/new_release" => 'food_items#new_release', :as => :new_release
 
   resources :food_items
   resources :categories
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
-  root 'static_pages#home'
+
+  root 'food_items#index'
 
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",
