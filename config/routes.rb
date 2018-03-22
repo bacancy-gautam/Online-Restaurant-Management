@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  
 
-  get 'admin' => 'admin#index', :as => :admin_index
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+  resources :orders
+  resources :master_orders
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'offers/change_category'
   resources :food_items
   resources :categories
   resources :restaurants
@@ -15,39 +19,33 @@ Rails.application.routes.draw do
   end
 
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get :search, controller: :restaurants
+  get :location, controller: :restaurants
+  
+
+  resources :offers
+
   get 'static_pages/home'
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
   get 'users/edit'
   root 'static_pages#home'
-  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
-  resources :orders
-  resources :master_orders
+  #root 'restaurants#new'
 
- 
-  get 'offers/change_category'
-  resources :food_items
-  resources :categories
-  resources :restaurants
-  resources :restaurantscategories
-  resources :offers
-
-  resources :users, :path => 'customers' do
+  #root to: 'restaurants#new'
+  
+  resources :delivery_boys, :path => 'deliveryboys' do
     collection do
       get :change_password_edit
       patch :change_password_update
     end
   end
- 
-  #root 'restaurants#new'
-
-  #root to: 'restaurants#new'
 
   devise_for :users,
-             :controllers => { :registrations => "users/registrations",
-             :omniauth_callbacks => 'users/omniauth_callbacks'}
+  					 :controllers => { :registrations => "users/registrations",
+  					 :omniauth_callbacks => 'users/omniauth_callbacks'}
 
   devise_for :delivery_boys, 
               controllers: 

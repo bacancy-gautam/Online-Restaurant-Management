@@ -1,3 +1,3 @@
 class Order < ApplicationRecord
-  belongs_to :master_order
+  belongs_to :food_item
 end

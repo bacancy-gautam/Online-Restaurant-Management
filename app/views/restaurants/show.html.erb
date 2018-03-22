@@ -1,1 +1,17 @@
 <%= render @restaurant %>
+
+<%= link_to 'Create Food Item', new_release_path,  {:remote => true}  %>
+
+<div id="fooditem"></div><br>
+
+<h3>Categories</h3>
+
+<ul id="categories">
+  <%= render @categories %>
+</ul>
+
+<h3>Food Items</h3>
+
+<ul id="fooditems">
+  <%= render @fooditems %>
+</ul>

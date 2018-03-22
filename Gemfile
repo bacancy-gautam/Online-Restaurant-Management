@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem "pry-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use postgresql as the database for Active Record
@@ -14,10 +14,14 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'rubocop', require: false
+
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# ransack = for easy search data
+gem 'ransack', '~> 1.7'
 
 gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'
@@ -25,10 +29,14 @@ gem 'jquery-ui-rails'
 gem 'devise'
 gem 'pundit'
 gem "rolify"
+
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'rubocop', '~> 0.54.0', require: false
+gem "font-awesome-rails"
+gem 'bootstrap', '~> 4.0.0'
+
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.0.0'
 

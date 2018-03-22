@@ -1,28 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
-
 
   # after_action :verify_authorized, except: :index
   # after_action :verify_policy_scoped, only: :index
 
-  
-  def new
-    @category = Category.new 
-    # authorize @category
-  end
-  
-  def create
-    @category=@category=Category.new(category_params)  
-    # authorize @category 
-
-=======
-  
->>>>>>> change the code according review and add gem rubocop
   def new
     @category=Category.new  
   end
+
   def create
     @category=@category=Category.new(category_params)  
 
@@ -32,8 +18,6 @@ class CategoriesController < ApplicationController
       render 'new'
     end
   end
-
-  
 
   def show
   end
@@ -47,6 +31,7 @@ class CategoriesController < ApplicationController
 
   def edit
   end
+
   def update
     if @category.update(category_params)
       redirect_to categories_path

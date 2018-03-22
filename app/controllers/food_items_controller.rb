@@ -1,5 +1,4 @@
 class FoodItemsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -36,7 +35,7 @@ class FoodItemsController < ApplicationController
     @fooditem.destroy
     redirect_to food_items_path
   end
-
+  
   private
     def set_food_item
       @fooditem=FoodItem.find(params[:id])

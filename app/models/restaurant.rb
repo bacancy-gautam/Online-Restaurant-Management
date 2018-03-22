@@ -1,14 +1,9 @@
 class Restaurant < ApplicationRecord
-<<<<<<< HEAD
-  has_and_belongs_to_many :categories
-  enum type: [ :cod, :kainai ]
-	has_many :addresses, as: :addressable
-=======
-  
   enum type: [ :take_away, :home_delivery ]
 	
+  has_many :food_items
   has_many :addresses, as: :addressable
-	has_and_belongs_to_many :categories
+  has_and_belongs_to_many :categories
 
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -17,5 +12,4 @@ class Restaurant < ApplicationRecord
   validates :phone_no, presence: true, format: { with: VALID_MOBILE_REGEX }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :branch_name, presence: true
->>>>>>> Restaurents CRUD
 end
