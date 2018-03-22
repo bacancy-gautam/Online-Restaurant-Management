@@ -49,3 +49,4 @@ Rails.application.routes.draw do
                 registrations: 'delivery_boys/registrations'
               }
 end
+
