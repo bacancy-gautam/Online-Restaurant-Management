@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  
-  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
 
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+  get 'offers/change_category'
   resources :food_items
   resources :categories
   resources :restaurants
   resources :restaurantscategories
   resources :offers
+
+
   get 'static_pages/home'
   get 'static_pages/index'
   get 'static_pages/about'
