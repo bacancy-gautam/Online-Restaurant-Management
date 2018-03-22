@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :master_orders
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
   get 'offers/change_category'
   resources :food_items
   resources :categories
