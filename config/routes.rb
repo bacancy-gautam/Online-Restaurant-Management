@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   resources :categories
   resources :restaurants
   resources :restaurantscategories
-  resources :users
+
+  resources :users, :path => 'customers' do
+    collection do
+      get :change_password_edit
+      patch :change_password_update
+    end
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'static_pages/home'
