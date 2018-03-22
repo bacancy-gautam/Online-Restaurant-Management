@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  
-  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
 
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+  resources :orders
+  resources :master_orders
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+  get 'offers/change_category'
   resources :food_items
   resources :categories
   resources :restaurants
   resources :restaurantscategories
-
+  resources :offers
   get 'static_pages/home'
   get 'static_pages/index'
   get 'static_pages/about'
@@ -15,7 +20,6 @@ Rails.application.routes.draw do
   #root 'restaurants#new'
 
   #root to: 'restaurants#new'
-
 
   devise_for :users,
   					 :controllers => { :registrations => "users/registrations",
@@ -27,5 +31,4 @@ Rails.application.routes.draw do
                 sessions: 'delivery_boys/sessions',
                 registrations: 'delivery_boys/registrations'
               }
-
 end
