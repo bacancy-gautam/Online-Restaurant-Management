@@ -13,6 +13,7 @@
   <title>Listing &amp; Directory Website Template</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -48,6 +49,19 @@
                     </div>
                   <%end%>
                       <button class="btn-form" onclick="getLocation()"><span class="icon-magnifier search-icon"></span>Locate Me<i class="pe-7s-angle-right"></i></button>
+                <div class="col-md-10">
+                  <form class="form-wrap mt-4">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <input type="text" placeholder="What are your looking for?" class="btn-group1" value="">
+                      <input type="text" placeholder="New york" class="btn-group2">
+                      <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                    </div>
+                  </form>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                      <button class="btn-form" onclick="getLocation()"><span class="icon-magnifier search-icon"></span>Locate Me<i class="pe-7s-angle-right"></i></button>
+                    </div>
+                    <p id="locate"></p>
+>>>>>>> #30 index page view completed and unnecessary css,js files removed
                   <div class="slider-link">
                     <a href="#">Browse Popular</a><span>or</span> <a href="#">Recently Addred</a>
                   </div>
@@ -93,6 +107,7 @@
               </div>
             </div>
           </div>
+          <%= link_to restaurants_path do %>
           <div class="col-md-4">
             <div class="row find-img-align">
               <div class="col-md-12">
@@ -109,6 +124,7 @@
                 </div>
               </div>
             </div>
+            <%end%>
             <div class="row">
               <div class="col-md-12">
                 <div class="find-place-img_wrap">
@@ -270,7 +286,7 @@
         <div class="row justify-content-center">
           <div class="col-md-4">
             <div class="featured-btn-wrap">
-              <a href="#" class="btn btn-danger">VIEW ALL</a>
+              <%= link_to "VIEW ALL",restaurants_path,class: "btn btn-danger" %>
             </div>
           </div>
         </div>
@@ -482,7 +498,26 @@
     </footer>
     <!--//END FOOTER -->
 
+<script>
 
+  var x = document.getElementById("locate");
+function getLocation() {
+  <% puts "sdmsajdsnsnsuhncsducn=============" %>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        // alert('sgwg');
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+  alert('dhe');
+  
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
 
 
     <!-- jQuery, Bootstrap JS. -->
