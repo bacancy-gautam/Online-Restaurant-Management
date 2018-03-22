@@ -31,11 +31,12 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @categories = @restaurant.categories
+    @fooditems = @restaurant.food_items
   end
 
   def index
-    @restaurants = Restaurant.all
-   
+    @restaurants = Restaurant.all   
   end
 
   def destroy

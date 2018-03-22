@@ -1,7 +1,7 @@
-<h3><%= restaurant.name %></h3>
+<h3><%= link_to restaurant.name, restaurant_path(restaurant)%></h3>
 
 <%= label_tag :name %>
-<%= link_to restaurant.name, restaurant_path(restaurant) %><br>
+<%= label_tag restaurant.name %><br>
 
 <%= label_tag :phone_no %>
 <%= restaurant.phone_no %><br>
