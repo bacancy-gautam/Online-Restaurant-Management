@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    # @restaurant = Restaurant.find(params[:id])
   end
 
   def about

@@ -44,9 +44,10 @@
                       <input type="text" name="term" placeholder="What are your looking for?" class="" value="" data-behavior="autocomplete-1">
                       <input type="text" name="loc" placeholder="New york" class="" value="" id="locate" data-behavior="autocomplete-2">
                       <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
-                      <button class="btn-form" onclick="getLocation()"><span class="icon-magnifier search-icon"></span>Locate Me<i class="pe-7s-angle-right"></i></button>
+
                     </div>
                   <%end%>
+                      <button class="btn-form" onclick="getLocation()"><span class="icon-magnifier search-icon"></span>Locate Me<i class="pe-7s-angle-right"></i></button>
                   <div class="slider-link">
                     <a href="#">Browse Popular</a><span>or</span> <a href="#">Recently Addred</a>
                   </div>
@@ -173,7 +174,8 @@
         <div class="row">
           <div class="col-md-4 featured-responsive">
             <div class="featured-place-wrap">
-              <%= link_to restaurants_path do%>
+              <% @restaurant = Restaurant.find(2) %>
+              <%= link_to restaurant_path(@restaurant) do%>
                 <%= image_tag asset_path('featured1.jpg')%>
                 <span class="featured-rating-orange">6.5</span>
                 <div class="featured-title-box">
