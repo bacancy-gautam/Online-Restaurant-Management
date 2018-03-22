@@ -1,0 +1,10 @@
+<h1>Final Order</h1>
+<%= form_for @master_order do |order|%>
+  <%= order.label:order_type%>
+  <%= order.select(:order_type, MasterOrder.order_types.keys) %> </br>
+  <%= order.label:payment_type%>
+  <%= order.select(:payment_type, MasterOrder.payment_types.keys) %> </br>
+  <%= order.label:restaurant%>
+  <%= order.collection_select :restaurant_id, Restaurant.order(:id), :id,:name %> </br>
+  <%= order.submit%>
+<%end%>
