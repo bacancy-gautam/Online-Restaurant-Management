@@ -10,30 +10,30 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap/modal
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap.min
-//= require popper.min
-//= require turbolinks
-//= require jquery
-//= require jquery.easy-autocomplete
-//= require active
-//= require easing.min
-//= require hoverIntent
-//= require jquery.ajaxchimp.min
-//= require jquery.magnific-popup
-//= require jquery.nice-select.min
-//= require jquery.sticky
-//= require mail-script
-//= require main
-//= require parallax.min
-//= require plugins
-//= require slick
-//= require superfish
-//= require swiper.min
+//= require bootstrap/modal
+// = require popper.min
+// = require turbolinks
+// = require jquery
+// = require jquery.easy-autocomplete
+// = require active
+// = require easing.min
+// = require hoverIntent
+// = require jquery.ajaxchimp.min
+// = require jquery.magnific-popup
+// = require jquery.nice-select.min
+// = require jquery.sticky
+// = require mail-script
+// = require main
+// = require parallax.min
+// = require plugins
+// = require slick
+// = require superfish
+// = require swiper.min
 
 $(document).ready(function(){
 
