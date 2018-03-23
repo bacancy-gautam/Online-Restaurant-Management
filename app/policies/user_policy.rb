@@ -1,3 +1,4 @@
+# class policy of User module
 class UserPolicy < ApplicationPolicy
   # class Scope < Scope
   #   def resolve
@@ -6,15 +7,14 @@ class UserPolicy < ApplicationPolicy
   # end
 
   # def new?
-  # 	#user.has_role? :super_admin
+  #   #user.has_role? :super_admin
   # end
-  
+
   # def create?
-  # 	true
-  
+  #   true
   # end
 
   # def index?
-  # 	true
+  #   true
   # end
 end
