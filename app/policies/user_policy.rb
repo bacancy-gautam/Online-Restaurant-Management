@@ -1,3 +1,4 @@
+# class policy of User module
 class UserPolicy < ApplicationPolicy
   # class Scope < Scope
   #   def resolve

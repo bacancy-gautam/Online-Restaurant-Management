@@ -1,3 +1,4 @@
+# class policy for category module
 class CategoryPolicy < ApplicationPolicy
   # class Scope < Scope
   #   def resolve
