@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for Registration of Delivery Boys
 class DeliveryBoys::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -16,13 +17,13 @@ class DeliveryBoys::RegistrationsController < Devise::RegistrationsController
       password = SecureRandom.hex(8)
       delivery_boy.password = password
     end
+
     if @delivery_boy.save
-      
       DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy).deliver_now
       redirect_to root_path
-    # else
-    #   render 'new'
-     end
+      # else
+      # render 'new'
+    end
   end
 
   # GET /resource/edit
@@ -73,7 +74,8 @@ class DeliveryBoys::RegistrationsController < Devise::RegistrationsController
 
   private
 
-    def delivery_boy_params
-      params.require(:delivery_boy).permit(:firstname, :lastname, :username, :email, :phoneno)
-    end
+  def delivery_boy_params
+    params.require(:delivery_boy).permit(:firstname, :lastname,
+                                         :username, :email, :phoneno)
+  end
 end
