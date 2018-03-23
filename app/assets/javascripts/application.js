@@ -50,11 +50,11 @@ $input2 = $("[data-behavior='autocomplete-2']")
     categories: [
       {
         listLocation: "restaurants",
-        header: "<strong> -- RESTAURANTS -- </strong>",
+        header: "<center><strong> -- RESTAURANTS -- </strong></center>",
       },
       {
         listLocation: "fooditems",
-        header: "<strong> -- DISHES -- </strong>",
+        header: "<center><strong> -- DISHES -- </strong></center>",
       }
     ],
     list: {
