@@ -7,15 +7,14 @@ class CategoryPolicy < ApplicationPolicy
   # end
 
   # def new?
-  # 	#user.has_role? :super_admin || user.has_role? :admin
+  #   #user.has_role? :super_admin || user.has_role? :admin
   # end
-  
+
   # def create?
-  # 	#true
-  
+  #   #true
   # end
 
   # def index?
-  # 	#true
+  #   #true
   # end
 end
