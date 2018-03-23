@@ -1,14 +1,14 @@
+# Controller for Restaurant
 class RestaurantsController < ApplicationController
-
   def new
     @restaurant = Restaurant.new
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.user_id=current_user.id
+    @restaurant.user_id = current_user.id
     if @restaurant.save
-      flash[:success] = "Restaurant created!"
+      flash[:success] = 'Restaurant created!'
       redirect_to restaurant_path(@restaurant)
     else
       render 'new'
@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update_attributes(restaurant_params)
-      flash[:success] = "Restaurant updated!"
+      flash[:success] = 'Restaurant updated!'
       redirect_to restaurant_path(@restaurant)
     else
       render 'edit'
@@ -36,12 +36,12 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all   
+    @restaurants = Restaurant.all
   end
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
+    flash[:success] = 'Restaurant updated!' if @restaurant.destroy
     redirect_to restaurants_path
   end
 
@@ -54,34 +54,36 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants =  Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
-    @fooditems =  FoodItem.ransack(name_cont: params[:term]).result(distinct: true)
+    @restaurants = Restaurant.ransack(name_cont: params[:term])
+                             .result(distinct: true)
+    @fooditems = FoodItem.ransack(name_cont: params[:term])
+                         .result(distinct: true)
     respond_to do |format|
-      format.html {}
-      format.json {
+      format.json do
         @restaurants = @restaurants.limit(5)
-        @fooditems = @fooditems.limit(5)  
-
-      }
+        @fooditems = @fooditems.limit(5)
+      end
     end
-
   end
 
-def location
-    #@addresses =  Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
+  def location
+    # @addresses =  Restaurant.ransack(name_cont: params[:term])
+    #                         .result(distinct: true)
     respond_to do |format|
       format.html {}
-      format.json {
-        #@addresses = @addresses.limit(5)
-
+      format.json
+      {
+        # @addresses = @addresses.limit(5)
       }
     end
-
   end
-
 
   private
+
   def restaurant_params
-    params.require(:restaurant).permit(:name, :phone_no, :email, :opening_time, :closing_time, :delivery_types, :branch_name)
+    params.require(:restaurant).permit(
+      :name, :phone_no, :email, :opening_time,
+      :closing_time, :delivery_types, :branch_name
+    )
   end
 end
