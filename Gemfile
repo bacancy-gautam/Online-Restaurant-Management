@@ -24,7 +24,7 @@ gem 'rubocop', require: false
 gem 'ransack', '~> 1.7'
 
 gem 'pry-rails'
-gem 'bootstrap-sass','3.3.7'
+# gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'devise'
@@ -34,9 +34,6 @@ gem "rolify"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
-gem "font-awesome-rails"
-gem 'bootstrap', '~> 4.0.0'
-
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.0.0'
 

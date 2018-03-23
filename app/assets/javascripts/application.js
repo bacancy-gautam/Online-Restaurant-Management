@@ -15,17 +15,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap
 //= require bootstrap.min
 //= require popper.min
 //= require turbolinks
 //= require jquery
 //= require jquery.easy-autocomplete
 //= require active
-//= require easing
+//= require easing.min
 //= require hoverIntent
 //= require jquery.ajaxchimp.min
-//= require jquery.easy-autocomplete.min
 //= require jquery.magnific-popup
 //= require jquery.nice-select.min
 //= require jquery.sticky
@@ -50,11 +48,11 @@ $input2 = $("[data-behavior='autocomplete-2']")
     categories: [
       {
         listLocation: "restaurants",
-        header: "<strong> -- RESTAURANTS -- </strong>",
+        header: "<center><strong> -- RESTAURANTS -- </strong></center>",
       },
       {
         listLocation: "fooditems",
-        header: "<strong> -- DISHES -- </strong>",
+        header: "<center><strong> -- DISHES -- </strong></center>",
       }
     ],
     list: {
