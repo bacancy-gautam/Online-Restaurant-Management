@@ -8,16 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-<<<<<<< 372c7189e3864fa2c9bba2c3e5d9a3624a33614f
-    
+  <body>    
     <% if delivery_boy_signed_in? %>
       <%= link_to 'logout', destroy_delivery_boy_session_path , method: :delete %>
     <% end%>
     
-=======
     <%= render 'layouts/header'%>
->>>>>>> restaurant show page plus header partial
     <%= yield %>
   </body>
 </html>
