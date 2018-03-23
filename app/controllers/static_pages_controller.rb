@@ -1,14 +1,12 @@
+# Controller for Static Pages
 class StaticPagesController < ApplicationController
   def home
     # @restaurant = Restaurant.find(params[:id])
   end
 
-  def about
-  end
+  def about; end
 
-  def index
-  end
-  
-  def contact
-  end
+  def index; end
+
+  def contact; end
 end
