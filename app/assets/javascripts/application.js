@@ -22,7 +22,7 @@
 //= require jquery
 //= require jquery.easy-autocomplete
 //= require active
-//= require easing
+//= require easing.min
 //= require hoverIntent
 //= require jquery.ajaxchimp.min
 //= require jquery.easy-autocomplete.min
