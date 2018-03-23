@@ -1,6 +1,8 @@
+<div class="center jumbotron" align="center">
+<table align="center">
 <%=form_for @fooditem do |form| %>
   <% if @fooditem.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation">  
       <h2>
         <%= pluralize(@fooditem.errors.count, "error") %> prohibited
         this article from being saved:
@@ -11,26 +13,36 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
-  
-  <%=form.label :restaurant_id%>
-  <%=form.collection_select :restaurant_id, Restaurant.order(:id), :id,:name %><br>
-
-  <%=form.label :category_id%>
-  <%=form.collection_select :category_id, Category.order(:id), :id,:name %><br>
-
-  <%=form.label :food_name%>
-  <%=form.text_field :name%><br>
-  
-  <%= form.label :food_type %>
-  <%= form.radio_button :food_type, "veg" %>
-  <%= form.label :food_type, "veg" %>
-  <%= form.radio_button :food_type, "non-veg" %>
-  <%= form.label :food_type, "non-veg" %><br>
-
-  <%=form.label :price%>
-  <%=form.text_field :price%><br>
-
-  <%=form.submit%>  
-
+ <% end %>
+  <tr>
+    <td><%=form.label :restaurant_id %></td> 
+    <td> <%=form.collection_select :restaurant_id, Restaurant.order(:id), :id,:branch_name %></td><br>
+  </tr>
+  <tr>
+    <td><%=form.label :category_id %></td> 
+    <td><%=form.collection_select :category_id, Category.order(:id), :id,:name %></td><br>
+  </tr>
+  <tr>
+    <td><%=form.label :food_name %></td>
+    <td><%=form.text_field :name %></td><br>
+  </tr>
+  <tr>
+    <td><%= form.label :food_type %></td>
+    <td>
+     <%= form.radio_button :food_type, "veg" %>
+     <%= form.label :food_type, "veg" %>
+     <%= form.radio_button :food_type,"non_veg" %>
+     <%= form.label :food_type, "non-veg" %></td><br>
+  </tr>
+  <tr>
+    <td> <%=form.label :price %></td>
+    <td><%=form.text_field :price %></td><br>
+  </tr>
+  <tr>
+  <td>
+   <td><%=form.submit %></td>
+  </td>
+  </tr>
 <% end %>
+</table>
+</div>

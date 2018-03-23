@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
 
+  root 'static_pages#home'
+
+  get 'static_pages/home'
+  get 'static_pages/index'
+  get 'static_pages/about'
+  get 'static_pages/contact'
+  get 'users/edit'
+  get 'offers/change_category'
   get "restaurants/new_release" => 'restaurants#new_release', :as => :new_release
+  get 'offers/change_category'
+  get :search, controller: :restaurants
+  get :location, controller: :restaurants
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :orders
   resources :master_orders
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'offers/change_category'
+  resources :offers
   resources :food_items
   resources :categories
   resources :restaurants
@@ -14,18 +26,7 @@ Rails.application.routes.draw do
       get :change_password_edit
       patch :change_password_update
     end
-  end
-  get :search, controller: :restaurants
-  get :location, controller: :restaurants
-  resources :offers
-  get 'static_pages/home'
-  get 'static_pages/index'
-  get 'static_pages/about'
-  get 'static_pages/contact'
-  get 'users/edit'
-  root 'static_pages#home'
-  #root 'restaurants#new'
-  #root to: 'restaurants#new'  
+  end  
   resources :delivery_boys, :path => 'deliveryboys' do
     collection do
       get :change_password_edit

@@ -278,6 +278,7 @@
   border-color: #ccc;
   border-image: none;
   border-style: solid;
+  height: 40px;
   color: black;
   border-width: 0 1px;
   display: block;
