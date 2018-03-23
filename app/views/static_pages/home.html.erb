@@ -16,13 +16,16 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-10">
               <button onclick="getLocation()"class="btn-form"><span class="icon-compass search-icon"></span>Locate Me<i class="pe-7s-angle-right"></i></button>
-              <form class="form-wrap mt-4">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <input type="text" placeholder="What are your looking for?" class="btn-group1">
-                  <input type="text" placeholder="New york" class="btn-group2" id="place">
+              <!-- <div class="easy-autocomplete" align="center"> -->
+              <%= form_with url: search_path, local: true, method: :get, html: {class:"form-wrap mt-4"} do |form| %>
+              <div class="btn-group" role="group" aria-label="Basic example">
+              <!-- <form class="form-wrap mt-4"> -->
+                  <input type="text" placeholder="What are your looking for?" class="btn-group1" data-behavior='autocomplete-1'>
+                  <input type="text" placeholder="New york" class="btn-group2" id="place" data-behavior='autocomplete-2'>
                   <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
                 </div>
-              </form>
+              <!--</form>--><%end%>
+            </div>
               <div class="slider-link">
                 <a href="#">Browse Popular</a><span>or</span> <a href="#">Recently Addred</a>
               </div>
