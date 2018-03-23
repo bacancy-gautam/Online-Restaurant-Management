@@ -33,6 +33,15 @@ class RestaurantscategoriesController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
 
+  def index
+    @user = current_user
+    @category = {}
+    @restaurant = Restaurant.where(user_id: @user.id)
+    @restaurant.each do |restaurant|
+      @category[restaurant.id] = restaurant.categories
+    end
+  end
+
   def update
     @restaurant = Restaurant.find(params[:id])
     @restaurant.categories.delete_all
@@ -48,14 +57,5 @@ class RestaurantscategoriesController < ApplicationController
     end
 
     redirect_to restaurantscategories_path
-  end
-
-  def index
-    @user = current_user
-    @category = {}
-    @restaurant = Restaurant.where(user_id: @user.id)
-    @restaurant.each do |restaurant|
-      @category[restaurant.id] = restaurant.categories
-    end
   end
 end

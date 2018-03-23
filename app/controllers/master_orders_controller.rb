@@ -44,7 +44,7 @@ class MasterOrdersController < ApplicationController
     a = session[:order].keys
     @order = []
     a.each do |i|
-    @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
+      @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
     end
   end
 
