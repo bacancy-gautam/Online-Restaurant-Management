@@ -17,11 +17,26 @@
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap.min
-//= require popper
+//= require popper.min
 //= require turbolinks
 //= require jquery
 //= require jquery.easy-autocomplete
-//= require_tree .
+//= require active
+//= require easing
+//= require hoverIntent
+//= require jquery.ajaxchimp.min
+//= require jquery.easy-autocomplete.min
+//= require jquery.magnific-popup
+//= require jquery.nice-select.min
+//= require jquery.sticky
+//= require mail-script
+//= require main
+//= require parallax.min
+//= require plugins
+//= require slick
+//= require superfish
+//= require swiper.min
+
 $(document).ready(function(){
 
 $input = $("[data-behavior='autocomplete-1']")
