@@ -42,7 +42,7 @@ restaurant1 = Restaurant.create(
   branch_name: 'Thaltej'
 )
 
-restaurant2 = Restaurant.create(
+Restaurant.create(
   name: '440',
   phone_no: '9898989898',
   email: '440@gmail.com',
@@ -60,7 +60,7 @@ restaurant3 = Restaurant.create(
   branch_name: 'Vasna'
 )
 
-restaurant4 = Restaurant.create(
+Restaurant.create(
   name: 'McDonald\'s',
   phone_no: '8778878787',
   email: 'mc.donald@yahoo.com',
@@ -79,8 +79,8 @@ restaurant5 = Restaurant.create(
 )
 
 category1 = Category.create(name: 'Fast Food')
-category2 = Category.create(name: 'Punjabi')
-category3 = Category.create(name: 'Gujarati')
+Category.create(name: 'Punjabi')
+Category.create(name: 'Gujarati')
 
 FoodItem.create(
   name: 'Vadapav',

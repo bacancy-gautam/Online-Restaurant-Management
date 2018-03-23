@@ -1,13 +1,12 @@
 # Controller for Restaurant
 class RestaurantsController < ApplicationController
-
   def new
     @restaurant = Restaurant.new
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.user_id=current_user.id
+    @restaurant.user_id = current_user.id
     if @restaurant.save
       flash[:success] = 'Restaurant created!'
       redirect_to restaurant_path(@restaurant)
@@ -55,31 +54,29 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants =  Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
-    @fooditems =  FoodItem.ransack(name_cont: params[:term]).result(distinct: true)
+    @restaurants = Restaurant.ransack(name_cont: params[:term])
+                             .result(distinct: true)
+    @fooditems = FoodItem.ransack(name_cont: params[:term])
+                         .result(distinct: true)
     respond_to do |format|
-      format.html {}
-      format.json {
+      format.json do
         @restaurants = @restaurants.limit(5)
-        @fooditems = @fooditems.limit(5)  
-
-      }
+        @fooditems = @fooditems.limit(5)
+      end
     end
-
   end
 
-def location
-    #@addresses =  Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
+  def location
+    # @addresses =  Restaurant.ransack(name_cont: params[:term])
+    #                         .result(distinct: true)
     respond_to do |format|
       format.html {}
-      format.json {
-        #@addresses = @addresses.limit(5)
-
+      format.json
+      {
+        # @addresses = @addresses.limit(5)
       }
     end
-
   end
-
 
   private
 
