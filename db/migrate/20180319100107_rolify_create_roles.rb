@@ -1,3 +1,4 @@
+# migration generated automatically while using rolify gem
 class RolifyCreateRoles < ActiveRecord::Migration[5.1]
   def change
     create_table(:roles) do |t|
