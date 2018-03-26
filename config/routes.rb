@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :delivery_boys, path: 'deliveryboys' do
     collection do
       get :change_password_edit
+      get :order_history
       patch :change_password_update
     end
   end

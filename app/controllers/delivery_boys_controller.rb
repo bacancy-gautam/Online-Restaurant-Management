@@ -28,6 +28,10 @@ class DeliveryBoysController < ApplicationController
     @delivery_boy = current_delivery_boy
   end
 
+  def order_history
+    @home_deliveries = HomeDelivery.where(delivery_boy_id: current_delivery_boy.id)
+  end
+
   def change_password_update
     @delivery_boy = current_delivery_boy
     if @delivery_boy.update_with_password(change_password_params)

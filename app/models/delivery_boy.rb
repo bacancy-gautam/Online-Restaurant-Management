@@ -8,6 +8,9 @@ class DeliveryBoy < ApplicationRecord
   enum status: [:busy, :available, :on_leave]
 
   before_create :assign_default_status
+  belongs_to :home_delivery
+
+#  has_many :orders
 
   def assign_default_status
     self.status = 'available'
