@@ -59,6 +59,7 @@ class RestaurantsController < ApplicationController
     @fooditems = FoodItem.ransack(name_cont: params[:term])
                          .result(distinct: true)
     respond_to do |format|
+      format.html {}
       format.json do
         @restaurants = @restaurants.limit(5)
         @fooditems = @fooditems.limit(5)
