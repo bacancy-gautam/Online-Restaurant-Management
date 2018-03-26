@@ -2,6 +2,7 @@
 class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
+    @address = @restaurant.create_address
   end
 
   def create
@@ -68,23 +69,32 @@ class RestaurantsController < ApplicationController
   end
 
   def location
-    # @addresses =  Restaurant.ransack(name_cont: params[:term])
-    #                         .result(distinct: true)
+     @addresses =  Address.ransack(street_cont: params[:loc])
+                             .result(distinct: true)
+     #@city =  Restaurant.ransack(city_cont: params[:loc])
+      #                       .result(distinct: true)
     respond_to do |format|
       format.html {}
-      format.json
-      {
-        # @addresses = @addresses.limit(5)
-      }
+      format.json do
+        @addresses = @addresses.limit(5)
+      end
     end
+  end
+  def area_wise_restaurants
+    adress = Address.where(street: params[:street]).pluck(:addressable_id)
+    @restaurants = Restaurant.where(id: adress)
+     #@city =  Restaurant.ransack(city_cont: params[:loc])
+      #                       .result(distinct: true)
+    
   end
 
   private
 
   def restaurant_params
     params.require(:restaurant).permit(
-      :name, :phone_no, :email, :opening_time,
-      :closing_time, :delivery_types, :branch_name
+      :name, :details, :phone_no, :email, :opening_time,
+      :closing_time, :delivery_types, :branch_name,
+      address_attributes: [:addressline, :street, :city, :state, :pincode]
     )
   end
 end
