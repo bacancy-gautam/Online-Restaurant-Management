@@ -1,14 +1,22 @@
-<li>
-  <%= label_tag :name %>
-  <b><%= label_tag food_item.name %></b><br>
+<div class="card" style="width: 18rem;">
+  <%= image_tag "dish-1.png" %>
+  <div class="card-body">
+    <h5 class="card-title"><b><%= label_tag food_item.name %></b><br></h5>
+    <p class="card-text">
+      <%= label_tag :price %>
+      <%= label_tag food_item.price %><br>
 
-  <%= label_tag :price %>
-  <%= label_tag food_item.price %><br>
-
-  <%= label_tag :food_type %>
-  <% if food_item.food_type %>
-    <%= label_tag "Vegetarian" %><br>
-  <% else %>
-    <%= label_tag "Non - Vegetarian" %><br>
-  <% end %>
-</li>
+      <%= label_tag :food_type %>
+      <% if food_item.food_type %>
+        <%= label_tag "Vegetarian" %><br>
+      <% else %>
+        <%= label_tag "Non - Vegetarian" %><br>
+      <% end %>
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="#" class="card-link">Add To Cart</a></li>
+    <li class="list-group-item"><a href="#" class="card-link">Add To Favourite</a></li>
+  </ul>
+</div>
+<br><br>
