@@ -1,3 +1,4 @@
+# migration
 class CreateMasterOrders < ActiveRecord::Migration[5.1]
   def change
     create_table :master_orders do |t|

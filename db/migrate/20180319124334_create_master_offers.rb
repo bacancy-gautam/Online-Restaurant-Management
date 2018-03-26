@@ -1,3 +1,4 @@
+# migration
 class CreateMasterOffers < ActiveRecord::Migration[5.1]
   def change
     create_table :master_offers do |t|
