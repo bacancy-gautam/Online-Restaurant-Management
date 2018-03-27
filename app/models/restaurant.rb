@@ -3,7 +3,7 @@ class Restaurant < ApplicationRecord
   enum type: [:take_away, :home_delivery]
 
   has_many :food_items
-  has_many :addresses, as: :addressable
+  has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :categories
 
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/
@@ -13,4 +13,6 @@ class Restaurant < ApplicationRecord
   validates :phone_no, presence: true, format: { with: VALID_MOBILE_REGEX }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :branch_name, presence: true
+
+  accepts_nested_attributes_for :address
 end

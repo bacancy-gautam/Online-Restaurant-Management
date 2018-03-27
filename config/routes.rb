@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'offers/change_category'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
   get 'offers/change_category'
+  get 'restaurants/area_wise_restaurants' => 'restaurants#area_wise_restaurants', as: :area
   get :search, controller: :restaurants
   get :location, controller: :restaurants
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

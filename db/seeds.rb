@@ -39,7 +39,8 @@ restaurant1 = Restaurant.create(
   email: '440@gmail.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'Thaltej'
+  branch_name: 'Thaltej',
+  details: 'Service excellence is our speciality and we are known for the same.'
 )
 
 Restaurant.create(
@@ -48,7 +49,8 @@ Restaurant.create(
   email: '440@gmail.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'RTO'
+  branch_name: 'RTO',
+  details: 'Service excellence is our speciality and we are known for the same.'
 )
 
 restaurant3 = Restaurant.create(
@@ -57,7 +59,8 @@ restaurant3 = Restaurant.create(
   email: 'us.pizza@gmail.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'Vasna'
+  branch_name: 'Vasna',
+  details: 'Every guest is important for us and the same way we give due attention on every occasion celebrated at our banquet.'
 )
 
 Restaurant.create(
@@ -66,7 +69,8 @@ Restaurant.create(
   email: 'mc.donald@yahoo.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'Paldi'
+  branch_name: 'Paldi',
+  details: 'McDonald\'s is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States. They rechristened their business as a hamburger stand.'
 )
 
 restaurant5 = Restaurant.create(
@@ -75,7 +79,8 @@ restaurant5 = Restaurant.create(
   email: 'chocolate@yahoo.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'Vastrapur'
+  branch_name: 'Vastrapur',
+  details: 'The Chocolate Room India serves the quality and naturally prepared chocolate desserts to all its customers.'
 )
 
 category1 = Category.create(name: 'Fast Food')
