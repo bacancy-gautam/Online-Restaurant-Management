@@ -17,14 +17,13 @@
             <div class="col-md-10">
               <button onclick="getLocation()"class="btn-form"><span class="icon-compass search-icon"></span>Locate Me<i class="pe-7s-angle-right"></i></button>
               <!-- <div class="easy-autocomplete" align="center"> -->
-              <%= form_with url: search_path, local: true, method: :get, html: {class:"form-wrap mt-4"} do |form| %>
+              <%= form_with url: search_path, local: true, method: :get, html: {class:"form-wrap mt-4",id:"form"} do |form| %>
               <div class="btn-group" role="group" aria-label="Basic example">
-              <!-- <form class="form-wrap mt-4"> -->
                   <input type="text" placeholder="What are your looking for?" class="btn-group1" data-behavior='autocomplete-1' name="term">
-                  <input type="text" placeholder="New york" class="btn-group2" id="place" data-behavior='autocomplete-2' name="loc">
-                  <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                  <input type="text" placeholder="New york" class="btn-group2" id="place" data-behavior='autocomplete-2'>
+                  <button type="submit" class="btn-form" id="search-btn"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
                 </div>
-              <!--</form>--><%end%>
+              <%end%>
             </div>
               <div class="slider-link">
                 <a href="#">Browse Popular</a><span>or</span> <a href="#">Recently Addred</a>
@@ -566,5 +565,18 @@
           $('.fixed').removeClass('is-sticky');
 
         };
+      }); 
+      $('#form').submit(function(){
+        if($('.btn-group1').val() == ""){
+         $('.btn-group1').attr("placeholder","*Required").addClass("changePlaceColor1");
+          $('.btn-group1').css("border","1px solid red");
+          return false; 
+        }
+      });
+      $('.btn-group1').keydown(function(){
+        // alert();
+        $('.btn-group1').css("border","0px");
+        $('.btn-group1').removeClass("changePlaceColor1");
+         $('.btn-group1').attr("placeholder","What are your looking for?")
       });
     </script>
