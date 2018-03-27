@@ -11,7 +11,16 @@ class StaticPagesController < ApplicationController
 
   def contact; end
 
-  def my_acoount
-  	
+  def my_account
+  	@restaurant = Restaurant.new
+    @delivery_boy = DeliveryBoy.new
+    @delivery_boys = DeliveryBoy.all
+    @categories = Category.all
+    @category = Category.new
+    @fooditems = FoodItem.all
+    @fooditem = FoodItem.new
+    @order = Order.new
+    @orders = Order.all
+    @offer = Offer.new
   end
 end

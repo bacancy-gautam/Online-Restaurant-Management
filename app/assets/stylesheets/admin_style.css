@@ -6527,3 +6527,13 @@ a.view-all:hover {
     width: 100%;
     height: auto;
 }
+.side-navigation .child-list > li > div {
+    color: #fff;
+    font-size: 13px;
+    display: block;
+    padding: 10px 5px 10px 50px;
+    -moz-transition: all 0.2s ease-out 0s;
+    -webkit-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+    cursor: pointer;
+}

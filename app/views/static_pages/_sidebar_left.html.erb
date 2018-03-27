@@ -1,0 +1,93 @@
+<!-- sidebar left start-->
+<div class="sidebar-left">
+  <!--responsive view logo start-->
+  <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
+      <a href="index-2.html">
+          <!--<i class="fa fa-maxcdn"></i>-->
+          <span class="brand-name">Food-Ordering</span>
+      </a>
+  </div>
+  <!--responsive view logo end-->
+
+  <div class="sidebar-left-info">
+      <!-- visible small devices start-->
+      <div class=" search-field">  </div>
+      <!-- visible small devices end-->
+
+      <!--sidebar nav start-->
+      <ul class="nav nav-pills nav-stacked side-navigation">
+        <li class="active" style="width:250px;"><a href="index-2.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+
+        <% if user_signed_in? %>
+          <% if current_user.has_role? :super_admin %>
+            <li class="menu-list active" style="width:250px;" >
+                <a href="#"><i class="fa fa-users"></i>  <span>Users</span></a>
+                <ul class="child-list">
+                    <li><%= link_to 'Add' %></li>
+                    <li><%= link_to 'Manage' %></li>
+                    <li><%= link_to 'Assign Role' %></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;" >
+                <a href="#"><i class="fa fa-user"></i> <span>Delivery-Boy</span></a>
+                <ul class="child-list">
+                    <li class="delivery_boy_add"><%= link_to 'Add' %></li>
+                    <li ><div class= "delivery_boy_manage" >Manage</div></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;" >
+                <a href="#"><i class="fa fa-laptop"></i>  <span>Category</span></a>
+                <ul class="child-list">
+                    <li><div class= "category_add">Add</div></li>
+                    <li><div class= "category_manage">Manage</div></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;">
+                <a href="#"><i class="fa fa-laptop"></i>  <span> Restaurants</span></a>
+                <ul class="child-list">
+                    <li><div class= "restaurant_add">Add</div></li>
+                    <li><div class= "restaurant_manage">Manage</div></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;">
+                <a href="#"><i class="fa fa-laptop"></i>  <span> Food-items</span></a>
+                <ul class="child-list">
+                    <li><div class= "food_item_add">Add</div></li>
+                    <li><div class= "food_item_manage">Manage</div></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;">
+                <a href="#"><i class="fa fa-laptop"></i>  <span>Order</span></a>
+                <ul class="child-list">
+                    <li><div class= "order_add">Add</div></li>
+                    <li><div class= "order_manage">Manage</div></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;">
+                <a href="#"><i class="fa fa-laptop"></i>  <span> Offers</span></a>
+                <ul class="child-list">
+                    <li><%= link_to 'Add' %></li>
+                    <li><%= link_to 'Manage' %></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;">
+                <a href="#"><i class="fa fa-laptop"></i>  <span> Feedback</span></a>
+                <ul class="child-list">
+                    <li><%= link_to 'Manage' %></li>
+                </ul>
+            </li>
+            <li class="menu-list active" style="width:250px;">
+                <a href="#"><i class="fa fa-laptop"></i>  <span>Home-Delivery</span></a>
+                <ul class="child-list">
+                    <li><%= link_to 'Add' %></li>
+                    <li><%= link_to 'Manage' %></li>
+                </ul>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <!--sidebar nav end-->
+
+  </div>
+</div>
+<!-- sidebar left end-->

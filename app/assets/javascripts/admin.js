@@ -15,10 +15,15 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery
-//= require bootstrap.min
+//= require admin-bootstrap.min
 //= require jquery-ui-1.10.1.custom.min
 //= require jquery-migrate
 //= require modernizr.min
 //= require jquery.nicescroll
 //= require slidebars.min
 //= require scripts
+//= require switchery.min
+//= require switchery-init
+//= require jquery-1.10.2.min
+//= require chart
+//= require chartJs-init

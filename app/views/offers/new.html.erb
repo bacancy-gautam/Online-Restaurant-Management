@@ -5,10 +5,10 @@
   <%=form.collection_select :restaurant_id, Restaurant.where(user_id: current_user.id).order(:id), :id,:branch_name %><br>
 
   <div id='category-list' remote: true>
-    <%= render partial: 'category_list'%> <%#= f.text_field :city %> 
+    <%= render partial: 'offers/category_list'%> <%#= f.text_field :city %> 
   </div>
    <div id='food-list' remote: true>
-    <%= render partial: 'food_list'%> <%#= f.text_field :city %> 
+    <%= render partial: 'offers/food_list'%> <%#= f.text_field :city %> 
   </div>
 
 <%end%>
