@@ -55,17 +55,17 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants = Restaurant.ransack(name_cont: params[:term])
+      @restaurants = Restaurant.ransack(name_cont: params[:term])
                              .result(distinct: true)
-    @fooditems = FoodItem.ransack(name_cont: params[:term])
+      @fooditems = FoodItem.ransack(name_cont: params[:term])
                          .result(distinct: true)
-    respond_to do |format|
-      format.html {}
-      format.json do
-        @restaurants = @restaurants.limit(5)
-        @fooditems = @fooditems.limit(5)
+      respond_to do |format|
+        format.html {}
+        format.json do
+          @restaurants = @restaurants.limit(5)
+          @fooditems = @fooditems.limit(5)
+        end
       end
-    end
   end
 
   def location

@@ -1,17 +1,137 @@
- <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<div class="row">
-  <div class="col">
-    <h1>Restaurants</h1>
-    <% @restaurants.each do |restaurant| %>
-      <p><%= link_to restaurant.name, restaurant %></p>
-    <% end %>
-  </div>
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+<!-- Start unique-feature Area -->
+<section class="unique-feature-area section-gap" id="unique">
+  <% if(@restaurants.empty? && @fooditems.empty?)%>
+  <div class="row d-flex justify-content-center">
+    <div class="menu-content pb-60 col-lg-10">
+      <div class="title text-center">
+        <h1 class="mb-10 text-white">Sorry</h1>
+        <h3 class="mb-10 text-white">We couldn't find the item you were searching for.</h3>
+      </div>
+    </div>
+  </div> 
+  <%else%> 
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-60 col-lg-10">
+        <div class="title text-center">
+          <ul class="nav nav-pills">
+            <li><h1 class="mb-10 restaurant">Restaurants</h1></li>&nbsp;
+            <li><h1 class="mb-10 dish">Dishes</h1></li>
+          </ul>
+        </div>
+      </div>
+    </div>            
+    <div class="search-rest justify-content-center">
+      <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant_path(restaurant) do%>
+      <div class="col-lg-3 col-md-6">
+        <div class="single-unique-product rest_<%= restaurant.id %>">
+          <%= image_tag asset_path('dish-1.png')%>
+          <span class="featured-rating-orange">6.5</span>
+          <div class="featured-title-box">
+            <h6>  
+              <%= restaurant.name %>
+            </h6>
+            <p>Restaurant </p>
+            <span> • </span>
+            <p><span>$$$</span>$$</p>
+            <ul>
+              <li>
+                <span class="icon-location-pin"></span>
+                <p>1301 Avenue, Brooklyn, NY 11230</p>
+              </li>
+            </ul>
+            <a class="primary-btn" href="#" ></a>
+            <div class="bottom-icons">
+              <%if restaurant.opening_time <= Time.now and restaurant.closing_time >= Time.now%>
+              <div class="open-now">OPEN NOW</div>
+              <%else%>
+              <div class="closed-now">CLOSED NOW</div>
+              <%end%>
+              <span class="ti-heart"></span>
+              <span class="ti-bookmark"></span>
+            </div>
+          </div>
+        </div>
+      </div>    
+      <%end%>                              
+      <%end%>
+    </div>
+    <div class="search-dish justify-content-center">
+      <% @fooditems.each do |food| %>
+      <%#= link_to restaurant_path(restaurant) do%>
+      <div class="col-lg-3 col-md-6">
+        <div class="single-unique-product food_<%= food.id %>">
+          <%= image_tag asset_path('dish-1.png')%>
+          <span class="featured-rating-orange">6.5</span>
+          <!-- <div class="desc"> -->
+            <div class="featured-title-box">
+              <h6>  
+                <%= food.name %>
+              </h6>
+              <p>Restaurant </p>
+              <span> • </span>
+              <p><span>$$$</span>$$</p>
+              <ul>
+                <li>
+                  <span class="icon-location-pin"></span>
+                  <p>1301 Avenue, Brooklyn, NY 11230</p>
+                </li>
+              </ul>
+              <a class="primary-btn" href="#" ></a>
+              <div class="bottom-icons">
+                <%#if restaurant.opening_time <= Time.now and restaurant.closing_time >= Time.now%>
+                <!-- <div class="open-now">OPEN NOW</div> -->
+                <%#else%>
+                <!-- <div class="closed-now">CLOSED NOW</div> -->
+                <%#end%>
+                <span class="ti-heart"></span>
+                <span class="ti-bookmark"></span>
+              </div>
+            </div>
+          </div>
+        </div>    
+        <%#end%>                              
+        <%end%>
+      </div>
+    </div>  
+  <%end%>
+  </section>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  <div class="col">
-    <h1>Food Items</h1>
-    <% @fooditems.each do |food| %>
-      <p><%= link_to food.name, food %></p>
-    <% end %>
-  </div>
-</div>
-
+    gtag('config', 'UA-23581568-13');
+    $('.search-dish').hide();
+    $('.restaurant').css("color", "red");
+    $('.restaurant').click(function(){
+      $(".search-rest").show();
+      $(".search-dish").hide();
+      $('.restaurant').css("color", "red");
+      $('.dish').css("color", "white");
+    });
+    $('.dish').click(function(){
+      $(".search-dish").show();
+      $(".search-rest").hide();
+      $('.dish').css("color", "red");
+      $('.restaurant').css("color", "white");
+    });
+    <% @restaurants.each do |rest|%>
+    $('.rest_<%= rest.id %>').mouseenter(function(){
+      $('.rest_<%= rest.id %>').css("transform","scale(1.1)").css("transition","all 1s ease-in-out");
+    });
+    $('.rest_<%= rest.id %>').mouseleave(function(){
+      $('.rest_<%= rest.id %>').css("transform","scale(1)").css("transition","all 1s ease-in-out");
+    }); 
+    <%end%>
+    <% @fooditems.each do |food|%>
+    $('.food_<%= food.id %>').mouseenter(function(){
+      $('.food_<%= food.id %>').css("transform","scale(1.1)").css("transition","all 1s ease-in-out");
+    });
+    $('.food_<%= food.id %>').mouseleave(function(){
+      $('.food_<%= food.id %>').css("transform","scale(1)").css("transition","all 1s ease-in-out");
+    }); 
+    <%end%>
+  </script>

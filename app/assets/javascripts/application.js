@@ -84,10 +84,6 @@ var options2 = {
     }
   }
 
-
-
-
-
   $input.easyAutocomplete(options);
   $input2.easyAutocomplete(options2);
 
