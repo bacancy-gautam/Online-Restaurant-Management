@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'
+  get 'static_pages/my_account'
   get 'users/edit'
   get 'offers/change_category'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
