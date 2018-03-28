@@ -1,5 +1,18 @@
 # Controller for Users
 class UsersController < ApplicationController
+  layout "admin_panel", except: [:edit, :update, :show, :change_password_edit, :change_password_update]
+  def new
+    
+  end
+
+  def create
+    
+  end
+
+  def index
+    @users = User.all  
+  end
+
   def edit
     @user = User.find(params[:id])
   end

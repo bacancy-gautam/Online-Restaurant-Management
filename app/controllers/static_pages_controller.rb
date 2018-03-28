@@ -12,7 +12,8 @@ class StaticPagesController < ApplicationController
   def contact; end
 
   def my_account
-  	@restaurant = Restaurant.new
+  	@users = User.all
+    @restaurant = Restaurant.new
     @delivery_boy = DeliveryBoy.new
     @delivery_boys = DeliveryBoy.all
     @categories = Category.all

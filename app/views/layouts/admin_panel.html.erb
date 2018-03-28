@@ -24,6 +24,7 @@
   $(".delivery-boys-manage").hide();
   $(".order-add").hide();
   $(".order-manage").hide();
+  $(".users-manage").hide();
   $(".category-add").hide();
   $(".category-manage").hide();
   $(".restaurant-add").hide();
@@ -45,8 +46,29 @@
       $(".food-item-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
+
+$(document).ready(function(){
+  $('.users_manage').on('click',function()
+    { 
+      $(".users-manage").show();
+      $(".category-manage").hide();
+      $(".dashboard").hide();
+      $(".category-add").hide();
+      $(".delivery-boys-manage").hide();
+      $(".delivery-boys-manage").hide();
+      $(".restaurant-add").hide();
+      $(".restaurant-manage").hide();
+      $(".food-item-add").hide();
+      $(".food-item-manage").hide();
+      $(".order-add").hide();
+      $(".order-manage").hide();
+    }
+  );
+});
+
 $(document).ready(function(){
 
 
@@ -63,6 +85,7 @@ $(document).ready(function(){
       $(".food-item-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 
@@ -82,6 +105,7 @@ $(document).ready(function(){
       $(".food-item-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -100,6 +124,7 @@ $(document).ready(function(){
       $(".food-item-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -118,6 +143,7 @@ $(document).ready(function(){
       $(".food-item-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -136,6 +162,7 @@ $(document).ready(function(){
       $(".food-item-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -154,6 +181,7 @@ $(document).ready(function(){
       $(".delivery-boys-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -172,6 +200,7 @@ $(document).ready(function(){
       $(".restaurant-manage").hide();
       $(".order-add").hide();
       $(".order-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -190,6 +219,7 @@ $(document).ready(function(){
       $(".category-add").hide();
       $(".delivery-boys-manage").hide();
       $(".delivery-boys-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });
@@ -208,6 +238,7 @@ $(document).ready(function(){
       $(".restaurant-manage").hide();
       $(".food-item-add").hide();
       $(".food-item-manage").hide();
+      $(".users-manage").hide();
     }
   );
 });

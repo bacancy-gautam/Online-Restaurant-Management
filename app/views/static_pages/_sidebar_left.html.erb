@@ -16,7 +16,7 @@
 
       <!--sidebar nav start-->
       <ul class="nav nav-pills nav-stacked side-navigation">
-        <li class="active" style="width:250px;"><a href="index-2.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+        <li class="active" style="width:250px;"><span><%= link_to 'Dashboard', static_pages_my_account_path , class: "fa fa-home"%> </span></a></li>
 
         <% if user_signed_in? %>
           <% if current_user.has_role? :super_admin %>
@@ -24,7 +24,7 @@
                 <a href="#"><i class="fa fa-users"></i>  <span>Users</span></a>
                 <ul class="child-list">
                     <li><%= link_to 'Add' %></li>
-                    <li><%= link_to 'Manage' %></li>
+                    <li><div class= "users_manage" >Manage</div></li>
                     <li><%= link_to 'Assign Role' %></li>
                 </ul>
             </li>
