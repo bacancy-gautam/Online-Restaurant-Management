@@ -9,6 +9,7 @@
               <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
                  <% if user_signed_in? %>
+                  <li> <%= link_to('User Edit Profile', edit_user_path(current_user) , class: "btn btn-outline-light top-btn") %></li>
                  <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
                  <%else%>
                  <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
@@ -51,13 +52,11 @@
                   <div class="cart-btns">
                     <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
-
                 </div>
               </nav>
             </div>
           </div>
         </div>
-
       </div>
       <script>
         $("button").click(function(){
