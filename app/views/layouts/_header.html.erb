@@ -1,37 +1,65 @@
-<html>
-<body>
-  <!-- <div class="nav-menu"> -->
-    <div class="dark-bg sticky-top">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light">
-
-              <%= link_to "Online Restaurant Management", root_path,class: "navbar-brand"%>
-
-              <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-
-                <ul class="navbar-nav">
-
-                  <nav class="collapse navbar-collapse" id="primary-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                     <% if user_signed_in? %>
-                     <li> <%= link_to('User Edit Profile', edit_user_path(current_user) , class: "btn btn-outline-light top-btn") %></li>
-
-                     <li> <%= link_to('My Account', static_pages_my_account_path , class: "btn btn-outline-light top-btn") %></li>
-                     <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
-                     <%else%>
-                     <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
-                     <li><%= link_to "Login",new_user_session_path, class: "btn btn-outline-light top-btn" %></li>
-                   </ul>
-                 </div>
-                 <%end%>
-               </nav>
+<div class="dark-bg sticky-top">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <%= link_to "Listing", root_path,class: "navbar-brand"%>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <nav class="collapse navbar-collapse" id="primary-menu">
+                <ul class="nav navbar-nav navbar-right">
+                 <% if user_signed_in? %>
+                  <li> <%= link_to('User Edit Profile', edit_user_path(current_user) , class: "btn btn-outline-light top-btn") %></li>
+                 <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
+                 <%else%>
+                 <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
+                 <li><%= link_to "Login",new_user_session_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
+               </ul>
              </div>
-           </div>
-         </div>
+             <%end%>
+             <div class="dropdown">
+              <button class="btn btn-outline-light top-btn" type="button" data-toggle="dropdown"><span class="icon-basket search-icon"></span>Cart
+                <span class="caret"></span></button>
+                <div class="cart-dropdown">
+                  <div class="cart-list">
+                    <div class="product-widget">
+                      <div class="product-img">
+                        <img src="./img/product01.png" alt="">
+                      </div>
+                      <div class="product-body">
+                        <h3 class="product-name">product name goes here</h3>
+                        <span class="qty">3x</span>
+                        $980.00 Remove
+                      </div>
+                    </div>
 
-       </div>
-     <!-- </div> -->
-   </body>
-   </html>
+                    <div class="product-widget">
+                      <div class="product-img">
+                        <%= image_tag asset_path("dish-1.png") %>
+                      </div>
+                      <div class="product-body">
+                        <h3 class="product-name">product name goes here</h3>
+                        <span class="qty">3x</span>
+                        $980.00 Remove
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="cart-summary">
+                    <small>3 Item(s) selected</small>
+                    <h5>SUBTOTAL: $2940.00</h5>
+                  </div>
+                  <div class="cart-btns">
+                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $("button").click(function(){
+          $(".cart-dropdown").slideToggle();
+        });
+      </script>

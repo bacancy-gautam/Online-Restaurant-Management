@@ -99,12 +99,35 @@
 <section class="light-bg">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 card">
-        <div class="card-body">
-          <h4 class="card-title">Food Items</h4>
-          <%= render @fooditems %>
+      <div class="col-md-8 responsive-wrap">
+          <div class="search-rest justify-content-center">
+            <%= render @fooditems %>
         </div>
       </div>
+            <div class="col-md-4 responsive-wrap">
+        <div class="contact-info">
+            <div id="map"></div>
+          <div class="address">
+            <span class="icon-location-pin"></span>
+            <p> Doyers St<br> New York, NY 10013<br> b/t Division St & St James Pl <br> Chinatown, Civic Center</p>
+          </div>
+          <div class="address">
+            <span class="icon-screen-smartphone"></span>
+            <p> +44 20 7336 8898</p>
+          </div>
+          <div class="address">
+            <span class="icon-link"></span>
+            <p>https://burgerandlobster.com</p>
+          </div>
+          <div class="address">
+            <span class="icon-clock"></span>
+            <p>Mon - Sun 09:30 am - 05:30 pm <br>
+              <span class="open-now">OPEN NOW</span></p>
+            </div>
+            <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
+          </div>
+
+        </div>
     </div>
   </div>
 </section>
@@ -115,11 +138,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 responsive-wrap">
-        <div class="booking-checkbox_wrap">
-          <div class="booking-checkbox">
-            <p><%= @restaurant.details %></p>
-          </div>
-        </div>
         <div class="booking-checkbox_wrap mt-4">
           <h5>34 Reviews</h5>
           <hr>
@@ -187,51 +205,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 responsive-wrap">
-        <div class="contact-info">
-            <div id="map"></div>
-          <div class="address">
-            <span class="icon-location-pin"></span>
-            <p> Doyers St<br> New York, NY 10013<br> b/t Division St & St James Pl <br> Chinatown, Civic Center</p>
-          </div>
-          <div class="address">
-            <span class="icon-screen-smartphone"></span>
-            <p> +44 20 7336 8898</p>
-          </div>
-          <div class="address">
-            <span class="icon-link"></span>
-            <p>https://burgerandlobster.com</p>
-          </div>
-          <div class="address">
-            <span class="icon-clock"></span>
-            <p>Mon - Sun 09:30 am - 05:30 pm <br>
-              <span class="open-now">OPEN NOW</span></p>
-            </div>
-            <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
-          </div>
-          <div class="follow">
-            <div class="follow-img">
-              <img src="images/follow-img.jpg" class="img-fluid" alt="#">
-              <h6>Christine Evans</h6>
-              <span>New York</span>
-            </div>
-            <ul class="social-counts">
-              <li>
-                <h6>26</h6>
-                <span>Listings</span>
-              </li>
-              <li>
-                <h6>326</h6>
-                <span>Followers</span>
-              </li>
-              <li>
-                <h6>12</h6>
-                <span>Followers</span>
-              </li>
-            </ul>
-            <a href="#">FOLLOW</a>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
