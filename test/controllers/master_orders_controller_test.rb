@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class MasterOrdersControllerTest < ActionDispatch::IntegrationTest
+  
   test "should get new" do
     get master_orders_new_url
     assert_response :success

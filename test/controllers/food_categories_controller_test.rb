@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class FoodCategoriesControllerTest < ActionDispatch::IntegrationTest
+  
   test "should get new" do
     get food_categories_new_url
     assert_response :success

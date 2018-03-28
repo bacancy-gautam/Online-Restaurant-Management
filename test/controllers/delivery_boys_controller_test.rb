@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class DeliveryBoysControllerTest < ActionDispatch::IntegrationTest
+  
   test "should get index" do
     get delivery_boys_index_url
     assert_response :success
