@@ -26,9 +26,16 @@
       <a class="primary-btn" href="#" ></a>
       <div class="bottom-icons">
         <div class="closed-now">CLOSED NOW</div>
-        <span class="ti-heart"></span>
+          <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
         <span class="ti-bookmark"></span>
       </div>
     </div>
   </div>
-</div>     
+</div>
+
+<script>
+  $(".heart_<%=food_item.id%>").on('click',function(){
+    $(".heart_<%=food_item.id%>").toggleClass('fa fa-heart');
+    $(".heart_<%=food_item.id%>").toggleClass('fa fa-heart-o');
+  });
+</script>
