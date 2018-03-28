@@ -16,6 +16,8 @@
                   <nav class="collapse navbar-collapse" id="primary-menu">
                     <ul class="nav navbar-nav navbar-right">
                      <% if user_signed_in? %>
+                     <li> <%= link_to('User Edit Profile', edit_user_path(current_user) , class: "btn btn-outline-light top-btn") %></li>
+
                      <li> <%= link_to('My Account', static_pages_my_account_path , class: "btn btn-outline-light top-btn") %></li>
                      <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
                      <%else%>
