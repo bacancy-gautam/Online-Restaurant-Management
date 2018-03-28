@@ -1,0 +1,24 @@
+<h1>Listing of category</h1>
+<table>
+  <tr>
+    <th>number</th>
+    <th>Restaurant name</th>
+    <th>Category name</th>
+    <th>Food category name</th> 
+    <th>show</th>
+    <th>edit</th>
+    <th>delete</th>
+  </tr>
+  <%@food_categories.each_with_index do |food_category,index|%>
+    <tr>
+      <td><%= index+1%></td>
+      <td><%=Restaurant.find(food_category.restaurant_id).name%></td>
+      <td><%=Category.find(food_category.category_id).name%></td>
+      <td><%=food_category.name %></td>
+      
+      <td><%= link_to "show", food_category_path(food_category)%></td>
+      <td><%= link_to "edit", edit_food_category_path(food_category)%></td>
+      <td><%= link_to "delete", food_category_path(food_category), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+    </tr>
+  <%end%>
+</table>

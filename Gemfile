@@ -13,6 +13,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'rubocop', require: false
 
 # Use Uglifier as compressor for JavaScript assets
 
@@ -20,7 +21,6 @@ gem 'sass-rails', '~> 5.0'
 # gem 'therubyracer', platforms: :ruby
 # ransack = for easy search data
 gem 'ransack', '~> 1.7'
-gem 'pry-rails'
 gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
