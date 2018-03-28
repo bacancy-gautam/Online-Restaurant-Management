@@ -8,6 +8,8 @@
 #  movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #  Character.create(name: 'Luke', movie: movies.first)
 
+#========================= USER =========================
+
 user1_attributes = {
   username: 'jinal',
   email: 'jinal.vandara@bacancytechnology.com',
@@ -58,6 +60,8 @@ user1.add_role(:super_admin)
 user2.add_role(:super_admin)
 user3.add_role(:super_admin)
 user4.add_role(:super_admin)
+
+#========================= RESTAURANT =========================
 
 restaurant1 = Restaurant.create(
   name: '440',
@@ -119,9 +123,13 @@ Restaurant.create(
   details: 'Service excellence is our speciality and we are known for the same.'
 )
 
+#========================= CATEGORY =========================
+
 category1 = Category.create(name: 'Fast Food')
 Category.create(name: 'Punjabi')
 Category.create(name: 'Gujarati')
+
+#========================= FOOD ITEM =========================
 
 FoodItem.create(
   name: 'Vadapav',
