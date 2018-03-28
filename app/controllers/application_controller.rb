@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
   def devise_parameter_sanitizer
     if resource_class == DeliveryBoy
       DeliveryBoys::ParameterSanitizer.new(DeliveryBoy, :deliveryBoy, params)
-    else
-      super # Use the default one
+    elsif resource_class == User
+      # exit
+      puts "===================#{params}=========="
+      Users::ParameterSanitizer.new(User, :user, params)
     end
   end
 

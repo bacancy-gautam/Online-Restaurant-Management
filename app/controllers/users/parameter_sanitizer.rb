@@ -3,9 +3,9 @@ module Users
   class ParameterSanitizer < Devise::ParameterSanitizer
     def initialize(*)
       super
-      devise_parameter_sanitizer.permit(:sign_up, keys:
-                                        [:username, :phoneno,
-                                         :firstname, :lastname])
+      puts "-------------------------------#{@params}=========="
+      #binding.pry
+      @params.permit(:sign_up, keys: [:firstname, :lastname, :username, :phoneno])
     end
   end
 end
