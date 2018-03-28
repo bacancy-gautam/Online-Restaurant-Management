@@ -8,30 +8,60 @@
 #  movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #  Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(
+#========================= USER =========================
+
+user1_attributes = {
   username: 'jinal',
   email: 'jinal.vandara@bacancytechnology.com',
   password: '123456',
   password_confirmation: '123456'
-)
+}
 
-user2 = User.create(
+user2_attributes = {
   username: 'harshil',
   email: 'harshil.patel@bacancytechnology.com',
   password: '123456',
   password_confirmation: '123456'
-)
+}
 
-user3 = User.create(
+user3_attributes = {
   username: 'viren',
   email: 'viren.dhanwani@bacancytechnology.com',
   password: '111111',
   password_confirmation: '111111'
-)
+}
+
+user4_attributes = {
+  username: 'vishal',
+  email: 'vishal.jariwala@bacancytechnology.com',
+  password: '123456',
+  password_confirmation: '123456'
+}
+
+def find_or_create_user(user_attrs)
+  email = user_attrs[:email]
+  user = User.find_by_email(email)
+
+  if user.nil?
+    user = User.create(user_attrs)
+    puts "Created user having email #{email}"
+  else
+    puts "User having email #{email} already exists, thus not created"
+  end
+  user
+end
+
+user1 = find_or_create_user(user1_attributes)
+user2 = find_or_create_user(user2_attributes)
+user3 = find_or_create_user(user3_attributes)
+user4 = find_or_create_user(user4_attributes)
 
 user1.add_role(:super_admin)
 user2.add_role(:super_admin)
 user3.add_role(:super_admin)
+user4.add_role(:super_admin)
+
+#========================= RESTAURANT =========================
 
 restaurant1 = Restaurant.create(
   name: '440',
@@ -40,27 +70,32 @@ restaurant1 = Restaurant.create(
   opening_time: Time.now,
   closing_time: Time.now,
   branch_name: 'Thaltej',
+  user_id: user1.id,
   details: 'Service excellence is our speciality and we are known for the same.'
 )
 
-Restaurant.create(
-  name: '440',
-  phone_no: '9898989898',
-  email: '440@gmail.com',
+restaurant2 = Restaurant.create(
+  name: 'The Chocolate Room',
+  phone_no: '9876543210',
+  email: 'chocolate@yahoo.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'RTO',
-  details: 'Service excellence is our speciality and we are known for the same.'
+  branch_name: 'Vastrapur',
+  user_id: user2.id,
+  details: 'The Chocolate Room India serves the quality and naturally
+   prepared chocolate desserts to all its customers.'
 )
 
 restaurant3 = Restaurant.create(
-  name: 'US Pizza',
+  name: 'Subway',
   phone_no: '9090909090',
-  email: 'us.pizza@gmail.com',
+  email: 'subway@gmail.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'Vasna',
-  details: 'Every guest is important for us and the same way we give due attention on every occasion celebrated at our banquet.'
+  branch_name: 'Navrangpura',
+  user_id: user3.id,
+  details: 'Every guest is important for us and the same way we give
+   due attention on every occasion celebrated at our banquet.'
 )
 
 Restaurant.create(
@@ -70,22 +105,31 @@ Restaurant.create(
   opening_time: Time.now,
   closing_time: Time.now,
   branch_name: 'Paldi',
-  details: 'McDonald\'s is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States. They rechristened their business as a hamburger stand.'
+  user_id: user4.id,
+  details: 'McDonald\'s is an American fast food company,
+   founded in 1940 as a restaurant operated by Richard and Maurice McDonald,
+    in San Bernardino, California, United States.
+     They rechristened their business as a hamburger stand.'
 )
 
-restaurant5 = Restaurant.create(
-  name: 'The Chocolate Room',
-  phone_no: '9876543210',
-  email: 'chocolate@yahoo.com',
+Restaurant.create(
+  name: '440',
+  phone_no: '9898989898',
+  email: '440@gmail.com',
   opening_time: Time.now,
   closing_time: Time.now,
-  branch_name: 'Vastrapur',
-  details: 'The Chocolate Room India serves the quality and naturally prepared chocolate desserts to all its customers.'
+  branch_name: 'RTO',
+  user_id: user1.id,
+  details: 'Service excellence is our speciality and we are known for the same.'
 )
+
+#========================= CATEGORY =========================
 
 category1 = Category.create(name: 'Fast Food')
 Category.create(name: 'Punjabi')
 Category.create(name: 'Gujarati')
+
+#========================= FOOD ITEM =========================
 
 FoodItem.create(
   name: 'Vadapav',
@@ -107,7 +151,7 @@ FoodItem.create(
   name: 'Chocolate Pastry',
   price: 60,
   category_id: category1.id,
-  restaurant_id: restaurant5.id,
+  restaurant_id: restaurant2.id,
   food_type: 0
 )
 
@@ -115,13 +159,45 @@ FoodItem.create(
   name: 'Black Forest Pastry',
   price: 65,
   category_id: category1.id,
-  restaurant_id: restaurant5.id,
+  restaurant_id: restaurant2.id,
   food_type: 0
 )
 
 FoodItem.create(
-  name: 'Pizza',
-  price: 110,
+  name: '6" Veggie Delite Sub',
+  price: 172,
+  category_id: category1.id,
+  restaurant_id: restaurant3.id,
+  food_type: 0
+)
+
+FoodItem.create(
+  name: 'Veggie Delite Salad',
+  price: 102,
+  category_id: category1.id,
+  restaurant_id: restaurant3.id,
+  food_type: 0
+)
+
+FoodItem.create(
+  name: 'Veg Shammi Subwrap',
+  price: 35,
+  category_id: category1.id,
+  restaurant_id: restaurant3.id,
+  food_type: 0
+)
+
+FoodItem.create(
+  name: 'Cookie',
+  price: 25,
+  category_id: category1.id,
+  restaurant_id: restaurant3.id,
+  food_type: 1
+)
+
+FoodItem.create(
+  name: '6" Chatpata Chana Patty Sub',
+  price: 72,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
   food_type: 0
