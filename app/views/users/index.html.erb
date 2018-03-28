@@ -1,0 +1,28 @@
+<h1>Users</h1>
+<table>
+  <tr>
+    <th>no</th>
+    <th>Firstname</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Phoneno</th>
+    <th>show</th>
+    <th>edit</th>
+    <th>delete</th>
+  </tr>
+
+  <% $i = 1 %>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= $i %></td>
+      <td><%= user.firstname %></td>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td><%= user.phoneno %></td>
+      <td><%= link_to "show", user_path(user) %></td>
+      <td><%= link_to "edit", edit_user_path(user)%></td>
+      <td><%= link_to "delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+    </tr>
+    <% $i = $i+1 %>
+  <%end%>
+</table>

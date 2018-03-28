@@ -1,0 +1,29 @@
+<!--right notification start-->
+  <div class="right-notification">
+    <ul class="notification-menu">
+      <li>
+          <form class="search-content" action="http://thevectorlab.net/slicklab/index.html" method="post">
+              <input type="text" class="form-control" name="keyword" placeholder="Search...">
+          </form>
+      </li>
+
+      <li>
+          <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <img src="img/avatar-mini.jpg" alt=""><%= current_user.username %>
+              <span class=" fa fa-angle-down"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-usermenu purple pull-right">
+              <li><%= link_to 'Home', root_path %></li>
+              <li><%= link_to 'Profile' %></li>
+              <li><%= link_to('Logout', destroy_user_session_path, method: :delete  ) %></li>
+          </ul>
+      </li>
+      <li>
+          <div class="sb-toggle-right">
+              <i class="fa fa-indent"></i>
+          </div>
+      </li>
+
+    </ul>
+  </div>
+<!--right notification end-->

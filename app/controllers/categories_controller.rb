@@ -27,7 +27,6 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     # @categories = policy_scope(Category)
     # authorize Category
-    @categories = Category.all
   end
 
   def edit; end
