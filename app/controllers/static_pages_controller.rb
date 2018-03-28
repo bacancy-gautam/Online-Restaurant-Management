@@ -1,6 +1,6 @@
 # Controller for Static Pages
 class StaticPagesController < ApplicationController
-	layout "admin_panel", except: [:home,:about,:index,:contact]
+  layout 'admin_panel', except: [:home, :about, :index, :contact]
   def home
     # @restaurant = Restaurant.find(params[:id])
   end
@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   def contact; end
 
   def my_account
-  	@users = User.all
+    @users = User.all
     @restaurant = Restaurant.new
     @delivery_boy = DeliveryBoy.new
     @delivery_boys = DeliveryBoy.all
