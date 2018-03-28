@@ -1,4 +1,5 @@
-<% ct =  defined?(food) ? food : FoodItem.second.id %>
-<%= label_tag :category %><br />
-<%= select_tag "offer[food_id]", options_for_select(FoodItem.find(ct.ids.first)), id: 'offer_category_id'%>
+<% ct =  defined?(food) ? food : Category.first.id %>
+<%= label_tag :food_name %>
+
+<%= select_tag "offer[food_id]", options_for_select(Category.find(ct).food_items.pluck(:name)), id: 'offer_category_id'%><br />
 

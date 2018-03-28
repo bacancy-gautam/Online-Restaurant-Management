@@ -1,10 +1,15 @@
 class OffersController < ApplicationController
+  before_action :authenticate_user!
   def show
   end
 
   def index
   end
-
+  def create
+    @offer=Offer.new(offer_params)
+    @offer.food_item_id=FoodItem.find_by(name:params[:food_id])
+    exit
+  end
   def new
     @offer=Offer.new
     @restaurant=Restaurant.where(user_id: current_user.id).first
@@ -16,8 +21,8 @@ class OffersController < ApplicationController
 
   def change_foodlist
     name=params[:food]
-    @category=Category.find_by(name: name)
-    @food= @category.food_items
+    @food=Category.find_by(name: name).id
+    
   end
 
 
@@ -27,5 +32,9 @@ params[:state]
 =end
 
   def edit
+  end
+  private
+  def offer_params
+    params.require(:offer).permit(:quantity, :restaurant_id, :food_item_id)
   end
 end

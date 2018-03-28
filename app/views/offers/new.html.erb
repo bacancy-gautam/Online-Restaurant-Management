@@ -11,7 +11,9 @@
   <div id='food-list' remote: true>
     <%= render partial: 'food_list'%> <%#= f.text_field :city %> 
   </div>
- 
+  <%= form.label :quantity%>
+  <%= form.number_field :quantity, min:1%><br>
+  <%= form.submit%>
 
 <%end%>
 
