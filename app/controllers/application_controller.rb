@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     if resource_class == DeliveryBoy
       DeliveryBoys::ParameterSanitizer.new(DeliveryBoy, :deliveryBoy, params)
     elsif resource_class == User
-      # exit
-      puts "===================#{params}=========="
       Users::ParameterSanitizer.new(User, :user, params)
     end
   end

@@ -14,7 +14,6 @@ module DeliveryBoys
     # POST /resource
     def create
       # super
-      binding.pry
       @delivery_boy = DeliveryBoy.new(delivery_boy_params) do |delivery_boy|
         password = SecureRandom.hex(8)
         delivery_boy.password = password
