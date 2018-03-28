@@ -1,37 +1,71 @@
 <!-- <h1>All Restaurants</h1> -->
 <%#= render @restaurants %>
-    <title>Restaurant</title>  
-      <!-- Start top-dish Area -->
-      <section class="top-dish-area" id="dish">
-        <div class="container">     
-          <div class="row">
-            <div class="single-dish col-lg-4">
-              <% @restaurant = Restaurant.find(2) %>
-              <%= link_to restaurant_path(@restaurant) do%>
-              <div class="thumb">
-                <%= image_tag asset_path("d1.jpg"),class: "img-fluid"  %>
-              </div>
-              <h4 class="text-uppercase pt-20 pb-20">Bread Fruit Cheese Sandwich</h4>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+<!-- Start unique-feature Area -->
+<section class="unique-feature-area section-gap" id="index">
+    <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-60 col-lg-10">
+        <div class="title text-center">
+         <h1 class="mb-10 restaurant">Restaurants</h1> 
+        </div>
+      </div>
+    </div>            
+    <div class="search-rest justify-content-center">
+      <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant_path(restaurant) do%>
+      <div class="col-lg-3 col-md-6">
+        <div class="single-unique-product rest_<%= restaurant.id %>">
+          <%= image_tag asset_path('dish-1.png')%>
+          <span class="featured-rating-orange">6.5</span>
+          <div class="featured-title-box">
+            <h6>  
+              <%= restaurant.name %>
+            </h6>
+            <p>Restaurant </p>
+            <span> • </span>
+            <p><span>$$$</span>$$</p>
+            <ul>
+              <li>
+                <span class="icon-location-pin"></span>
+                <p>1301 Avenue, Brooklyn, NY 11230</p>
+              </li>
+            </ul>
+            <a class="primary-btn" href="#" ></a>
+            <div class="bottom-icons">
+              <%if restaurant.opening_time <= Time.now and restaurant.closing_time >= Time.now%>
+              <div class="open-now">OPEN NOW</div>
+              <%else%>
+              <div class="closed-now">CLOSED NOW</div>
               <%end%>
+              <span class="ti-heart"></span>
+              <span class="ti-bookmark"></span>
             </div>
-            <div class="single-dish col-lg-4">
-              <div class="thumb">
-                <img class="img-fluid"  src="img/d2.jpg" alt="">
-              </div>
-              <h4 class="text-uppercase pt-20 pb-20">Beef Cutlet with Spring Onion</h4>
-
-            </div>
-            <div class="single-dish col-lg-4">
-              <div class="thumb">
-                <img class="img-fluid"  src="img/d3.jpg" alt="">
-              </div>
-              <h4 class="text-uppercase pt-20 pb-20">Meat with sauce & Vegetables</h4>
-            </div>                        
           </div>
-        </div>  
-      </section>
-      <!-- End top-dish Area -->
-      
+        </div>
+      </div>    
+      <%end%>                              
+      <%end%>
+    </div>
+  </div>  
+  </section>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+    
+    <% @restaurants.each do |rest|%>
+    $('.rest_<%= rest.id %>').mouseenter(function(){
+      $('.rest_<%= rest.id %>').css("transform","scale(1.1)").css("border","1px solid #909090");
+    });
+    $('.rest_<%= rest.id %>').mouseleave(function(){
+      $('.rest_<%= rest.id %>').css("transform","scale(1)").css("border","0px");
+    }); 
+    <%end%>
+  </script>
+
            
 
       <!-- start footer Area -->    

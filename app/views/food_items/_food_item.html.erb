@@ -1,22 +1,34 @@
-<div class="card" style="width: 18rem;">
-  <%= image_tag "dish-1.png" %>
-  <div class="card-body">
-    <h5 class="card-title"><b><%= label_tag food_item.name %></b><br></h5>
-    <p class="card-text">
-      <%= label_tag :price %>
-      <%= label_tag food_item.price %><br>
+<%#= label_tag food_item.name %>
+<%#= label_tag food_item.price %>
+<%# if food_item.food_type %>
+<%#= label_tag "Vegetarian" %>
+<%# else %>
+<%#= label_tag "Non - Vegetarian" %>
+<%# end %>
 
-      <%= label_tag :food_type %>
-      <% if food_item.food_type %>
-        <%= label_tag "Vegetarian" %><br>
-      <% else %>
-        <%= label_tag "Non - Vegetarian" %><br>
-      <% end %>
-    </p>
+<div class="col-lg-5 col-md-6">
+  <div class="single-unique-product">
+    <%= image_tag asset_path('dish-1.png')%>
+    <span class="featured-rating-orange">6.5</span>
+    <div class="featured-title-box">
+      <h6>  
+        <%= food_item.name %>
+      </h6>
+      <p>Restaurant </p>
+      <span> • </span>
+      <p><span>$$$</span>$$</p>
+      <ul>
+        <li>
+          <span class="icon-location-pin"></span>
+          <p>1301 Avenue, Brooklyn, NY 11230</p>
+        </li>
+      </ul>
+      <a class="primary-btn" href="#" ></a>
+      <div class="bottom-icons">
+        <div class="closed-now">CLOSED NOW</div>
+        <span class="ti-heart"></span>
+        <span class="ti-bookmark"></span>
+      </div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a href="#" class="card-link">Add To Cart</a></li>
-    <li class="list-group-item"><a href="#" class="card-link">Add To Favourite</a></li>
-  </ul>
-</div>
-<br><br>
+</div>     
