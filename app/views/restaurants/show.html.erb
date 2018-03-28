@@ -95,6 +95,7 @@
     <div class="row">
       <div class="col-md-8 responsive-wrap">
         <div class="booking-checkbox_wrap mt-4">
+<<<<<<< 8ef55e96210ea02b108c5ca60a8eb05aa4355074
             Service: <%= rating_for @restaurant, "service" %>
             Food: <%= rating_for @restaurant, "food" %>
           <% if current_user %>
@@ -103,6 +104,27 @@
                 <div class="customer-img">
                   <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
                   <p><%= current_user.username %></p>
+=======
+          Restaurant Service: <%= rating_for @restaurant, "restaurant_service" %>
+          <h5>34 Reviews</h5>
+          <hr>
+          <div class="customer-review_wrap">
+            <div class="customer-img">
+              <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+              <p>Amanda G</p>
+              <span>35 Reviews</span>
+            </div>
+            <div class="customer-content-wrap">
+              <div class="customer-content">
+                <div class="customer-review">
+                  <h6>Best noodles in the Newyork city</h6>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="round-icon-blank"></span>
+                  <p>Reviewed 2 days ago</p>
+>>>>>>> #67 added rating on restaurant show page
                 </div>
                 <div class="customer-content-wrap">
                   <div class="customer-content">
