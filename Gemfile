@@ -33,7 +33,6 @@ gem 'omniauth-facebook'
 gem 'rubocop', '~> 0.54.0', require: false
 
 gem "font-awesome-rails"
-gem 'bootstrap', '~> 4.0.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
