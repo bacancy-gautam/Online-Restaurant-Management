@@ -4,10 +4,10 @@ class MasterOrdersController < ApplicationController
 
   def new
     @master_order = MasterOrder.new
-    a = []
+    order_key = []
     @order = []
-    a = session[:order].keys
-    a.each do |i|
+    order_key = session[:order].keys
+    order_key.each do |i|
       @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
     end
 
@@ -15,10 +15,10 @@ class MasterOrdersController < ApplicationController
   end
 
   def create
-    a = []
+    order_key = []
     @order = []
-    a = session[:order].keys
-    a.each do |i|
+    order_key = session[:order].keys
+    order_key.each do |i|
       @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
     end
 
@@ -36,7 +36,7 @@ class MasterOrdersController < ApplicationController
     @master_order.update_attribute(:user_id, current_user.id)
     
     session[:order]= nil
-    
+
 
     redirect_to master_orders_path
   end

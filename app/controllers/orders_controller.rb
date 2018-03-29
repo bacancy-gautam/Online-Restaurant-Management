@@ -13,9 +13,9 @@ class OrdersController < ApplicationController
 
     if (Order.where(food_item_id:food_item.id).count!=0)
       @orders=Order.where(food_item_id:food_item.id).last
-      a = @orders.quantity + 1
-      @orders.update_attribute(:quantity,a)
-       @orders.update_attribute(:price,(a*food_item.price.to_i))
+      qty = @orders.quantity + 1
+      @orders.update_attribute(:quantity,qty)
+       @orders.update_attribute(:price,(qty*food_item.price.to_i))
       @order=@orders
     else
    
