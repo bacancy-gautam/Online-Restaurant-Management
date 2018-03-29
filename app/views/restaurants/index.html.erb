@@ -49,24 +49,6 @@
     </div>
   </div>  
   </section>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-23581568-13');
-    
-    <% @restaurants.each do |rest|%>
-    $('.rest_<%= rest.id %>').mouseenter(function(){
-      $('.rest_<%= rest.id %>').css("transform","scale(1.1)").css("border","1px solid #909090");
-    });
-    $('.rest_<%= rest.id %>').mouseleave(function(){
-      $('.rest_<%= rest.id %>').css("transform","scale(1)").css("border","0px");
-    }); 
-    <%end%>
-  </script>
-
-           
 
       <!-- start footer Area -->    
       <footer class="main-block dark-bg">
@@ -89,9 +71,18 @@
     </footer>
 
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-23581568-13');
+    gtag('config', 'UA-23581568-13');
+    
+    <% @restaurants.each do |rest|%>
+    $('.rest_<%= rest.id %>').mouseenter(function(){
+      $('.rest_<%= rest.id %>').css("border","1px solid #909090");
+    });
+    $('.rest_<%= rest.id %>').mouseleave(function(){
+      $('.rest_<%= rest.id %>').css("border","0px");
+    }); 
+    <%end%>
 </script>
