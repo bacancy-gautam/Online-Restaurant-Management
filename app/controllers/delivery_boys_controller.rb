@@ -1,5 +1,21 @@
 # Controller for Delivery Boys
 class DeliveryBoysController < ApplicationController
+  def new
+    @delivery_boy = DeliveryBoy.new
+  end
+
+  def create
+    @delivery_boy = DeliveryBoy.new(delivery_boy_params) do |delivery_boy|
+      password = SecureRandom.hex(8)
+      delivery_boy.password = password
+    end
+
+    if @delivery_boy.save
+      DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy).deliver_now
+      redirect_to root_path
+    end
+  end
+
   def index
     @delivery_boys = DeliveryBoy.all
   end

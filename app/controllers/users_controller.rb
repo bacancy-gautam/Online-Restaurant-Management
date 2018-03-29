@@ -43,6 +43,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def assign_role
+    @user = User.find(params[:id])
+    @role = Role.find(params[:role_id])
+    @user.roles.delete_all
+    @user.add_role @role.name
+    redirect_to static_pages_my_account_path
+  end
+
   private
 
   def user_params

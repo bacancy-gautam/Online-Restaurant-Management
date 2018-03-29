@@ -14,6 +14,7 @@ class StaticPagesController < ApplicationController
   def my_account
     @users = User.all
     @restaurant = Restaurant.new
+    @restaurants = Restaurant.all
     @delivery_boy = DeliveryBoy.new
     @delivery_boys = DeliveryBoy.all
     @categories = Category.all
@@ -23,5 +24,6 @@ class StaticPagesController < ApplicationController
     @order = Order.new
     @orders = Order.all
     @offer = Offer.new
+    @role = Role.all
   end
 end
