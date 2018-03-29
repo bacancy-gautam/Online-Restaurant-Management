@@ -17,7 +17,6 @@
 //= require bootstrap.min
 //= require bootstrap/modal
 // = require popper.min
-// = require turbolinks
 // = require jquery
 // = require jquery.easy-autocomplete
 // = require active

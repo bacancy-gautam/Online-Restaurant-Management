@@ -9,7 +9,11 @@ class User < ApplicationRecord
          omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :addresses, as: :addressable
+<<<<<<< a7b42d6ae85d8299c6a30395d640ce0caecd699e
   before_create :assign_default_role
+=======
+  has_many :favourites
+>>>>>>> #70 Add food_item to Favourite.
 
   def self.find_for_google_oauth2(acc_token, _signed_in_resource = nil)
     data = acc_token.info

@@ -1,4 +1,4 @@
 class Favourite < ApplicationRecord
-  belongs_to :users
-  belongs_to :food_items
+  belongs_to :user
+  belongs_to :food_item
 end

@@ -1,41 +1,18 @@
-<%#= label_tag food_item.name %>
-<%#= label_tag food_item.price %>
-<%# if food_item.food_type %>
-<%#= label_tag "Vegetarian" %>
-<%# else %>
-<%#= label_tag "Non - Vegetarian" %>
-<%# end %>
-
 <div class="col-lg-5 col-md-6">
-  <div class="single-unique-product">
-    <%= image_tag asset_path('dish-1.png')%>
-    <span class="featured-rating-orange">6.5</span>
-    <div class="featured-title-box">
-      <h6>  
-        <%= food_item.name %>
-      </h6>
-      <p>Restaurant </p>
-      <span> • </span>
-      <p><span>$$$</span>$$</p>
-      <ul>
-        <li>
-          <span class="icon-location-pin"></span>
-          <p>1301 Avenue, Brooklyn, NY 11230</p>
-        </li>
-      </ul>
-      <a class="primary-btn" href="#" ></a>
-      <div class="bottom-icons">
-        <div class="closed-now">CLOSED NOW</div>
-          <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
-        <span class="ti-bookmark"></span>
-      </div>
-    </div>
+  <div id="food-item-<%=food_item.id%>">
+    <%= render partial: "food_items/food_item_detail", locals: {food_item: food_item}%>
   </div>
 </div>
 
 <script>
   $(".heart_<%=food_item.id%>").on('click',function(){
-    $(".heart_<%=food_item.id%>").toggleClass('fa fa-heart');
-    $(".heart_<%=food_item.id%>").toggleClass('fa fa-heart-o');
+    $.ajax({
+      url: "/add_food_to_fav",
+      method: 'GET',
+      data: {
+        id: "<%= food_item.id %>"
+      },
+      dataType: 'script'
+    });
   });
 </script>

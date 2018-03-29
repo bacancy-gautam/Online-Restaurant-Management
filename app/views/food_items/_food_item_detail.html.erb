@@ -1,0 +1,41 @@
+<div class="single-unique-product">
+  <%= image_tag asset_path('dish-1.png')%>
+  <span class="featured-rating-orange">6.5</span>
+  <div class="featured-title-box">
+    <h6>  
+      <%= food_item.name %>
+    </h6>
+    <p>Restaurant </p>
+    <span> • </span>
+    <p><span>$$$</span>$$</p>
+    <ul>
+      <li>
+        <span class="icon-location-pin"></span>
+        <p>1301 Avenue, Brooklyn, NY 11230</p>
+      </li>
+    </ul>
+    <a class="primary-btn" href="#" ></a>
+    <div class="bottom-icons">
+      <div class="closed-now">CLOSED NOW</div>
+      <% if current_user.favourites.pluck(:food_item_id).include?(food_item.id) %>
+        <span class="heart_<%=food_item.id%> fa fa-heart"></span>
+      <% else %>
+        <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
+      <% end %>
+      <span class="ti-bookmark"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".heart_<%=food_item.id%>").on('click',function(){
+    $.ajax({
+      url: "/add_food_to_fav",
+      method: 'GET',
+      data: {
+        id: "<%= food_item.id %>"
+      },
+      dataType: 'script'
+    });
+  });
+</script>
