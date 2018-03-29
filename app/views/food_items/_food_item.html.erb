@@ -17,12 +17,18 @@
       <p>Restaurant </p>
       <span> • </span>
       <p><span>$$$</span>$$</p>
+
       <ul>
         <li>
           <span class="icon-location-pin"></span>
           <p>1301 Avenue, Brooklyn, NY 11230</p>
         </li>
       </ul>
+      <%= link_to "add_to_cart",orders_path(:food_item=>food_item.id,restaurant_id:food_item.restaurant.id),method: "post"%>
+     
+
+
+
       <a class="primary-btn" href="#" ></a>
       <div class="bottom-icons">
         <div class="closed-now">CLOSED NOW</div>

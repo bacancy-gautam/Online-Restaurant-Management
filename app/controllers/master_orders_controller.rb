@@ -4,7 +4,13 @@ class MasterOrdersController < ApplicationController
 
   def new
     @master_order = MasterOrder.new
-    a = session[:order]
+    a = []
+    @order = []
+    a = session[:order].keys
+    a.each do |i|
+      @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
+    end
+
     # session[:order].reject{|c| puts "true" if session[:order][c]==nil}
   end
 
@@ -17,13 +23,21 @@ class MasterOrdersController < ApplicationController
     end
 
     sum = 0
-    @order.each do |o|
-      sum += (o.price.to_i * o.quantity)
-    end
+    #@order.each do |o|
+     # sum += (o.price.to_i * o.quantity)
+    #end
 
     @master_order = MasterOrder.create(master_order_params)
+    Order.where(restaurant_id:@master_order.restaurant_id).find(session[:order].keys).each do |o|
+      sum = sum + o.price.to_i
+    end 
+    
     @master_order.update_attribute(:total, sum)
     @master_order.update_attribute(:user_id, current_user.id)
+    
+    session[:order]= nil
+    
+
     redirect_to master_orders_path
   end
 

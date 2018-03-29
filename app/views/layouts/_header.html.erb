@@ -27,30 +27,32 @@
                         <img src="./img/product01.png" alt="">
                       </div>
                       <div class="product-body">
-                        <h3 class="product-name">product name goes here</h3>
-                        <span class="qty">3x</span>
-                        $980.00 Remove
+                      <%if !(session[:order].nil?)%>
+                      <%@order=Order.where(:id=>session[:order].keys)%>
+                      <%if @order.count!=0%>
+                      <%@order.each do |i|%>
+                      <h3 class="product-name">
+                        
+
+                        Food Item::<%= i.food_item.name%><br></h3>
+                        quantity::<%= i.quantity%><br>
+                        Food price::<%= i.price%><br>
+                        <%= link_to "remove",order_path(i),method:"delete"%><br>
+                        
+                       
+                      <%end%>
+                      <%end%>
+                      <%end%>
+                        
                       </div>
                     </div>
 
-                    <div class="product-widget">
-                      <div class="product-img">
-                        <%= image_tag asset_path("dish-1.png") %>
-                      </div>
-                      <div class="product-body">
-                        <h3 class="product-name">product name goes here</h3>
-                        <span class="qty">3x</span>
-                        $980.00 Remove
-                      </div>
-                    </div>
+                    
 
                   </div>
-                  <div class="cart-summary">
-                    <small>3 Item(s) selected</small>
-                    <h5>SUBTOTAL: $2940.00</h5>
-                  </div>
+                 
                   <div class="cart-btns">
-                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                   <%=link_to "checkout",new_master_order_path%>
                   </div>
                 </div>
               </nav>
