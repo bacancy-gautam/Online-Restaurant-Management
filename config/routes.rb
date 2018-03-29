@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :restaurants
   resources :food_categories
+  resources :reviews
   resources :restaurantscategories
   resources :users, path: 'customers' do
     collection do

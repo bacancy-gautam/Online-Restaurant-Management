@@ -34,6 +34,7 @@ class RestaurantsController < ApplicationController
     # @restaurant = Restaurant.find(params[:id])
     @categories = @restaurant.categories
     @fooditems = @restaurant.food_items
+    @review = Review.new
   end
 
   def index

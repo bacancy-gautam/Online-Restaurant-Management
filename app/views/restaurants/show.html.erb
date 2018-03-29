@@ -32,17 +32,20 @@
       <div class="col-md-6">
         <div class="reserve-seat-block">
           <div class="reserve-rating">
-            <span>9.5</span>
+            <%= rating_for @restaurant, "service", imdb_avg: true, half_show: true  %>
+            <%#= rating_for @food_item, "food_item", imdb_avg: true, half_show: true  %>
+            <!-- <span>9.5</span> -->
           </div>
           <div class="review-btn">
+            
             <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
             <span>34 reviews</span>
           </div>
-          <div class="reserve-btn">
+        <!--   <div class="reserve-btn">
             <div class="featured-btn-wrap">
               <a href="#" class="btn btn-danger">RESERVE A SEAT</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -93,7 +96,29 @@
     <div class="row">
       <div class="col-md-8 responsive-wrap">
         <div class="booking-checkbox_wrap mt-4">
-          Restaurant Service: <%= rating_for @restaurant, "restaurant_service" %>
+          <%if current_user%>
+            Service: <%= rating_for @restaurant, "service", enable_half: true, half_show: true  %>
+            Food: <%= rating_for @restaurant, "food", enable_half: true, half_show: true  %>
+          <%end%>
+          <% if current_user%>
+          <%= form_for @review do |f|%>
+          <div class="customer-review_wrap">
+            <div class="customer-img">
+              <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+              <p><%= current_user.username %></p>
+            </div>
+            <div class="customer-content-wrap">
+              <div class="customer-content">
+                <div class="customer-review">
+                  <%= f.text_area :comment,  size: "40x4" %>
+                </div >
+                <div class="submit"><%= f.submit "SUBMIT", class: "submit" %></div>
+              </div>
+            </div>
+          </div>
+          <%end%>
+          <%end%>
+          <hr>
           <h5>34 Reviews</h5>
           <hr>
           <div class="customer-review_wrap">
