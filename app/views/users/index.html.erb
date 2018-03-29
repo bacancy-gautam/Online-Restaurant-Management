@@ -24,7 +24,17 @@
       <td class="col-md-2"><%= user.username %></td>
       <td class="col-md-2"><%= user.email %></td>
       <td class="col-md-2"><%= user.phoneno %></td>
-      <td class="col-md-2"><input checked data-toggle="toggle" class="js-switch-small" type="checkbox" size="large"></td>
+      <td class="col-md-2">
+      <input type="checkbox" checked data-toggle="toggle">
+
+      <% if user_signed_in?  %>
+      <% if user.is_active == true  %>
+      <%= link_to "Active" , change_user_status_user_path(user) %>
+      <% else %>
+      <%= link_to "Inactive",change_user_status_user_path(user)%>
+      <% end %>
+      <% end %>
+      </td>
       <td class="col-md-4" ><%= link_to "show", user_path(user) , class: "btn btn-info" %>
       <%= link_to "edit", edit_user_path(user) , class: "btn  btn-warning" %>
       <%= link_to "delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' },class: "btn  btn-danger"%></td>

@@ -108,6 +108,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_user_status
+    @user = User.find(params[:id])
+    if @user.is_active == true
+      @user.is_active = false
+      @user.save
+      redirect_to static_pages_my_account_path
+    else
+      @user.is_active = true
+      @user.save
+      redirect_to static_pages_my_account_path
+    end
+  end
+
+  # def destroy
+  #   sign_out current_user
+  #   redirect_to root_path
+  # end
   private
 
   def user_params
