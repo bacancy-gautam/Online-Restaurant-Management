@@ -1,4 +1,3 @@
 class Favourite < ApplicationRecord
-  belongs_to :user
-  belongs_to :food_item
+  belongs_to :favouriteable, polymorphic: true
 end

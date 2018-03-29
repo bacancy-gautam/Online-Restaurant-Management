@@ -38,17 +38,21 @@ class FoodItemsController < ApplicationController
 
   def add_food_to_fav
     @fooditem = FoodItem.find(params[:id])
-    if current_user.favourites.pluck(:food_item_id).include?(@fooditem.id)
-      @favourite = Favourite.find_by(food_item_id: @fooditem.id, user_id: current_user.id)
+    # @favourite = Favourite.find_by(user_id: current_user.id, favouriteable_type: "FoodItem", favouriteable_id: @fooditem.id)
+    @favourite = @fooditem.favourites.find_by(user_id: current_user.id)
+    puts "=====#{@fooditem.inspect}====="
+    puts "=====#{@favourite.inspect}====="
+    if @favourite
       @favourite.delete
     else
-      @favourite = Favourite.create(food_item_id: @fooditem.id, user_id: current_user.id)
+      @fooditem.favourites.find_or_create_by(user_id: current_user.id)
       respond_to do |format|
         format.html { redirect_to restaurant_path(@fooditem.restaurant), notice: 'Added to Favourite.' }
         format.js
       end
     end
   end
+
 
   private
 
