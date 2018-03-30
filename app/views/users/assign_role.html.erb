@@ -1,0 +1,33 @@
+<table class="table table-striped custom-table table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Select</th>
+      <th class="hidden-xs"> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% $i = 1 %>
+    <% @users.each do |user| %>
+      <% if user.has_role? :super_admin %>
+      <% else %>
+        <tr>
+          <%= form_tag assign_role_user_path(user) do %>
+            <td><%=  $i %></td>
+            <td><%=  user.username %></td>
+            <td><%=  user.email %></td>
+            <td><%=  user.roles.first.name %></td>
+            <td><%= select_tag 'role_id', options_from_collection_for_select(@role, 'id', 'name') %></td>
+            <td class="hidden-xs">
+              <%= submit_tag "Change Role"%>
+            </td>
+          <%end%>
+        </tr>
+        <% $i = $i+1 %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

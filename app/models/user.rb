@@ -9,6 +9,7 @@ class User < ApplicationRecord
          omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :addresses, as: :addressable
+  before_create :assign_default_role
 
   def self.find_for_google_oauth2(acc_token, _signed_in_resource = nil)
     data = acc_token.info
@@ -44,4 +45,9 @@ class User < ApplicationRecord
       user.username = auth.info.username # assuming the user model has a name
     end
   end
+
+  private
+    def assign_default_role
+      add_role(:customer) #if self.roles.blank?
+    end
 end
