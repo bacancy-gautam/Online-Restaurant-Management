@@ -38,10 +38,7 @@ class FoodItemsController < ApplicationController
 
   def add_food_to_fav
     @fooditem = FoodItem.find(params[:id])
-    # @favourite = Favourite.find_by(user_id: current_user.id, favouriteable_type: "FoodItem", favouriteable_id: @fooditem.id)
     @favourite = @fooditem.favourites.find_by(user_id: current_user.id)
-    puts "=====#{@fooditem.inspect}====="
-    puts "=====#{@favourite.inspect}====="
     if @favourite
       @favourite.delete
     else

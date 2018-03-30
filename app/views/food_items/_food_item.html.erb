@@ -3,16 +3,3 @@
     <%= render partial: "food_items/food_item_detail", locals: {food_item: food_item}%>
   </div>
 </div>
-
-<script>
-  $(".heart_<%=food_item.id%>").on('click',function(){
-    $.ajax({
-      url: "/add_food_to_fav",
-      method: 'GET',
-      data: {
-        id: "<%= food_item.id %>"
-      },
-      dataType: 'script'
-    });
-  });
-</script>
