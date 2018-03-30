@@ -10,6 +10,11 @@ class User < ApplicationRecord
 
   has_many :addresses, as: :addressable
   before_create :assign_default_role
+  has_many :favourites
+
+  def is_favourite_food?(food_id)
+    Favourite.find_by(user_id: self.id, favouriteable_type: "FoodItem", favouriteable_id: food_id).present?
+  end
 
   def self.find_for_google_oauth2(acc_token, _signed_in_resource = nil)
     data = acc_token.info

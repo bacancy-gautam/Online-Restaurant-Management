@@ -33,10 +33,10 @@
             </ul>
             <a class="primary-btn" href="#" ></a>
             <div class="bottom-icons">
-              <%if restaurant.opening_time <= Time.now and restaurant.closing_time >= Time.now%>
-              <div class="open-now">OPEN NOW</div>
+              <% if restaurant.is_restaurant_open? %>
+                <div class="open-now">OPEN NOW</div>
               <%else%>
-              <div class="closed-now">CLOSED NOW</div>
+                <div class="closed-now">CLOSED NOW</div>
               <%end%>
               <span class="ti-heart"></span>
               <span class="ti-bookmark"></span>

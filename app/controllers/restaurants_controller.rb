@@ -80,12 +80,12 @@ class RestaurantsController < ApplicationController
       end
     end
   end
+
   def area_wise_restaurants
     adress = Address.where(street: params[:street]).pluck(:addressable_id)
     @restaurants = Restaurant.where(id: adress)
      #@city =  Restaurant.ransack(city_cont: params[:loc])
       #                       .result(distinct: true)
-    
   end
 
   private
