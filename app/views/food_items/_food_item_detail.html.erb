@@ -17,8 +17,7 @@
     <a class="primary-btn" href="#" ></a>
     <div class="bottom-icons">
       <div class="closed-now">CLOSED NOW</div>
-      <%# if current_user.favourites.pluck(:food_item_id).include?(food_item.id) %>
-      <% if Favourite.find_by(user_id: current_user.id, favouriteable_type: "FoodItem", favouriteable_id: food_item.id) %>
+      <% if current_user.is_favourite_food?(food_item.id) %>
         <span class="heart_<%=food_item.id%> fa fa-heart"></span>
       <% else %>
         <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
