@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'food_categories/change_category'
   get 'restaurants/area_wise_restaurants' =>
       'restaurants#area_wise_restaurants', as: :area
+  get "/change_city" => "addresses#change_city"
   get :search, controller: :restaurants
   get :location, controller: :restaurants
 
