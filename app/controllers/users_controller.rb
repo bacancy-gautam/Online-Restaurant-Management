@@ -1,7 +1,5 @@
 # Controller for Users
 class UsersController < ApplicationController
-
-  
   def new
     @user = User.new
   end
@@ -129,7 +127,8 @@ class UsersController < ApplicationController
 
   def change_password_params
     params.require(:user).permit(:current_password, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,address_attributes: 
+                                 [:addressline, :area, :city, :state, :pincode])
   end
 
   def create_user

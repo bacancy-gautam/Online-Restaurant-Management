@@ -32,6 +32,7 @@ gem 'ratyrate'
 gem "carrierwave"
 gem 'jquery-turbolinks'
 gem 'stripe'
+gem 'city-state' 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'

@@ -32,6 +32,11 @@ class AddressesController < ApplicationController
     end
   end
 
+  def change_city
+    params[:state]
+    @state = CS.states(:in).key(params[:state])
+  end
+
   def destroy
     @address.destroy
     redirect_to addresses_path

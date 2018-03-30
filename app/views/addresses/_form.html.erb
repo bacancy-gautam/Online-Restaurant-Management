@@ -22,12 +22,13 @@
     <%= form.text_field :area %>
     <br><br>
 
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.label :state%>
+    <%= form.select :state, CS.states(:in)%>
     <br><br>
 
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+    <div id='city-list' remote: true>
+      <%= render partial: 'city_list'%> <%#= f.text_field :city %> 
+    </div>
     <br><br>
 
     <%= form.label :pincode %>
@@ -38,3 +39,17 @@
   <%= form.submit %>
 <% end %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#user_state").on("change", function(){
+      $.ajax({
+        url: '/change_city',
+        method: 'GET',
+        data: {
+          state: $(this).val()
+        }
+      });
+    });
+  });
+</script>
