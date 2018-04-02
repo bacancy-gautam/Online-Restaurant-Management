@@ -24,6 +24,6 @@ class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def full_name
-    "#{self.name}, #{self.branch_name}, #{self.address.city}"
+    "#{self.name}, #{self.branch_name}, #{self.try(:address).try(:city)}"
   end
 end
