@@ -32,6 +32,7 @@
                       <div class="product-body">
                       <%if !(session[:order].nil?)%>
                       <%@order=Order.where(:id=>session[:order].keys)%>
+                     
                       <%if @order.count!=0%>
                       <%@order.each do |i|%>
                       <h3 class="product-name">
