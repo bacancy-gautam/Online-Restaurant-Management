@@ -2,6 +2,7 @@
 class RestaurantsController < ApplicationController
   before_action :fetch_restaurant, only: [:show, :edit,
                                           :update, :add_restaurant_to_fav]
+  # before_action :authenticate_user!
 
   def new
     @restaurant = Restaurant.new
