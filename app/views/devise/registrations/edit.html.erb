@@ -29,6 +29,10 @@
     <%= f.text_field :phoneno %>
   </div>
   <br>
+   <div class="field">
+      <%= f.label :Profile_Pic %><br />
+      <%= f.file_field :image%>
+  </div> 
   
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -54,10 +58,7 @@
   </div>
  -->
 
-  <div class="field">
-      <%= f.label :Profile_Pic %><br />
-      <%= f.file_field :image%>
-  </div> 
+ 
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
