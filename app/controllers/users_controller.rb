@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create; end
 
   def index
-    @users = User.all  
+    @users = User.all
   end
 
   def edit

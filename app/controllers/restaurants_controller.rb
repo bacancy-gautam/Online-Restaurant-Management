@@ -55,24 +55,24 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-      @restaurants = Restaurant.ransack(name_cont: params[:term])
+    @restaurants = Restaurant.ransack(name_cont: params[:term])
                              .result(distinct: true)
-      @fooditems = FoodItem.ransack(name_cont: params[:term])
+    @fooditems = FoodItem.ransack(name_cont: params[:term])
                          .result(distinct: true)
-      respond_to do |format|
-        format.html {}
-        format.json do
-          @restaurants = @restaurants.limit(5)
-          @fooditems = @fooditems.limit(5)
-        end
+    respond_to do |format|
+      format.html {}
+      format.json do
+        @restaurants = @restaurants.limit(5)
+        @fooditems = @fooditems.limit(5)
       end
+    end
   end
 
   def location
-     @addresses =  Address.ransack(street_cont: params[:loc])
-                             .result(distinct: true)
-     #@city =  Restaurant.ransack(city_cont: params[:loc])
-      #                       .result(distinct: true)
+    @addresses = Address.ransack(street_cont: params[:loc])
+                        .result(distinct: true)
+    # @city = Restaurant.ransack(city_cont: params[:loc])
+    #                .result(distinct: true)
     respond_to do |format|
       format.html {}
       format.json do
@@ -84,8 +84,8 @@ class RestaurantsController < ApplicationController
   def area_wise_restaurants
     adress = Address.where(street: params[:street]).pluck(:addressable_id)
     @restaurants = Restaurant.where(id: adress)
-     #@city =  Restaurant.ransack(city_cont: params[:loc])
-      #                       .result(distinct: true)
+    # @city =  Restaurant.ransack(city_cont: params[:loc])
+    #                    .result(distinct: true)
   end
 
   private

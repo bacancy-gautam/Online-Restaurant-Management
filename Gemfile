@@ -21,7 +21,6 @@ gem 'rubocop', require: false
 # gem 'therubyracer', platforms: :ruby
 # ransack = for easy search data
 gem 'ransack', '~> 1.7'
-gem 'pry-rails'
 gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

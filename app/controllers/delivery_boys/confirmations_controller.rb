@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeliveryBoys 
+module DeliveryBoys
   class ConfirmationsController < Devise::ConfirmationsController
     # GET /resource/confirmation/new
     # def new
@@ -18,7 +18,6 @@ module DeliveryBoys
     # end
 
     # protected
-
     # The path used after resending confirmation instructions.
     # def after_resending_confirmation_instructions_path_for(resource_name)
     #   super(resource_name)
