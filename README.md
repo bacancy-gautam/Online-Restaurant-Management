@@ -1,24 +1,36 @@
-# README
+# Online Restaurant Management System
+---
+A Ruby based web service to bring your restaurant business online. You just need to add your restaurant and provide home delivery/ take-away services for customers.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+---
+### Ruby and Rails
+This system requires Ruby **version >= 2.4.1** and Rails **version >= 5.1.5**.
 
-Things you may want to cover:
+### Ruby Gems
+This system requires the following gems
+* Devise - **version >= 4.4.3**
 
-* Ruby version
+* Rolify - **version >= 5.2.0**
 
-* System dependencies
+* Pundit - **version >= 1.1.0**
 
-* Configuration
+* Ransack - **version >= 1.8.7**
 
-* Database creation
+* Bootstrap-sass - **version >= 3.3.7**
 
-* Database initialization
+* Jquery-rails - **version >= 4.3.1**
 
-* How to run the test suite
+* Omniauth - **version >= 1.8.1**
 
-* Services (job queues, cache servers, search engines, etc.)
+* Omniauth Facebook - **version >= 4.0.0**
 
-* Deployment instructions
+* Omniauth Google - **version >= 0.5.3**
 
-* ...
+* FontAwesome Rails - **version >= 4.7.0.3**
+
+Add all these gems to your Gemfile and run `bundle` or `bundle install` command.
+
+## Database
+This system uses Postgres **version >= 1.0.0** for Database management.
+Run `rails db:create` `rails db:migrate` to create database with all the tables
