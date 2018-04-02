@@ -32,14 +32,14 @@
       <div class="col-md-6">
         <div class="reserve-seat-block">
           <div class="reserve-rating">
-            <%= rating_for @restaurant, "service", imdb_avg: true, half_show: true  %>
+            <%#= rating_for @restaurant, "service", imdb_avg: true, half_show: true  %>
             <%#= rating_for @food_item, "food_item", imdb_avg: true, half_show: true  %>
             <!-- <span>9.5</span> -->
           </div>
           <div class="review-btn">
             
-            <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
-            <span>34 reviews</span>
+            <a href="#" class="btn btn-outline-danger review">WRITE A REVIEW</a>
+            <span><%= Review.count %> reviews</span>
           </div>
         <!--   <div class="reserve-btn">
             <div class="featured-btn-wrap">
@@ -96,10 +96,10 @@
     <div class="row">
       <div class="col-md-8 responsive-wrap">
         <div class="booking-checkbox_wrap mt-4">
-          <%if current_user%>
-            Service: <%= rating_for @restaurant, "service", enable_half: true, half_show: true  %>
-            Food: <%= rating_for @restaurant, "food", enable_half: true, half_show: true  %>
-          <%end%>
+          <%#if current_user%>
+            Service: <%#= rating_for @restaurant, "service", enable_half: true, half_show: true  %>
+            Food: <%#= rating_for @restaurant, "food", enable_half: true, half_show: true  %>
+          <%#end%>
           <% if current_user%>
           <%= form_for @review do |f|%>
           <div class="customer-review_wrap">
@@ -110,7 +110,7 @@
             <div class="customer-content-wrap">
               <div class="customer-content">
                 <div class="customer-review">
-                  <%= f.text_area :comment,  size: "40x4" %>
+                  <%= f.text_area :comment,size: "40x4", class: "comment"%>
                 </div >
                 <div class="submit"><%= f.submit "SUBMIT", class: "submit" %></div>
               </div>
@@ -119,13 +119,14 @@
           <%end%>
           <%end%>
           <hr>
-          <h5>34 Reviews</h5>
+          <h5><%= Review.count %> Reviews</h5>
           <hr>
           <div class="customer-review_wrap">
             <div class="customer-img">
               <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
               <p>Amanda G</p>
-              <span>35 Reviews</span>
+              <span><%#=  Review.where(user_id: current_user.id).count()
+%> Reviews</span>
             </div>
             <div class="customer-content-wrap">
               <div class="customer-content">
@@ -226,8 +227,6 @@
         prevEl: '.swiper-button-prev',
       },
     });
-  </script>
-  <script>
     if ($('.image-link').length) {
       $('.image-link').magnificPopup({
         type: 'image',
@@ -244,4 +243,9 @@
         }
       });
     }
+
+    $('.review').click(function(){
+      $('.comment').focus();
+      return false;
+    })
   </script>

@@ -1,7 +1,7 @@
 # Model for Restaurant
 class Restaurant < ApplicationRecord
   enum type: [:take_away, :home_delivery]
-  ratyrate_rateable 'service', 'food'
+  # ratyrate_rateable 'service', 'food'
   has_many :food_items
   has_many :images, as: :imageable, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
