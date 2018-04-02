@@ -1,5 +1,19 @@
 <div class="col-lg-5 col-md-6">
   <div id="food-item-<%=food_item.id%>">
     <%= render partial: "food_items/food_item_detail", locals: {food_item: food_item}%>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><b><%= label_tag food_item.name %></b><br></h5>
+    <p class="card-text">
+      <%= label_tag :price %>
+      <%= label_tag food_item.price %><br>
+
+      <%= label_tag :food_type %>
+      <% if food_item.food_type %>
+        <%= label_tag "Vegetarian" %><br>
+      <% else %>
+        <%= label_tag "Non - Vegetarian" %><br>
+      <% end %>
+    </p>
   </div>
 </div>

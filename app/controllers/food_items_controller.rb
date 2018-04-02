@@ -1,6 +1,7 @@
 # Controller for Food Items
 class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy, :add_food_to_fav]
+  before_action :food_item_params, only: [:show, :edit, :update, :destroy]
 
   def index
     @fooditems = FoodItem.all
@@ -8,12 +9,14 @@ class FoodItemsController < ApplicationController
 
   def new
     @fooditem = FoodItem.new
+    @fooditem.images.build
   end
 
   def create
     @fooditem = FoodItem.new(food_item_params)
     if @fooditem.save
-      redirect_to @fooditem
+      #redirect_to @fooditem
+      redirect_to root_path
     else
       render 'new'
     end
@@ -24,6 +27,7 @@ class FoodItemsController < ApplicationController
   def show; end
 
   def update
+    
     if @fooditem.update(food_item_params)
       redirect_to @fooditem
     else
@@ -60,6 +64,8 @@ class FoodItemsController < ApplicationController
 
   def food_item_params
     params.require(:food_item).permit(:name, :price, :food_type,
-                                      :restaurant_id, :category_id)
+                                      :restaurant_id, :category_id, :image)
+
   end
+
 end
