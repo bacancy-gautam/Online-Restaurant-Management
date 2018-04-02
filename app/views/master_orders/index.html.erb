@@ -4,6 +4,24 @@
   Order Type::<%= m.order_type%><br>
   Order Status::<%= m.order_status%><br>
   Payment Status::<%= m.payment_status%><br>
+    <td><%if m.payment_status=="pending"%>
+          <td><%= form_tag charges_path(:m_id=>m) do %>
+            <article>
+              <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+              <% end %>
+            </article>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_Nyql4IRTMt0XR4JnPrNi8OcL"
+            data-description="A month's subscription"
+            data-amount="<%= (s.maintainance.amount)*100%>"
+            data-locale="auto"></script>
+            <% end %></td>
+            <%else%>
+            <%= m.payment_status%>
+            <%end%></td>
  
   <%= link_to "show",master_order_path(m)%></br>
   <br>

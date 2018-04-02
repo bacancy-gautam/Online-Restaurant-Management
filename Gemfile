@@ -28,6 +28,7 @@ gem 'devise'
 gem 'pundit'
 gem "rolify"
 gem "carrierwave"
+gem 'stripe'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
