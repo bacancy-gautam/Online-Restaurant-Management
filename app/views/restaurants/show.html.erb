@@ -96,75 +96,34 @@
     <div class="row">
       <div class="col-md-8 responsive-wrap">
         <div class="booking-checkbox_wrap mt-4">
-          <%#if current_user%>
-            Service: <%#= rating_for @restaurant, "service", enable_half: true, half_show: true  %>
-            Food: <%#= rating_for @restaurant, "food", enable_half: true, half_show: true  %>
-          <%#end%>
-          <% if current_user%>
-          <%= form_for @review do |f|%>
-          <div class="customer-review_wrap">
-            <div class="customer-img">
-              <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
-              <p><%= current_user.username %></p>
-            </div>
-            <div class="customer-content-wrap">
-              <div class="customer-content">
-                <div class="customer-review">
-                  <%= f.text_area :comment,size: "40x4", class: "comment"%>
-                </div >
-                <div class="submit"><%= f.submit "SUBMIT", class: "submit" %></div>
-              </div>
-            </div>
-          </div>
-          <%end%>
-          <%end%>
-          <hr>
-          <h5><%= Review.count %> Reviews</h5>
-          <hr>
-          <div class="customer-review_wrap">
-            <div class="customer-img">
-              <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
-              <p>Amanda G</p>
-              <span><%#=  Review.where(user_id: current_user.id).count()
-%> Reviews</span>
-            </div>
-            <div class="customer-content-wrap">
-              <div class="customer-content">
-                <div class="customer-review">
-                  <h6>Best noodles in the Newyork city</h6>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span class="round-icon-blank"></span>
-                  <p>Reviewed 2 days ago</p>
+            Service: <%= rating_for @restaurant, "service" %>
+            Food: <%= rating_for @restaurant, "food" %>
+          <% if current_user %>
+            <%= form_for @review, url: add_review_path, remote: true do |f|%>
+              <div class="customer-review_wrap">
+                <div class="customer-img">
+                  <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+                  <p><%= current_user.username %></p>
                 </div>
-                <div class="customer-rating">8.0</div>
+                <div class="customer-content-wrap">
+                  <div class="customer-content">
+                    <div class="customer-review">
+                      <%= f.text_area :comment, size: "40x4", class: "comment" %>
+                    </div>
+                    <div class="customer-submit">
+                    <div class="submitd"><%= f.submit "SUBMIT", class: "submit" %></div></div>
+                    <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+                  </div>
+                </div>
               </div>
-              <p class="customer-text">I love the noodles here but it is so rare that I get to come here. Tasty Hand-Pulled Noodles is the best type of whole in the wall restaurant. The staff are really nice, and you should be seated quickly. I usually get the
-                hand pulled noodles in a soup. House Special #1 is amazing and the lamb noodles are also great. If you want your noodles a little chewier, get the knife cut noodles, which are also amazing. Their dumplings are great
-                dipped in their chili sauce.
-              </p>
-              <p class="customer-text">I love how you can see into the kitchen and watch them make the noodles and you can definitely tell that this is a family run establishment. The prices are are great with one dish maybe being $9. You just have to remember
-                to bring cash.
-              </p>
-              <ul>
-                <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
-                <li><img src="images/review-img2.jpg" class="img-fluid" alt="#"></li>
-                <li><img src="images/review-img3.jpg" class="img-fluid" alt="#"></li>
-              </ul>
-              <span>28 people marked this review as helpful</span>
-              <a href="#"><span class="icon-like"></span>Helpful</a>
-            </div>
-          </div>
+            <%end%>
+          <%end%>
           <hr>
           <div id="review-list">
             <%= render @reviews %>
           <hr>
         </div>
-        </div>
       </div>
-
       </div>
     </div>
   </section>
@@ -191,6 +150,17 @@
   <!--//END FOOTER -->
 
   <script>
+    $(".submitd").on('click',function(){
+                        // alert();
+                        $.ajax({
+                          url: "/add_review",
+                          method: 'POST',
+                          data: {
+                            id: "<%= @restaurant.id %>"
+                          },
+                          dataType: 'script'
+                        });
+                      });
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 3,
       slidesPerGroup: 3,
