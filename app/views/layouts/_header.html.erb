@@ -32,7 +32,7 @@
                       <%if @order.count!=0%>
                       <%@order.each do |i|%>
                       <h3 class="product-name">
-                        
+                    
 
                         Food Item::<%= i.food_item.name%><br></h3>
                         quantity::<%= i.quantity%><br>
@@ -53,6 +53,9 @@
                  
                   <div class="cart-btns">
                    <%=link_to "checkout",new_master_order_path%>
+                   <% if user_signed_in? %>
+                    <%=link_to "my order",master_orders_path%>
+                    <%end%>
                   </div>
                 </div>
               </nav>

@@ -10,12 +10,16 @@ class OrdersController < ApplicationController
     session[:order] = {} if session[:order].blank?
     food_item=FoodItem.find(params[:food_item])
     restaurant=Restaurant.find(params[:restaurant_id])
-
+    
     if (Order.where(food_item_id:food_item.id).count!=0)
       @orders=Order.where(food_item_id:food_item.id).last
-      qty = @orders.quantity + 1
+      if(session[:order].compact.include?(@orders.id))
+        qty = @orders.quantity + 1
+      else
+        qty = 1
+      end
       @orders.update_attribute(:quantity,qty)
-       @orders.update_attribute(:price,(qty*food_item.price.to_i))
+      @orders.update_attribute(:price,(qty*food_item.price.to_i))
       @order=@orders
     else
    

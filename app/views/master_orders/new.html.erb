@@ -6,6 +6,6 @@
   <%= order.select(:payment_type, MasterOrder.payment_types.keys) %> </br>
   <%= order.label:restaurant%>
 
-  <%= order.select :restaurant_id, Restaurant.find(Order.find(session[:order].keys).pluck(:restaurant_id).uniq).map{|r| [r.name, r.id]} %> </br>
+  <%= order.select :restaurant_id, Restaurant.find(Order.find(session[:order].compact.keys).pluck(:restaurant_id).uniq).map{|r| [r.name, r.id]} %> </br>
   <%= order.submit "place order"%>
 <%end%>

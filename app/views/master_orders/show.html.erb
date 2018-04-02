@@ -1,10 +1,8 @@
 <p>    
   <%= @master_order.total.to_i%><br>
-  <% @order.each do |i|%>
-    Food_item::<%= i.food_item.name%><br>
-    Quantity::<%= i.quantity%><br>
-    Price::<%= i.price%><br>
-  <%end%>
-  Total Item::<%= @order.count %>
+   order type::<%= @master_order.order_type%><br>
+  order status::<%= @master_order.order_status%><br>
+  payment status::<%= @master_order.payment_status%><br>
+ 
 </p>
 <%= link_to "sign out", destroy_user_session_path,method: "delete" %>
