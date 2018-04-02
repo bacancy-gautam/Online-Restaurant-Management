@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class RestaurantscategoriesControllerTest < ActionDispatch::IntegrationTest
+  
   test "should get new" do
     get restaurantscategories_new_url
     assert_response :success

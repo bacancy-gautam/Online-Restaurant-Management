@@ -1,25 +1,6 @@
 <!-- <h1>All Restaurants</h1> -->
 <%#= render @restaurants %>
 
-  <script>
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxnGvOzSMd0yB4RGFGt8Zi-SiHktg60eE
-&callback=initMap">
-    </script>
-
-
 <!--============================= BOOKING =============================-->
 <div>
   <!-- Swiper -->
@@ -27,42 +8,15 @@
     <div class="swiper-wrapper">
 
       <div class="swiper-slide">
-        <%= link_to asset_path('reserve-slide2.jpg'),class: "grid image-link" do%>
         <%= image_tag asset_path('reserve-slide2.jpg'), class: "img-fluid"%>
-        <%end%>
       </div>
       <div class="swiper-slide">
-        <%= link_to asset_path('reserve-slide1.jpg'),class: "grid image-link" do%>
         <%= image_tag asset_path('reserve-slide1.jpg'), class: "img-fluid"%>
-        <%end%>
       </div>
       <div class="swiper-slide">
-        <%= link_to asset_path('reserve-slide3.jpg'),class: "grid image-link" do%>
         <%= image_tag asset_path('reserve-slide3.jpg'), class: "img-fluid"%>
-        <%end%>
-      </div>
-      <div class="swiper-slide">
-        <a href="images/reserve-slide1.jpg" class="grid image-link">
-          <img src="images/reserve-slide1.jpg" class="img-fluid" alt="#">
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="images/reserve-slide2.jpg" class="grid image-link">
-          <img src="images/reserve-slide2.jpg" class="img-fluid" alt="#">
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="images/reserve-slide3.jpg" class="grid image-link">
-          <img src="images/reserve-slide3.jpg" class="img-fluid" alt="#">
-        </a>
       </div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination swiper-pagination-white"></div>
-    <!-- Add Arrows -->
-    <div class="swiper-button-next swiper-button-white"></div>
-    <div class="swiper-button-prev swiper-button-white"></div>
-  </div>
 </div>
 <!--//END BOOKING -->
 <!--============================= RESERVE A SEAT =============================-->
@@ -72,7 +26,8 @@
       <div class="col-md-6">
         <h5><%= @restaurant.name %></h5>
         <p><span>$$$</span>$$</p>
-        <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p>
+        <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p><br>
+        <p class="reserve-description">Delivery Time.</p>
       </div>
       <div class="col-md-6">
         <div class="reserve-seat-block">
@@ -102,7 +57,7 @@
       <div class="col-md-8 responsive-wrap">
           <div class="search-rest justify-content-center">
             <%= render @fooditems %>
-        </div>
+          </div>
       </div>
             <div class="col-md-4 responsive-wrap">
         <div class="contact-info">
@@ -126,7 +81,6 @@
             </div>
             <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
           </div>
-
         </div>
     </div>
   </div>

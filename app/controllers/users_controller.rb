@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create; end
 
   def index
-    @users = User.all  
+    @users = User.all
   end
 
   def edit
@@ -41,6 +41,14 @@ class UsersController < ApplicationController
     else
       render 'change_password_edit'
     end
+  end
+
+  def assign_role
+    @user = User.find(params[:id])
+    @role = Role.find(params[:role_id])
+    @user.roles.delete_all
+    @user.add_role @role.name
+    redirect_to static_pages_my_account_path
   end
 
   private

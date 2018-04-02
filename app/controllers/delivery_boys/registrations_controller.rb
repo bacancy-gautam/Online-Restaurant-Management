@@ -20,8 +20,8 @@ module DeliveryBoys
       end
 
       if @delivery_boy.save
-        DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy).deliver_now
-        redirect_to root_path
+        DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy)
+                                        .deliver_now.redirect_to root_path
         # else
         # render 'new'
       end

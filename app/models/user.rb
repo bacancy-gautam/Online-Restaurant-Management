@@ -9,6 +9,18 @@ class User < ApplicationRecord
          omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :addresses, as: :addressable
+  before_create :assign_default_role
+  has_many :favourites
+
+  def favourite_food?(food_id)
+    Favourite.find_by(user_id: self.id, favouriteable_type: 'FoodItem',
+                      favouriteable_id: food_id).present?
+  end
+
+  def favourite_restaurant?(restaurant_id)
+    Favourite.find_by(user_id: self.id, favouriteable_type: 'Restaurant',
+                      favouriteable_id: restaurant_id).present?
+  end
 
   def self.find_for_google_oauth2(acc_token, _signed_in_resource = nil)
     data = acc_token.info
@@ -43,5 +55,11 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.username = auth.info.username # assuming the user model has a name
     end
+  end
+
+  private
+
+  def assign_default_role
+    add_role(:customer) # if self.roles.blank?
   end
 end
