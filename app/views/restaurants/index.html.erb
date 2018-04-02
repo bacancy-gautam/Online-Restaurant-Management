@@ -12,40 +12,7 @@
       </div>
     </div>            
     <div class="search-rest justify-content-center">
-      <% @restaurants.each do |restaurant| %>
-      <%= link_to restaurant_path(restaurant) do%>
-      <div class="col-lg-3 col-md-6">
-        <div class="single-unique-product rest_<%= restaurant.id %>">
-          <%= image_tag asset_path('dish-1.png')%>
-          <span class="featured-rating-orange">6.5</span>
-          <div class="featured-title-box">
-            <h6>  
-              <%= restaurant.name %>
-            </h6>
-            <p>Restaurant </p>
-            <span> • </span>
-            <p><span>$$$</span>$$</p>
-            <ul>
-              <li>
-                <span class="icon-location-pin"></span>
-                <p>1301 Avenue, Brooklyn, NY 11230</p>
-              </li>
-            </ul>
-            <a class="primary-btn" href="#" ></a>
-            <div class="bottom-icons">
-              <% if restaurant.is_restaurant_open? %>
-                <div class="open-now">OPEN NOW</div>
-              <%else%>
-                <div class="closed-now">CLOSED NOW</div>
-              <%end%>
-              <span class="ti-heart"></span>
-              <span class="ti-bookmark"></span>
-            </div>
-          </div>
-        </div>
-      </div>    
-      <%end%>                              
-      <%end%>
+      <%= render @restaurants%>
     </div>
   </div>  
   </section>
