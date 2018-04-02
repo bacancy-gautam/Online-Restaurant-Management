@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
                                           :update, :add_restaurant_to_fav]
   
 
+
   def new
     @restaurant = Restaurant.new
     @address = @restaurant.create_address
