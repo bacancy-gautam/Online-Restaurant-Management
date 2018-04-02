@@ -33,7 +33,7 @@
 // = require slick
 // = require superfish
 // = require swiper.min
-
+// = require turbolinks
 
 
 $(document).ready(function(){

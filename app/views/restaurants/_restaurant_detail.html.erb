@@ -17,14 +17,16 @@
     <a class="primary-btn" href="#" ></a>
     <div class="bottom-icons">
       <% if restaurant.restaurant_open? %>
-      <div class="open-now">OPEN NOW</div>
+        <div class="open-now">OPEN NOW</div>
       <%else%>
-      <div class="closed-now">CLOSED NOW</div>
+        <div class="closed-now">CLOSED NOW</div>
       <%end%>
-      <% if current_user.favourite_restaurant?(restaurant.id) %>
-      <span class="heart_<%=restaurant.id%> fa fa-heart"></span>
-      <% else %>
-      <span class="heart_<%=restaurant.id%> fa fa-heart-o"></span>
+      <% if current_user %>
+        <% if current_user.favourite_restaurant?(restaurant.id) %>
+          <span class="heart_<%=restaurant.id%> fa fa-heart"></span>
+        <% else %>
+          <span class="heart_<%=restaurant.id%> fa fa-heart-o"></span>
+        <% end %>
       <% end %>
       <span class="ti-bookmark"></span>
     </div>
