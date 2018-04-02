@@ -1,9 +1,9 @@
-<div class="single-unique-product">
+<div class="single-unique-product rest_<%= restaurant.id %>">
   <%= image_tag asset_path('dish-1.png')%>
   <span class="featured-rating-orange">6.5</span>
   <div class="featured-title-box">
     <h6>  
-      <%= food_item.name %>
+      <%= restaurant.name %>
     </h6>
     <p>Restaurant </p>
     <span> • </span>
@@ -16,11 +16,15 @@
     </ul>
     <a class="primary-btn" href="#" ></a>
     <div class="bottom-icons">
+      <% if restaurant.restaurant_open? %>
+      <div class="open-now">OPEN NOW</div>
+      <%else%>
       <div class="closed-now">CLOSED NOW</div>
-      <% if current_user.favourite_food?(food_item.id) %>
-        <span class="heart_<%=food_item.id%> fa fa-heart"></span>
+      <%end%>
+      <% if current_user.favourite_restaurant?(restaurant.id) %>
+      <span class="heart_<%=restaurant.id%> fa fa-heart"></span>
       <% else %>
-        <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
+      <span class="heart_<%=restaurant.id%> fa fa-heart-o"></span>
       <% end %>
       <span class="ti-bookmark"></span>
     </div>
@@ -28,12 +32,12 @@
 </div>
 
 <script>
-  $(".heart_<%=food_item.id%>").on('click',function(){
+  $(".heart_<%=restaurant.id%>").on('click',function(){
     $.ajax({
-      url: "/add_food_to_fav",
+      url: "/add_restaurant_to_fav",
       method: 'GET',
       data: {
-        id: "<%= food_item.id %>"
+        id: "<%= restaurant.id %>"
       },
       dataType: 'script'
     });
