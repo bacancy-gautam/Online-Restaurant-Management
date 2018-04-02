@@ -37,6 +37,10 @@
             <!-- <span>9.5</span> -->
           </div>
           <div class="review-btn">
+<<<<<<< c9b5203e9037bee5ec72781704368060fedc7e32
+=======
+            
+>>>>>>> #67 added name to review and focus on textbox on button click
             <a href="#" class="btn btn-outline-danger review">WRITE A REVIEW</a>
             <span><%= Review.count %> reviews</span>
           </div>
@@ -95,7 +99,6 @@
     <div class="row">
       <div class="col-md-8 responsive-wrap">
         <div class="booking-checkbox_wrap mt-4">
-<<<<<<< 8ef55e96210ea02b108c5ca60a8eb05aa4355074
             Service: <%= rating_for @restaurant, "service" %>
             Food: <%= rating_for @restaurant, "food" %>
           <% if current_user %>
@@ -104,28 +107,21 @@
                 <div class="customer-img">
                   <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
                   <p><%= current_user.username %></p>
-=======
-          Restaurant Service: <%= rating_for @restaurant, "restaurant_service" %>
-          <h5>34 Reviews</h5>
-          <hr>
-          <div class="customer-review_wrap">
-            <div class="customer-img">
-              <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
-              <p>Amanda G</p>
-              <span>35 Reviews</span>
             </div>
             <div class="customer-content-wrap">
               <div class="customer-content">
                 <div class="customer-review">
-                  <h6>Best noodles in the Newyork city</h6>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span class="round-icon-blank"></span>
-                  <p>Reviewed 2 days ago</p>
->>>>>>> #67 added rating on restaurant show page
-                </div>
+                  <%= f.text_area :comment,size: "40x4", class: "comment"%>
+                </div >
+                <div class="submit"><%= f.submit "SUBMIT", class: "submit" %></div>
+              </div>
+            </div>
+          </div>
+          <%end%>
+          <%end%>
+          <hr>
+          <h5><%= Review.count %> Reviews</h5>
+          <hr>
                 <div class="customer-content-wrap">
                   <div class="customer-content">
                     <div class="customer-review">
