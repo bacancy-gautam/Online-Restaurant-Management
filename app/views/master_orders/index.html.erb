@@ -1,6 +1,12 @@
 <% @master_orders.each do |m|%>
-  Total amount::<%= m.total.to_i%>
-  <%= link_to "delete",master_order_path(m),method: "delete"%>
+
+  Total amount::<%= m.total.to_i%><br>
+  Order Type::<%= m.order_type%><br>
+  Order Status::<%= m.order_status%><br>
+  Payment Status::<%= m.payment_status%><br>
+ 
   <%= link_to "show",master_order_path(m)%></br>
+  <br>
+  <br>
 <%end%>
 <%= link_to "sign out", destroy_user_session_path,method: "delete"%>

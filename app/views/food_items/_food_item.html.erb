@@ -1,6 +1,40 @@
 <div class="col-lg-5 col-md-6">
+
+  <div class="single-unique-product">
+    <%= image_tag asset_path('dish-1.png')%>
+    <span class="featured-rating-orange">6.5</span>
+    <div class="featured-title-box">
+      <h6>  
+        <%= food_item.name %>
+      </h6>
+      <p>Restaurant </p>
+      <span> • </span>
+      <p><span>$$$</span>$$</p>
+
+      <ul>
+        <li>
+          <span class="icon-location-pin"></span>
+          <p>1301 Avenue, Brooklyn, NY 11230</p>
+        </li>
+      </ul>
+      <%= link_to "add_to_cart",orders_path(:food_item=>food_item.id,restaurant_id:food_item.restaurant.id),method: "post"%>
+     
+
+
+
+      <a class="primary-btn" href="#" ></a>
+      <div class="bottom-icons">
+        <div class="closed-now">CLOSED NOW</div>
+        <span class="ti-heart"></span>
+        <span class="ti-bookmark"></span>
+      </div>
+    </div>
+
   <div id="food-item-<%=food_item.id%>">
     <%= render partial: "food_items/food_item_detail", locals: {food_item: food_item}%>
+
+
+
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><b><%= label_tag food_item.name %></b><br></h5>
@@ -15,5 +49,6 @@
         <%= label_tag "Non - Vegetarian" %><br>
       <% end %>
     </p>
+
   </div>
 </div>
