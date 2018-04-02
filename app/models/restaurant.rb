@@ -3,6 +3,7 @@ class Restaurant < ApplicationRecord
   enum type: [:take_away, :home_delivery]
 
   has_many :food_items
+  has_many :images, as: :imageable, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :categories
   has_many :favourites, as: :favouriteable
@@ -19,5 +20,10 @@ class Restaurant < ApplicationRecord
 
   def restaurant_open?
     self.opening_time.strftime('%I:%M %p') <= Time.now && self.closing_time.strftime('%I:%M %p') >= Time.now
+  mount_uploader :image, ImageUploader
+ 
+
+  def full_name
+    "#{self.name}, #{self.branch_name}, #{self.address.city}"
   end
 end

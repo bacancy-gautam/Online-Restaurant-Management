@@ -27,6 +27,7 @@ gem 'jquery-ui-rails'
 gem 'devise'
 gem 'pundit'
 gem "rolify"
+gem "carrierwave"
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
