@@ -238,6 +238,11 @@
               <%= f.password_field :password_confirmation, autocomplete: "off",class: "md-input col-xs-12" %>
           </div>
 
+            <div class="field">
+              <%= f.label :Profile_Pic %><br />
+              <%= f.file_field :image%>
+          </div> 
+
           <div class="actions">
               <%= f.submit "Sign up", class:"md-button narrow" %>
           </div>
