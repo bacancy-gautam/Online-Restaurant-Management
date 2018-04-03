@@ -14,7 +14,6 @@ class MasterOrdersController < ApplicationController
 
   def create
     MasterOrderHandler.new(params, session, current_user).manage_master_order
-
     redirect_to master_orders_path
   end
 

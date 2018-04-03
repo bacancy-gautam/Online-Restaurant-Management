@@ -14,6 +14,7 @@
                   <li><%= link_to 'My Account',static_pages_my_account_path, class: "btn btn-outline-light top-btn" %></li>
                   <li> <%= link_to('User Edit Profile', edit_user_path(current_user) , class: "btn btn-outline-light top-btn") %></li>
                  <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
+                
                  <%else%>
                  <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
                  <li><%= link_to "Login",new_user_session_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
@@ -34,6 +35,7 @@
                       <%@order=Order.where(:id=>session[:order].keys)%>
                      
                       <%if @order.count!=0%>
+
                       <%@order.each do |i|%>
                       <h3 class="product-name">
                     

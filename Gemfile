@@ -30,6 +30,9 @@ gem 'pundit'
 gem "rolify"
 gem "carrierwave"
 
+gem 'stripe'
+
+
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
