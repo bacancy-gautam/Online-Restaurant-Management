@@ -1,0 +1,20 @@
+<div class="customer-review_wrap">
+   <div class="customer-img">
+      <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+      <span><%=  Review.where(user_id: current_user.id).count()
+         %> Reviews</span><br>
+         <span>Edit</span><br>
+         <span>Delete</span>
+   </div>
+   <div class="customer-content-wrap">
+      <div class="customer-content">
+         <div class="customer-review">
+            <%= User.find(review.user_id).username %>
+         </div>
+         <div class="customer-rating">8.0</div>
+      </div>
+      <p class="customer-text">
+        <%= review.comment %>
+      </p>
+   </div>
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'static_pages#home'
   get 'static_pages/home'
   get 'static_pages/index'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :restaurants
   resources :food_categories
+  resources :reviews
   resources :restaurantscategories
   resources :users, path: 'customers' do
     collection do
@@ -53,4 +55,5 @@ Rails.application.routes.draw do
                 sessions: 'delivery_boys/sessions',
                 registrations: 'delivery_boys/registrations'
               }
+  post "add_review", to: 'restaurants#add_review'
 end

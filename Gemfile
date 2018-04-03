@@ -28,8 +28,8 @@ gem 'jquery-ui-rails'
 gem 'devise'
 gem 'pundit'
 gem "rolify"
-gem "carrierwave"
-
+gem 'ratyrate'
+gem 'carrierwave'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
@@ -37,8 +37,6 @@ gem "font-awesome-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
