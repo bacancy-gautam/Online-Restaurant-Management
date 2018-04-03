@@ -109,15 +109,13 @@ class RestaurantsController < ApplicationController
   end
 
   def change_restaurant_status
-    @restaurants = Restaurant.find(params[:id])
-    if @restaurants.status == true
-      @restaurants.status = false
-      @restaurants.save
-      redirect_to static_pages_my_account_path
+    @restaurant = Restaurant.find(params[:id])
+    if @restaurant.status == true
+      @restaurant.status = false
+      @restaurant.save
     else
-      @restaurants.status = true
-      @restaurants.save
-      redirect_to static_pages_my_account_path
+      @restaurant.status = true
+      @restaurant.save
     end
   end
 

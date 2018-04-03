@@ -36,10 +36,6 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem "font-awesome-rails"
-<<<<<<< HEAD
-=======
-gem 'rails-bootstrap-toggle-buttons'
->>>>>>> updated restaurant status as active or inactive
 gem 'turbolinks', '~> 5.0.0'
 
 # Use CoffeeScript for .coffee assets and views
