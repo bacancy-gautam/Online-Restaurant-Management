@@ -125,6 +125,8 @@ class UsersController < ApplicationController
   #   sign_out current_user
   #   redirect_to root_path
   # end
+
+
   private
 
   def user_params
