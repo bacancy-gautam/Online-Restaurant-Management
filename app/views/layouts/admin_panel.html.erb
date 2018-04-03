@@ -18,12 +18,29 @@
         var owl = $("#news-feed").data("owlCarousel");
         owl.reinit();
     });
+    $(document).ready(function(){
+    $('.showpartials').click(function()
+      { 
+        $(".dashboard").hide();
+      }
+    );
+  });
+
+</script>
+
+<!-- <script type="text/javascript">
+
+    $(window).on("resize",function(){
+        var owl = $("#news-feed").data("owlCarousel");
+        owl.reinit();
+    });
 
   $(".dashboard").show();
   $(".user-assign-role").hide();
   $(".delivery-boys-add").hide();
   $(".delivery-boys-manage").hide();
   $(".order-add").hide();
+  $(".users-add").hide();
   $(".order-manage").hide();
   $(".users-manage").hide();
   $(".category-add").hide();
@@ -34,8 +51,30 @@
   $(".food-item-manage").hide();
 
   $(document).ready(function(){
+    $('.users_add').click(function()
+      {      
+        $(".users-add").show();
+        $(".user-assign-role").hide();
+        $(".delivery-boys-add").hide();
+        $(".dashboard").hide();
+        $(".delivery-boys-manage").hide();
+        $(".category-add").hide();
+        $(".category-manage").hide();
+        $(".restaurant-add").hide();
+        $(".restaurant-manage").hide();
+        $(".food-item-add").hide();
+        $(".food-item-manage").hide();
+        $(".order-add").hide();
+        $(".order-manage").hide();
+        $(".users-manage").hide();
+      }
+    );
+  });
+
+  $(document).ready(function(){
     $('.user_assign_role').click(function()
       {      
+        $(".users-add").hide();
         $(".user-assign-role").show();
         $(".delivery-boys-add").hide();
         $(".dashboard").hide();
@@ -56,6 +95,7 @@
   $(document).ready(function(){
     $('.delivery_boys_add').click(function()
       {    
+        $(".users-add").hide();
         $(".user-assign-role").hide();  
         $(".delivery-boys-add").show();
         $(".dashboard").hide();
@@ -76,6 +116,7 @@
   $(document).ready(function(){
     $('.users_manage').on('click',function()
       { 
+        $(".users-add").hide();
         $(".users-manage").show();
         $(".user-assign-role").hide();
         $(".category-manage").hide();
@@ -96,6 +137,7 @@
   $(document).ready(function(){
     $('.delivery_boy_manage').on('click',function()
       { 
+        $(".users-add").hide();
         $(".delivery-boys-manage").show();
         $(".user-assign-role").hide();
         $(".dashboard").hide();
@@ -116,6 +158,7 @@
   $(document).ready(function(){
      $('.category_manage').on('click',function()
       { 
+        $(".users-add").hide();
         $(".category-manage").show();
         $(".user-assign-role").hide();
         $(".dashboard").hide();
@@ -136,6 +179,7 @@
   $(document).ready(function(){
      $('.category_add').on('click',function()
       { 
+        $(".users-add").hide();
         $(".category-manage").hide();
         $(".user-assign-role").hide();
         $(".dashboard").hide();
@@ -156,6 +200,7 @@
   $(document).ready(function(){
      $('.restaurant_manage').on('click',function()
       { 
+        $(".users-add").hide();
         $(".restaurant-add").hide();
         $(".user-assign-role").hide();
         $(".restaurant-manage").show();
@@ -176,6 +221,7 @@
   $(document).ready(function(){
      $('.restaurant_add').on('click',function()
       { 
+        $(".users-add").hide();
         $(".restaurant-add").show();
         $(".user-assign-role").hide();
         $(".restaurant-manage").hide();
@@ -196,6 +242,7 @@
   $(document).ready(function(){
      $('.food_item_manage').on('click',function()
       { 
+        $(".users-add").hide();
         $(".food-item-add").hide();
         $(".user-assign-role").hide();
         $(".food-item-manage").show();
@@ -216,6 +263,7 @@
   $(document).ready(function(){
      $('.food_item_add').on('click',function()
       { 
+        $(".users-add").hide();
         $(".food-item-add").show();
         $(".user-assign-role").hide();
         $(".food-item-manage").hide();
@@ -236,6 +284,7 @@
   $(document).ready(function(){
      $('.order_manage').on('click',function()
       { 
+        $(".users-add").hide();
         $(".order-add").hide();
         $(".user-assign-role").hide();
         $(".order-manage").show();
@@ -256,6 +305,7 @@
   $(document).ready(function(){
      $('.order_add').on('click',function()
       { 
+        $(".users-add").hide();
         $(".order-add").show();
         $(".user-assign-role").hide();
         $(".order-manage").hide();
