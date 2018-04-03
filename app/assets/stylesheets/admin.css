@@ -12,7 +12,7 @@
  *
  *= require admin_bootstrap.min
  *= require jquery-ui
- *= require bootstrap2-toggle
+ *= require bootstrap2-toggle.min
  *= require bootstrap-toggle-buttons
  *= require slidebars
  *= require switchery.min

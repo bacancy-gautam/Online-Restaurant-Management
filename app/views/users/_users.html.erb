@@ -28,7 +28,15 @@
             <td><%= $i %></td>
             <td><%= user.username %></td>
             <td><%= user.email %></td>
-            <td></td>
+            <td>
+              <% if user_signed_in?  %>
+                <% if user.is_active == true  %>
+                  <%= link_to "Active" , change_user_status_user_path(user) %>
+                <% else %>
+                  <%= link_to "Inactive",change_user_status_user_path(user)%>
+                <% end %>
+              <% end %>
+            </td>
             <td class="hidden-xs">
               <%= link_to '', user_path(user), class: "btn btn-success btn-xs fa fa-check", remote: true %>
               <%= link_to "", edituser_user_path(user), class: "btn btn-primary btn-xs fa fa-pencil", remote: true %>
@@ -66,7 +74,15 @@
             <td><%= $i %></td>
             <td><%= user.username %></td>
             <td><%= user.email %></td>
-            <td></td>
+            <td>
+              <% if user_signed_in?  %>
+                <% if user.is_active == true  %>
+                  <%= link_to "Active" , change_user_status_user_path(user) %>
+                <% else %>
+                  <%= link_to "Inactive",change_user_status_user_path(user)%>
+                <% end %>
+              <% end %>
+            </td>
             <td class="hidden-xs">
               <%= link_to '', user_path(user), class: "btn btn-success btn-xs fa fa-check" %>
               <%= link_to "", edit_user_path(user), class: "btn btn-primary btn-xs fa fa-pencil" %>

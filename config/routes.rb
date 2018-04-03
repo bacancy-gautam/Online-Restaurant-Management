@@ -26,7 +26,14 @@ Rails.application.routes.draw do
   resources :offers
   resources :food_items
   resources :categories
-  resources :restaurants
+  resources :restaurants do
+    collection do
+      get :restaurant_list
+    end
+    member do
+      get :change_restaurant_status
+    end
+  end
   resources :food_categories
   resources :reviews
   resources :restaurantscategories

@@ -4,8 +4,11 @@ class RestaurantsController < ApplicationController
   before_action :fetch_restaurant, only: [:show, :edit,
                                           :update, :add_restaurant_to_fav]
   
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> updated restaurant status as active or inactive
   def new
     @restaurant = Restaurant.new
     @address = @restaurant.create_address
@@ -94,6 +97,27 @@ class RestaurantsController < ApplicationController
         @restaurants = @restaurants.limit(5)
         @fooditems = @fooditems.limit(5)
       end
+    end
+  end
+
+  def restaurant_list
+    @restaurants = Restaurant.all
+    respond_to do |format|
+      format.html
+      format.js
+    end  
+  end
+
+  def change_restaurant_status
+    @restaurants = Restaurant.find(params[:id])
+    if @restaurants.status == true
+      @restaurants.status = false
+      @restaurants.save
+      redirect_to static_pages_my_account_path
+    else
+      @restaurants.status = true
+      @restaurants.save
+      redirect_to static_pages_my_account_path
     end
   end
 
