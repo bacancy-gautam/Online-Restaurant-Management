@@ -24,14 +24,31 @@ class UsersController < ApplicationController
     end  
   end
 
+  def edituser
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    @status = 1
+  end
+
   def edit
     @user = User.find(params[:id])
+    @status = 2
   end
 
   def update
+    @users = User.all
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user
+      respond_to do |format|
+        format.html do
+          render(partial: 'users')
+        end
+        format.js
+      end
+        #redirect_to @user
     else
       render 'edit'
     end
@@ -39,6 +56,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    respond_to do |format|
+        format.html do
+          render(partial: 'showuser')
+        end
+        format.js
+      end
   end
   
   def destroy

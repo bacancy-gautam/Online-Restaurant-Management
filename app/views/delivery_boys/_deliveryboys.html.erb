@@ -1,0 +1,35 @@
+<!-- only super-admin can  -->
+<h2>Delivery Boys</h2>
+
+<table class="table table-striped custom-table table-hover">
+  
+  <thead>
+    <th>No.</th>
+    <th>Name </th>
+    <th>Username </th>
+    <th>Email</th>
+    <th>Phoneno</th>
+    <th>Status</th>
+    <th>Action</th>
+  </thead>
+
+  <tbody>
+  <% $i = 1 %>
+  <% @delivery_boys.each do |delivery_boy| %>
+  
+    <tr>
+      <td><%= $i %></td>
+      <td><%= delivery_boy.firstname + " " + delivery_boy.lastname %></td>
+      <td><%= delivery_boy.username %></td>
+      <td><%= delivery_boy.email %></td>
+      <td><%= delivery_boy.phoneno %></td>
+      <td><%= delivery_boy.status %></td>
+      <td colspan="3">
+        <%= link_to 'show',delivery_boy_path(delivery_boy), class: "btn btn-success btn-xs fa fa-check" %>
+        <%= link_to 'edit',edit_delivery_boy_path(delivery_boy), class: "btn btn-primary btn-xs fa fa-pencil" %>
+      </td>
+    </tr>
+    <% $i = $i+1 %>
+  <% end %>
+  </tbody>
+</table>

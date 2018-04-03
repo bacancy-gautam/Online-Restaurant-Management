@@ -32,8 +32,8 @@
             <li class="menu-list active" style="width:250px;" >
                 <a href="#"><i class="fa fa-user"></i> <span>Delivery-Boy</span></a>
                 <ul class="child-list">
-                    <li><div class="delivery_boys_add">Add</div></li>
-                    <li ><div class= "delivery_boy_manage" >Manage</div></li>
+                    <li><%= link_to 'Add', new_delivery_boy_path, remote: true, class: "showpartials" %></li>
+                    <li ><%= link_to 'Manage', delivery_boys_path, remote: true, class: "showpartials" %></li>
                 </ul>
             </li>
             <li class="menu-list active" style="width:250px;" >

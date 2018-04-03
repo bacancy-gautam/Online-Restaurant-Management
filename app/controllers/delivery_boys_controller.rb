@@ -5,14 +5,20 @@ class DeliveryBoysController < ApplicationController
   end
 
   def create
+    @delivery_boys = DeliveryBoy.all
     @delivery_boy = DeliveryBoy.new(delivery_boy_params) do |delivery_boy|
       password = SecureRandom.hex(8)
       delivery_boy.password = password
     end
-
     if @delivery_boy.save
       DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy).deliver_now
-      redirect_to static_pages_my_account_path
+      respond_to do |format|
+        format.html do
+          render(partial: 'deliveryboys')
+        end
+        format.js
+      end
+      #redirect_to static_pages_my_account_path
     end
   end
 
