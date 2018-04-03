@@ -58,5 +58,5 @@ Rails.application.routes.draw do
                 sessions: 'delivery_boys/sessions',
                 registrations: 'delivery_boys/registrations'
               }
-  post "add_review", to: 'restaurants#add_review'
+  # post "add_review", to: 'restaurants#add_review'
 end
