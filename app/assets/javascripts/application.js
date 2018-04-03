@@ -33,7 +33,8 @@
 // = require slick
 // = require superfish
 // = require swiper.min
-
+// = require jquery.raty
+// = require ratyrate
 
 
 $(document).ready(function(){

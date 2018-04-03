@@ -36,6 +36,7 @@ class RestaurantsController < ApplicationController
     @categories = @restaurant.categories
     @fooditems = @restaurant.food_items
     @review = Review.new
+    @reviews = @restaurant.reviews
   end
 
   def index
@@ -68,6 +69,21 @@ class RestaurantsController < ApplicationController
         end
         format.js
       end
+    end
+  end
+
+  def add_review
+    @restaurant = Restaurant.find(params[:review][:restaurant_id])
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    @review.name = current_user.username
+    @review.save
+    respond_to do |format|
+      format.html do
+        redirect_to restaurant_path(@restaurant.id),
+                    notice: 'Review Added.'
+      end
+      format.js
     end
   end
 
@@ -110,9 +126,13 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(
       :name, :details, :phone_no, :email, :opening_time,
-      :closing_time, :delivery_types, :branch_name, :image,
+      :closing_time, :delivery_types, :branch_name,
       address_attributes: [:addressline, :area, :city, :state, :pincode]
     )
+  end
+
+  def review_params
+    params.require(:review).permit(:comment, :restaurant_id)
   end
 
   def fetch_restaurant

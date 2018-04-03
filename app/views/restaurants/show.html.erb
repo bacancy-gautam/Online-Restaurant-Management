@@ -37,7 +37,6 @@
             <!-- <span>9.5</span> -->
           </div>
           <div class="review-btn">
-            
             <a href="#" class="btn btn-outline-danger review">WRITE A REVIEW</a>
             <span><%= Review.count %> reviews</span>
           </div>
@@ -110,9 +109,21 @@
                     <div class="customer-review">
                       <%= f.text_area :comment, size: "40x4", class: "comment" %>
                     </div>
-                    <div class="customer-submit">
-                    <div class="submitd"><%= f.submit "SUBMIT", class: "submit" %></div></div>
                     <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+                    <div class="submitd"><%= f.submit "SUBMIT", class: "submit" %></div>
+                    <script>
+                      $(".submitd").on('click',function(){
+                        // alert();
+                        $.ajax({
+                          url: "/add_review",
+                          method: 'POST',
+                          data: {
+                            id: "<%= @restaurant.id %>"
+                          },
+                          dataType: 'script'
+                        });
+                      });
+                    </script>
                   </div>
                 </div>
               </div>
@@ -120,7 +131,9 @@
           <%end%>
           <hr>
           <div id="review-list">
-            <%= render @reviews %>
+            <% if @reviews.present? %>
+              <%= render @reviews %>
+            <%end%>
           <hr>
         </div>
       </div>
@@ -150,17 +163,6 @@
   <!--//END FOOTER -->
 
   <script>
-    $(".submitd").on('click',function(){
-                        // alert();
-                        $.ajax({
-                          url: "/add_review",
-                          method: 'POST',
-                          data: {
-                            id: "<%= @restaurant.id %>"
-                          },
-                          dataType: 'script'
-                        });
-                      });
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 3,
       slidesPerGroup: 3,
