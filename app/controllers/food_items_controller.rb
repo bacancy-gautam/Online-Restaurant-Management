@@ -1,7 +1,6 @@
 # Controller for Food Items
 class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy, :add_food_to_fav]
-  before_action :food_item_params, only: [:show, :edit, :update, :destroy]
 
   def index
     @fooditems = FoodItem.all
@@ -41,19 +40,27 @@ class FoodItemsController < ApplicationController
   end
 
   def add_food_to_fav
-    @favourite = @fooditem.favourites.find_by(user_id: current_user.id)
-    if @favourite
-      @favourite.delete
-    else
-      @fooditem.favourites.find_or_create_by(user_id: current_user.id)
-      respond_to do |format|
-        format.html do
-          redirect_to restaurant_path(@fooditem.restaurant),
-                      notice: 'Added to Favourite.'
-        end
-        format.js
+    AddFoodToFavourite.new({user: current_user, fooditem: @fooditem}).create
+    respond_to do |format|
+      format.html do
+        redirect_to restaurant_path(@fooditem.restaurant),
+                    notice: 'Added to Favourite.'
       end
+      format.js
     end
+    # @favourite = @fooditem.favourites.find_by(user_id: current_user.id)
+    # if @favourite
+    #   @favourite.delete
+    # else
+    #   @fooditem.favourites.find_or_create_by(user_id: current_user.id)
+    #   respond_to do |format|
+    #     format.html do
+    #       redirect_to restaurant_path(@fooditem.restaurant),
+    #                   notice: 'Added to Favourite.'
+    #     end
+    #     format.js
+    #   end
+    # end
   end
 
   private
