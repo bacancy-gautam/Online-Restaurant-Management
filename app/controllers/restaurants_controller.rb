@@ -74,21 +74,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def add_review
-    @restaurant = Restaurant.find(params[:review][:restaurant_id])
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    @review.name = current_user.username
-    @review.save
-    respond_to do |format|
-      format.html do
-        redirect_to restaurant_path(@restaurant.id),
-                    notice: 'Review Added.'
-      end
-      format.js
-    end
-  end
-
   def edit
     @review = Review.find(review_params)
     if @review.update_attributes

@@ -3,10 +3,12 @@
   <span>
     <%=  Review.where(user_id: current_user.id).count()%> Reviews
   </span>
+  <% if current_user.id == review.user_id%>
   <br>
   <%= link_to "Edit", edit_review_path(review.id),remote: true%>
   <br>
-  <span>Delete</span>
+  <%= link_to "Delete", review_path(review.id),method: :delete, remote: true%>
+  <%end%>
 </div>
 <div class="customer-content-wrap">
   <div class="customer-content">

@@ -1,12 +1,10 @@
 <div class="customer-review_wrap">
- <div class="customer-img">
- <%= form_for review, remote: true do |f|%>
-  <span><%f.submit "Update"%></span><br>
-</div>
-<div class="customer-content-wrap">
-<p class="customer-text">
-    <%= f.text_field :comment, :value => review.comment %>
-  <%end%>  
-</p>
-</div>
+  <div class="customer-content-wrap">
+    <p class="customer-text">
+      <%= form_for review, method: :patch, remote: true do |f|%>
+        <%= f.text_field :comment, :value => review.comment %>
+        <span><%= f.submit "Update" %></span><br>
+      <% end %>  
+    </p>
+  </div>
 </div>
