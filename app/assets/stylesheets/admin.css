@@ -24,3 +24,38 @@
  *= require _all
  *= require jquery.steps
  */
+#usr_form{
+
+	display: inline;
+}
+.table
+{
+	display:table;
+	border-collapse:separate;
+	border-spacing:2px;
+}
+.thead
+{
+	display:table-header-group;
+	color:white;
+	font-weight:bold;
+	background-color:grey;
+}
+.tbody
+{
+	display:table-row-group;
+}
+.tr
+{
+	display:table-row;
+}
+.td
+{
+	display:table-cell;
+	border:1px solid black;
+	padding:1px;
+}
+.tr.editing .td INPUT
+{
+	width:100px;
+}

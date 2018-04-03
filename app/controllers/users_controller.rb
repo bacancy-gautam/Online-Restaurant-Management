@@ -1,24 +1,18 @@
 # Controller for Users
 class UsersController < ApplicationController
+
+  
   def new
     @user = User.new
   end
 
   def create
     @users = User.all
-    @user = User.new(user_params) do |user|
-      password = SecureRandom.hex(8)
-      user.password = password
-    end
-    if @user.save
-      UserMailer.user_registration_mail(@user).deliver_now
-      respond_to do |format|
-        format.html do
-          render(partial: 'users')
-        end
-        format.js
-      end
-      #redirect_to static_pages_my_account_path
+    @user = create_user
+    UserMailer.user_registration_mail(@user).deliver_now if @user.save
+    respond_to do |format|
+      format.html { render(partial: 'users') }
+      format.js
     end
   end
 
@@ -46,17 +40,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-
+  
   def destroy
     @users = User.all 
     @user = User.find(params[:id])
-    if @user.destroy
-      respond_to do |format|
-        format.html do
-          render(partial: 'users')
-        end
-        format.js
-      end
+    @user.destroy
+    respond_to do |format|
+      format.html { render(partial: 'users') }
+      format.js
     end
   end
 
@@ -78,36 +69,39 @@ class UsersController < ApplicationController
 
   def role_assign
     @users = User.all
-    @role = Role.all 
+    @roles = Role.all 
   end
 
   def assign_role
     @users = User.all
-    
     @user = User.find(params[:id])
+    @roles = Role.all 
     @role = Role.find(params[:role_id])
     @user.roles.delete_all
     @user.add_role @role.name
-    # redirect_to static_pages_my_account_path
     respond_to do |format|
-        format.html do
-          render(partial: 'role_assign')
-        end
-        format.js{
-          render(partial: 'role_assign')
-        }
-      end
+      format.html { render(partial: 'role_assign') }
+      format.js
+    end
   end
 
   private
 
   def user_params
     params.require(:user).permit(:firstname, :lastname, :username, 
-                                  :phoneno, :email, :image)
+                                  :phoneno, :email, :image, :role_id)
   end
 
   def change_password_params
     params.require(:user).permit(:current_password, :password,
                                  :password_confirmation)
   end
+
+  def create_user
+    User.new(user_params) do |user|
+      password = SecureRandom.hex(8)
+      user.password = password
+    end
+  end
+  
 end
