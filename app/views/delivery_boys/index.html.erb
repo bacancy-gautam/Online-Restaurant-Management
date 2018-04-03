@@ -1,7 +1,7 @@
 <!-- only super-admin can  -->
 <h2>Delivery Boys</h2>
 
-<table>
+<table class="table table-striped custom-table table-hover">
   
   <thead>
     <th>No.</th>
@@ -25,13 +25,11 @@
       <td><%= delivery_boy.phoneno %></td>
       <td><%= delivery_boy.status %></td>
       <td colspan="3">
-        <%= link_to 'show',delivery_boy_path(delivery_boy) %>
-        <%= link_to 'edit',edit_delivery_boy_path(delivery_boy) %>
-        
+        <%= link_to 'show',delivery_boy_path(delivery_boy), class: "btn btn-success btn-xs fa fa-check" %>
+        <%= link_to 'edit',edit_delivery_boy_path(delivery_boy), class: "btn btn-primary btn-xs fa fa-pencil" %>
       </td>
     </tr>
     <% $i = $i+1 %>
   <% end %>
   </tbody>
-
 </table>

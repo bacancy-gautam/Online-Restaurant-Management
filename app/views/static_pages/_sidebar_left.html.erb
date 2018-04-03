@@ -23,9 +23,10 @@
             <li class="menu-list active" style="width:250px;" >
                 <a href="#"><i class="fa fa-users"></i>  <span>Users</span></a>
                 <ul class="child-list">
-                    <li><%= link_to 'Add' %></li>
-                    <li><div class= "users_manage" >Manage</div></li>
-                    <li><div class= "user_assign_role" >Assign Role</div></li>
+                    <!-- <li><div class= "users_add" >Add</div></li> -->
+                    <li><%= link_to 'Add' , new_user_path, remote: true, class: "showpartials" %></li> 
+                    <li><%= link_to 'Manage', users_path, remote: true, class: "showpartials" %></li>
+                    <li><%= link_to 'Assign Role', role_assign_users_path, remote: true, class: "showpartials" %> </li>
                 </ul>
             </li>
             <li class="menu-list active" style="width:250px;" >

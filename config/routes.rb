@@ -29,11 +29,12 @@ Rails.application.routes.draw do
   resources :restaurantscategories
   resources :users, path: 'customers' do
     collection do
+      get :role_assign
       get :change_password_edit
       patch :change_password_update
     end
     member do
-      post :assign_role
+      patch :assign_role
     end
   end
   resources :delivery_boys, path: 'deliveryboys' do

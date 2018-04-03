@@ -12,7 +12,7 @@ class DeliveryBoysController < ApplicationController
 
     if @delivery_boy.save
       DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy).deliver_now
-      redirect_to root_path
+      redirect_to static_pages_my_account_path
     end
   end
 

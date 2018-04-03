@@ -6549,3 +6549,15 @@ a.view-all:hover {
     -webkit-transition: all 0.2s ease-out 0s;
     transition: all 0.2s ease-out 0s;
 }
+
+.formbackground {
+    background: white;
+    padding: 25px;
+}
+
+.form-input{
+    width: 100%;
+    border: 1px solid #ccc;
+    height: 30px;
+    margin: 5px;
+}
