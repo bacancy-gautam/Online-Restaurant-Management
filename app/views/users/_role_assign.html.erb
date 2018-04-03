@@ -15,7 +15,7 @@
       <% if user.has_role? :super_admin %>
       <% else %>
         <tr>
-          <%= form_tag assign_role_user_path(user) do %>
+          <%= form_tag assign_role_user_path(user), remote: true, method: :post do %>
             <td><%=  $i %></td>
             <td><%=  user.username %></td>
             <td><%=  user.email %></td>

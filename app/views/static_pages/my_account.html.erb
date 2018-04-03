@@ -3,101 +3,98 @@
 
   <!-- body content start-->
   <div class="body-content" >
+    <!-- header section start-->
+    <div class="header-section">
 
-      <!-- header section start-->
-      <div class="header-section">
-
-          <!--logo and logo icon start-->
-          <div class="logo dark-logo-bg hidden-xs hidden-sm">
-              <a href="index-2.html">
-                  <!--<i class="fa fa-maxcdn"></i>-->
-                  <span class="brand-name">Food-Ordering</span>
-              </a>
-          </div>
-
-          <!--logo and logo icon end-->
-
-          <!--toggle button start-->
-          <a class="toggle-btn"><i class="fa fa-outdent"></i></a>
-          <!--toggle button end-->
-
-          
-          <div class="notification-wrap">
-          <!--left notification start-->
-          <div class="left-notification">
-          <ul class="notification-menu">
-
-          <!--notification info start-->
-          <li>
-              <a href="javascript:;" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
-                  <i class="fa fa-bell-o"></i>
-                  <span class="badge bg-warning">3</span>
-              </a>
-
-              <div class="dropdown-menu dropdown-title ">
-
-                  <div class="title-row">
-                      <h5 class="title yellow">
-                          You have 3 New Notification
-                      </h5>
-                      <a href="javascript:;" class="btn-warning btn-view-all">View all</a>
-                  </div>
-                  <div class="notification-list-scroll sidebar">
-                      <div class="notification-list mail-list not-list">
-                          <a href="javascript:;" class="single-mail">
-                              <span class="icon bg-primary">
-                                  <i class="fa fa-envelope-o"></i>
-                              </span>
-                              <strong>New User Registration</strong>
-
-                              <p>
-                                  <small>Just Now</small>
-                              </p>
-                              <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
-                                  <i class="fa fa-circle"></i>
-                              </span>
-                          </a>
-                          <a href="javascript:;" class="single-mail">
-                              <span class="icon bg-success">
-                                  <i class="fa fa-comments-o"></i>
-                              </span>
-                              <strong> Private message Send</strong>
-
-                              <p>
-                                  <small>30 Mins Ago</small>
-                              </p>
-                              <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
-                                  <i class="fa fa-circle"></i>
-                              </span>
-                          </a>
-                          <a href="javascript:;" class="single-mail">
-                              <span class="icon bg-warning">
-                                  <i class="fa fa-warning"></i>
-                              </span> Application Error
-                              <p>
-                                  <small> 2 Days Ago</small>
-                              </p>
-                              <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
-                                  <i class="fa fa-circle-o"></i>
-                              </span>
-                          </a>
-
-                      </div>
-                  </div>
-              </div>
-          </li>
-          <!--notification info end-->
-          </ul>
-          </div>
-          <!--left notification end-->
-
-          <!--right notification start(my_account,profile,logout)-->
-            <%= render 'right_notification' %>
-          <!--right notification end-->
-          </div>
-
+      <!--logo and logo icon start-->
+      <div class="logo dark-logo-bg hidden-xs hidden-sm">
+          <a href="index-2.html">
+              <!--<i class="fa fa-maxcdn"></i>-->
+              <span class="brand-name">Food-Ordering</span>
+          </a>
       </div>
-      <!-- header section end-->
+      <!--logo and logo icon end-->
+
+      <!--toggle button start-->
+      <a class="toggle-btn"><i class="fa fa-outdent"></i></a>
+      <!--toggle button end-->
+
+      <div class="notification-wrap">
+        <!--left notification start-->
+        <div class="left-notification">
+        <ul class="notification-menu">
+
+        <!--notification info start-->
+        <li>
+            <a href="javascript:;" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                <i class="fa fa-bell-o"></i>
+                <span class="badge bg-warning">3</span>
+            </a>
+
+            <div class="dropdown-menu dropdown-title ">
+
+                <div class="title-row">
+                    <h5 class="title yellow">
+                        You have 3 New Notification
+                    </h5>
+                    <a href="javascript:;" class="btn-warning btn-view-all">View all</a>
+                </div>
+                <div class="notification-list-scroll sidebar">
+                    <div class="notification-list mail-list not-list">
+                        <a href="javascript:;" class="single-mail">
+                            <span class="icon bg-primary">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                            <strong>New User Registration</strong>
+
+                            <p>
+                                <small>Just Now</small>
+                            </p>
+                            <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                <i class="fa fa-circle"></i>
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="single-mail">
+                            <span class="icon bg-success">
+                                <i class="fa fa-comments-o"></i>
+                            </span>
+                            <strong> Private message Send</strong>
+
+                            <p>
+                                <small>30 Mins Ago</small>
+                            </p>
+                            <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                <i class="fa fa-circle"></i>
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="single-mail">
+                            <span class="icon bg-warning">
+                                <i class="fa fa-warning"></i>
+                            </span> Application Error
+                            <p>
+                                <small> 2 Days Ago</small>
+                            </p>
+                            <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                <i class="fa fa-circle-o"></i>
+                            </span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!--notification info end-->
+        </ul>
+        </div>
+        <!--left notification end-->
+
+        <!--right notification start(my_account,profile,logout)-->
+          <%= render 'right_notification' %>
+        <!--right notification end-->
+        </div>
+
+    </div>
+    <!-- header section end-->
 
       <!-- page head start-->
       <div class="page-head">
@@ -183,137 +180,138 @@
 
           <!-- Chart started -->
           <div class="row">
-                    <div class="col-md-6">
-                        <section class="panel">
-                            <header class="panel-heading">
-                                Bar Chart
-                                <span class="tools pull-right">
-                                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
-                                    <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
-                                    <a class="t-close fa fa-times" href="javascript:;"></a>
-                                </span>
-                            </header>
-                            <div class="panel-body">
-                                <div class="chartJS">
-                                    <canvas id="bar-chart-js" height="240" width="100%" ></canvas>
-                                </div>
-                            </div>
-                        </section>
+            <div class="col-md-6">
+              <section class="panel">
+                <header class="panel-heading">
+                  Bar Chart
+                  <span class="tools pull-right">
+                      <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                      <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                      <a class="t-close fa fa-times" href="javascript:;"></a>
+                  </span>
+                </header>
+                  <div class="panel-body">
+                    <div class="chartJS">
+                        <canvas id="bar-chart-js" height="240" width="100%" ></canvas>
                     </div>
+                  </div>
+              </section>
+            </div>
 
-                    <div class="col-md-6">
-                        <section class="panel">
-                            <header class="panel-heading">
-                                Line chart
-                                <span class="tools pull-right">
-                                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
-                                    <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
-                                    <a class="t-close fa fa-times" href="javascript:;"></a>
-                                </span>
-                            </header>
-                            <div class="panel-body">
-                                <div class="chartJS">
-                                    <canvas id="line-chart-js" height="240" width="100%" ></canvas>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+            <div class="col-md-6">
+              <section class="panel">
+                <header class="panel-heading">
+                  Line chart
+                  <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                  </span>
+                </header>
+                <div class="panel-body">
+                  <div class="chartJS">
+                    <canvas id="line-chart-js" height="240" width="100%" ></canvas>
+                  </div>
+                </div>
+              </section>
+            </div>
 
           </div>
           <div class="row">
             <div class="col-md-6">
-                <section class="panel">
-                    <header class="panel-heading">
-                        Pie Chart
-                        <span class="tools pull-right">
-                            <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
-                            <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
-                            <a class="t-close fa fa-times" href="javascript:;"></a>
-                        </span>
-                    </header>
-                    <div class="panel-body">
-                        <div class="chartJS">
-                            <canvas id="pie-chart-js" height="240" width="100%" ></canvas>
-                        </div>
-                    </div>
-                </section>
+              <section class="panel">
+                <header class="panel-heading">
+                  Pie Chart
+                  <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                  </span>
+                </header>
+                <div class="panel-body">
+                  <div class="chartJS">
+                    <canvas id="pie-chart-js" height="240" width="100%" ></canvas>
+                  </div>
+                </div>
+              </section>
             </div>
 
             <div class="col-md-6">
-                <section class="panel">
-                    <header class="panel-heading">
-                        Donut Chart
-                        <span class="tools pull-right">
-                            <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
-                            <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
-                            <a class="t-close fa fa-times" href="javascript:;"></a>
-                        </span>
-                    </header>
-                    <div class="panel-body">
-                        <div class="chartJS">
-                            <canvas id="donut-chart-js" height="240" width="100%" ></canvas>
-                        </div>
-                    </div>
-                </section>
+              <section class="panel">
+                <header class="panel-heading">
+                  Donut Chart
+                  <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                  </span>
+                </header>
+                <div class="panel-body">
+                  <div class="chartJS">
+                    <canvas id="donut-chart-js" height="240" width="100%" ></canvas>
+                  </div>
+                </div>
+              </section>
             </div>
 
           </div>
           <!-- Chart ended -->
         </div> 
 
-        <div class="user-assign-role">
-          <%= render file: 'app/views/users/assign_role.html' %>
+        <div id = "show-partials">
+          
+        </div>
+        <!-- <div class="user-assign-role">
+          <%#= render file: 'app/views/users/assign_role.html' %>
         </div>
 
         <div class="users-manage">
-          <%= render file: 'app/views/users/index.html' %>
+          <%#= render file: 'app/views/users/index.html' %>
+        </div>
+
+        <div class="users-add">
+          <%#= render file: 'app/views/users/new.html' %>
         </div>
         
         <div class="delivery-boys-add">
-          <%= render file: 'app/views/delivery_boys/new.html' %>
+          <%#= render file: 'app/views/delivery_boys/new.html' %>
         </div>
 
         <div class="delivery-boys-manage">
-          <%= render file: 'app/views/delivery_boys/index.html' %>
+          <%#= render file: 'app/views/delivery_boys/index.html' %>
         </div>
 
         <div class="category-add">
-          <%= render file: 'app/views/categories/new.html' %>
+          <%#= render file: 'app/views/categories/new.html' %>
         </div> 
 
         <div class="category-manage">
-          <%= render file: 'app/views/categories/index' %>
+          <%#= render file: 'app/views/categories/index' %>
         </div>
 
         <div class="restaurant-add">
-          <%= render file: 'app/views/restaurants/new.html' %>
+          <%#= render file: 'app/views/restaurants/new.html' %>
         </div> 
 
         <div class="restaurant-manage">
-          <%= render file: 'app/views/restaurants/index.html' %>
+          <%#= render file: 'app/views/restaurants/index.html' %>
         </div>
 
         <div class="food-item-add">
-          <%= render file: 'app/views/food_items/new' %>
+          <%#= render file: 'app/views/food_items/new' %>
         </div> 
 
         <div class="food-item-manage">
-          <%= render file: 'app/views/food_items/index' %>
+          <%#= render file: 'app/views/food_items/index' %>
         </div>
 
         <div class="order-add">
-          <%= render file: 'app/views/orders/new' %>
+          <%#= render file: 'app/views/orders/new' %>
         </div> 
 
         <div class="order-manage">
-          <%= render file: 'app/views/orders/index' %>
-        </div>
-        
-        
-        
-        
-        
-        
+          <%#= render file: 'app/views/orders/index' %>
+        </div> -->
         
         <%#= render file: 'app/views/offers/new' %> <!-- Not working -->
         <%#= render file: 'app/views/offers/index' %> <!-- No content -->
