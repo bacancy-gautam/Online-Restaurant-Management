@@ -6,6 +6,10 @@ class ReviewsController < ApplicationController
     @review.name = current_user.username
     @review.save
   end
+  def edit
+    @review = Review.find(params[:id])
+    
+  end
 private
 
   def review_params

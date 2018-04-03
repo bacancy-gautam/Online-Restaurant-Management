@@ -104,21 +104,7 @@
                 <div class="customer-img">
                   <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
                   <p><%= current_user.username %></p>
-            </div>
-            <div class="customer-content-wrap">
-              <div class="customer-content">
-                <div class="customer-review">
-                  <%= f.text_area :comment,size: "40x4", class: "comment"%>
-                </div >
-                <div class="submit"><%= f.submit "SUBMIT", class: "submit" %></div>
               </div>
-            </div>
-          </div>
-          <%end%>
-          <%end%>
-          <hr>
-          <h5><%= Review.count %> Reviews</h5>
-          <hr>
                 <div class="customer-content-wrap">
                   <div class="customer-content">
                     <div class="customer-review">
@@ -141,6 +127,10 @@
                     </script>
                   </div>
                 </div>
+          </div>
+          <hr>
+          <h5><%= Review.count %> Reviews</h5>
+          <hr>
               </div>
             <%end%>
           <%end%>
