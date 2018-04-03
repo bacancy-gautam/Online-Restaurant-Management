@@ -4,46 +4,21 @@ class MasterOrdersController < ApplicationController
 
   def new
     @master_order = MasterOrder.new
-    order_key = []
     @order = []
     order_key = session[:order].keys
     order_key.each do |i|
-      @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
+      @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
     end
     # session[:order].reject{|c| puts "true" if session[:order][c]==nil}
   end
 
   def create
-    order_key = []
-    @order = []
-    order_key = session[:order].compact.keys
-    order_key.each do |i|
-      @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
-    end
-
-    sum = 0
-    #@order.each do |o|
-     # sum += (o.price.to_i * o.quantity)
-    #end
-
-    @master_order = MasterOrder.create(master_order_params)
-   
-    Order.where(restaurant_id:@master_order.restaurant_id).find(session[:order].compact.keys).each do |o|
-      sum = sum + o.price.to_i
-    end 
-    
-    @master_order.update_attribute(:total, sum)
-    @master_order.update_attribute(:order_status, "placed")
-    @master_order.update_attribute(:payment_status, "pending")
-    @master_order.update_attribute(:user_id, current_user.id)
-    session[:order]= nil
-    reset_session
-    
+    MasterOrderHandler.new(params, session, current_user).manage_master_order
     redirect_to master_orders_path
   end
 
   def index
-    @master_orders = MasterOrder.where(user_id:current_user.id)
+    @master_orders = MasterOrder.where(user_id: current_user.id)
   end
 
   def destroy
@@ -56,11 +31,11 @@ class MasterOrdersController < ApplicationController
 
   def show
     @master_order = MasterOrder.find(params[:id])
-    #a = session[:order].compact.keys
-    #@order = []
-    #a.each do |i|
-     # @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
-    #end
+    # a = session[:order].compact.keys
+    # @order = []
+    # a.each do |i|
+    # @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
+    # end
   end
 
   private

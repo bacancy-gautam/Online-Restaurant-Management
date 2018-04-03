@@ -1,8 +1,8 @@
 # this model will keep records of all confirm orders
 class MasterOrder < ApplicationRecord
   has_many :orders
-  enum order_type: ['homedelivery', 'pickup']
+  enum order_type: ['home delivery', 'pickup']
   enum payment_type: ['cod', 'card']
-  enum order_status: ['placed', 'inprogress', 'ready', 'deliverd']
+  enum order_status: ['placed', 'inprogress', 'ready','on the way', 'delivered']
   enum payment_status: ['pending', 'paid']
 end
