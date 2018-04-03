@@ -1,5 +1,7 @@
 # Controller for Users
 class UsersController < ApplicationController
+
+  
   def new
     @user = User.new
   end
@@ -78,24 +80,23 @@ class UsersController < ApplicationController
 
   def role_assign
     @users = User.all
-    @role = Role.all 
+    @roles = Role.all 
   end
 
   def assign_role
     @users = User.all
-    
     @user = User.find(params[:id])
+    @roles = Role.all 
     @role = Role.find(params[:role_id])
     @user.roles.delete_all
     @user.add_role @role.name
     # redirect_to static_pages_my_account_path
+
     respond_to do |format|
         format.html do
           render(partial: 'role_assign')
         end
-        format.js{
-          render(partial: 'role_assign')
-        }
+        format.js
       end
   end
 
@@ -103,11 +104,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:firstname, :lastname, :username, 
-                                  :phoneno, :email, :image)
+                                  :phoneno, :email, :image,:role_id)
   end
 
   def change_password_params
     params.require(:user).permit(:current_password, :password,
                                  :password_confirmation)
   end
+
+  
 end

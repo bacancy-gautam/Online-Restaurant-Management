@@ -1,33 +1,29 @@
-<table class="table table-striped custom-table table-hover">
-  <thead>
-    <tr>
-      <th>No.</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Select</th>
-      <th class="hidden-xs"> Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% $i = 1 %>
+<div class="table">
+  <div class="thead">
+    <div class="tr">
+      <div class="td">Sr. no.</div>
+      <div class="td">Username</div>
+      <div class="td">email</div>
+      <div class="td">Role</div>
+      <div class="td">Select New Role</div>
+      <div class="td">Action  </div>
+    </div>
+  </div>
+    <% $i = 1 
+    %>
     <% @users.each do |user| %>
       <% if user.has_role? :super_admin %>
       <% else %>
-        <tr>
-          <%= form_tag assign_role_user_path(user), remote: true, method: :post do %>
-            <td><%=  $i %></td>
-            <td><%=  user.username %></td>
-            <td><%=  user.email %></td>
-            <td><%=  user.roles.first.name %></td>
-            <td><%= select_tag 'role_id', options_from_collection_for_select(@role, 'id', 'name') %></td>
-            <td class="hidden-xs">
-              <%= submit_tag "Change Role"%>
-            </td>
+          <%= form_tag assign_role_user_path(user),{remote: true, method: :patch, class: "tr"}  do %>
+          <span class="td"><%=  $i %></span>
+            <span class="td"><%=  user.username %></span>
+            <span class="td"><%=  user.email %></span>
+            <span class="td"><%=  user.roles.first.name %></span>
+            <span class="td"><%= select_tag 'role_id', options_from_collection_for_select(@roles, 'id', 'name') %>
+            </span>            
+              <span class="td"><%= submit_tag 'change'%></span>
           <%end%>
-        </tr>
         <% $i = $i+1 %>
       <% end %>
     <% end %>
-  </tbody>
-</table>
+</div>
