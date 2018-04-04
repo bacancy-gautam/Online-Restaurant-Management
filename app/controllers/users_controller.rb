@@ -113,9 +113,6 @@ class UsersController < ApplicationController
     if @user.is_active == true
       @user.is_active = false
       @user.save
-    else
-      @user.is_active = true
-      @user.save
     end
   end
 
