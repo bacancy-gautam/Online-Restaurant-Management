@@ -9,21 +9,20 @@
       <div class="td">Action  </div>
     </div>
   </div>
-    <% $i = 1 
-    %>
-    <% @users.each do |user| %>
-      <% if user.has_role? :super_admin %>
-      <% else %>
-          <%= form_tag assign_role_user_path(user),{remote: true, method: :patch, class: "tr"}  do %>
-          <span class="td"><%=  $i %></span>
-            <span class="td"><%=  user.username %></span>
-            <span class="td"><%=  user.email %></span>
-            <span class="td"><%=  user.roles.first.name %></span>
-            <span class="td"><%= select_tag 'role_id', options_from_collection_for_select(@roles, 'id', 'name') %>
-            </span>            
-              <span class="td"><%= submit_tag 'change'%></span>
-          <%end%>
-        <% $i = $i+1 %>
-      <% end %>
+  <% $i = 1 %>
+  <% @users.each do |user| %>
+    <% if user.has_role? :super_admin %>
+    <% else %>
+        <%= form_tag assign_role_user_path(user),{remote: true, method: :patch, class: "tr"}  do %>
+        <span class="td"><%=  $i %></span>
+          <span class="td"><%=  user.username %></span>
+          <span class="td"><%=  user.email %></span>
+          <span class="td"><%=  user.roles.first.name %></span>
+          <span class="td"><%= select_tag 'role_id', options_from_collection_for_select(@roles, 'id', 'name') %>
+          </span>            
+            <span class="td"><%= submit_tag 'change'%></span>
+        <%end%>
+      <% $i = $i+1 %>
     <% end %>
+  <% end %>
 </div>

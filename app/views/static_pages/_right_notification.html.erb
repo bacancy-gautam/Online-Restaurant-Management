@@ -10,6 +10,7 @@
       <li>
           <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <img src="img/avatar-mini.jpg" alt=""><%= current_user.username if user_signed_in? %>
+              <img src="img/avatar-mini.jpg" alt=""><%= current_user.present? ? current_user.username : "" %>
               <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu purple pull-right">

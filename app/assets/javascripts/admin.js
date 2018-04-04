@@ -16,6 +16,7 @@
 //= require jquery-ui
 //= require jquery
 //= require admin-bootstrap.min
+//= require bootstrap2-toggle.min
 //= require jquery-ui-1.10.1.custom.min
 //= require jquery-migrate
 //= require modernizr.min
