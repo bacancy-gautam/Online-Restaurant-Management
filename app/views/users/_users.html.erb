@@ -100,7 +100,7 @@ input:checked + .slider:before {
               <% end %>
             </td>
             <td class="hidden-xs">
-              <%= link_to '', user_path(user), class: "btn btn-success btn-xs fa fa-check", remote: true %>
+              <%= link_to '', user, class: "btn btn-success btn-xs fa fa-check", remote: true %>
               <%= link_to "", edituser_user_path(user), class: "btn btn-primary btn-xs fa fa-pencil", remote: true %>
               <%= link_to "", user_path(user), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
           </tr>
