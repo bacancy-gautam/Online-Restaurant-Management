@@ -1,11 +1,30 @@
 <h1>Final Order</h1>
 <%= form_for @master_order do |order|%>
   <%= order.label:order_type%>
-  <%= order.select(:order_type, MasterOrder.order_types.keys) %> </br>
+  <%= order.select(:order_type, MasterOrder.order_types.keys,selected: MasterOrder.order_types.first)%> </br>
   <%= order.label:payment_type%>
   <%= order.select(:payment_type, MasterOrder.payment_types.keys) %> </br>
   <%= order.label:restaurant%>
 
   <%= order.select :restaurant_id, Restaurant.find(Order.find(session[:order].compact.keys).pluck(:restaurant_id).uniq).map{|r| [r.name, r.id]} %> </br>
+ 
+ 
   <%= order.submit "place order"%>
+
 <%end%>
+
+<script type="text/javascript">
+   $("#master_order_order_type").on("change", function()
+    { 
+
+      if(master_order_order_type.value == "home delivery")
+      {
+        $('.add_address').show();
+      }
+      else
+      {
+        $('.add_address').hide();
+      }
+    });
+
+</script>

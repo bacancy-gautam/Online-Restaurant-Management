@@ -1,0 +1,15 @@
+<table>
+<tr>
+  <th>Status</th>
+  <th>User</th>
+  <th>Address</th>
+</tr>
+<% @home_deliveries.each do |home_delivery|%>
+<tr>
+  <td><%= home_delivery.status%></td>
+  <td><%= home_delivery.master_order.user_id%></td>
+  <td><%= home_delivery.address.addressline%></td>
+  <td><%= link_to "edit_status", edit_status_home_delivery_path(home_delivery)%></td>
+  </tr>
+<%end%>
+</table>

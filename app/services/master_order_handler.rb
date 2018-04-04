@@ -11,7 +11,8 @@ class MasterOrderHandler
   def manage_master_order
     search_session_order
     create_master_order
-    update_master_order
+    m = update_master_order
+    return m
   end
 
   private
@@ -32,6 +33,7 @@ class MasterOrderHandler
       payment_status: 'pending',
       user_id: @current_user.id
     )
+    return @master_order
   end
 
   def create_master_order

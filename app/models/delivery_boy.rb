@@ -6,6 +6,7 @@ class DeliveryBoy < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum status: [:busy, :available, :on_leave]
+  has_and_belongs_to_many :home_deliveries
 
   before_create :assign_default_status
 

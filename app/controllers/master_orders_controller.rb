@@ -13,8 +13,8 @@ class MasterOrdersController < ApplicationController
   end
 
   def create
-    MasterOrderHandler.new(params, session, current_user).manage_master_order
-    redirect_to master_orders_path
+    @master_order = MasterOrderHandler.new(params, session, current_user).manage_master_order
+    @master_order.order_type == "home delivery" ? (redirect_to  new_home_delivery_path(master_order: @master_order))  : (redirect_to master_orders_path)
   end
 
   def index
