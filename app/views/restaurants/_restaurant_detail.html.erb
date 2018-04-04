@@ -1,38 +1,38 @@
-<div class="single-unique-product rest_<%= restaurant.id %>">
-  <%= image_tag asset_path('dish-1.png')%>
-  <span class="featured-rating-orange">6.5</span>
-  <div class="featured-title-box">
-    <h6>  
-      <%= restaurant.name %>
-    </h6>
-    <p>Restaurant </p>
-    <span> • </span>
-    <p><span>$$$</span>$$</p>
-    <ul>
-      <li>
-        <span class="icon-location-pin"></span>
-        <p>1301 Avenue, Brooklyn, NY 11230</p>
-      </li>
-    </ul>
-    <a class="primary-btn" href="#" ></a>
-    <div class="bottom-icons">
-      <% if restaurant.restaurant_open? %>
-        <div class="open-now">OPEN NOW</div>
-      <%else%>
-        <div class="closed-now">CLOSED NOW</div>
-      <%end%>
-      <% if current_user %>
-        <% if current_user.favourite_restaurant?(restaurant.id) %>
-          <span class="heart_<%=restaurant.id%> fa fa-heart"></span>
-        <% else %>
-          <span class="heart_<%=restaurant.id%> fa fa-heart-o"></span>
+<%= link_to restaurant_path(restaurant) do %>
+  <div class="single-unique-product rest_<%= restaurant.id %>">
+    <%= image_tag asset_path('dish-1.png')%>
+    <span class="featured-rating-orange">6.5</span>
+    <div class="featured-title-box">
+      <h6>  
+        <%= restaurant.name %>
+      </h6>
+      <p>Restaurant </p>
+      <span> • </span>
+      <p><span>$$$</span>$$</p>
+      <ul>
+        <li>
+          <span class="icon-location-pin"></span>
+          <p>1301 Avenue, Brooklyn, NY 11230</p>
+        </li>
+      </ul>
+      <a class="primary-btn" href="#" ></a>
+      <div class="bottom-icons">
+        <% if restaurant.restaurant_open? %>
+          <div class="open-now">OPEN NOW</div>
+        <%else%>
+          <div class="closed-now">CLOSED NOW</div>
+        <%end%>
+        <% if current_user %>
+          <% if current_user.favourite_restaurant?(restaurant.id) %>
+            <span class="heart_<%=restaurant.id%> fa fa-heart"></span>
+          <% else %>
+            <span class="heart_<%=restaurant.id%> fa fa-heart-o"></span>
+          <% end %>
         <% end %>
-      <% end %>
-      <span class="ti-bookmark"></span>
+      </div>
     </div>
   </div>
-</div>
-
+<% end %>
 <script>
   $(".heart_<%=restaurant.id%>").on('click',function(){
     $.ajax({

@@ -58,17 +58,12 @@ class RestaurantsController < ApplicationController
   end
 
   def add_restaurant_to_fav
-    @favourite = @restaurant.favourites.find_by(user_id: current_user.id)
-    if @favourite
-      @favourite.delete
-    else
-      @restaurant.favourites.find_or_create_by(user_id: current_user.id)
-      respond_to do |format|
-        format.html do
-          redirect_to restaurants_path, notice: 'Added to Favourite.'
-        end
-        format.js
+    AddRestaurantToFavourite.new({user: current_user, restaurant: @restaurant}).create
+    respond_to do |format|
+      format.html do
+        redirect_to restaurants_path, notice: 'Added to Favourite.'
       end
+      format.js
     end
   end
 

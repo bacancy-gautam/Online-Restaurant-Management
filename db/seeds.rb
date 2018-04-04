@@ -74,6 +74,14 @@ restaurant1 = Restaurant.create(
   details: 'Service excellence is our speciality and we are known for the same.'
 )
 
+restaurant1.create_address(
+  addressline: 'ABC',
+  area: 'Thaltej',
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  pincode: '380009',
+)
+
 restaurant2 = Restaurant.create(
   name: 'The Chocolate Room',
   phone_no: '9876543210',
@@ -84,6 +92,14 @@ restaurant2 = Restaurant.create(
   user_id: user2.id,
   details: 'The Chocolate Room India serves the quality and naturally
    prepared chocolate desserts to all its customers.'
+)
+
+restaurant2.create_address(
+  addressline: 'PQR',
+  area: 'Vastrapur',
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  pincode: '380005',
 )
 
 restaurant3 = Restaurant.create(
@@ -98,7 +114,15 @@ restaurant3 = Restaurant.create(
    due attention on every occasion celebrated at our banquet.'
 )
 
-Restaurant.create(
+restaurant3.create_address(
+  addressline: 'Times Square',
+  area: 'Navrangpura',
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  pincode: '380001',
+)
+
+restaurant4 = Restaurant.create(
   name: 'McDonald\'s',
   phone_no: '8778878787',
   email: 'mc.donald@yahoo.com',
@@ -112,7 +136,15 @@ Restaurant.create(
      They rechristened their business as a hamburger stand.'
 )
 
-Restaurant.create(
+restaurant4.create_address(
+  addressline: 'Bacancy',
+  area: 'Paldi',
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  pincode: '380089',
+)
+
+restaurant5 = Restaurant.create(
   name: '440',
   phone_no: '9898989898',
   email: '440@gmail.com',
@@ -121,6 +153,14 @@ Restaurant.create(
   branch_name: 'RTO',
   user_id: user1.id,
   details: 'Service excellence is our speciality and we are known for the same.'
+)
+
+restaurant5.create_address(
+  addressline: 'RTO',
+  area: 'RTO',
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  pincode: '380003',
 )
 
 #========================= CATEGORY =========================
