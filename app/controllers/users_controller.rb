@@ -1,5 +1,6 @@
 # Controller for Users
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -28,13 +29,10 @@ class UsersController < ApplicationController
       format.html
       format.js
     end
-    @status = 1
   end
 
   def edit
     @user = User.find(params[:id])
-    @addresses = Address.where(addressable_id: current_user.id)
-    @status = 2
     @addresses = Address.where(addressable_id: current_user.id)
   end
 
@@ -48,9 +46,22 @@ class UsersController < ApplicationController
         end
         format.js
       end
-        #redirect_to @user
     else
-      render 'edit'
+      render 'edituser'
+    end
+  end
+
+  def updateprofile
+    @user = current_user
+    if @user.update(user_profile_params)
+      respond_to do |format|
+        format.html do
+          render(partial: 'userprofile')
+        end
+        format.js
+      end
+    else
+      render 'edituser'
     end
   end
 
@@ -76,15 +87,23 @@ class UsersController < ApplicationController
 
   def change_password_edit
     @user = current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def change_password_update
     @user = current_user
-
     if @user.update_with_password(change_password_params)
       flash[:success] = 'Password updated'
       bypass_sign_in(@user)
-      redirect_to @user
+      respond_to do |format|
+        format.html do
+          render(partial: 'userprofile')
+        end
+        format.js
+      end
     else
       render 'change_password_edit'
     end
@@ -114,12 +133,20 @@ class UsersController < ApplicationController
     @user.save
   end
 
-  # def destroy
-  #   sign_out current_user
-  #   redirect_to root_path
-  # end
+  def profile
+    @user = current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   private
+
+  def user_profile_params
+    params.permit(:firstname, :lastname, :username, 
+                                  :phoneno, :email, :image, :role_id)
+  end
 
   def user_params
     params.require(:user).permit(:firstname, :lastname, :username, 

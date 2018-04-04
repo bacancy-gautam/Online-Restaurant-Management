@@ -19,7 +19,7 @@ class DeliveryBoysController < ApplicationController
         format.js{ render(partial: 'deliveryboys') }
       end
     else
-      render(partial: 'newdeliveryboy')
+      render 'new'
       #redirect_to static_pages_my_account_path
     end
   end
