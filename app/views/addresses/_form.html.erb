@@ -1,0 +1,54 @@
+<div class="center jumbotron" align="center">
+<%=form_for @address do |form| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">  
+      <h2>
+        <%= pluralize(@address.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @address.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :addressline %>
+    <%= form.text_field :addressline %>
+    <br><br>
+
+    <%= form.label :area %>
+    <%= form.text_field :area %>
+    <br><br>
+
+    <%= form.label :state%>
+    <%= form.select :state, CS.states(:in)%>
+    <br><br>
+
+    <div id='city-list' remote: true>
+      <%= render partial: 'city_list'%> <%#= f.text_field :city %> 
+    </div>
+    <br><br>
+
+    <%= form.label :pincode %>
+    <%= form.text_field :pincode %>
+    <br><br>
+
+  <%= form.submit %>
+<% end %>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#address_state").on("change", function(){
+      $.ajax({
+        url: '/change_city',
+        method: 'GET',
+        data: {
+          state: $(this).val()
+        }
+      });
+    });
+  });
+</script>

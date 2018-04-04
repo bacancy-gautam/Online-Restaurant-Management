@@ -1,8 +1,12 @@
+# address controller
 class AddressesController < ApplicationController
   before_action :authenticate_user!
 
-  def ind
-    @addresses = Address.all
+  before_action :set_address, only: [:show, :edit, :update, :destroy]
+
+  def index
+    # @addresses = Address.all
+    @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def new
@@ -10,7 +14,8 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
+    # @address = Address.new(address_params)
+    @address = current_user.addresses.create(address_params)
     if @address.save
       redirect_to @address
     else
@@ -30,6 +35,11 @@ class AddressesController < ApplicationController
     end
   end
 
+  def change_city
+    params[:state]
+    @state = CS.states(:in).key(params[:state])
+  end
+
   def destroy
     @address.destroy
     redirect_to addresses_path
@@ -41,8 +51,8 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
   end
 
-  def food_item_params
+  def address_params
     params.require(:address).permit(:addressline, :area, :city,
-                         :state, :pincode)
+                                    :state, :pincode)
   end
 end

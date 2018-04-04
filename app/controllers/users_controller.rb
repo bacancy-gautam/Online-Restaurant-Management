@@ -1,7 +1,5 @@
 # Controller for Users
 class UsersController < ApplicationController
-
-  
   def new
     @user = User.new
   end
@@ -35,7 +33,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @addresses = Address.where(addressable_id: current_user.id)
     @status = 2
+    @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def update
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
       format.js
     end
   end
-  
+
   def destroy
     @users = User.all 
     @user = User.find(params[:id])
@@ -119,7 +119,6 @@ class UsersController < ApplicationController
   #   redirect_to root_path
   # end
 
-
   private
 
   def user_params
@@ -138,5 +137,4 @@ class UsersController < ApplicationController
       user.password = password
     end
   end
-  
 end
