@@ -106,15 +106,12 @@ class UsersController < ApplicationController
       format.html { render(partial: 'role_assign') }
       format.js
     end
-<<<<<<< f0a3894aab6978c78656d674d2d3709daca32db1
   end
 
   def change_user_status
     @user = User.find(params[:id])
     @user.is_active = !@user.is_active
     @user.save
-=======
->>>>>>> cleared all offences
   end
 
   # def destroy
