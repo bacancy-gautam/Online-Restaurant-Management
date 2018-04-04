@@ -110,10 +110,8 @@ class UsersController < ApplicationController
 
   def change_user_status
     @user = User.find(params[:id])
-    if @user.is_active == true
-      @user.is_active = false
-      @user.save
-    end
+    @user.is_active = !@user.is_active
+    @user.save
   end
 
   # def destroy

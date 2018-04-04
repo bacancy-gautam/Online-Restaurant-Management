@@ -105,10 +105,8 @@ class RestaurantsController < ApplicationController
 
   def change_restaurant_status
     @restaurant = Restaurant.find(params[:id])
-    if @restaurant.status == true
-      @restaurant.status = false
-      @restaurant.save
-    end
+    @Restaurant.status = !@Restaurant.status
+    @restaurant.save
   end
 
   def location
