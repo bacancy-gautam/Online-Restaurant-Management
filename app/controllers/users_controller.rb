@@ -39,9 +39,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @users = User.all
     @user = User.find(params[:id])
     if @user.update(user_params)
+      @users = User.all
       respond_to do |format|
         format.html do
           render(partial: 'users')

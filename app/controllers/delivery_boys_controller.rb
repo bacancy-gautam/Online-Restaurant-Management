@@ -5,19 +5,21 @@ class DeliveryBoysController < ApplicationController
   end
 
   def create
-    @delivery_boys = DeliveryBoy.all
     @delivery_boy = DeliveryBoy.new(delivery_boy_params) do |delivery_boy|
       password = SecureRandom.hex(8)
       delivery_boy.password = password
     end
     if @delivery_boy.save
+      @delivery_boys = DeliveryBoy.all
       DeliveryboyMailer.deliveryboy_registration_mail(@delivery_boy).deliver_now
       respond_to do |format|
         format.html do
           render(partial: 'deliveryboys')
         end
-        format.js
+        format.js{ render(partial: 'deliveryboys') }
       end
+    else
+      render(partial: 'newdeliveryboy')
       #redirect_to static_pages_my_account_path
     end
   end
@@ -42,8 +44,8 @@ class DeliveryBoysController < ApplicationController
 
   def update
     @delivery_boy = DeliveryBoy.find(params[:id])
-    @delivery_boys = DeliveryBoy.all
     if @delivery_boy.update(delivery_boy_params)
+      @delivery_boys = DeliveryBoy.all
       respond_to do |format|
         format.html do
           render(partial: 'deliveryboys')

@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @categories = Category.all
     if @category.save
+      @categories = Category.all
       respond_to do |format|
         format.html do
           render(partial: 'categorylist')

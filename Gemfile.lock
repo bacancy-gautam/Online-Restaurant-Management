@@ -293,7 +293,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe
-  turbolinks (~> 5)
+  turbolinks (~> 5.0.0)
   tzinfo-data
   web-console (>= 3.3.0)
 

@@ -4,17 +4,7 @@
 
   <%=form_for @delivery_boy, remote: true do |f| %>
     <% if @delivery_boy.errors.any? %>
-      <div id="error_explanation">  
-        <h2>
-          <%= pluralize(@delivery_boy.errors.count, "error") %> prohibited
-          this delivery boy from being saved:
-        </h2>
-        <ul>
-          <% @delivery_boy.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
+      <%#= render partial: 'shared/errors', locals: {resource: @delivery_boy} %>
     <% end %>
 
     <div class="field">
@@ -58,6 +48,5 @@
       </center>
     </div>
   <% end %>
-
   </div>
 </div>
