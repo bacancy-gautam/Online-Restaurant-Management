@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
   def create
     @user = create_user
-    respond_to do |format|
     @user.save ? (UserMailer.user_registration_mail(@user).deliver_now)  : (render 'new') 
     @users = User.all
+    respond_to do |format|
       format.html { render(partial: 'users') }
       format.js
     end
