@@ -12,7 +12,8 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
+    # @address = Address.new(address_params)
+    @address = current_user.addresses.create(address_params)
     if @address.save
       redirect_to @address
     else

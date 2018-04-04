@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :trackable, :omniauthable,
          omniauth_providers: [:facebook, :google_oauth2]
 
-  has_many :addresses, as: :addressable
+  has_many :addresses, as: :addressable, dependent: :destroy
   before_create :assign_default_role
   has_many :favourites
 
