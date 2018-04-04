@@ -105,7 +105,7 @@ class RestaurantsController < ApplicationController
 
   def change_restaurant_status
     @restaurant = Restaurant.find(params[:id])
-    @Restaurant.status = !@Restaurant.status
+    @restaurant.status = !@restaurant.status
     @restaurant.save
   end
 
