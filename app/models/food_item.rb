@@ -2,6 +2,7 @@
 class FoodItem < ApplicationRecord
   belongs_to :category
   belongs_to :restaurant
+  has_one :offer
   has_one :order
   has_many :favourites, as: :favouriteable
   has_many :images, as: :imageable, dependent: :destroy
