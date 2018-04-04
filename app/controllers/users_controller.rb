@@ -113,11 +113,9 @@ class UsersController < ApplicationController
     if @user.is_active == true
       @user.is_active = false
       @user.save
-      redirect_to static_pages_my_account_path
     else
       @user.is_active = true
       @user.save
-      redirect_to static_pages_my_account_path
     end
   end
 
