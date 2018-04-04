@@ -23,6 +23,7 @@
  *= require bootstrap-reset
  *= require default-theme
  *= require _all
+ *= require custom
  *= require jquery.steps
  */
 #usr_form{
