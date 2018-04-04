@@ -75,7 +75,34 @@
       </div>
       <div class="col-md-4 responsive-wrap">
         <div class="contact-info">
-          <div id="map"></div>
+          <nav role='navigation'>
+            <ul>
+             <div class="rest-menu1">  
+              <li class="active"><a>Home</a></li>
+              <div class="dropdown-content">
+                <ul>
+                  <li><a href="#">Link 1</a></li> 
+                  <li><a href="#">Link 2</a></li>
+                  <li><a href="#">Link 3</a></li>
+                </ul>
+              </div>
+             </div> 
+             <div class="rest-menu2">               
+              <li><a href="#">About</a></li>
+              <div class="dropdown-content">
+                <ul>
+                  <li><a href="#">Link 1</a></li> 
+                  <li><a href="#">Link 2</a></li>
+                  <li><a href="#">Link 3</a></li>
+                </ul>
+              </div>
+              <li><a href="#">Clients</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+<!--           <div id="map"></div>
           <div class="address">
             <span class="icon-location-pin"></span>
             <p> Doyers St<br> New York, NY 10013<br> b/t Division St & St James Pl <br> Chinatown, Civic Center</p>
@@ -91,15 +118,13 @@
           <div class="address">
             <span class="icon-clock"></span>
             <p>Mon - Sun 09:30 am - 05:30 pm <br>
-              <% if @restaurant.restaurant_open? %>
+              <%# if @restaurant.restaurant_open? %>
                 <span class="open-now">OPEN NOW </span>
-              <%else%>
+              <%#else%>
                 <span class="closed-now">CLOSED NOW</span>
-              <%end%>
+              <%#end%>
             </div>
-            <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
-          </div>
-        </div>
+            <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a> -->
       </div>
     </div>
   </section>
