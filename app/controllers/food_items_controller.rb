@@ -1,5 +1,6 @@
 # Controller for Food Items
 class FoodItemsController < ApplicationController
+  before_action :food_item_params, only: [:update]
   before_action :set_food_item, only: [:show, :edit, :update, :destroy, :add_food_to_fav]
 
   def index
@@ -14,8 +15,11 @@ class FoodItemsController < ApplicationController
   def create
     @fooditem = FoodItem.new(food_item_params)
     if @fooditem.save
-      #redirect_to @fooditem
-      redirect_to root_path
+      @fooditems = FoodItem.all
+      respond_to do |format|
+        format.html { render(partial: 'fooditems') }
+        format.js { render 'index' }
+      end
     else
       render 'new'
     end
@@ -26,9 +30,9 @@ class FoodItemsController < ApplicationController
   def show; end
 
   def update
-    
     if @fooditem.update(food_item_params)
-      redirect_to @fooditem
+      @fooditems = FoodItem.all
+      render 'index'
     else
       render 'edit'
     end
@@ -36,7 +40,9 @@ class FoodItemsController < ApplicationController
 
   def destroy
     @fooditem.destroy
-    redirect_to food_items_path
+    @fooditems = FoodItem.all
+    render('index')
+    # redirect_to food_items_path
   end
 
   def add_food_to_fav
@@ -59,7 +65,6 @@ class FoodItemsController < ApplicationController
   def food_item_params
     params.require(:food_items).permit(:name, :price, :food_type,
                                       :restaurant_id, :category_id, :image)
-
   end
 
 end

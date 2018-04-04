@@ -8,5 +8,9 @@ class FoodItem < ApplicationRecord
   mount_uploader :image, ImageUploader
   enum food_type: [:veg, :non_veg]
   
- 
+  validates :restaurant_id,
+            :category_id,
+            :food_type,
+            :price, presence: true
+
 end

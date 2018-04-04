@@ -1,0 +1,18 @@
+<h1>My Orders</h1>
+<table border="table table-striped custom-table table-hover">
+  <% if @orders.count != 0 %>
+    <% @orders.each do |order|%>
+      <tr>
+        <td><%= order.order_datetime%></td>
+        <td><%= order.quantity%></td>
+        <td><%= order.food_item.name%></td>
+        <% if order.quantity!=nil%>
+          <td><%= (order.food_item.price)*(order.quantity)%></td>
+        <%else%>
+          <td></td>
+        <%end%>
+      </tr>
+    <%end%>
+  <% else %>
+    <h3>No orders Found</h3>
+<%end%>

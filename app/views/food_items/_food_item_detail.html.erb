@@ -1,5 +1,5 @@
 <div class="single-unique-product">
-  <%= image_tag  food_item.image.url if food_item.image?  %>
+  <%= image_tag(food_item.image.url, size: "100") if food_item.image?  %>
   <span class="featured-rating-orange">6.5</span>
   <div class="featured-title-box">
     <h6>  
