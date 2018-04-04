@@ -13,9 +13,15 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-
+    @categories = Category.all
     if @category.save
-      redirect_to category_path(@category)
+      respond_to do |format|
+        format.html do
+          render(partial: 'categorylist')
+        end
+        format.js
+      end
+      #redirect_to category_path(@category)
     else
       render 'new'
     end
@@ -25,6 +31,10 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
     # @categories = policy_scope(Category)
     # authorize Category
   end

@@ -25,8 +25,9 @@
       <td><%= delivery_boy.phoneno %></td>
       <td><%= delivery_boy.status %></td>
       <td colspan="3">
-        <%= link_to 'show',delivery_boy_path(delivery_boy), class: "btn btn-success btn-xs fa fa-check" %>
-        <%= link_to 'edit',edit_delivery_boy_path(delivery_boy), class: "btn btn-primary btn-xs fa fa-pencil" %>
+        <%= link_to '', delivery_boy_path(delivery_boy), class: "btn btn-success btn-xs fa fa-check", remote: true %>
+        <%= link_to '',edit_delivery_boy_path(delivery_boy), class: "btn btn-primary btn-xs fa fa-pencil", remote: true  %>
+        <%= link_to '', delivery_boy_path(delivery_boy), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </td>
     </tr>
     <% $i = $i+1 %>
