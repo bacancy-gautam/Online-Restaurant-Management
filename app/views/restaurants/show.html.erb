@@ -31,11 +31,26 @@
         </div>
         <div class="col-md-6">
           <div class="reserve-seat-block">
-            <div class="reserve-rating">
-              <%#= rating_for @restaurant, "service", imdb_avg: true, half_show: true  %>
-              <%#= rating_for @food_item, "food_item", imdb_avg: true, half_show: true  %>
-              <!-- <span>9.5</span> -->
-            </div>
+            <% avg = @restaurant.avg_rate %>
+            <%if avg.nil?%>
+              <div class="reserve-rating black">
+                <span>NO REVIEWS YET</span>
+              </div>
+            <% else %>
+              <% if avg <= 2 && avg > 0 %>
+                <div class="reserve-rating red">
+                  <span><%= avg.round(1) %></span>
+                </div>
+              <% elsif avg > 2 && avg <=3.5 %>
+                <div class="reserve-rating yellow">
+                  <span><%= avg.round(1) %></span>
+                </div>
+              <% else %>
+                <div class="reserve-rating">
+                  <span><%= avg.round(1) %></span>
+                </div>  
+              <% end %>
+            <% end %>
             <div class="review-btn">
 
               <a href="#" class="btn btn-outline-danger review">WRITE A REVIEW</a>
@@ -95,10 +110,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 responsive-wrap">
-          Service: <%= rating_for @restaurant, "service" %>
           <div class="booking-checkbox_wrap mt-4">
-            Food: <%= rating_for @restaurant, "food" %>
             <% if current_user %>
+              <center> 
+                Service: <%= rating_for @restaurant, "service", enable_half: true, half_show: true %>
+                Food: <%= rating_for @restaurant, "food", enable_half: true, half_show: true %>
+              </center>
+              <br>
             <%= form_for @review, url: reviews_path, method: :post, remote: true do |f|%>
             <div class="customer-review_wrap">
               <div class="customer-img">
@@ -135,13 +153,13 @@
               <h5><%= Review.count %> Reviews</h5>
               <hr>
               <%end%>
-              <%end%>
               <div id="review-list">
                 <% if @reviews.present? %>
                 <%= render @reviews %>
                 <%end%>
                 <hr>
               </div>
+              <%end%>
             </div>
           </div>
         </div>

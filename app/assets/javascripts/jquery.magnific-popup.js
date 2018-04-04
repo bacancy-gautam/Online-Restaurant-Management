@@ -1588,10 +1588,6 @@ $.magnificPopup.registerModule(IFRAME_NS, {
 				id: '/',
 				src: '//player.vimeo.com/video/%id%?autoplay=1'
 			},
-			gmaps: {
-				index: '//maps.google.',
-				src: '%id%&output=embed'
-			}
 		}
 	},
 

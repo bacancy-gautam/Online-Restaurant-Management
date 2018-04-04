@@ -66,15 +66,6 @@ class RestaurantsController < ApplicationController
       format.js
     end
   end
-
-  def edit
-    @review = Review.find(review_params)
-    if @review.update_attributes
-      flash[:success] = "Updated"
-    else
-      flash[:danger] = "not updated"  
-    end
-  end
   
   def search
     @restaurants = Restaurant.ransack(name_cont: params[:term])

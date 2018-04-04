@@ -30,7 +30,7 @@ gem 'pundit'
 gem "rolify"
 gem 'ratyrate'
 gem "carrierwave"
-
+gem 'jquery-turbolinks'
 gem 'stripe'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
