@@ -9,9 +9,11 @@ class User < ApplicationRecord
          :trackable, :omniauthable,
          omniauth_providers: [:facebook, :google_oauth2]
 
-  has_many :addresses, as: :addressable, dependent: :destroy
   before_create :assign_default_role
   has_many :favourites
+  has_many :addresses, as: :addressable, dependent: :destroy
+  has_many :images, as: :imageable, dependent: :destroy
+  mount_uploader :image, ImageUploader
 
   def favourite_food?(food_id)
     Favourite.find_by(user_id: self.id, favouriteable_type: 'FoodItem',
@@ -22,9 +24,6 @@ class User < ApplicationRecord
     Favourite.find_by(user_id: self.id, favouriteable_type: 'Restaurant',
                       favouriteable_id: restaurant_id).present?
   end
-  has_many :images, as: :imageable, dependent: :destroy
-
-  mount_uploader :image, ImageUploader
 
   def self.find_for_google_oauth2(acc_token, signed_in_resource = nil)
     data = acc_token.info
