@@ -1,10 +1,12 @@
+# address controller
 class AddressesController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
   def index
-    @addresses = Address.all
+    # @addresses = Address.all
+    @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def new
@@ -51,6 +53,6 @@ class AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:addressline, :area, :city,
-                         :state, :pincode)
+                                    :state, :pincode)
   end
 end

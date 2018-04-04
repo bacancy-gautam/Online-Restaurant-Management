@@ -25,8 +25,8 @@ class User < ApplicationRecord
   has_many :images, as: :imageable, dependent: :destroy
 
   mount_uploader :image, ImageUploader
- 
-  def self.find_for_google_oauth2(acc_token, _signed_in_resource = nil)
+
+  def self.find_for_google_oauth2(acc_token, signed_in_resource = nil)
     data = acc_token.info
     user = User.where(provider: acc_token.provider, uid: acc_token.uid).first
     if user

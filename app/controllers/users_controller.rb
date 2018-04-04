@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @addresses = Address.where(addressable_id: current_user.id)
     @status = 2
   end
 
@@ -127,8 +128,7 @@ class UsersController < ApplicationController
 
   def change_password_params
     params.require(:user).permit(:current_password, :password,
-                                 :password_confirmation, address_attributes: 
-                                 [:addressline, :area, :city, :state, :pincode])
+                                 :password_confirmation)
   end
 
   def create_user
