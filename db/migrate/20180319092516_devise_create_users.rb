@@ -14,7 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :remember_created_at
 
       ## other fields
-      t.string :firstname
+        t.string :firstname
       t.string :lastname
       t.string :username
       t.string :phoneno
