@@ -24,14 +24,31 @@ class UsersController < ApplicationController
     end  
   end
 
+  def edituser
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    @status = 1
+  end
+
   def edit
     @user = User.find(params[:id])
+    @status = 2
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user
+      @users = User.all
+      respond_to do |format|
+        format.html do
+          render(partial: 'users')
+        end
+        format.js
+      end
+        #redirect_to @user
     else
       render 'edit'
     end
@@ -39,6 +56,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.html do
+        render(partial: 'showuser')
+      end
+      format.js
+    end
   end
   
   def destroy
@@ -84,6 +107,18 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def change_user_status
+    @user = User.find(params[:id])
+    @user.is_active = !@user.is_active
+    @user.save
+  end
+
+  # def destroy
+  #   sign_out current_user
+  #   redirect_to root_path
+  # end
+
 
   private
 

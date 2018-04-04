@@ -4,8 +4,6 @@ class RestaurantsController < ApplicationController
   before_action :fetch_restaurant, only: [:show, :edit,
                                           :update, :add_restaurant_to_fav]
   
-
-
   def new
     @restaurant = Restaurant.new
     @address = @restaurant.create_address
@@ -95,6 +93,20 @@ class RestaurantsController < ApplicationController
         @fooditems = @fooditems.limit(5)
       end
     end
+  end
+
+  def restaurant_list
+    @restaurants = Restaurant.all
+    respond_to do |format|
+      format.html
+      format.js
+    end  
+  end
+
+  def change_restaurant_status
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.status = !@restaurant.status
+    @restaurant.save
   end
 
   def location

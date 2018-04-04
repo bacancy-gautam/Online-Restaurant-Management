@@ -18,16 +18,16 @@
     <a class="primary-btn" href="#" ></a>
     <div class="bottom-icons">
       <div class="closed-now">CLOSED NOW</div>
-        <% if current_user %>
-          <% if current_user.favourite_food?(food_item.id) %>
-            <span class="heart_<%=food_item.id%> fa fa-heart"></span>
-          <% else %>
-            <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
-          <% end %>
+      <% if current_user %>
+      <% if current_user.favourite_food?(food_item.id) %>
+      <span class="heart_<%=food_item.id%> fa fa-heart"></span>
+      <% else %>
+      <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
+      <% end %>
       <% end %>
       <span class="ti-bookmark"></span>
+    </div>
   </div>
-</div>
 </div>
 <script>
   $(".heart_<%=food_item.id%>").on('click',function(){
