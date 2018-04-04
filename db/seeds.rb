@@ -21,7 +21,7 @@ user2_attributes = {
   username: 'harshil',
   email: 'harshil.patel@bacancytechnology.com',
   password: '123456',
-  password_confirmation: '123456',
+  password_confirmation: '123456'
 }
 
 user3_attributes = {
