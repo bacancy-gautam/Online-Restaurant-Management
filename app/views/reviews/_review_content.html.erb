@@ -1,7 +1,7 @@
 <div class="customer-img">
   <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
   <span>
-    <%=  Review.where(user_id: current_user.id).count()%> Reviews
+    <%= review.user_reviews %> Reviews
   </span>
   <% if current_user.id == review.user_id%>
   <br>
@@ -15,7 +15,8 @@
     <div class="customer-review">
       <%= User.find(review.user_id).username %>
     </div>
-    <div class="customer-rating">8.0</div>
+     <% rate = review.user_rating %>
+    <div class="customer-rating"><%= rate.round(1) %></div>
   </div>
   <p class="customer-text">
     <%= review.comment %>
