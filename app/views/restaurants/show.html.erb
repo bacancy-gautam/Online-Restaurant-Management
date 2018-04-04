@@ -76,7 +76,11 @@
           <div class="address">
             <span class="icon-clock"></span>
             <p>Mon - Sun 09:30 am - 05:30 pm <br>
-              <span class="open-now">OPEN NOW</span></p>
+              <% if @restaurant.restaurant_open? %>
+                <span class="open-now">OPEN NOW </span>
+              <%else%>
+                <span class="closed-now">CLOSED NOW</span>
+              <%end%>
             </div>
             <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
           </div>
