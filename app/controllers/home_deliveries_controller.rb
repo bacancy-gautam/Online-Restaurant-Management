@@ -1,13 +1,12 @@
 class HomeDeliveriesController < ApplicationController
   def new
     @home_delivery = HomeDelivery.new
-    $master_order = MasterOrder.find(params[:master_order])
+    @master_order = MasterOrder.find(params[:master_order])
   end
 
   def create
-    @home_delivery = $master_order.create_home_delivery(home_delivery_params)
-    @home_delivery.save
-    @home_delivery.update_attribute(:status, 'pending')
+    @master_order = MasterOrder.find(params[:master_order_id])
+    @home_delivery = @master_order.create_home_delivery(home_delivery_params.merge({status: 'pending'}))
     redirect_to master_orders_path
   end
 

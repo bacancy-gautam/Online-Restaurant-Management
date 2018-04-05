@@ -5,18 +5,19 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
   end
 
   def new
-    $home_delivery = HomeDelivery.find(params[:home_delivery])
+    @home_delivery = HomeDelivery.find(params[:home_delivery])
   end
 
   def create
+    @home_delivery = HomeDelivery.find(params[:home_delivery_id])
     @delivery = params[:delivery_boy_ids]
     if @delivery.nil?
       render 'new'
     else
       @delivery_boy = DeliveryBoy.find(@delivery[:id])
-      $home_delivery.delivery_boys << @delivery_boy
-      $home_delivery.update_attribute(:status, 'assigned')
-      $home_delivery.master_order.update_attribute(:order_status, 'ready')
+      @home_delivery.delivery_boys << @delivery_boy
+      @home_delivery.update_attribute(:status, 'assigned')
+      @home_delivery.master_order.update_attribute(:order_status, 'ready')
       @delivery_boy.update_attribute(:status, 'busy')
       redirect_to home_deliveries_delivery_boys_path
     end
