@@ -17,7 +17,7 @@
       </li>
     </ul>
       <% if @restaurant.restaurant_open? %>
-      <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post", class: "primary-btn"%>
+        <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post", class: "primary-btn"%>
       <% else %>
         <div class="popup" onclick="myFunction(<%= food_item.id %>)">
           <a class="text-uppercase primary-btn">ADD TO CART</a>
@@ -31,8 +31,7 @@
           <% else %>
             <span class="heart_<%=food_item.id%> fa fa-heart-o"></span>
           <% end %>
-        <% end %>
-      <span class="ti-bookmark"></span>
+        <%end%>  
     </div>
   </div>
 </div>
