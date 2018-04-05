@@ -58,6 +58,12 @@ class DeliveryBoysController < ApplicationController
     end
   end
 
+  def change_delivery_boy_status
+    @delivery_boy = DeliveryBoy.find(params[:id])
+    @delivery_boy.is_active = !@delivery_boy.is_active
+    @delivery_boy.save
+  end
+
   def destroy
     @delivery_boys = DeliveryBoy.all 
     @delivery_boy = DeliveryBoy.find(params[:id])

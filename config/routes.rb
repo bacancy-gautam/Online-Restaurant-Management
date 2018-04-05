@@ -58,6 +58,9 @@ Rails.application.routes.draw do
       get :change_password_edit
       patch :change_password_update
     end
+    member do
+      get :change_delivery_boy_status
+    end
   end
   devise_for :users, controllers:
               {
