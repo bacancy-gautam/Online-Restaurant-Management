@@ -1,3 +1,19 @@
+<!-- page head start-->
+  <div class="page-head">
+    <h3>
+        Manage User
+    </h3>
+    <span class="sub-title">Users- customers and admin(restaurant-owner)</span>
+    <!--<span class="sub-title">Welcome to Static Table</span>-->
+    <div class="state-information">
+      <ol class="breadcrumb m-b-less bg-less">
+        <li><%= link_to 'Dashboard', static_pages_my_account_path %></li>
+        <li><%= link_to 'Manage Users', users_path, remote: true, class: "showpartials" %></li>
+      </ol>
+    </div>
+  </div>
+  <!-- page head end-->
+
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#customer">Customer</a></li>
   <li><a data-toggle="tab" href="#admin">Admin</a></li>
