@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'static_pages/my_account'
   get 'add_food_to_fav',                to: 'food_items#add_food_to_fav'
   get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
+  get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
   get 'users/edit'
   get 'offers/change_category'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :orders
   resources :addresses
+  resources :favourites
   resources :master_orders
   resources :offers
   resources :food_items
