@@ -45,6 +45,14 @@ class AddressesController < ApplicationController
     redirect_to addresses_path
   end
 
+  def view_address
+    @addresses = Address.where(addressable_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
   def set_address

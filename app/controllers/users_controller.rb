@@ -141,6 +141,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_address
+    @address = Address.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
   def user_profile_params
