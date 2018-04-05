@@ -16,10 +16,10 @@
     </div>
  <% end %>
   <%=form_for @fooditem, remote: true, multipart: true do |form| %>
-<table align="center">
+  <table align="center">
     <tr>
       <td><%=form.label :restaurant_id %></td> 
-      <td> <%=form.collection_select :restaurant_id, Restaurant.order(:id), :id,:full_name %></td><br>
+      <td> <%=form.collection_select :restaurant_id, Restaurant.order(:id).where("user_id": current_user.id), :id,:full_name %></td><br>
     </tr>
     
     <tr>

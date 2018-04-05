@@ -22,35 +22,48 @@
         </thead>
         <tbody>
           <% @restaurants.each do |restaurant| %>
-          <% if current_user.has_role? :admin%>
-          <% if restaurant.user_id == current_user.id %>
-          <tr>
-            <td><%= restaurant.name %></td>
-            <td><%= restaurant.phone_no %></td>
-            <td><%= restaurant.email %></td>
-            <td><%= restaurant.opening_time %></td>
-            <td><%= restaurant.closing_time %></td>
-            <td><%= restaurant.branch_name %></td>
-            <% if current_user.has_role? :super_admin %>
-            <td>
-              <% if restaurant.status == true  %>
-                <label class="switch" id ="status-<%= restaurant.id %>">
-                  <%= render partial: "active_status", locals: {restaurant: restaurant}%>
-                </label>
-              <% else %>
-                <label class="switch" id ="status-<%= restaurant.id %>" >
-                  <%= render partial: "inactive_status", locals: {restaurant: restaurant}%>
-                </label>
+            <% if current_user.has_role? :admin%>
+              <% if restaurant.user_id == current_user.id %>
+                <tr>
+                  <td><%= restaurant.name %></td>
+                  <td><%= restaurant.phone_no %></td>
+                  <td><%= restaurant.email %></td>
+                  <td><%= restaurant.opening_time %></td>
+                  <td><%= restaurant.closing_time %></td>
+                  <td><%= restaurant.branch_name %></td>
+                  <td class="hidden-xs">
+                    <%= link_to '', restaurant_path(restaurant), class: "btn btn-success btn-xs fa fa-check" %>
+                    <%= link_to "", edit_restaurant_path(restaurant), class: "btn btn-primary btn-xs fa fa-pencil" , remote: true%>
+                    <%= link_to "", restaurant_path(restaurant), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+                  </td>
+                </tr>
               <% end %>
-            <%end%>
-            </td>
-            <td class="hidden-xs">
-              <%= link_to '', restaurant_path(restaurant), class: "btn btn-success btn-xs fa fa-check" %>
-              <%= link_to "", edit_restaurant_path(restaurant), class: "btn btn-primary btn-xs fa fa-pencil" , remote: true%>
-              <%= link_to "", restaurant_path(restaurant), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
-          <% end %>
-          </tr>
-          <% end %>
+            <% else %>
+              <tr>
+                <td><%= restaurant.name %></td>
+                <td><%= restaurant.phone_no %></td>
+                <td><%= restaurant.email %></td>
+                <td><%= restaurant.opening_time %></td>
+                <td><%= restaurant.closing_time %></td>
+                <td><%= restaurant.branch_name %></td>
+                <td>
+                  <% if restaurant.status == true  %>
+                    <label class="switch" id ="status-<%= restaurant.id %>">
+                      <%= render partial: "active_status", locals: {restaurant: restaurant}%>
+                    </label>
+                  <% else %>
+                    <label class="switch" id ="status-<%= restaurant.id %>" >
+                      <%= render partial: "inactive_status", locals: {restaurant: restaurant}%>
+                    </label>
+                  <% end %>
+                </td>
+                <td class="hidden-xs">
+                  <%= link_to '', restaurant_path(restaurant), class: "btn btn-success btn-xs fa fa-check" %>
+                  <%= link_to "", edit_restaurant_path(restaurant), class: "btn btn-primary btn-xs fa fa-pencil" , remote: true%>
+                  <%= link_to "", restaurant_path(restaurant), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
