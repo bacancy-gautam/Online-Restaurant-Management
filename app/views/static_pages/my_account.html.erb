@@ -127,9 +127,9 @@
                     <div class="value white">
                         <h1 class="timer" data-from="0" data-to="320"
                             data-speed="1000">
-                            <!--320-->
+                            <%= User.all.count%>
                         </h1>
-                        <p>New Order</p>
+                        <p>Users</p>
                     </div>
                 </section>
             </div>
@@ -141,9 +141,9 @@
                     <div class="value gray">
                         <h1 class="purple-color timer" data-from="0" data-to="123"
                             data-speed="1000">
-                            <!--123-->
+                            <%= Restaurant.all.count %>
                         </h1>
-                        <p>Item Sold</p>
+                        <p>Restaurants</p>
                     </div>
                 </section>
             </div>
@@ -155,9 +155,9 @@
                     <div class="value white">
                         <h1 class="timer" data-from="0" data-to="432"
                             data-speed="1000">
-                            <!--432-->
+                            <%= FoodItem.all.count %>
                         </h1>
-                        <p>Item Upload</p>
+                        <p>Food-items</p>
                     </div>
                 </section>
             </div>
@@ -169,9 +169,9 @@
                     <div class="value gray">
                         <h1 class="green-color timer" data-from="0" data-to="2345"
                             data-speed="3000">
-                            <!--2345-->
+                            <%= DeliveryBoy.all.count%>
                         </h1>
-                        <p>Unique Visit</p>
+                        <p>Delivery-Boy</p>
                     </div>
                 </section>
             </div>
@@ -261,64 +261,6 @@
         <div id = "show-partials">
           
         </div>
-
-        <!-- <div id="abc">
-  
-        </div> -->
-        <!-- <div class="user-assign-role">
-          <%#= render file: 'app/views/users/assign_role.html' %>
-        </div>
-
-        <div class="users-manage">
-          <%#= render file: 'app/views/users/index.html' %>
-        </div>
-
-        <div class="users-add">
-          <%#= render file: 'app/views/users/new.html' %>
-        </div>
-        
-        <div class="delivery-boys-add">
-          <%#= render file: 'app/views/delivery_boys/new.html' %>
-        </div>
-
-        <div class="delivery-boys-manage">
-          <%#= render file: 'app/views/delivery_boys/index.html' %>
-        </div>
-
-        <div class="category-add">
-          <%#= render file: 'app/views/categories/new.html' %>
-        </div> 
-
-        <div class="category-manage">
-          <%#= render file: 'app/views/categories/index' %>
-        </div>
-
-        <div class="restaurant-add">
-          <%#= render file: 'app/views/restaurants/new.html' %>
-        </div> 
-
-        <div class="restaurant-manage">
-          <%#= render file: 'app/views/restaurants/index.html' %>
-        </div>
-
-        <div class="food-item-add">
-          <%#= render file: 'app/views/food_items/new' %>
-        </div> 
-
-        <div class="food-item-manage">
-          <%#= render file: 'app/views/food_items/index' %>
-        </div>
-
-        <div class="order-add">
-          <%#= render file: 'app/views/orders/new' %>
-        </div> 
-
-        <div class="order-manage">
-          <%#= render file: 'app/views/orders/index' %>
-        </div> -->
-        
-        <%#= render file: 'app/views/offers/new' %> <!-- Not working -->
-        <%#= render file: 'app/views/offers/index' %> <!-- No content -->
 
       </div>
       <!--body wrapper end-->

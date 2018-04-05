@@ -56,9 +56,13 @@ user2 = find_or_create_user(user2_attributes)
 user3 = find_or_create_user(user3_attributes)
 user4 = find_or_create_user(user4_attributes)
 
+user1.roles.delete_all
 user1.add_role(:super_admin)
+user1.roles.delete_all
 user2.add_role(:super_admin)
+user1.roles.delete_all
 user3.add_role(:super_admin)
+user1.roles.delete_all
 user4.add_role(:super_admin)
 
 #========================= RESTAURANT =========================
