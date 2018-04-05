@@ -1,7 +1,7 @@
 # controller of homedelivery_deliveryboys
 class HomeDeliveriesDeliveryBoysController < ApplicationController
   def index
-    @home_deliveries = HomeDelivery.all
+    @home_deliveries = HomeDelivery.all.includes(:master_order,:homedeliveries_delivery_boys, :delivery_boys)
   end
 
   def new

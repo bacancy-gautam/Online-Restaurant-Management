@@ -11,7 +11,7 @@
   <td><% unless home_delivery.delivery_boys == [] %>
   <%= home_delivery.delivery_boys.first.username %>
   <%else%>
-  <%= link_to "assign", home_deliveries_delivery_boys_new_path(home_delivery: home_delivery)%>
+  <%= link_to "assign", new_home_deliveries_delivery_boy_path(home_delivery: home_delivery)%>
   <%end%><br></td>
 </tr>
 <%end%>
