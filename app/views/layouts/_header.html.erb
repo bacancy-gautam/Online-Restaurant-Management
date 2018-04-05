@@ -33,7 +33,7 @@
                       </div>
                       <div class="product-body">
                       <%if !(session[:order].nil?)%>
-                      <%@order=Order.where(:id=>session[:order].keys)%>
+                      <%@order=Order.where(:id=>session[:order].keys).includes(:food_item)%>
                      
                       <%if @order.count!=0%>
 
