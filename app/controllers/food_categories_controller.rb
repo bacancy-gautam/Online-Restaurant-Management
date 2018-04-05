@@ -29,7 +29,7 @@ class FoodCategoriesController < ApplicationController
   end
 
   def destroy
-    @foodoo_category = FoodCategory.find(params[:id])
+    @food_category = FoodCategory.find(params[:id])
     @food_category.destroy
     redirect_to food_categories_path
   end
