@@ -1,0 +1,31 @@
+<% @master_orders.each do |m|%>
+
+  Total amount::<%= m.total.to_i%><br>
+  Order Type::<%= m.order_type%><br>
+  Order Status::<%= m.order_status%><br>
+  Payment Status::<%= m.payment_status%><br>
+  Payment Type::<%= m.payment_type%><br>
+  date::<%= m.created_at%><br>
+  <% if m.payment_type == "card"%>
+    <%if m.payment_status == "pending" %>
+      <%= form_tag charges_path(:m_id=>m) do %>
+        <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+       
+        </article>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount=<%=m.total.to_i%>
+          data-locale="auto"></script>
+      <% end %>
+    <%end%>
+  <%end%>
+  <%= link_to "show",master_order_path(m)%></br>
+  <br>
+  <br>
+<%end%>
