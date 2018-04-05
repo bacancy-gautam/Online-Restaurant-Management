@@ -1,6 +1,21 @@
+<!-- page head start-->
+  <div class="page-head">
+    <h3>
+        Add User
+    </h3>
+    <span class="sub-title">Create user(customer)</span>
+    <!--<span class="sub-title">Welcome to Static Table</span>-->
+    <div class="state-information">
+      <ol class="breadcrumb m-b-less bg-less">
+        <li><%= link_to 'Dashboard', static_pages_my_account_path %></li>
+        <li><%= link_to 'Add User' , new_user_path, remote: true, class: "showpartials" %></li>
+      </ol>
+    </div>
+  </div>
+<!-- page head end-->
+
 <div class="content clearfix">
   <div class="form-group clearfix formbackground">
-  <h2>Add User</h2><hr>
 
   <%=form_for @user, remote: true do |f| %>
     <% if @user.errors.any? %>

@@ -1,6 +1,20 @@
+<!-- page head start-->
+  <div class="page-head">
+    <h3>
+        Add Delivery Boy
+    </h3>
+    <span class="sub-title">Create deliery boy</span>
+    <!--<span class="sub-title">Welcome to Static Table</span>-->
+    <div class="state-information">
+      <ol class="breadcrumb m-b-less bg-less">
+        <li><%= link_to 'Dashboard', static_pages_my_account_path %></li>
+        <li><%= link_to 'Add Delivery Boy', new_delivery_boy_path, remote: true, class: "showpartials" %></li>
+      </ol>
+    </div>
+  </div>
+<!-- page head end-->
 <div class="content clearfix">
   <div class="form-group clearfix formbackground">
-  <h2>Add Delivery Boy</h2><hr>
 
   <%=form_for @delivery_boy, remote: true do |f| %>
     <% if @delivery_boy.errors.any? %>
