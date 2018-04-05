@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       format.js
     end
   end
-  
+
   def edit
     @review = Review.find(params[:id])
   end

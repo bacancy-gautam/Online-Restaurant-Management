@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 
   before_action :fetch_restaurant, only: [:show, :edit,
                                           :update, :add_restaurant_to_fav]
-  
+
   def new
     @restaurant = Restaurant.new
     @address = @restaurant.create_address
@@ -82,7 +82,7 @@ class RestaurantsController < ApplicationController
       format.js
     end
   end
-  
+
   def search
     @restaurants = Restaurant.ransack(name_cont: params[:term])
                              .result(distinct: true)
@@ -102,7 +102,7 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-    end  
+    end
   end
 
   def change_restaurant_status
