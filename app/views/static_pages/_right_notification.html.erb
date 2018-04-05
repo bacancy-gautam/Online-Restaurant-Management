@@ -8,16 +8,17 @@
       </li>
 
       <li>
+        <% if user_signed_in? %>
           <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              <img src="img/avatar-mini.jpg" alt=""><%= current_user.username if user_signed_in? %>
-              <img src="img/avatar-mini.jpg" alt=""><%= current_user.present? ? current_user.username : "" %>
-              <span class=" fa fa-angle-down"></span>
+            <img src="img/avatar-mini.jpg" alt=""><%= current_user.username %>
+            <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu purple pull-right">
               <li><%= link_to 'Home', root_path %></li>
-              <li><%= link_to 'Profile' %></li>
+              <li><%= link_to 'Profile', profile_user_path(current_user), remote: true, class: "showpartials" %></li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete  ) %></li>
           </ul>
+        <% end %>
       </li>
       <li>
           <div class="sb-toggle-right">

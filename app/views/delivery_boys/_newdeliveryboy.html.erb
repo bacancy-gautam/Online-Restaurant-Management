@@ -4,7 +4,7 @@
 
   <%=form_for @delivery_boy, remote: true do |f| %>
     <% if @delivery_boy.errors.any? %>
-      <%#= render partial: 'shared/errors', locals: {resource: @delivery_boy} %>
+      <%= render partial: 'shared/errors', locals: {resource: @delivery_boy} %>
     <% end %>
 
     <div class="field">

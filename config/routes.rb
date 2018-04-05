@@ -45,6 +45,8 @@ Rails.application.routes.draw do
     end
     member do
       get :change_user_status
+      get :profile
+      patch :updateprofile
       get :edituser
       patch :assign_role
     end

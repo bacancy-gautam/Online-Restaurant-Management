@@ -21,7 +21,6 @@ class CategoriesController < ApplicationController
         end
         format.js
       end
-      #redirect_to category_path(@category)
     else
       render 'new'
     end
@@ -39,11 +38,20 @@ class CategoriesController < ApplicationController
     # authorize Category
   end
 
-  def edit; end
+  def edit
+    @category = Category.find(params[:id])
+  end
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path
+      @categories = Category.all
+      respond_to do |format|
+        format.html do
+          render(partial: 'categorylist')
+        end
+        format.js
+      end
+      #redirect_to categories_path
     else
       render 'edit'
     end
@@ -51,7 +59,13 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path
+    @categories = Category.all
+    respond_to do |format|
+      format.html do
+        render(partial: 'categorylist')
+      end
+      format.js
+    end
   end
 
   private
