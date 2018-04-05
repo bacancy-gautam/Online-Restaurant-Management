@@ -1237,7 +1237,7 @@ footer {
 .dropdown-content{
   display: none;
 }
-/* Vertical Menu */
+/* Pop-up CSS */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 
 .popup {
@@ -1294,4 +1294,58 @@ footer {
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+
+.dropdown-content{
+  display: none;
+}
+/* Vertical Menu */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+* {
+  box-sizing:border-box;
+  outline:0;
+}
+.contact-info a, li {  
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.contact-info a {color:black !important; text-decoration:none;}
+.contact-info, li {list-style-type: none;}
+.contact-info nav {
+  width: 100%;
+  height: auto;
+  float:left;
+  position:relative;
+  background:white;
+  margin:0 auto;
+  padding: 10px 0;
+  color: white;
+  line-height:30px;
+  border-radius:5px;
+  box-shadow: -2px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.contact-info nav ul li {
+  position:relative;
+  padding: 0 20px;
+
+}
+.contact-info nav ul li:hover {
+  background: crimson;
+
+  border-left: 5px solid #B31131;
+}
+.rest-menu1:hover .dropdown-content {
+  display: block; 
+}
+.rest-menu2:hover .dropdown-content {
+  display: block; 
+}
+.contact-info nav ul li:hover:before {
+  content: '';
+  border-color: transparent #EEE transparent transparent ;
+  right: 0;
+  border-width:10px;
+  position: absolute;
+  border-style: solid;
+  top: 5px;
 }
