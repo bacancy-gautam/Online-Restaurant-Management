@@ -9,13 +9,12 @@ Rails.application.routes.draw do
   get 'add_food_to_fav',                to: 'food_items#add_food_to_fav'
   get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
   get 'users/edit'
-  get 'offers/change_category'
+  get 'offers/change_foodlist'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
   get 'offers/change_category'
-  get "/change_city" => "addresses#change_city"
   get 'food_categories/change_category'
   get "/change_city" => "addresses#change_city"
-   get 'restaurants/area_wise_restaurants' =>
+  get 'restaurants/area_wise_restaurants' =>
       'restaurants#area_wise_restaurants', as: :area
   get :search, controller: :restaurants
   get :location, controller: :restaurants
@@ -49,7 +48,7 @@ Rails.application.routes.draw do
     collection do
       get :role_assign
       get :change_password_edit
-      patch :change_password_update     
+      patch :change_password_update
     end
     member do
       get :change_user_status
@@ -59,7 +58,7 @@ Rails.application.routes.draw do
       patch :assign_role
     end
   end
- 
+
   resources :delivery_boys, path: 'deliveryboys' do
     collection do
       get :change_password_edit

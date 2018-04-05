@@ -1,2 +1,24 @@
-<h1>Offers#show</h1>
-<p>Find me in app/views/offers/show.html.erb</p>
+<h1>Show offer</h1>
+<p>
+  <strong>Restaurant name:</strong>
+  <%= @offer.restaurant.name %>
+</p> 
+<p>
+  <strong>food name:</strong>
+  <%= @offer.food_item.name %>
+</p> 
+
+<p>
+<strong>Category</strong>
+  <%= @offer.food_item.category.name%>
+</p> 
+<p>
+  <strong>food type:</strong>
+  <%= @offer.food_item.food_type %>
+</p> 
+<p>
+  <strong>discount in(%):</strong>
+  <%= @offer.discount%>
+</p>
+
+<%= link_to "back", offers_path%>

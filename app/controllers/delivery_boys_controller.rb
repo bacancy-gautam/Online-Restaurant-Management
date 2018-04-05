@@ -65,7 +65,7 @@ class DeliveryBoysController < ApplicationController
   end
 
   def destroy
-    @delivery_boys = DeliveryBoy.all 
+    @delivery_boys = DeliveryBoy.all
     @delivery_boy = DeliveryBoy.find(params[:id])
     if @delivery_boy.destroy
       respond_to do |format|
