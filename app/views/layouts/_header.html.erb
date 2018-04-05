@@ -24,47 +24,10 @@
              </div>
              <%end%>
              <div class="dropdown">
-              <button class="btn btn-outline-light top-btn" type="button" data-toggle="dropdown"><span class="icon-basket search-icon"></span>Cart(<%=Order.where(:id=>session[:order].keys).count%>)
+              <button class="btn btn-outline-light top-btn " type="button" data-toggle="dropdown"><span class="icon-basket search-icon"></span><i class="cart_count"></i>
                 <span class="caret"></span></button>
+               
                 <div class="cart-dropdown">
-                  <div class="cart-list">
-                    <div class="product-widget">
-                      <div class="product-img">
-                        <img src="./img/product01.png" alt="">
-                      </div>
-                      <div class="product-body">
-                      <%if !(session[:order].nil?)%>
-                        <%@order=Order.where(:id=>session[:order].keys).includes(:food_item)%>
-                     
-                        <%if @order.count!=0%>
-
-                          <%@order.each do |i|%>
-                            <h3 class="product-name">
-                    
-
-                            Food Item::<%= i.food_item.name%><br></h3>
-                            quantity::<%= i.quantity%><br>
-                            Food price::<%= i.price%><br>
-                            <%= link_to "remove",order_path(i),method:"delete",remote: true%><br>
-                          <%end%>
-                        <%else%>
-                          <h4>Cart is Empty!</h4>
-                        <%end%>
-                      <%end%>
-                        
-                      </div>
-                    </div>
-
-                    
-
-                  </div>
-                 
-                  <div class="cart-btns">
-                   <%=link_to "checkout",new_master_order_path%>
-                   <% if user_signed_in? %>
-                    <%=link_to "my order",master_orders_path%>
-                    <%end%>
-                  </div>
                 </div>
               </nav>
             </div>

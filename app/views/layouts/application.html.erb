@@ -26,4 +26,16 @@
   setTimeout(function() {
     $('.alert').fadeOut('fast');
   }, 30000);
+  $(document).ready(function(){
+    $.ajax({
+      type: 'GET',
+      url: '/orders/show_cart',
+      dataType: "script",
+      data: {
+
+      }
+      
+    });
+  });
+  
 </script>

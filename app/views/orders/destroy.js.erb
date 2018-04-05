@@ -1,1 +1,2 @@
-$(".header_app").html("<%= escape_javascript(render partial: 'layouts/header') %>");
+$(".cart-dropdown").html("<%= escape_javascript(render partial: 'order_cart', locals: {orders: @orders})%>");
+$(".cart_count").html("Cart(<%= @orders.count %>)");

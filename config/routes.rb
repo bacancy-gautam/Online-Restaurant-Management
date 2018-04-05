@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/edit'
   get 'offers/change_foodlist'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
+  get 'orders/session-orders' => 'orders#list_session_orders', as: :list_session_orders
   get 'offers/change_category'
   get 'food_categories/change_category'
   get "/change_city" => "addresses#change_city"
@@ -26,7 +27,11 @@ Rails.application.routes.draw do
   resources :home_deliveries_delivery_boys
     
   resources :charges
-  resources :orders
+  resources :orders do
+    collection do
+      get :show_cart
+    end
+  end
   resources :addresses
   resources :favourites
   resources :master_orders

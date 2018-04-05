@@ -74,7 +74,7 @@ restaurant1 = Restaurant.create(
   phone_no: '9898989898',
   email: '440@gmail.com',
   opening_time: Time.now - 2.hours,
-  closing_time: Time.now + 3.hours,
+  closing_time: Time.now + 8.hours,
   branch_name: 'Thaltej',
   user_id: user1.id,
   details: 'Service excellence is our speciality and we are known for the same.'
@@ -113,7 +113,7 @@ restaurant3 = Restaurant.create(
   phone_no: '9090909090',
   email: 'subway@gmail.com',
   opening_time: Time.now - 1.hours,
-  closing_time: Time.now + 3.hours,
+  closing_time: Time.now + 8.hours,
   branch_name: 'Navrangpura',
   user_id: user3.id,
   details: 'Every guest is important for us and the same way we give
@@ -154,8 +154,8 @@ restaurant5 = Restaurant.create(
   name: '440',
   phone_no: '9898989898',
   email: '440@gmail.com',
-  opening_time: Time.now - 4.hours,
-  closing_time: Time.now + 5.hours,
+  opening_time: Time.now - 1.hours,
+  closing_time: Time.now + 8.hours,
   branch_name: 'RTO',
   user_id: user1.id,
   details: 'Service excellence is our speciality and we are known for the same.'
