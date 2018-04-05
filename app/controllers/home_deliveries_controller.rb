@@ -18,12 +18,6 @@ class HomeDeliveriesController < ApplicationController
   def edit
   end
 
-
-  def edit_status
-    @home_delivery = HomeDelivery.find(params[id])
-    redirect_to 
-  end
-
   def show
   end
 

@@ -13,12 +13,19 @@ Rails.application.routes.draw do
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
   get 'offers/change_category'
   get "/change_city" => "addresses#change_city"
-  get 'restaurants/area_wise_restaurants' => 'restaurants#area_wise_restaurants', as: :area
   get 'food_categories/change_category'
   get "/change_city" => "addresses#change_city"
+   get 'restaurants/area_wise_restaurants' =>
+      'restaurants#area_wise_restaurants', as: :area
   get :search, controller: :restaurants
   get :location, controller: :restaurants
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  
+  resources :home_deliveries 
+  resources :home_deliveries_delivery_boys
+    
   resources :charges
   resources :orders
   resources :addresses

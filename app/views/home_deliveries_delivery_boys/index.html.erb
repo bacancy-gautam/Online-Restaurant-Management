@@ -1,0 +1,18 @@
+<table border="3px">
+<tr>
+  <th>order</th>
+  <th>home delivery status</th>
+  <th>home delivery boy</th>
+</tr>
+<% @home_deliveries.each do |home_delivery|%>
+<tr>
+  <td><%= home_delivery.master_order.id %></td>
+  <td><%= home_delivery.status %></td>
+  <td><% unless home_delivery.delivery_boys == [] %>
+  <%= home_delivery.delivery_boys.first.username %>
+  <%else%>
+  <%= link_to "assign", home_deliveries_delivery_boys_new_path(home_delivery: home_delivery)%>
+  <%end%><br></td>
+</tr>
+<%end%>
+</table>
