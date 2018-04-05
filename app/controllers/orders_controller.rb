@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     session[:order][@order.id.to_s] = nil
     @order.destroy
+    respond_to do |f|
+      f.html { redirect_to root_path }
+      f.js
+    end
   end
 
   private

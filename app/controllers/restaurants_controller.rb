@@ -112,7 +112,7 @@ class RestaurantsController < ApplicationController
   end
 
   def location
-    @addresses = Address.ransack(street_cont: params[:loc])
+    @addresses = Address.ransack(area_cont: params[:loc])
                         .result(distinct: true)
     # @city = Restaurant.ransack(city_cont: params[:loc])
     #                .result(distinct: true)
@@ -125,7 +125,7 @@ class RestaurantsController < ApplicationController
   end
 
   def area_wise_restaurants
-    adress = Address.where(street: params[:street]).pluck(:addressable_id)
+    adress = Address.where(area: params[:area]).pluck(:addressable_id)
     @restaurants = Restaurant.where(id: adress)
     # @city =  Restaurant.ransack(city_cont: params[:loc])
     #                    .result(distinct: true)
