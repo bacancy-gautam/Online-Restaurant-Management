@@ -13,7 +13,7 @@ class HomeDeliveriesController < ApplicationController
   end
 
   def index
-    @home_deliveries = HomeDelivery.all
+    @home_deliveries = HomeDelivery.all.includes(:master_order,:address)
   end
 
   def edit; end

@@ -9,7 +9,8 @@
   <td><%= home_delivery.status%></td>
   <td><%= home_delivery.master_order.user_id%></td>
   <td><%= home_delivery.address.addressline%></td>
-  <td><%= link_to "assign to delivery boy",home_deliveries_delivery_boys_new_path(home_delivery: home_delivery) %></td>
+  <td><% unless home_delivery.status == 'assigned'%>
+  <%= link_to "assign to delivery boy",new_home_deliveries_delivery_boy_path(home_delivery: home_delivery) %><%end%></td>
   </tr>
 <%end%>
 </table>
