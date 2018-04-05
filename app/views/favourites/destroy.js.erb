@@ -1,0 +1,2 @@
+$("#restaurants-list").html(" <%= escape_javascript(render partial: 'fav_restaurants', locals: { favourite_restaurants: @favourite_restaurants } )%> ");
+$("#food-list").html(" <%= escape_javascript(render partial: 'fav_foods', locals: { favourite_foods: @favourite_foods } )%> ");

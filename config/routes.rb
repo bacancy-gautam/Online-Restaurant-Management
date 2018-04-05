@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :orders
   resources :addresses
+  resources :favourites
   resources :master_orders
   resources :offers
   resources :food_items

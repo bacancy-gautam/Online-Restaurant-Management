@@ -28,10 +28,10 @@ class Restaurant < ApplicationRecord
     stars = Rate.all.where(rateable_id: self.id).pluck(:stars)
     if stars != []
       sum = stars.inject :+
-      avg = sum/stars.length
+      avg = sum / stars.length
     end
   end
-  
+
   def full_name
     "#{self.name}, #{self.branch_name}, #{self.try(:address).try(:city)}"
   end
