@@ -13,19 +13,35 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user_id = current_user.id
     if @restaurant.save
+      @restaurants = Restaurant.all
       flash[:success] = 'Restaurant created!'
-      redirect_to restaurant_path(@restaurant)
+      respond_to do |format|
+        format.html { render(partial: 'active_restaurant') }
+        format.js
+      end
     else
       render 'new'
     end
   end
 
-  def edit; end
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def update
     if @restaurant.update_attributes(restaurant_params)
+      @restaurants = Restaurant.all
       flash[:success] = 'Restaurant updated!'
-      redirect_to restaurant_path(@restaurant)
+      respond_to do |format|
+        format.html do
+          render(partial: 'active_restaurant')
+        end
+        format.js
+      end
     else
       render 'edit'
     end
@@ -123,10 +139,6 @@ class RestaurantsController < ApplicationController
       :closing_time, :delivery_types, :branch_name,
       address_attributes: [:addressline, :area, :city, :state, :pincode]
     )
-  end
-
-  def review_params
-    params.require(:review).permit(:comment, :restaurant_id)
   end
 
   def fetch_restaurant

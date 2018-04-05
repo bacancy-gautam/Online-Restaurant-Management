@@ -67,8 +67,8 @@ restaurant1 = Restaurant.create(
   name: '440',
   phone_no: '9898989898',
   email: '440@gmail.com',
-  opening_time: Time.now,
-  closing_time: Time.now,
+  opening_time: Time.now - 2.hours,
+  closing_time: Time.now + 3.hours,
   branch_name: 'Thaltej',
   user_id: user1.id,
   details: 'Service excellence is our speciality and we are known for the same.'
@@ -106,8 +106,8 @@ restaurant3 = Restaurant.create(
   name: 'Subway',
   phone_no: '9090909090',
   email: 'subway@gmail.com',
-  opening_time: Time.now,
-  closing_time: Time.now,
+  opening_time: Time.now - 1.hours,
+  closing_time: Time.now + 3.hours,
   branch_name: 'Navrangpura',
   user_id: user3.id,
   details: 'Every guest is important for us and the same way we give
@@ -148,8 +148,8 @@ restaurant5 = Restaurant.create(
   name: '440',
   phone_no: '9898989898',
   email: '440@gmail.com',
-  opening_time: Time.now,
-  closing_time: Time.now,
+  opening_time: Time.now - 4.hours,
+  closing_time: Time.now + 5.hours,
   branch_name: 'RTO',
   user_id: user1.id,
   details: 'Service excellence is our speciality and we are known for the same.'
@@ -176,6 +176,7 @@ FoodItem.create(
   price: 30,
   category_id: category1.id,
   restaurant_id: restaurant1.id,
+  description: 'Vadapav',
   food_type: 0
 )
 
@@ -184,6 +185,7 @@ FoodItem.create(
   price: 70,
   category_id: category1.id,
   restaurant_id: restaurant1.id,
+  description: 'French Fries',
   food_type: 0
 )
 
@@ -192,6 +194,7 @@ FoodItem.create(
   price: 60,
   category_id: category1.id,
   restaurant_id: restaurant2.id,
+  description: 'Chocolate Pastry',
   food_type: 0
 )
 
@@ -200,6 +203,7 @@ FoodItem.create(
   price: 65,
   category_id: category1.id,
   restaurant_id: restaurant2.id,
+  description: 'Black Forest Pastry',
   food_type: 0
 )
 
@@ -208,6 +212,7 @@ FoodItem.create(
   price: 172,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
+  description: '6" Veggie Delite Sub',
   food_type: 0
 )
 
@@ -216,6 +221,7 @@ FoodItem.create(
   price: 102,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
+  description: 'Veggie Delite Salad',
   food_type: 0
 )
 
@@ -224,6 +230,7 @@ FoodItem.create(
   price: 35,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
+  description: 'Veg Shammi Subwrap',
   food_type: 0
 )
 
@@ -232,6 +239,7 @@ FoodItem.create(
   price: 25,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
+  description: 'Cookie',
   food_type: 1
 )
 
@@ -240,5 +248,6 @@ FoodItem.create(
   price: 72,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
+  description: '6" Chatpata Chana Patty Sub',
   food_type: 0
 )

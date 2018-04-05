@@ -1,5 +1,7 @@
 <div class="single-unique-product">
   <%= image_tag(food_item.image.url, size: "100") if food_item.image?  %>
+  <%#= image_tag  food_item.image.url if food_item.image?  %>
+  <%#= image_tag asset_path("dish-1.png") %>
   <span class="featured-rating-orange">6.5</span>
   <div class="featured-title-box">
     <h6>  
@@ -14,10 +16,15 @@
         <p>1301 Avenue, Brooklyn, NY 11230</p>
       </li>
     </ul>
-    <%= link_to "add_to_cart",orders_path(:food_item=>food_item.id,restaurant_id:food_item.restaurant.id),method: "post"%>
-    <a class="primary-btn" href="#" ></a>
+      <% if @restaurant.restaurant_open? %>
+      <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post", class: "primary-btn"%>
+      <% else %>
+        <div class="popup" onclick="myFunction(<%= food_item.id %>)">
+          <a class="text-uppercase primary-btn">ADD TO CART</a>
+          <span class="popuptext" id="myPopup_<%=food_item.id%>">Closed Now</span>
+        </div>
+      <%end%>
     <div class="bottom-icons">
-      <div class="closed-now">CLOSED NOW</div>
         <% if current_user %>
           <% if current_user.favourite_food?(food_item.id) %>
             <span class="heart_<%=food_item.id%> fa fa-heart"></span>
@@ -29,6 +36,7 @@
     </div>
   </div>
 </div>
+
 <script>
   $(".heart_<%=food_item.id%>").on('click',function(){
     $.ajax({
@@ -40,4 +48,12 @@
       dataType: 'script'
     });
   });
+
+  function myFunction(id) {
+    var popup = document.getElementById("myPopup_" + id);
+    popup.classList.add("show");
+    setInterval(function(){
+      popup.classList.remove("show");
+    },3000);
+  }
 </script>
