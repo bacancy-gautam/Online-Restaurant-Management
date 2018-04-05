@@ -1,3 +1,4 @@
+# Home_delivery controller
 class HomeDeliveriesController < ApplicationController
   def new
     @home_delivery = HomeDelivery.new
@@ -6,7 +7,8 @@ class HomeDeliveriesController < ApplicationController
 
   def create
     @master_order = MasterOrder.find(params[:master_order_id])
-    @home_delivery = @master_order.create_home_delivery(home_delivery_params.merge({status: 'pending'}))
+    @home_delivery = @master_order.create_home_delivery(home_delivery_params)
+    @home_delivery.update_attribute(:status, 'pending')
     redirect_to master_orders_path
   end
 
@@ -14,15 +16,13 @@ class HomeDeliveriesController < ApplicationController
     @home_deliveries = HomeDelivery.all
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
-  private 
+  private
 
   def home_delivery_params
-    params.require(:home_delivery).permit(:status,:address_id,:master_order_id)
-  end 
+    params.require(:home_delivery).permit(:status, :address_id, :master_order_id)
+  end
 end

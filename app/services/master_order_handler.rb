@@ -11,8 +11,7 @@ class MasterOrderHandler
   def manage_master_order
     search_session_order
     create_master_order
-    m = update_master_order
-    return m
+    update_master_order
   end
 
   private
