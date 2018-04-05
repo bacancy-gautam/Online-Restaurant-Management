@@ -28,14 +28,52 @@
                 <span class="caret"></span></button>
                
                 <div class="cart-dropdown">
+                                  <div class="cart-list">
+                    <div class="product-widget">
+                      <div class="product-img">
+                        <img src="./img/product01.png" alt="">
+                      </div>
+                      <div class="product-body">
+                      <%if !(session[:order].nil?)%>
+                      <%@order=Order.where(:id=>session[:order].keys).includes(:food_item)%>
+                     
+                      <%if @order.count!=0%>
+
+                          <%@order.each do |i|%>
+                          <h3 class="product-name">
+                            
+
+                            Food Item::<%= i.food_item.name%><br></h3>
+                            quantity::<%= i.quantity%><br>
+                            Food price::<%= i.price%><br>
+                            <%= link_to "remove",order_path(i),method:"delete"%><br>
+                            
+                            
+                            <%end%>
+                            <%end%>
+                            <%end%>
+                            
+                          </div>
+                        </div>
+
+                        
+
+                      </div>
+                      
+                      <div class="cart-btns">
+                       <%=link_to "checkout",new_master_order_path%>
+                       <% if user_signed_in? %>
+                       <%=link_to "my order",master_orders_path%>
+                       <%end%>
+                     </div>  
                 </div>
-              </nav>
-            </div>
-          </div>
-        </div>
+        </nav>
       </div>
-      <script>
-        $("button").click(function(){
-          $(".cart-dropdown").slideToggle();
-        });
-      </script>
+    </div>
+  </div>
+</div>
+<script>
+  $("button").click(function(){
+    $(".cart-dropdown").slideToggle();
+  });
+</script>

@@ -5,10 +5,10 @@ class MasterOrdersController < ApplicationController
   def new
     @master_order = MasterOrder.new
     @order = []
-    order_key = session[:order].keys
-    order_key.each do |i|
-      @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
-    end
+    # order_key = session[:order].keys
+    # order_key.each do |i|
+    #   @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
+    # end
     # session[:order].reject{|c| puts "true" if session[:order][c]==nil}
   end
 
