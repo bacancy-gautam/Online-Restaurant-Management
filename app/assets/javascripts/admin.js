@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery-1.10.2.min
+//= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require admin-bootstrap.min
@@ -23,5 +23,3 @@
 //= require scripts
 //= require switchery.min
 //= require switchery-init
-//= require chart
-//= require chartJs-init
