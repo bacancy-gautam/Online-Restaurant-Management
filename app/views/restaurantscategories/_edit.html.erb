@@ -17,14 +17,17 @@
 
 <div class="content clearfix">
   <div class="form-group clearfix formbackground">
-    <%= form_tag restaurantscategories_path, remote: true, class: 'form-horizontal' do %>
+
+    <%= form_tag restaurantscategory_path, method: :patch, remote: true, class: 'form-horizontal' do %>
 
       <%= label_tag "restaurant", nil, class: "control-label col-sm-2"%>
-      <%= collection_select(:restaurant,:restaurant_id, Restaurant.where(user_id: current_user.id), :id, :name ) %><br>
+      <%= collection_select(:restaurant,:id, Restaurant.where(user_id: current_user.id), :id, :name ) %><br>
       <%= label_tag "Category",nil, class: "control-label col-sm-2"%><br />
       <%= collection_check_boxes :restaurant, :category_ids, Category.all, :id, :name do |b| %>
+        <div class="collection-check-box">
           <%= b.check_box %>
-          <%= b.label %><br>
+          <%= b.label %>
+        </div>
       <% end %>
       <%= submit_tag "create", 'data-disable-with' => "Please wait.." %>
     <%end%>

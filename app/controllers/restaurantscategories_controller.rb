@@ -18,7 +18,18 @@ class RestaurantscategoriesController < ApplicationController
     @category_array.each do |category|
       category.restaurants << @restaurant
     end
-    redirect_to restaurantscategories_path
+
+    @user = current_user
+    @category = {}
+    @restaurants = Restaurant.where(user_id: @user.id)
+    @restaurants.each do |restaurant|
+      @category[restaurant.id] = restaurant.categories
+    end
+
+    respond_to do |format|
+        format.html { render(partial: 'restaurant_category_list') }
+        format.js { render 'index' }
+    end
   end
 
   def show
@@ -36,8 +47,8 @@ class RestaurantscategoriesController < ApplicationController
   def index
     @user = current_user
     @category = {}
-    @restaurant = Restaurant.where(user_id: @user.id)
-    @restaurant.each do |restaurant|
+    @restaurants = Restaurant.where(user_id: @user.id)
+    @restaurants.each do |restaurant|
       @category[restaurant.id] = restaurant.categories
     end
   end
@@ -55,7 +66,16 @@ class RestaurantscategoriesController < ApplicationController
     @category_array.each do |category|
       category.restaurants << @restaurant
     end
-
-    redirect_to restaurantscategories_path
+    @user = current_user
+    @category = {}
+    @restaurants = Restaurant.where(user_id: @user.id)
+    @restaurants.each do |restaurant|
+      @category[restaurant.id] = restaurant.categories
+    end
+    
+    respond_to do |format|
+        format.html { render(partial: 'restaurant_category_list') }
+        format.js { render 'index' }
+    end
   end
 end

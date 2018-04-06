@@ -1,6 +1,6 @@
 <div class="field">
   <h1>Edit restaurant category</h1>
-  <%= form_tag restaurantscategory_path, method: :put do %>
+  <%= form_tag restaurantscategory_path, method: :patch do %>
     <p>Restaurant Name:
     <%=@restaurant.branch_name%></p>
     <%= label_tag "Category"%><br />
@@ -10,7 +10,7 @@
         <%= b.label %>
       </div>
     <% end %>
-    <%= submit_tag "crete", 'data-disable-with' => "Please wait.." %>
+    <%= submit_tag "create", 'data-disable-with' => "Please wait.." %>
   <%end%>
 </div>
 <%= link_to "back", restaurantscategories_path  %>
