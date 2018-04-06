@@ -156,7 +156,7 @@ img {
 }
 
 .mt-50 {
-    margin-top: 50px; 
+    /*margin-top: 50px; */
 }
 
 .mt-70 {
@@ -694,7 +694,7 @@ img {
 }
 
 .cart-page-heading {
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 .cart-page-heading h5 {
@@ -873,6 +873,7 @@ img {
 }
 
 .deldet{
+  cursor: pointer;
   border: 2px solid #ebebeb;
   padding: 10px;
   font-size: 25px;
@@ -890,6 +891,7 @@ img {
   border: 2px solid #ebebeb;
   padding: 10px;
   font-size: 25px;
+  cursor:pointer;
 }
 
 .accdet.active{
@@ -1017,4 +1019,25 @@ img {
 }
 .input-group{
   width: 120px;
+}
+
+.add{
+    width: 30%;
+    height: 40px;
+    background-color: #ff084e;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 5px;
+    margin-right: 5%;
+    float: left;
+}
+.addform form .form-control,
+.addform form .custom-select {
+    height: 52px;
+    border: none;
+    background-color: #f4f2f8;
+    border-radius: 0;
 }

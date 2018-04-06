@@ -5,6 +5,8 @@ class MasterOrdersController < ApplicationController
   def new
     @master_order = MasterOrder.new
     @order = []
+    @address = Address.new
+    @addresses = Address.where(addressable_id: current_user.id)
     # order_key = session[:order].keys
     # order_key.each do |i|
     #   @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
