@@ -37,7 +37,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem "font-awesome-rails"
 gem 'turbolinks', '~> 5.0.0'
-gem 'bullet', group: 'development'
+gem 'groupdate'
+gem 'chartkick'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -66,6 +67,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
