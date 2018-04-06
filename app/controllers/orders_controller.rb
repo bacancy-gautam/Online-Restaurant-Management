@@ -1,6 +1,8 @@
 # Controller for Orders
 class OrdersController < ApplicationController
   # before_action :current_order
+    protect_from_forgery except: :list_session_orders
+
 
   def new
     @order = Order.new
@@ -8,6 +10,11 @@ class OrdersController < ApplicationController
 
   def create
     OrderHandler.new(params, session).manage_order
+    if !session[:order].nil?
+      @orders=Order.where(:id=>session[:order].keys).includes(:food_item)
+    else
+      @orders = []
+    end
     respond_to do |f|
       f.html { redirect_to root_path }
       f.js
@@ -28,8 +35,25 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     session[:order][@order.id.to_s] = nil
     @order.destroy
+    if !session[:order].nil?
+      @orders=Order.where(:id=>session[:order].keys).includes(:food_item)
+    else
+      @orders = []
+    end
+    respond_to do |f|
+      f.html { redirect_to root_path }
+      f.js
+    end
   end
 
+  def show_cart
+    if !session[:order].nil?
+      @orders=Order.where(:id=>session[:order].keys).includes(:food_item)
+    else
+      @orders = []
+    end
+  end
+  
   private
 
   def order_params
