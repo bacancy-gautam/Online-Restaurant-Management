@@ -18,8 +18,7 @@
 /config/local_env.yml
 .byebug_history
 .rvmrc
-
+/public
 /config/local_env.yml
 Gemfile.lock
 /public
-/public/*
