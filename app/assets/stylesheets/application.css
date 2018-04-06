@@ -32,5 +32,7 @@
  *= require themify-icons
  *= require custom
  *= require core-style
- * require_tree .
+ *= require owl.carousel
+ *= require themify-icons
+ *= require font-awesome.min
  */
