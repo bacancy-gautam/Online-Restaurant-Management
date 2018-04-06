@@ -16,6 +16,14 @@
                   <li><%= link_to 'Favourites', favourites_path, class: "btn btn-outline-light top-btn" %></li>
                 <li> <%= link_to('My Account', static_pages_my_account_path , class: "btn btn-outline-light top-btn") %></li> 
                  <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
+                 <% elsif delivery_boy_signed_in? %>
+                 <li> 
+
+                  <li><%= link_to 'My Account',static_pages_my_account_path, class: "btn btn-outline-light top-btn" %></li>
+                  <li> <%= link_to('User Edit Profile', edit_delivery_boy_path(current_delivery_boy) , class: "btn btn-outline-light top-btn") %></li>
+                  <li><%= link_to 'Favourites', favourites_path, class: "btn btn-outline-light top-btn" %></li>
+                <li> <%= link_to('My Account', static_pages_my_account_path , class: "btn btn-outline-light top-btn") %></li> 
+                 <li> <%= link_to('Logout', destroy_delivery_boy_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>
                 
                  <%else%>
                  <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
