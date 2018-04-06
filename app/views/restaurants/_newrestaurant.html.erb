@@ -1,3 +1,5 @@
+  <div id="fooditem"></div>
+
 <div class="content clearfix">
   <div class="form-group clearfix formbackground">
   <h2>Add Restaurant</h2><hr>
@@ -16,6 +18,12 @@
         </ul>
       </div>
     <% end %>
+
+    <div class="field">
+      <div class ="col-lg-10"> 
+      <%= link_to 'Add food_item', new_release_path,  {:remote => true}  %>
+    </div>
+    </div><br>
 
     <div class="field">
       <label class="col-lg-2">Name : </label>

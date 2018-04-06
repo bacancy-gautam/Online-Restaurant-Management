@@ -14,10 +14,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require jquery
 //= require admin-bootstrap.min
 //= require bootstrap2-toggle.min
-//= require jquery-ui-1.10.1.custom.min
 //= require jquery-migrate
 //= require modernizr.min
 //= require jquery.nicescroll
@@ -25,7 +23,3 @@
 //= require scripts
 //= require switchery.min
 //= require switchery-init
-//= require jquery-1.10.2.min
-//= require chart
-//= require chartJs-init
-// = require turbolinks
