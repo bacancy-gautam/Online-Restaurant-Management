@@ -36,6 +36,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem "font-awesome-rails"
+gem 'pry-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'groupdate'
 gem 'chartkick'
