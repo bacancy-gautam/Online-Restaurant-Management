@@ -2200,3 +2200,63 @@ img {
     color: #fff;
     font-weight: 700;
 }
+
+.loginform form .form-control,
+.loginform form .custom-select {
+    height: 52px;
+    border: none;
+    background-color: #f4f2f8;
+    border-radius: 0;
+}
+
+.signupform form .form-control,
+.signupform form .custom-select {
+    height: 52px;
+    border: none;
+    background-color: #f4f2f8;
+    border-radius: 0;
+}
+.sign1{
+    width: 30%;
+    height: 40px;
+    background-color: #ff084e;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 5px;
+    margin-right: 5%;
+    float: left;
+}
+.sign1:hover,
+.sign1:focus {
+    background-color: #3a3a3a;
+    color: #fff;
+    font-weight: 700;
+}
+.sign2{
+    width: 30%;
+    height: 40px;
+    background-color: #ff084e;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 5px;
+}
+.sign2:hover,
+.sign2:focus {
+    background-color: #3a3a3a;
+    color: #fff;
+    font-weight: 700;
+}
+.signin{
+    cursor: pointer;
+    color: red;
+}
+.signuplink{
+    cursor: pointer;
+    color: red;
+}

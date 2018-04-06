@@ -1,6 +1,6 @@
 # Controller for Master Order
 class MasterOrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :new
 
   def new
     @master_order = MasterOrder.new

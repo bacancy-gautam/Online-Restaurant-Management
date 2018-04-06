@@ -61,7 +61,7 @@
                       </div>
                       
                       <div class="cart-btns">
-                       <%=link_to "checkout",new_master_order_path%>
+                       <%=link_to "checkout",new_master_order_path if !(session[:order]).nil? %> 
                        <% if user_signed_in? %>
                        <%=link_to "my order",master_orders_path%>
                        <%end%>

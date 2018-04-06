@@ -9,7 +9,7 @@
   <%#= order.select :restaurant_id, Restaurant.find(Order.find(session[:order].compact.keys).pluck(:restaurant_id).uniq).map{|r| [r.name, r.id]} %> </br>
   <%#= order.submit "place order"%>
 <%#end%>
- -->
+-->
 
 <div id="wrapper">
   <!-- ****** Checkout Area Start ****** -->
@@ -18,35 +18,90 @@
       <div class="row">
 
         <div class="col-12 col-md-6">
-          <div class="accdet"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Account
-          </div>
+          <%if current_user%>
+            <div class="accdet"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Account
+            </div>  
+          <%else%>
+            <div class="accdet"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;Account
+            </div>
+          <%end%>
           <div class="accenter">To place your order now, log in to your existing account or sign up.<br>
-            <a href="#" class="btn login">Login</a>
-            <a href="#" class="btn signup">Sign Up</a>
-          </div>
-          <div class="loginform">
-            <%= form_for(:user, :url => session_path(:user)) do |f| %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me %>
-  <%= f.submit 'Sign in' %>
-  <%= link_to "Forgot your password?", new_password_path(:user) %>
-<% end %>
-          </div>
+            <a class="btn sign1">Login</a>
+            <a class="btn sign2">Sign Up</a>
+          
           <div class="signupform">
+            Already An User ?<span class="signin">Sign In </span>
             <%= form_for(:user, :url => registration_path(:user)) do |f| %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me %>
-  <%= f.submit 'Sign in' %>
-  <%= link_to "Forgot your password?", new_password_path(:user) %>
-<% end %>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <%= f.label :first_name %> <span>*</span>
+                  <%= f.text_field :firstname, autofocus: true, class: "form-control" %>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <%= f.label :last_name%><span>*</span>
+                  <%= f.text_field :lastname, class: "form-control"%>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <%= f.label :user_name%><span>*</span>
+                  <%= f.text_field :username, class: "form-control"%>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <%= f.label :phone_no%><span>*</span>
+                  <%= f.text_field :phoneno, class: "form-control"%>
+                </div>
+                <div class="col-12 mb-4">
+                  <%= f.label :email%><span>*</span>
+                  <%= f.email_field :email, class: "form-control" %>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <%= f.label :password %><span>*</span>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off",class: "form-control" %>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <%= f.label :password_confirmation %><span>*</span>
+              <%= f.password_field :password_confirmation, autocomplete: "off",class: "form-control" %>
+                </div>
+                <div class="col-12 mb-4">
+                  <%= f.label :Profile_Pic %><br />
+                  <%= f.file_field :image%>
+                </div>
+                <div class="col-12 mb-4">
+                  <%= f.submit "Sign Up",class: "btn signup"%>
+                </div>
+              </div>
+            <%end%>
+          </div>
+
+          <div class="loginform">
+            Not An User ? <span class="signuplink">Sign Up</span>
+            <%= form_for(:user, :url => session_path(:user)) do |f| %>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <%= f.label :email%><span>*</span>
+                  <%= f.email_field :email, class: "form-control" %>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <%= f.label :password %><br />
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+              </div>
+              <div class="col-12 mb-4">
+                <%= f.submit "Sign In",class: "btn login"%>
+              </div>
+            <%end%>
+          </div>
+        </div>
           </div>
           <br>
+          <%if current_user%>
+          <div class="deldet"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;Delivery Details
+          </div>
+          <%else%>
           <div class="deldet"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Delivery Details
           </div>
+          <%end%>
           <div class="checkout_details_area mt-50 clearfix">
 
             <div class="cart-page-heading">
@@ -97,14 +152,6 @@
                 <div class="col-12 mb-3">
                   <label for="state">Province <span>*</span></label>
                   <input type="text" class="form-control" id="state" value="">
-                </div>
-                <div class="col-12 mb-3">
-                  <label for="phone_number">Phone No <span>*</span></label>
-                  <input type="number" class="form-control" id="phone_number" min="0" value="">
-                </div>
-                <div class="col-12 mb-4">
-                  <label for="email_address">Email Address <span>*</span></label>
-                  <input type="email" class="form-control" id="email_address" value="">
                 </div>
               </div>
             </form>
@@ -188,30 +235,63 @@
     </div>
   </div>
   <!-- ****** Checkout Area End ****** -->
-  </div>
-  <!-- /.wrapper end -->
+</div>
+<!-- /.wrapper end -->
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'UA-23581568-13');
+  gtag('config', 'UA-23581568-13');
 
-    $(".checkout_details_area").hide();
+  $(".checkout_details_area").hide();
+  $(".loginform").hide();
+  $(".signupform").hide();
+  <% if current_user%>
     $(".accenter").hide();
-    $(".deldet").click(function(){
-      $(".checkout_details_area").slideToggle();
-      $(".deldet").toggleClass('active');
-      $("i", this).toggleClass("fa-plus-square fa-minus-square");
-    })
-    $(".accdet").click(function(){
-      $(".accenter").slideToggle();
-      $(".accdet").toggleClass('active');
-      $("i", this).toggleClass("fa-plus-square fa-minus-square");
-    })
+    $(".deldet").addClass("active");
+    $(".accdet").removeClass("active");
+    $(".checkout_details_area").show();
+  <%else%>
+    $(".accdet").addClass("active");
+    $(".accenter").show();
+    $(".deldet").removeClass("active");
+  <%end%>
+  $(".sign1").click(function(){
+    $(".sign1").hide();
+    $(".sign2").hide();
+    $(".loginform").show();
+  });
+
+  $(".sign2").click(function(){
+    $(".sign1").hide();
+    $(".sign2").hide();
+    $(".signupform").show();
+    $(".accdet").addClass('active');
+    $(".accenter").show();
+  });
+
+  $(".deldet").click(function(){
+    $(".checkout_details_area").slideToggle();
+    $(".deldet").toggleClass('active');
+    $("i", this).toggleClass("fa-plus-square fa-minus-square");
+  });
+  $(".accdet").click(function(){
+    $(".accenter").slideToggle();
+    $(".accdet").toggleClass('active');
+    $("i", this).toggleClass("fa-plus-square fa-minus-square");
+  });
+  $(".signin").click(function(){
+    $('.loginform').show();
+    $('.signupform').hide();
+  });
+    $(".signuplink").click(function(){
+    $('.loginform').hide();
+    $('.signupform').show();
+  });
    $("#master_order_order_type").on("change", function()
     { 
 
@@ -225,4 +305,3 @@
       }
     });
   </script>
-
