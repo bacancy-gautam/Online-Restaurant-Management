@@ -7,8 +7,6 @@ class MasterOrdersController < ApplicationController
     @address = Address.new
     @addresses = Address.where(addressable_id: current_user.id) if current_user
     @orders = []
-    @address = Address.new
-    @addresses = Address.where(addressable_id: current_user.id) if current_user
     order_key = session[:order].keys
     order_key.each do |i|
       @orders << Order.find_by(id: i) unless Order.find_by(id: i).nil?
