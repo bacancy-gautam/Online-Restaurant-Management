@@ -27,8 +27,8 @@ class RestaurantscategoriesController < ApplicationController
     end
 
     respond_to do |format|
-        format.html { render(partial: 'restaurant_category_list') }
-        format.js { render 'index' }
+      format.html { render(partial: 'restaurant_category_list') }
+      format.js { render 'index' }
     end
   end
 
@@ -72,10 +72,10 @@ class RestaurantscategoriesController < ApplicationController
     @restaurants.each do |restaurant|
       @category[restaurant.id] = restaurant.categories
     end
-    
+
     respond_to do |format|
-        format.html { render(partial: 'restaurant_category_list') }
-        format.js { render 'index' }
+      format.html { render(partial: 'restaurant_category_list') }
+      format.js { render 'index' }
     end
   end
 end
