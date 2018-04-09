@@ -16,22 +16,16 @@ class MasterOrdersController < ApplicationController
   def create
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
-    @restaurants.each do |restaurant|
-      @master_order = MasterOrderHandler.new(
-        params,
-        session,
-        current_user,
-        restaurant.id
-      ).manage_master_order
+    @restaurants.each do |r|
+      @m = MasterOrderHandler.new(params, session, current_user, r.id).manage_master_order
     end
-
-    redirect_path = if @master_order.order_type == 'home delivery'
-                      new_home_delivery_path(master_order: @master_order)
+    redirect_path = if @m.order_type == 'home delivery'
+                      new_home_delivery_path(master_order: @m)
                     else master_orders_path
                     end
     redirect_to redirect_path
   end
-  
+
   def index
     @master_orders = MasterOrder.where(user_id: current_user.id)
   end
