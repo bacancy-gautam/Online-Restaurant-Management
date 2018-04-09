@@ -3,7 +3,6 @@ class MasterOrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :bill_details]
   before_action :set_master_orders, only: [:index, :update]
   before_action :set_master_order, only: [:destroy, :edit, :show, :change_pickup_order_status, :update, :show_history]
-
   def new
     authorize MasterOrder, :new?
     @address = Address.new
