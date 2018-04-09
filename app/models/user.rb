@@ -12,6 +12,7 @@ class User < ApplicationRecord
   before_create :assign_default_role
   has_many :favourites
   has_many :restaurants
+  has_many :reviews
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   mount_uploader :image, ImageUploader

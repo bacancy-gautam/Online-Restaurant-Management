@@ -59,7 +59,13 @@ Rails.application.routes.draw do
     end
   end
   resources :food_categories
-  resources :reviews
+  resources :reviews do
+    member do
+      get :review_edit
+      patch :review_update
+      delete :review_delete
+    end
+  end
   resources :restaurantscategories
   resources :users, path: 'customers' do
     collection do

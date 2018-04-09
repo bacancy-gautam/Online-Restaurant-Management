@@ -1,5 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :restaurant
+  belongs_to :user
+  default_scope -> { order(created_at: :desc) }
 
   def user_reviews
     Review.where(user_id: self.user_id).count()

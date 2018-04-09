@@ -23,11 +23,11 @@ class UsersController < ApplicationController
     #     format.js
     #   end
     # else
-      @users = User.all
-      respond_to do |format|
-        format.html
-        format.js
-      end
+    @users = User.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
     # end
   end
 
