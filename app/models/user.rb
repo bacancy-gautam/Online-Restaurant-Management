@@ -45,6 +45,10 @@ class User < ApplicationRecord
     end
   end
 
+  # def self.search(search)
+  #   where("username LIKE ?", "%#{search}%")
+  # end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if (data = session['devise.facebook_data']) && (data['extra']['raw_info'])

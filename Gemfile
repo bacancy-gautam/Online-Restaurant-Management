@@ -21,6 +21,7 @@ gem 'therubyracer'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # ransack = for easy search data
+gem 'pry-rails'
 gem 'ransack', '~> 1.7'
 gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'

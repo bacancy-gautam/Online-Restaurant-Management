@@ -1,11 +1,12 @@
 <!--right notification start-->
   <div class="right-notification">
     <ul class="notification-menu">
-      <li>
-          <form class="search-content" action="http://thevectorlab.net/slicklab/index.html" method="post">
-              <input type="text" class="form-control" name="keyword" placeholder="Search...">
-          </form>
-      </li>
+      <!-- <li>
+          <%#= form_with url: users_path, remote: true, method: :get, html: {class:" ",id:"form"} do |form| %>
+            <input type="text" class="form-control" name="keyword" placeholder="Search..." data-behavior="autocomplete">
+            <%#= submit_tag "Search", :name => nil, :class=>"btn btn-primary"%>
+          <%#end%>
+      </li> -->
 
       <li>
         <% if user_signed_in? %>

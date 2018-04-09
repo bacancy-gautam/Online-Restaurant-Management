@@ -16,11 +16,19 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
-    respond_to do |format|
-      format.html
-      format.js
-    end  
+    # if params[:search]
+    #   @users = User.search(params[:search])
+    #   respond_to do |format|
+    #     format.html { render(partial: 'users') }
+    #     format.js
+    #   end
+    # else
+      @users = User.all
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    # end
   end
 
   def edituser
