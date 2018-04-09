@@ -21,6 +21,25 @@ class OrdersController < ApplicationController
     end
   end
 
+  def remove
+    @order = Order.find(params[:order_id])
+    qty = 0
+    qty = @order.quantity if @order
+    if qty > 1
+      qty = qty - 1
+      @order.update_attributes(quantity: qty, price: qty * @order.food_item.price.to_i)
+    else 
+      session[:order][@order.id.to_s] = nil
+      @order.destroy
+    end
+    if !session[:order].nil?
+      @orders=Order.where(:id=>session[:order].keys).includes(:food_item)
+    else
+      @orders = []
+    end
+  end
+
+
   def index
     @orders = Order.all
   end

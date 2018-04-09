@@ -1,0 +1,2 @@
+$(".bill-details").html("<%= escape_javascript(render partial: 'bill_details', locals: {orders: @orders})%>");
+$(".cart-dropdown").html("<%= escape_javascript(render partial: 'orders/order_cart', locals: {orders: @orders})%>");
