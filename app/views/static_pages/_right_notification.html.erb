@@ -11,8 +11,8 @@
       <li>
         <% if user_signed_in? %>
           <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <%= image_tag(current_user.image.url, alt:'Image', class: "user-img") if current_user.image? %>
             <%= current_user.username %>
-            <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu purple pull-right">
               <li><%= link_to 'Home', root_path %></li>
@@ -21,12 +21,6 @@
           </ul>
         <% end %>
       </li>
-      <li>
-          <div class="sb-toggle-right">
-              <i class="fa fa-indent"></i>
-          </div>
-      </li>
-
     </ul>
   </div>
 <!--right notification end-->

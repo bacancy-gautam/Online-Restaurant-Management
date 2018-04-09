@@ -31,6 +31,7 @@
         <thead>
           <tr>
             <th>No.</th>
+            <th>Image</th>
             <th>Username</th>
             <th>Email</th>
             <th>Status</th>
@@ -43,6 +44,7 @@
           <% if user.has_role? :customer %>
           <tr>
             <td><%= $i %></td>
+            <td><%= image_tag(user.image.url, alt:'Image', class: "user-img") if user.image? %></td>
             <td><%= user.username %></td>
             <td><%= user.email %></td>
             <td>

@@ -137,7 +137,7 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(
       :name, :details, :phone_no, :email, :opening_time,
-      :closing_time, :delivery_types, :branch_name,
+      :closing_time, :delivery_types, :branch_name, :image,
       address_attributes: [:addressline, :area, :city, :state, :pincode]
     )
   end

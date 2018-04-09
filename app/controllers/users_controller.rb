@@ -62,6 +62,7 @@ class UsersController < ApplicationController
   def updateprofile
     @user = current_user
     if @user.update(user_profile_params)
+      # binding.pry
       respond_to do |format|
         format.html do
           render(partial: 'userprofile')

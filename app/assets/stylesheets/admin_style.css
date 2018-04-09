@@ -6560,3 +6560,8 @@ a.view-all:hover {
     height: 30px;
     margin: 5px;
 }
+
+.user-img{
+  height: 55px;
+  width: 55px;  
+}
