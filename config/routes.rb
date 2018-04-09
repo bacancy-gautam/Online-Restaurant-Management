@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
   get 'users/edit'
   get 'offers/change_foodlist'
+  get 'addresses/view_address'
+  get 'offers/change_category'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
   get 'orders/session-orders' => 'orders#list_session_orders', as: :list_session_orders
+  get 'users/new_address' => 'users#add_address', as: :add_address
   get 'offers/change_category'
   get 'food_categories/change_category'
   get '/change_city' => "addresses#change_city"
