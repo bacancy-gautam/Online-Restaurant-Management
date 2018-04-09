@@ -9,7 +9,8 @@ class Restaurant < ApplicationRecord
   has_many :favourites, as: :favouriteable
   has_many :reviews
   has_many :offer
-
+  has_and_belongs_to_many :categories
+  
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 

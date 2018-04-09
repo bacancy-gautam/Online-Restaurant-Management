@@ -13,8 +13,8 @@
       <%counter=0%>
       <td>
         <ul>
-        <% @category[restaurant.id].each do |category| %>
-          <li><%=@category[restaurant.id][counter].name%></li>
+        <% restaurant.categories.each do |category| %>
+          <li><%=category.name%></li>
           <%counter+=1%>
         <%end%>
       </li>
