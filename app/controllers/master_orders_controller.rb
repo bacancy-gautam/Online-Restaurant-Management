@@ -48,11 +48,11 @@ class MasterOrdersController < ApplicationController
   end
 
   def bill_details
-    if !session[:order].nil?
-      @orders=Order.where(:id=>session[:order].keys).includes(:food_item)
-    else
-      @orders = []
-    end
+    @orders = if !session[:order].nil?
+                Order.where(id: session[:order].keys).includes(:food_item)
+              else
+                []
+              end
   end
 
   private
