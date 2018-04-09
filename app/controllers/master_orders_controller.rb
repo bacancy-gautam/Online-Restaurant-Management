@@ -1,7 +1,7 @@
 # Controller for Master Order
 class MasterOrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :bill_details]
-
+  
   def new
     @master_order = MasterOrder.new
     @address = Address.new
