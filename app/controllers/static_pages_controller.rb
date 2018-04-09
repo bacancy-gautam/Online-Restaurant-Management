@@ -13,5 +13,4 @@ class StaticPagesController < ApplicationController
   def contact; end
 
   def my_account; end
- 
 end
