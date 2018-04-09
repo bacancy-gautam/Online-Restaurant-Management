@@ -66,9 +66,12 @@
         <%= link_to 'Add New Address', add_address_path, {:remote => true } %>
       </div>
       </header>
-      <%= render partial: '/addresses/view_address', locals: { addresses: user.addresses } %>
-    </section>   
+      <div id="user-addresses">
+        <%= render partial: '/addresses/view_address', locals: { addresses: current_user.addresses } %>
+      </div>
+    </section>
   </div>
 </div>
 
 <div id="add_address"></div>
+
