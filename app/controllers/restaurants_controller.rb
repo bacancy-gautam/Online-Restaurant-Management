@@ -52,11 +52,11 @@ class RestaurantsController < ApplicationController
     @categories = @restaurant.categories
     @fooditems = @restaurant.food_items
     @review = Review.new
-    @reviews = @restaurant.reviews
+    @reviews = @restaurant.reviews.order(created_at: :desc)
   end
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.active_restaurants
   end
 
   def destroy

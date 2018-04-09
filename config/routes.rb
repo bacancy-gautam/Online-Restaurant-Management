@@ -23,6 +23,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :home_deliveries
+  namespace :charts do
+    get 'super_admin_new_users'
+    get 'super_admin_food_items'
+    get 'super_admin_orders'
+    get 'super_admin_revenue'
+    get 'admin_orders'
+    get 'admin_revenue'
+  end
+  
   resources :home_deliveries_delivery_boys
 
   resources :charges
@@ -31,6 +40,7 @@ Rails.application.routes.draw do
       get :show_cart
     end
   end
+  resources :home_deliveries
   resources :addresses
   resources :favourites
   resources :master_orders

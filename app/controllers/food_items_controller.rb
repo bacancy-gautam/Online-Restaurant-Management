@@ -4,7 +4,7 @@ class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy, :add_food_to_fav]
 
   def index
-    @fooditems = FoodItem.all
+    @fooditems = FoodItem.all.includes(:restaurant, :category)
   end
 
   def new

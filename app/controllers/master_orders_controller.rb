@@ -1,14 +1,16 @@
 # Controller for Master Order
 class MasterOrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :new
 
   def new
     @master_order = MasterOrder.new
     @order = []
-    order_key = session[:order].keys
-    order_key.each do |i|
-      @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
-    end
+    @address = Address.new
+    @addresses = Address.where(addressable_id: current_user.id)
+    # order_key = session[:order].keys
+    # order_key.each do |i|
+    #   @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
+    # end
     # session[:order].reject{|c| puts "true" if session[:order][c]==nil}
   end
 

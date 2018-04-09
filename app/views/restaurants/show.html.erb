@@ -69,39 +69,34 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 responsive-wrap">
-        <div class="search-rest justify-content-center">
+        <div class="food-items-list search-rest justify-content-center">
           <%= render @fooditems %>
+        </div>
+        <div class="reviews-list search-rest justify-content-center">
+          <%= render @reviews %>
         </div>
       </div>
       <div class="col-md-4 responsive-wrap">
         <div class="contact-info">
           <nav role='navigation'>
-            <ul>
-             <div class="rest-menu1">  
-              <li class="active"><a>Home</a></li>
-              <div class="dropdown-content">
-                <ul>
-                  <li><a href="#">Link 1</a></li> 
-                  <li><a href="#">Link 2</a></li>
-                  <li><a href="#">Link 3</a></li>
-                </ul>
-              </div>
-             </div> 
-             <div class="rest-menu2">               
-              <li><a href="#">About</a></li>
-              <div class="dropdown-content">
-                <ul>
-                  <li><a href="#">Link 1</a></li> 
-                  <li><a href="#">Link 2</a></li>
-                  <li><a href="#">Link 3</a></li>
-                </ul>
-              </div>
-              <li><a href="#">Clients</a></li>
-              <li><a href="#">Contact Us</a></li>
+            <ul id="menu-list">
+              <li class="food-item active"><a>Food Items</a></li>
+              <li class="reviews"><a>Reviews</a></li>
             </ul>
           </nav>
         </div>
       </div>
+      <script>
+        $('.reviews-list').hide();
+        $(".food-item").click(function(){
+          $('.food-items-list').show();
+          $('.reviews-list').hide();
+        });
+        $(".reviews").click(function(){
+          $('.reviews-list').show();
+          $('.food-items-list').hide();
+        });
+      </script>
 <!--           <div id="map"></div>
           <div class="address">
             <span class="icon-location-pin"></span>
@@ -109,7 +104,7 @@
           </div>
           <div class="address">
             <span class="icon-screen-smartphone"></span>
-            <p> +44 20 7336 8898</p>
+            <p> +44 20 food898</p>
           </div>
           <div class="address">
             <span class="icon-link"></span>
