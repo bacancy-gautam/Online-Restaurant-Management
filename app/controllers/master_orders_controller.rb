@@ -11,6 +11,11 @@ class MasterOrdersController < ApplicationController
     order_key.each do |i|
       @orders << Order.find_by(id: i) unless Order.find_by(id: i).nil?
     end
+    # order_key = session[:order].keys
+    # order_key.each do |i|
+    #   @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
+    # end
+    # session[:order].reject{|c| puts "true" if session[:order][c]==nil}
   end
 
   def create
