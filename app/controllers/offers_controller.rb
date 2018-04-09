@@ -11,7 +11,11 @@ class OffersController < ApplicationController
     
     @offer = Offer.new(offer_params)
     if @offer.save
-      redirect_to offers_path
+      @offers = Offer.all
+      respond_to do |format|
+        format.html { render(partial: 'index') }
+        format.js { render 'index' }
+      end
     else
       render 'new'
     end
