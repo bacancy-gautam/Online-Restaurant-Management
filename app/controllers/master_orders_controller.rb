@@ -4,22 +4,27 @@ class MasterOrdersController < ApplicationController
 
   def new
     @master_order = MasterOrder.new
-    @order = []
     @address = Address.new
-    @addresses = Address.where(addressable_id: current_user.id)
-    # order_key = session[:order].keys
-    # order_key.each do |i|
-    #   @order << Order.find_by(id: i) unless Order.find_by(id: i).nil?
-    # end
-    # session[:order].reject{|c| puts "true" if session[:order][c]==nil}
+    @addresses = Address.where(addressable_id: current_user.id) if current_user
+    @orders = []
+    order_key = session[:order].keys
+    order_key.each do |i|
+      @orders << Order.find_by(id: i) unless Order.find_by(id: i).nil?
+    end
   end
 
   def create
-    @master_order = MasterOrderHandler.new(
-      params,
-      session,
-      current_user
-    ).manage_master_order
+    @orders = Order.find(session[:order].compact.keys)
+    @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
+    @restaurants.each do |restaurant|
+      @master_order = MasterOrderHandler.new(
+        params,
+        session,
+        current_user,
+        restaurant.id
+      ).manage_master_order
+    end
+
     redirect_path = if @master_order.order_type == 'home delivery'
                       new_home_delivery_path(master_order: @master_order)
                     else master_orders_path
@@ -53,7 +58,6 @@ class MasterOrdersController < ApplicationController
   def master_order_params
     params.require(:master_order).permit(:total, :order_type, :payment_type,
                                          :order_status, :payment_status,
-                                         :transaction_id, :user_id,
-                                         :restaurant_id)
+                                         :transaction_id, :user_id)
   end
 end
