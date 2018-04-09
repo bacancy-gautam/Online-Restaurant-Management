@@ -1,14 +1,12 @@
 # Controller for Master Order
 class MasterOrdersController < ApplicationController
-  before_action :authenticate_user!, except: :new
+  before_action :authenticate_user!, except: [:new, :bill_details]
 
   def new
     @master_order = MasterOrder.new
     @address = Address.new
     @addresses = Address.where(addressable_id: current_user.id) if current_user
     @orders = []
-    @address = Address.new
-    @addresses = Address.where(addressable_id: current_user.id) if current_user
     order_key = session[:order].keys
     order_key.each do |i|
       @orders << Order.find_by(id: i) unless Order.find_by(id: i).nil?
@@ -47,6 +45,14 @@ class MasterOrdersController < ApplicationController
     # a.each do |i|
     # @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
     # end
+  end
+
+  def bill_details
+    @orders = if !session[:order].nil?
+                Order.where(id: session[:order].keys).includes(:food_item)
+              else
+                []
+              end
   end
 
   private

@@ -43,11 +43,16 @@ Rails.application.routes.draw do
     collection do
       get :show_cart
     end
+      delete :remove
   end
   resources :home_deliveries
   resources :addresses
   resources :favourites
-  resources :master_orders
+  resources :master_orders do
+    collection do
+      get :bill_details
+    end
+  end
   resources :offers
   resources :food_items
   resources :categories
