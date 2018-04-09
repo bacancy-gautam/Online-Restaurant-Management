@@ -14,14 +14,15 @@ Rails.application.routes.draw do
   get 'orders/session-orders' => 'orders#list_session_orders', as: :list_session_orders
   get 'offers/change_category'
   get 'food_categories/change_category'
-  get "/change_city" => "addresses#change_city"
+  get '/change_city' => "addresses#change_city"
   get 'restaurants/area_wise_restaurants' =>
-      'restaurants#area_wise_restaurants', as: :area
+      "restaurants#area_wise_restaurants", as: :area
   get :search, controller: :restaurants
   get :location, controller: :restaurants
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :home_deliveries
   namespace :charts do
     get 'super_admin_new_users'
     get 'super_admin_food_items'
@@ -31,15 +32,15 @@ Rails.application.routes.draw do
     get 'admin_revenue'
   end
   
-  resources :home_deliveries 
   resources :home_deliveries_delivery_boys
-    
+
   resources :charges
   resources :orders do
     collection do
       get :show_cart
     end
   end
+  resources :home_deliveries
   resources :addresses
   resources :favourites
   resources :master_orders
