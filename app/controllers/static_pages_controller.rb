@@ -13,8 +13,4 @@ class StaticPagesController < ApplicationController
   def contact; end
 
   def my_account; end
-
-  def search_in_admin
-    
-  end
 end
