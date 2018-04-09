@@ -34,15 +34,22 @@ class OffersController < ApplicationController
 
   def destroy
     @offer.destroy
-    redirect_to offers_path
-  end
+    @offers = Offer.all
+    respond_to do |format|
+      format.html { render(partial: 'index') }
+      format.js { render 'index' }
+    end  
+end
 
   def show; end
 
   def update
     if @offer.update(offer_params)
-      redirect_to offers_path
-    else
+      @offers = Offer.all
+      respond_to do |format|
+        format.html { render(partial: 'index') }
+        format.js { render 'index' }
+      end    else
       render 'new'
     end
   end
