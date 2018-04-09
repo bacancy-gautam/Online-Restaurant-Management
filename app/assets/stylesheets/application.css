@@ -36,3 +36,9 @@
  *= require themify-icons
  *= require font-awesome.min
  */
+
+.user-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;  
+}

@@ -26,3 +26,5 @@
 //= require scripts
 //= require switchery.min
 //= require switchery-init
+// = require jquery.easy-autocomplete
+// = require turbolinks

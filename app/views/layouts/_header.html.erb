@@ -9,14 +9,12 @@
               <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
                  <% if user_signed_in? %>
-                 <li> <%= image_tag  current_user.image.url if current_user.image?  %>
-
-                 <li> <%= link_to('My Account', static_pages_my_account_path , class: "btn btn-outline-light top-btn") %></li>&nbsp; &nbsp;
-                 <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>&nbsp;&nbsp;
-                
+                   <li> <%= image_tag  current_user.image.url, class: "user-img" if current_user.image?  %>
+                   <li> <%= link_to('My Account', static_pages_my_account_path , class: "btn btn-outline-light top-btn") %></li>&nbsp; &nbsp;
+                   <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>&nbsp;&nbsp;
                  <%else%>
-                 <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
-                 <li><%= link_to "Login",new_user_session_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
+                   <li><%= link_to "SignUp",new_user_registration_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
+                   <li><%= link_to "Login",new_user_session_path, class: "btn btn-outline-light top-btn" %></li>&emsp;
                </ul>
              </div>
              <%end%>

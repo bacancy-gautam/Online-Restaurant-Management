@@ -1,0 +1,52 @@
+<h1>Reviews</h1>
+<table class="table table-striped custom-table table-hover">
+  <tr>
+    <th>no</th>
+    <% if !current_user.has_role? :customer %>
+      <th>User</th>
+    <% end %>
+    <th>Restaurant</th>
+    <th>Feedback</th>
+    <% if current_user.has_role? :customer %>
+      <th>Action</th>
+    <% end %>
+  </tr>
+
+  <% if current_user.has_role? :super_admin %>
+    <%@reviews.each_with_index do |review,index|%>
+      <tr>
+        <td><%= index+1%></td>
+        <td><%= review.user.username %></td>
+        <td><%= link_to review.restaurant.name, restaurant_path(review.restaurant.id) %></td>
+        <td><%= review.comment %></td>
+      </tr>
+    <% end %>
+  <% elsif current_user.has_role? :admin %>  
+    <%@reviews.each_with_index do |review,index|%>
+      <% if current_user.restaurant_ids.include? review.restaurant_id %>
+        <tr>
+          <td><%= index+1%></td>
+          <td><%= review.user.username %></td>
+          <td><%= link_to review.restaurant.name, restaurant_path(review.restaurant.id) %></td>
+          <td><%= review.comment %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% elsif current_user.has_role? :customer %>
+    <%@reviews.each_with_index do |review,index|%>
+      <% if review.user_id == current_user.id %>
+        <tr>
+          <td><%= index+1%></td>
+          <td>
+            <%= link_to review.restaurant.name, restaurant_path(review.restaurant.id) %>
+          </td>
+          <td><%= review.comment %></td>
+          <td class="hidden-xs">  
+            <%= link_to "", review_edit_review_path(review.id), class: "btn btn-primary btn-xs fa fa-pencil", remote: true %>
+            <%= link_to "", review_delete_review_path(review.id), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>  
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>

@@ -8,6 +8,7 @@
       <table class="table table-striped custom-table table-hover">
         <thead>
           <tr>
+            <th>Image</th>
             <th>Restaurant Name</th>
             <th>Phone No </th>
             <th>Email</th>
@@ -25,6 +26,7 @@
             <% if current_user.has_role? :admin%>
               <% if restaurant.user_id == current_user.id %>
                 <tr>
+                  <td><%= image_tag(restaurant.image.url, alt:'Image', class: "user-img") if restaurant.image? %></td>
                   <td><%= restaurant.name %></td>
                   <td><%= restaurant.phone_no %></td>
                   <td><%= restaurant.email %></td>
@@ -40,6 +42,7 @@
               <% end %>
             <% else %>
               <tr>
+                <td><%= image_tag(restaurant.image.url, alt:'Image', class: "user-img") if restaurant.image? %></td>
                 <td><%= restaurant.name %></td>
                 <td><%= restaurant.phone_no %></td>
                 <td><%= restaurant.email %></td>

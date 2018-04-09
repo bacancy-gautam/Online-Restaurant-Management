@@ -14,6 +14,11 @@
       </header>
       <table class="table table-striped custom-table table-hover">
         <tr>
+          <th>Profile pic</th>
+          <td><%=image_tag(user.image.url, alt:'Image', class: "user-img") if user.image? %>
+          </td>
+        </tr>
+        <tr>
           <th>Name</th>
           <td><%= user.firstname %></td>
         </tr>

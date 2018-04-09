@@ -1,6 +1,7 @@
 <h1>Food-Items</h1>
 <table class="table table-striped custom-table table-hover">
   <tr>
+    <th>Image</th>
     <th>Restaurant Name</th>
     <th>Category Name</th>
     <th>Food Name</th>
@@ -12,6 +13,7 @@
     <% if current_user.has_role? :admin %>
       <% if (Restaurant.find(food.restaurant_id)).user_id == current_user.id %>
         <tr>
+          <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
           <td><%=food.restaurant.name %></td>
           <td><%=food.category.name %></td>
           <td><%=food.name %></td>
@@ -25,6 +27,7 @@
       <% end %>
     <% elsif current_user.has_role? :super_admin %>
       <tr>
+        <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
         <td><%=food.restaurant.name %></td>
         <td><%=food.category.name %></td>
         <td><%=food.name %></td>
