@@ -315,6 +315,7 @@
     $('.loginform').hide();
     $('.signupform').show();
   });
+
    $("#master_order_order_type").on("change", function()
     { 
 
@@ -345,7 +346,6 @@
             }
 
         } else if(type == 'plus') {
-
             if(currentVal < input.attr('max')) {
                 input.val(currentVal + 1).change();
             }
