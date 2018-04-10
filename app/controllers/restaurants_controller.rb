@@ -1,8 +1,8 @@
 # Controller for Restaurant
 class RestaurantsController < ApplicationController
 
-  before_action :fetch_restaurant, only: [:show, :edit,
-                                          :update, :add_restaurant_to_fav, :food_by_category]
+  before_action :fetch_restaurant, only: [:show, :edit, :update,
+                                          :add_restaurant_to_fav, :food_by_category]
 
   def new
     @restaurant = Restaurant.new
@@ -57,7 +57,6 @@ class RestaurantsController < ApplicationController
 
   def food_by_category
     @restaurant.food_categories
-    binding.pry
   end
 
   def index
@@ -79,7 +78,7 @@ class RestaurantsController < ApplicationController
   end
 
   def add_restaurant_to_fav
-    AddRestaurantToFavourite.new({user: current_user, restaurant: @restaurant}).create
+    AddRestaurantToFavourite.new({ user: current_user, restaurant: @restaurant }).create
     respond_to do |format|
       format.html do
         redirect_to restaurants_path, notice: 'Added to Favourite.'

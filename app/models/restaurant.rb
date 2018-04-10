@@ -10,7 +10,7 @@ class Restaurant < ApplicationRecord
   has_many :reviews
   has_many :offer
   has_and_belongs_to_many :categories
-  
+
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -30,7 +30,7 @@ class Restaurant < ApplicationRecord
         categories << category.name
       end
     end
-    return categories.uniq!
+    categories.uniq!
   end
 
   def restaurant_open?
