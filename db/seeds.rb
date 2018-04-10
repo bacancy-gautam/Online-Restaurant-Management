@@ -190,9 +190,8 @@ restaurant5.create_address(
 
 #========================= CATEGORY =========================
 
-category1 = Category.create(name: 'Fast Food')
-Category.create(name: 'Punjabi')
-Category.create(name: 'Gujarati')
+category1 = Category.create(name: 'Punjabi')
+category2 = Category.create(name: 'Gujarati')
 
 #========================= FOOD ITEM =========================
 
@@ -217,7 +216,7 @@ FoodItem.create(
 FoodItem.create(
   name: 'Chocolate Pastry',
   price: 60,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant2.id,
   description: 'Chocolate Pastry',
   food_type: 0
@@ -226,7 +225,7 @@ FoodItem.create(
 FoodItem.create(
   name: 'Black Forest Pastry',
   price: 65,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant2.id,
   description: 'Black Forest Pastry',
   food_type: 0
@@ -244,7 +243,7 @@ FoodItem.create(
 FoodItem.create(
   name: 'Veggie Delite Salad',
   price: 102,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant3.id,
   description: 'Veggie Delite Salad',
   food_type: 0
@@ -271,7 +270,7 @@ FoodItem.create(
 FoodItem.create(
   name: '6" Chatpata Chana Patty Sub',
   price: 72,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant3.id,
   description: '6" Chatpata Chana Patty Sub',
   food_type: 0

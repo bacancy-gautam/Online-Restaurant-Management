@@ -23,6 +23,16 @@ class Restaurant < ApplicationRecord
 
   scope :active_restaurants, -> { Restaurant.where(status: true) }
 
+  def food_categories
+    categories = []
+    self.food_items.each do |food_item|
+      food_item.category.food_categories.each do |category|
+        categories << category.name
+      end
+    end
+    return categories.uniq!
+  end
+
   def restaurant_open?
     self.opening_time.strftime('%I:%M %p') <= Time.now && self.closing_time.strftime('%I:%M %p') >= Time.now
   end

@@ -2,7 +2,7 @@
 class RestaurantsController < ApplicationController
 
   before_action :fetch_restaurant, only: [:show, :edit,
-                                          :update, :add_restaurant_to_fav]
+                                          :update, :add_restaurant_to_fav, :food_by_category]
 
   def new
     @restaurant = Restaurant.new
@@ -50,13 +50,18 @@ class RestaurantsController < ApplicationController
   def show
     # @restaurant = Restaurant.find(params[:id])
     @categories = @restaurant.categories
-    @fooditems = @restaurant.food_items
+    @fooditems = @restaurant.food_items.includes(:category)
     @review = Review.new
     @reviews = @restaurant.reviews.order(created_at: :desc)
   end
 
+  def food_by_category
+    @restaurant.food_categories
+    binding.pry
+  end
+
   def index
-    @restaurants = Restaurant.active_restaurants.includes(:address)
+    @restaurants = Restaurant.includes(:address).active_restaurants
   end
 
   def destroy

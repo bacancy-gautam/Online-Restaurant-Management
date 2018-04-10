@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'static_pages/my_account'
   get 'add_food_to_fav',                to: 'food_items#add_food_to_fav'
   get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
+  get 'food_by_category',               to: 'restaurants#food_by_category'
   get 'users/edit'
   get 'offers/change_foodlist'
   get 'addresses/view_address'
