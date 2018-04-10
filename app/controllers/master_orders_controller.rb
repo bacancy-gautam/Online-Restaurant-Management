@@ -14,6 +14,7 @@ class MasterOrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
     @restaurants.each do |r|
@@ -48,6 +49,7 @@ class MasterOrdersController < ApplicationController
   end
 
   def bill_details
+    @master_order = MasterOrder.new
     @orders = if !session[:order].nil?
                 Order.where(id: session[:order].keys).includes(:food_item)
               else

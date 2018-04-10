@@ -516,17 +516,5 @@
 
         };
       }); 
-      $('#form').submit(function(){
-        if($('.btn-group1').val() == ""){
-         $('.btn-group1').attr("placeholder","*Required").addClass("changePlaceColor1");
-          $('.btn-group1').css("border","1px solid red");
-          return false; 
-        }
-      });
-      $('.btn-group1').keydown(function(){
-        // alert();
-        $('.btn-group1').css("border","0px");
-        $('.btn-group1').removeClass("changePlaceColor1");
-         $('.btn-group1').attr("placeholder","What are your looking for?")
-      });
+    
     </script>

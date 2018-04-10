@@ -7,6 +7,6 @@ end
 json.fooditems do
   json.array!(@fooditems) do |food|
     json.name food.name
-    json.url food_item_path(food)
+    json.url search_path(term: food.name)
   end
 end
