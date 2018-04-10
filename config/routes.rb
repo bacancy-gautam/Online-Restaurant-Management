@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       delete :remove
   end
   resources :home_deliveries
+  resources :contacts
   resources :addresses
   resources :favourites
   resources :master_orders do

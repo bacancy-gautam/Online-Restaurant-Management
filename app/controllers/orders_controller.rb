@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   def remove
     @order = Order.find(params[:order_id])
     qty = @order.quantity if @order
-    if qty > 1
+    if qty > 0
       qty -= 1
       @order.update_attributes(quantity: qty, price: qty * @order.food_item.price.to_i)
     else
