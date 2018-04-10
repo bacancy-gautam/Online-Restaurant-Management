@@ -1,6 +1,6 @@
 <%= link_to restaurant_path(restaurant) do %>
   <div class="single-unique-product rest_<%= restaurant.id %>">
-    <%= restaurant.image %>
+    <%= image_tag(restaurant.image.url) if restaurant.image? %>
     <% avg = restaurant.avg_rate %>
             <%if avg.nil?%>
               <div class="featured-rating-red">

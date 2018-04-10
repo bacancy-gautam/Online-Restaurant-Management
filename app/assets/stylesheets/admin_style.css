@@ -6565,3 +6565,22 @@ a.view-all:hover {
   height: 55px;
   width: 55px;  
 }
+
+.reserve-rating {
+  font-size: 20px;
+  background: #46cd38;
+  padding: 7px 14px;
+  color: #fff;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: top; }
+
+.reserve-rating p{
+  position: relative;
+    font-size: .8rem;
+    text-align: center;
+    line-height: 60px;
+    color: #000;
+    display: block;
+    padding: 0px;
+}
