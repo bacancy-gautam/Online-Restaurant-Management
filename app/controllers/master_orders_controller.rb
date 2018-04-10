@@ -14,7 +14,6 @@ class MasterOrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
     @restaurants.each do |r|
