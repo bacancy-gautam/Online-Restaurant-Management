@@ -10,7 +10,5 @@ class StaticPagesController < ApplicationController
 
   def index; end
 
-  def contact; end
-
   def my_account; end
 end

@@ -15,12 +15,13 @@
 					<br>
 					
 					<div class="bor8 m-b-20 how-pos4-parent">
-						<%= form.label :email, class: "stext-111 cl2 plh3 size-116 p-l-62 p-r-30", placeholder:'Your Email Address'%>
+						<%= form.email_field :email, class: "stext-111 cl2 plh3 size-116 p-l-62 p-r-30", placeholder:'Your Email Address'%>
 					</div>
 					<br>
 
 					<div class="bor8 m-b-30">
-						<%= form.text_area :description, class: "stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25", placeholder: 'How Can We Help?' %><br>						</div>
+						<%= form.text_area :description, class: "stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25", placeholder: 'How Can We Help?' %><br>						
+					</div>
 					<br>
 
 					<%= form.submit 'Submit', class: "flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"%>
@@ -77,9 +78,6 @@
 		</div>
 	</div>
 </section>	
-
-
-
 
 <!-- Back to top -->
 <div class="btn-back-to-top" id="myBtn">
