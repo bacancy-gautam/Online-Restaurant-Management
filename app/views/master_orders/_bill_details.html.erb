@@ -33,15 +33,13 @@
               <li><span>Shipping</span> <span><%=orders.count * 5%></span></li>
               <li><span>Total</span> <span><%=sum += (orders.count * 5) %></span></li>
             </ul>
-
-            <%=form_for master_order do |f|%>
             <div id="accordion" role="tablist" class="mb-4">
               <div class="card">
                 <div class="card-header" role="tab" id="headingOne">
                   <h6 class="mb-0">
                     <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      <%= f.radio_button :payment_type, value: "card" %>
-                      <%= f.label :paypal, "PayPal"%>
+                      <%= radio_button_tag :payment_type, value: "card" %>
+                      <%= label_tag :paypal, "PayPal"%>
                   </a>
                   </h6>
                 </div>
@@ -56,8 +54,8 @@
                 <div class="card-header" role="tab" id="headingTwo">
                   <h6 class="mb-0">
                     <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      <%= f.radio_button :payment_type, value: "card" %>
-                      <%= f.label :cod, "Cash On Delivery"%>
+                      <%= radio_button_tag :payment_type, value: "card" %>
+                      <%= label_tag :cod, "Cash On Delivery"%>
                   </h6>
                 </div>
                 <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -70,8 +68,8 @@
                 <div class="card-header" role="tab" id="headingThree">
                   <h6 class="mb-0">
                     <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <%= f.radio_button :payment_type, value: "card" %>
-                      <%= f.label :credit, "Credit card"%>
+                      <%= radio_button_tag :payment_type, value: "card" %>
+                      <%= label_tag :credit, "Credit card"%>
                   </h6>
                 </div>
                 <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
@@ -84,8 +82,8 @@
                 <div class="card-header" role="tab" id="headingFour">
                   <h6 class="mb-0">
                     <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                      <%= f.radio_button :payment_type, value: "card" %>
-                      <%= f.label :debit, "Bank Transfer"%>
+                      <%= radio_button_tag :payment_type, value: "card" %>
+                      <%= label_tag :debit, "Bank Transfer"%>
                   </h6>
                 </div>
                 <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
@@ -95,14 +93,6 @@
                 </div>
               </div>
             </div>
-              <%= f.hidden_field :total, value: sum.to_i%>
-              <%= f.hidden_field :order_type, value: '1'%>
-              <%= f.hidden_field :order_status, value: 'pending'%>
-              <%= f.hidden_field :payment_status, value: 'pending'%>
-              <%= f.hidden_field :transaction_id, value: 1%>
-              <%= f.hidden_field :user_id, value: current_user%>
-
-            <%= f.submit "Place Order",class: "btn karl-checkout-btn"%>
-            <%end%>
+            <%= submit_tag "Place Order",class: "btn karl-checkout-btn"%>
           </div>
         </div>
