@@ -72,30 +72,40 @@
         <div class="food-items-list search-rest justify-content-center">
           <%= render @fooditems %>
         </div>
-        <div class="reviews-list search-rest justify-content-center">
-          <%= render @reviews %>
-        </div>
       </div>
       <div class="col-md-4 responsive-wrap">
         <div class="contact-info">
           <nav role='navigation'>
             <ul id="menu-list">
-              <li class="food-item active"><a>Food Items</a></li>
-              <li class="reviews"><a>Reviews</a></li>
+              <% unless @restaurant.food_categories.nil? %>
+                <% @restaurant.food_categories.each do |cat| %>
+                  <li><a><%= cat %></a></li>
+                <% end %>
+              <% end %>
+              <!-- <li class="food-item active"><a>Food Items</a></li> -->
             </ul>
           </nav>
         </div>
       </div>
       <script>
-        $('.reviews-list').hide();
-        $(".food-item").click(function(){
-          $('.food-items-list').show();
-          $('.reviews-list').hide();
-        });
-        $(".reviews").click(function(){
-          $('.reviews-list').show();
-          $('.food-items-list').hide();
-        });
+        $("#menu-list").children().first().addClass("active");
+        $("#menu-list li").click(function(){
+          $("#menu-list").children().removeClass("active");
+          $(this).addClass("active");
+          var pos = $("#menu-list li.active").index();
+          var cat = $("#menu-list li.active").text();
+          var restaurant = <%= @restaurant.id %>;
+          $.ajax({
+            url: "/food_by_category",
+            method: 'GET',
+            data: {
+              pos: pos,
+              cat: cat,
+              id: restaurant
+            },
+            dataType: 'script'
+          });
+        })
       </script>
 <!--           <div id="map"></div>
           <div class="address">
