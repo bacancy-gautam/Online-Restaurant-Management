@@ -53,7 +53,6 @@ class MasterOrdersController < ApplicationController
   end
 
   def bill_details
-    @master_order = MasterOrder.new
     @orders = if !session[:order].nil?
                 Order.where(id: session[:order].keys).includes(:food_item)
               else
