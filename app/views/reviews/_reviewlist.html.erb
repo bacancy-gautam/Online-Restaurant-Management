@@ -1,7 +1,8 @@
 <h1>Reviews</h1>
 <table class="table table-striped custom-table table-hover">
   <tr>
-    <th>no</th>
+    <th>No</th>
+    <th>Ratings</th>
     <% if !current_user.has_role? :customer %>
       <th>User</th>
     <% end %>
@@ -16,6 +17,28 @@
     <%@reviews.each_with_index do |review,index|%>
       <tr>
         <td><%= index+1%></td>
+        <td>
+          <% avg = review.restaurant.avg_rate%>
+          <%if avg.nil?%>
+            <div class="reserve-rating black">
+              <span>NO REVIEWS YET</span>
+            </div>
+          <% else %>
+            <% if avg <= 2 && avg > 0 %>
+              <div class="reserve-rating red">
+                <span><%= avg.round(1) %></span>
+              </div>
+            <% elsif avg > 2 && avg <=3.5 %>
+              <div class="reserve-rating yellow">
+                <span><%= avg.round(1) %></span>
+              </div>
+            <% else %>
+              <div class="reserve-rating">
+                <span><%= avg.round(1) %></span>
+              </div>  
+            <% end %>
+          <% end %>
+        </td>
         <td><%= review.user.username %></td>
         <td><%= link_to review.restaurant.name, restaurant_path(review.restaurant.id) %></td>
         <td><%= review.comment %></td>
@@ -26,6 +49,28 @@
       <% if current_user.restaurant_ids.include? review.restaurant_id %>
         <tr>
           <td><%= index+1%></td>
+          <td>
+            <% avg = review.restaurant.avg_rate%>
+            <%if avg.nil?%>
+              <div class="reserve-rating black">
+                <span>NO REVIEWS YET</span>
+              </div>
+            <% else %>
+              <% if avg <= 2 && avg > 0 %>
+                <div class="reserve-rating red">
+                  <span><%= avg.round(1) %></span>
+                </div>
+              <% elsif avg > 2 && avg <=3.5 %>
+                <div class="reserve-rating yellow">
+                  <span><%= avg.round(1) %></span>
+                </div>
+              <% else %>
+                <div class="reserve-rating">
+                  <span><%= avg.round(1) %></span>
+                </div>  
+              <% end %>
+            <% end %>
+          </td>
           <td><%= review.user.username %></td>
           <td><%= link_to review.restaurant.name, restaurant_path(review.restaurant.id) %></td>
           <td><%= review.comment %></td>
@@ -37,6 +82,28 @@
       <% if review.user_id == current_user.id %>
         <tr>
           <td><%= index+1%></td>
+          <td>
+            <% avg = review.restaurant.avg_rate%>
+            <%if avg.nil?%>
+              <div class="reserve-rating black">
+                <span>NO REVIEWS YET</span>
+              </div>
+            <% else %>
+              <% if avg <= 2 && avg > 0 %>
+                <div class="reserve-rating red">
+                  <span><%= avg.round(1) %></span>
+                </div>
+              <% elsif avg > 2 && avg <=3.5 %>
+                <div class="reserve-rating yellow">
+                  <span><%= avg.round(1) %></span>
+                </div>
+              <% else %>
+                <div class="reserve-rating">
+                  <span><%= avg.round(1) %></span>
+                </div>  
+              <% end %>
+            <% end %>
+          </td>
           <td>
             <%= link_to review.restaurant.name, restaurant_path(review.restaurant.id) %>
           </td>
