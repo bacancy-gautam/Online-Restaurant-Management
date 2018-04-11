@@ -13,10 +13,40 @@ class HomeDeliveriesController < ApplicationController
   end
 
   def index
-    @home_deliveries = HomeDelivery.all.includes(:master_order,:address)
+    @home_deliveries = HomeDelivery.all.includes(:master_order, :address)
   end
 
-  def edit; end
+  def change_home_delivery_status; end
+
+  def edit
+    @home_delivery = HomeDelivery.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update
+    @home_delivery = HomeDelivery.find(params[:id])
+    @home_deliveries = current_delivery_boy.home_deliveries
+    if @home_delivery.update_attributes(home_delivery_params)
+      master_order = @home_delivery.master_order
+      if @home_delivery.status == 'on the way'
+        master_order.update_attribute(:order_status, 'on the way')
+      elsif @home_delivery.status == 'delivered'
+        master_order.update_attribute(:order_status, 'delivered')
+      end
+      flash[:success] = 'Status updated!'
+      respond_to do |format|
+        format.html do
+          render(partial: 'home_deliveries_delivery_boys/home_deliveries')
+        end
+        format.js
+      end
+    else
+      render 'edit'
+    end
+  end
 
   def show; end
 

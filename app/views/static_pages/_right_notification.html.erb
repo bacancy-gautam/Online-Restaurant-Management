@@ -19,6 +19,17 @@
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete  ) %></li>
           </ul>
         <% end %>
+        <% if delivery_boy_signed_in? %>
+          <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <img src="img/avatar-mini.jpg" alt=""><%= current_delivery_boy.username %>
+            <span class=" fa fa-angle-down"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-usermenu purple pull-right">
+              <li><%= link_to 'Home', root_path %></li>
+             
+              <li><%= link_to('Logout', destroy_delivery_boy_session_path, method: :delete  ) %></li>
+          </ul>
+        <% end %>
       </li>
       <li>
           <div class="sb-toggle-right">

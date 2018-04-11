@@ -23,8 +23,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   
-  resources :home_deliveries 
-  resources :home_deliveries_delivery_boys
+  resources :home_deliveries do
+    member do
+      get :change_home_delivery_status
+    end
+  end
+  resources :home_deliveries_delivery_boys do
+    collection do
+      get :get_home_delivery
+    end
+  end
     
   resources :charges
   resources :orders do
