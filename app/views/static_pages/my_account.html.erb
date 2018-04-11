@@ -100,10 +100,10 @@
         <!--state overview start-->
         <% unless delivery_boy_signed_in? %>
         <%= render partial: 'state_overview' %>
+        <%= render partial: 'charts' %>
 
         <% end %>
 
-        <%= render partial: 'charts' %>
 
         <!--state overview end-->
         

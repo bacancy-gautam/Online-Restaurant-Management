@@ -111,6 +111,9 @@ Rails.application.routes.draw do
       patch :change_password_update
     end
     member do
+      get :profile
+      get :editprofile
+      patch :updateprofile
       get :change_delivery_boy_status
     end
   end
