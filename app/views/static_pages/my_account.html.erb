@@ -98,8 +98,13 @@
         </div>
         <!-- page head end-->
         <!--state overview start-->
+        <% unless delivery_boy_signed_in? %>
         <%= render partial: 'state_overview' %>
+
+        <% end %>
+
         <%= render partial: 'charts' %>
+
         <!--state overview end-->
         
       </div>

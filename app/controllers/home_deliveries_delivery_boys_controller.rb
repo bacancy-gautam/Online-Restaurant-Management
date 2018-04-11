@@ -22,6 +22,9 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
       redirect_to home_deliveries_delivery_boys_path
     end
   end
+  def get_home_delivery
+    @home_deliveries = current_delivery_boy.home_deliveries
+  end
 
   def edit; end
 

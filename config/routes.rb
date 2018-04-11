@@ -37,7 +37,20 @@ Rails.application.routes.draw do
     get 'admin_revenue'
   end
   
+
+  resources :home_deliveries do
+    member do
+      get :change_home_delivery_status
+    end
+  end
+  resources :home_deliveries_delivery_boys do
+    collection do
+      get :get_home_delivery
+    end
+  end
+
   resources :home_deliveries_delivery_boys
+
 
   resources :charges
   resources :orders do
