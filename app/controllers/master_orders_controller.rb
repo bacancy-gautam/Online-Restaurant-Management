@@ -3,7 +3,7 @@ class MasterOrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :bill_details]
 
   def new
-    @master_order = MasterOrder.new
+    #@master_order = MasterOrder.new
     @address = Address.new
     @addresses = Address.where(addressable_id: current_user.id) if current_user
     @orders = []

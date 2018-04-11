@@ -34,8 +34,8 @@
               <li><span>Shipping</span> <span><%=orders.count * 5%></span></li>
               <li><span>Total</span> <span><%=sum + (orders.count * 5) %></span></li>
             </ul>
-
-            <%=form_for master_order do |f|%>
+            <%@master_order = MasterOrder.new%>
+            <%=form_for @master_order do |f|%>
             <div id="accordion" role="tablist" class="mb-4">
               <div class="card">
                 <div class="card-header" role="tab" id="headingTwo">
