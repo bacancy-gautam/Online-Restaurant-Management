@@ -8,8 +8,8 @@
           <div class="row">
             <div class="col-md-12">
               <div class="slider-content_wrap">
-                <h1>Discover great places in New york</h1>
-                <h5>Let's uncover the best places to eat, drink, and shop nearest to you.</h5>
+                <h1>Order delicious food online!</h1>
+                <h5>Order food from favourite restaurants near you.</h5>
               </div>
             </div>
           </div>
@@ -25,10 +25,6 @@
                 </div>
               <%end%>
             </div>
-              <div class="slider-link">
-                <a href="#">Browse Popular</a><span>or</span> <a href="#">Recently Addred</a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -36,108 +32,13 @@
 </section>
 <!--// SLIDER -->
 
-<!--//END HEADER -->
-<!--============================= FIND PLACES =============================-->
-<section class="main-block">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <div class="styled-heading">
-          <h3>What do you need to find?</h3>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="find-place-img_wrap">
-          <div class="grid">
-            <figure class="effect-ruby">
-              <%= image_tag asset_path('find-place1.jpg')%>
-              <figcaption>
-                <h5>Nightlife </h5>
-                <p>385 Listings</p>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <%= link_to restaurants_path do %>
-      <div class="col-md-4">
-        <div class="row find-img-align">
-          <div class="col-md-12">
-            <div class="find-place-img_wrap">
-              <div class="grid">
-                <figure class="effect-ruby">
-                  <%= image_tag asset_path('find-place2.jpg')%>
-                  <figcaption>
-                    <h5>Restaurants</h5>
-                    <p>210 Listings</p>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-        <%end%>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="find-place-img_wrap">
-              <div class="grid">
-                <figure class="effect-ruby">
-                  <%= image_tag asset_path('find-place3.jpg')%>
-                  <figcaption>
-                    <h5>Outdoors </h5>
-                    <p>114 Listings</p>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row find-img-align">
-          <div class="col-md-12">
-            <div class="find-place-img_wrap">
-              <div class="grid">
-                <figure class="effect-ruby">
-                  <%= image_tag asset_path('find-place4.jpg')%>
-                  <figcaption>
-                    <h5>Hotels </h5>
-                    <p>577 Listings</p>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="find-place-img_wrap">
-              <div class="grid">
-                <figure class="effect-ruby">
-                  <%= image_tag asset_path('find-place5.jpg')%>
-                  <figcaption>
-                    <h5>Art & Culture </h5>
-                    <p>79 Listings</p>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--//END FIND PLACES -->
 <!--============================= FEATURED PLACES =============================-->
 <section class="main-block light-bg">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-5">
         <div class="styled-heading">
-          <h3>Featured Places</h3>
+          <h3>India's Most Favourite Restaurants</h3>
         </div>
       </div>
     </div>
@@ -146,7 +47,7 @@
       <%= link_to restaurant_path(r) do%>
       <div class="col-md-4 featured-responsive">
         <div class="featured-place-wrap">
-            <%= r.image %>
+            <%= image_tag(r.image.url, height:"100%", width:"100%") if r.image? %>
             <% avg = r.avg_rate %>
             <%if avg.nil?%>
               <div class="featured-rating-red">
@@ -441,8 +342,8 @@
       <div class="col-md-12">
         <div class="copyright">
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          <%= link_to 'About Us', static_pages_about_path %>
-          <p>Copyright &copy; 2018 Listing. All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+          <p><%= link_to 'About Us', static_pages_about_path, class: "about" %> | 
+          <%= link_to 'Contact Us', new_contact_path, class: "about" %></p>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           <ul>
             <li><a href="#"><span class="ti-facebook"></span></a></li>
