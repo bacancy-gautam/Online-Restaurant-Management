@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @master_order = MasterOrder.new
     OrderHandler.new(params, session).manage_order
     @orders = session_orders
     respond_to do |f|
@@ -17,6 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def remove
+    @master_order = MasterOrder.new
     @order = Order.find(params[:order_id])
     qty = @order.quantity if @order
     if qty > 0
@@ -50,6 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def show_cart
+    @master_order = MasterOrder.new if !@master_order.nil?
     @orders = session_orders
   end
 
