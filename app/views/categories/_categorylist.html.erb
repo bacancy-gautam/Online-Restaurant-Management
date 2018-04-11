@@ -3,15 +3,21 @@
   <tr>
     <th>no</th>
     <th>Category name</th>
-    <th colspan="2">Action</th>
+    <% if policy(@categories).edit? %>
+      <th colspan="2">Action</th>
+    <%end%>
   </tr>
   <%@categories.each_with_index do |category,index|%>
     <tr>
       <td><%= index+1%></td>
       <td><%=category.name %></td>
       <td>
-        <%= link_to '', edit_category_path(category), class: "btn btn-primary btn-xs fa fa-pencil", remote: true  %>
-        <%= link_to '', category_path(category), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+        <% if policy(category).edit? %>
+          <%= link_to '', edit_category_path(category), class: "btn btn-primary btn-xs fa fa-pencil", remote: true  %>
+        <%end%>
+        <% if policy(category).destroy? %>
+          <%= link_to '', category_path(category), class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+        <%end%>
       </td>
     </tr>
   <%end%>

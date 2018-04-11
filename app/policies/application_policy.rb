@@ -3,6 +3,7 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
+    raise Pundit::NotAuthorizedError, "You are not NotAuthorizedError" unless user
     @user = user
     @record = record
   end

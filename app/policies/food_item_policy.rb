@@ -6,4 +6,16 @@ class FoodItemPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def new?
+    user.has_role? :admin
+  end
+
+  def edit?
+    user.has_role? :admin
+  end
+
+  def destroy?
+    user.has_role? :admin
+  end
 end
