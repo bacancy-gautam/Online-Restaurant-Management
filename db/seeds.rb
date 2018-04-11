@@ -67,7 +67,7 @@ user5 = find_or_create_user(user5_attributes)
 user1.roles.delete_all
 user1.add_role(:super_admin)
 user2.roles.delete_all
-user2.add_role(:super_admin)
+user2.add_role(:admin)
 user3.roles.delete_all
 user3.add_role(:super_admin)
 user4.roles.delete_all
@@ -83,8 +83,6 @@ user5.addresses.create(
   state: 'Gujarat',
   pincode: '380009'
   )
-
-Role.create(name: "admin")
 
 #========================= RESTAURANT =========================
 
