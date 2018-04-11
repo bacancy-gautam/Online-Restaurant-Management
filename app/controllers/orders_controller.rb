@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def show_cart
-    @master_order = MasterOrder.new if !@master_order.nil?
+    @master_order = MasterOrder.new #if !@master_order.nil?
     @orders = session_orders
   end
 
