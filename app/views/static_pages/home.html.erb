@@ -42,64 +42,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <% @restaurant.each do |r|%>
-      <%= link_to restaurant_path(r) do%>
-      <div class="col-md-4 featured-responsive">
-        <div class="featured-place-wrap">
-            <%= image_tag(r.image.url, height:"100%", width:"100%") if r.image? %>
-            <% avg = r.avg_rate %>
-            <%if avg.nil?%>
-              <div class="featured-rating-red">
-                <span>-</span>
-              </div>
-            <% else %>
-              <% if avg <= 2 && avg > 0 %>
-                <div class="featured-rating-red">
-                  <span><%= avg.round(1) %></span>
-                </div>
-              <% elsif avg > 2 && avg <=3.5 %>
-                <div class="featured-rating-yellow">
-                  <span><%= avg.round(1) %></span>
-                </div>
-              <% else %>
-                <div class="featured-rating-green">
-                  <span><%= avg.round(1) %></span>
-                </div>  
-              <% end %>
-            <% end %>
-            <div class="featured-title-box">
-              <h6><%= r.name%></h6>
-              <p>Restaurant </p>
-              <span>• </span>
-              <p><%= r.reviews.count %> Reviews</p>
-              <span> • </span>
-              <p><span>$$$</span>$$</p>
-              <ul>
-                <li>
-                  <span class="icon-location-pin"></span>
-                  <% add = r.address %>
-                  <p><%= add.addressline %>,<%= add.area %>,<%= add.city %></p>
-                </li>
-                <li>
-                  <span class="icon-screen-smartphone"></span>
-                  <p><%= r.phone_no %></p>
-                </li>
-              </ul>
-              <div class="bottom-icons">
-                <% if r.opening_time.strftime('%I:%M %p') <= Time.now && r.closing_time.strftime('%I:%M %p') >= Time.now %>
-                  <div class="open-now">OPEN NOW</div>
-                <%else%>
-                  <div class="closed-now">CLOSED NOW</div>
-                <% end %>
-                <span class="ti-heart"></span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <%end%>
-      <%end%>
+    <div class="search-rest justify-content-center">
+      <%= render @restaurants%>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-4">

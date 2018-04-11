@@ -26,11 +26,9 @@ class Restaurant < ApplicationRecord
   def food_categories
     categories = []
     self.food_items.each do |food_item|
-      food_item.category.food_categories.each do |category|
-        categories << category.name
-      end
+      categories << food_item.food_category
     end
-    categories.uniq!
+    categories.uniq
   end
 
   def restaurant_open?

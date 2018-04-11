@@ -190,122 +190,126 @@ restaurant5.create_address(
 
 #========================= CATEGORY =========================
 
-
 category1 = Category.create(name: 'Fast Food')
 category2 = Category.create(name: 'Punjabi')
 category3 = Category.create(name: 'Gujarati')
-category4 = Category.create(name: 'Soups')
-category5 = Category.create(name: 'Pizza')
-category6 = Category.create(name: 'Starters')
-category7 = Category.create(name: 'manchurian')
+
+#========================= FOOD CATEGORY =========================
+
+food_category1 = category1.food_categories.create(name: 'Pastas')
+food_category12 = category1.food_categories.create(name: 'Salads')
+food_category13 = category1.food_categories.create(name: 'Beverages')
+
+food_category2 = category2.food_categories.create(name: "Starter")
+food_category3 = category2.food_categories.create(name: "Main Course")
+food_category4 = category2.food_categories.create(name: "Dessert")
+food_category5 = category2.food_categories.create(name: 'Soups')
+food_category6 = category2.food_categories.create(name: 'Pastas')
+
+food_category7 = category3.food_categories.create(name: "Starter")
+food_category8 = category3.food_categories.create(name: "Main Course")
+food_category9 = category3.food_categories.create(name: "Dessert")
+food_category10 = category3.food_categories.create(name: 'Soups')
+food_category11 = category3.food_categories.create(name: 'Pastas')
 
 #========================= FOOD ITEM =========================
 
 FoodItem.create(
-  name: 'Vadapav',
+  name: 'Paneer Tikka Masala',
   price: 30,
-  category_id: category1.id,
-  restaurant_id: restaurant1.id,
-  description: 'Vadapav',
-  food_type: 0
-)
-
-FoodItem.create(
-  name: 'French Fries',
-  price: 70,
-  category_id: category1.id,
-  restaurant_id: restaurant1.id,
-  description: 'French Fries',
-  food_type: 0
-)
-
-FoodItem.create(
-  name: 'Chocolate Pastry',
-  price: 60,
   category_id: category2.id,
-  restaurant_id: restaurant2.id,
-  description: 'Chocolate Pastry',
-  food_type: 0
+  restaurant_id: restaurant1.id,
+  description: 'Paneer Tikka Masala',
+  food_type: 0,
+  food_category_id: food_category3.id
 )
 
 FoodItem.create(
-  name: 'Black Forest Pastry',
+  name: 'Sev Tomato',
+  price: 125,
+  category_id: category2.id,
+  restaurant_id: restaurant1.id,
+  description: 'Sev Tomato',
+  food_type: 0,
+  food_category_id: food_category3.id
+)
+
+FoodItem.create(
+  name: 'Mediterranean Pasta',
+  price: 179,
+  category_id: category1.id,
+  restaurant_id: restaurant2.id,
+  description: 'Mediterranean Pasta',
+  food_type: 0,
+  food_category_id: food_category1.id
+)
+
+FoodItem.create(
+  name: 'Tomato Basil Soup',
   price: 65,
-  category_id: category2.id,
+  category_id: category1.id,
   restaurant_id: restaurant2.id,
-  description: 'Black Forest Pastry',
-  food_type: 0
+  description: 'Tomato Basil Soup',
+  food_type: 0,
+  food_category_id: food_category5.id
 )
 
 FoodItem.create(
-  name: '6" Veggie Delite Sub',
+  name: 'Corn & Peas Salad',
   price: 172,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
-  description: '6" Veggie Delite Sub',
-  food_type: 0
+  description: 'Corn & Peas Salad',
+  food_type: 0,
+  food_category_id: food_category12.id
 )
 
 FoodItem.create(
   name: 'Veggie Delite Salad',
   price: 102,
-  category_id: category2.id,
+  category_id: category1.id,
   restaurant_id: restaurant3.id,
   description: 'Veggie Delite Salad',
-  food_type: 0
+  food_type: 0,
+  food_category_id: food_category12.id
 )
 
 FoodItem.create(
-  name: 'Veg Shammi Subwrap',
+  name: 'Tuna Salad',
   price: 35,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
-  description: 'Veg Shammi Subwrap',
-  food_type: 0
+  description: 'Tuna Salad',
+  food_type: 1,
+  food_category_id: food_category12.id
 )
 
 FoodItem.create(
-  name: 'Cookie',
+  name: 'Subway Club Salad',
   price: 25,
   category_id: category1.id,
   restaurant_id: restaurant3.id,
-  description: 'Cookie',
-  food_type: 1
+  description: 'Subway Club Salad',
+  food_type: 1,
+  food_category_id: food_category12.id
 )
 
 FoodItem.create(
-  name: '6" Chatpata Chana Patty Sub',
-  price: 72,
-  category_id: category2.id,
+  name: 'Tropicana Mixed Fruit Juice (200 ml)',
+  price: 30,
+  category_id: category1.id,
   restaurant_id: restaurant3.id,
-  description: '6" Chatpata Chana Patty Sub',
-  food_type: 0
+  description: 'Tropicana Mixed Fruit Juice (200 ml)',
+  food_type: 0,
+  food_category_id: food_category13.id
 )
 
-
-FoodCategory.create(
-  restaurant_id: restaurant5.id , 
-  category_id: category5.id, 
-  name: 'Greek Pizza'
+FoodItem.create(
+  name: 'Aquavess Water Bottle (200 ml)',
+  price: 30,
+  category_id: category1.id,
+  restaurant_id: restaurant3.id,
+  description: 'Aquavess Water Bottle (200 ml)',
+  food_type: 0,
+  food_category_id: food_category13.id
 )
-
-FoodCategory.create(
-  restaurant_id: restaurant5.id , 
-  category_id: category5.id, 
-  name: 'Margherita'
-)
-
-
-FoodCategory.create(
-  restaurant_id: restaurant4.id , 
-  category_id: category4.id, 
-  name: 'chinese Soups'
-)
-
-FoodCategory.create(
-  restaurant_id: restaurant4.id , 
-  category_id: category4.id, 
-  name: 'italian Soups'
-)
-
-#==============================Food category=========================================

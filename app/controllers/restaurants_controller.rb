@@ -50,13 +50,21 @@ class RestaurantsController < ApplicationController
   def show
     # @restaurant = Restaurant.find(params[:id])
     @categories = @restaurant.categories
-    @fooditems = @restaurant.food_items.includes(:category)
+    @fooditems = @restaurant.food_items.includes(:food_category)
     @review = Review.new
     @reviews = @restaurant.reviews.order(created_at: :desc)
   end
 
   def food_by_category
-    @restaurant.food_categories
+    if @food_category = FoodCategory.find_by_name(params[:cat])
+      @fooditems = @restaurant.food_items.where(food_category: @food_category.id)
+    else
+      @fooditems = @restaurant.food_items
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
