@@ -143,8 +143,8 @@
           <div class="booking-checkbox_wrap mt-4">
             <% if current_user %>
               <center> 
-                Service: <%= rating_for @restaurant, "service", enable_half: true, half_show: true %>
-                Food: <%= rating_for @restaurant, "food", enable_half: true, half_show: true %>
+                Service: <%= rating_for @restaurant, "service", enable_half: true, half_show: true, disable_after_rate: false%>
+                Food: <%= rating_for @restaurant, "food", enable_half: true, half_show: true, disable_after_rate: false %>
               </center>
               <br>
             <%= form_for @review, url: reviews_path, method: :post, remote: true do |f|%>
