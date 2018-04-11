@@ -190,7 +190,6 @@ restaurant5.create_address(
 
 #========================= CATEGORY =========================
 
-
 category1 = Category.create(name: 'Fast Food')
 category2 = Category.create(name: 'Punjabi')
 category3 = Category.create(name: 'Gujarati')
@@ -198,6 +197,12 @@ category4 = Category.create(name: 'Soups')
 category5 = Category.create(name: 'Pizza')
 category6 = Category.create(name: 'Starters')
 category7 = Category.create(name: 'manchurian')
+
+#========================= FOOD CATEGORY =========================
+
+category1.food_categories.create(name: "Starter")
+category1.food_categories.create(name: "Main Course")
+category1.food_categories.create(name: "Dessert")
 
 #========================= FOOD ITEM =========================
 
@@ -207,7 +212,8 @@ FoodItem.create(
   category_id: category1.id,
   restaurant_id: restaurant1.id,
   description: 'Vadapav',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 1
 )
 
 FoodItem.create(
@@ -216,25 +222,28 @@ FoodItem.create(
   category_id: category1.id,
   restaurant_id: restaurant1.id,
   description: 'French Fries',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 2
 )
 
 FoodItem.create(
   name: 'Chocolate Pastry',
   price: 60,
-  category_id: category2.id,
+  category_id: category1.id,
   restaurant_id: restaurant2.id,
   description: 'Chocolate Pastry',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 3
 )
 
 FoodItem.create(
   name: 'Black Forest Pastry',
   price: 65,
-  category_id: category2.id,
+  category_id: category1.id,
   restaurant_id: restaurant2.id,
   description: 'Black Forest Pastry',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 1
 )
 
 FoodItem.create(
@@ -243,16 +252,18 @@ FoodItem.create(
   category_id: category1.id,
   restaurant_id: restaurant3.id,
   description: '6" Veggie Delite Sub',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 2
 )
 
 FoodItem.create(
   name: 'Veggie Delite Salad',
   price: 102,
-  category_id: category2.id,
+  category_id: category1.id,
   restaurant_id: restaurant3.id,
   description: 'Veggie Delite Salad',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 1
 )
 
 FoodItem.create(
@@ -261,7 +272,8 @@ FoodItem.create(
   category_id: category1.id,
   restaurant_id: restaurant3.id,
   description: 'Veg Shammi Subwrap',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 3
 )
 
 FoodItem.create(
@@ -270,42 +282,16 @@ FoodItem.create(
   category_id: category1.id,
   restaurant_id: restaurant3.id,
   description: 'Cookie',
-  food_type: 1
+  food_type: 1,
+  food_category_id: 1
 )
 
 FoodItem.create(
   name: '6" Chatpata Chana Patty Sub',
   price: 72,
-  category_id: category2.id,
+  category_id: category1.id,
   restaurant_id: restaurant3.id,
   description: '6" Chatpata Chana Patty Sub',
-  food_type: 0
+  food_type: 0,
+  food_category_id: 2
 )
-
-
-FoodCategory.create(
-  restaurant_id: restaurant5.id , 
-  category_id: category5.id, 
-  name: 'Greek Pizza'
-)
-
-FoodCategory.create(
-  restaurant_id: restaurant5.id , 
-  category_id: category5.id, 
-  name: 'Margherita'
-)
-
-
-FoodCategory.create(
-  restaurant_id: restaurant4.id , 
-  category_id: category4.id, 
-  name: 'chinese Soups'
-)
-
-FoodCategory.create(
-  restaurant_id: restaurant4.id , 
-  category_id: category4.id, 
-  name: 'italian Soups'
-)
-
-#==============================Food category=========================================

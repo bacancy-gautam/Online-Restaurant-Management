@@ -79,7 +79,7 @@
             <ul id="menu-list">
               <% unless @restaurant.food_categories.nil? %>
                 <% @restaurant.food_categories.each do |cat| %>
-                  <li><a><%= cat %></a></li>
+                  <li><a><%= cat.name %></a></li>
                 <% end %>
               <% end %>
               <!-- <li class="food-item active"><a>Food Items</a></li> -->

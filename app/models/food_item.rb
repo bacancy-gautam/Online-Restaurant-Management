@@ -5,6 +5,7 @@ class FoodItem < ApplicationRecord
   has_one :offer, dependent: :destroy
   has_one :order
   has_many :favourites, as: :favouriteable
+  belongs_to :food_category
   has_many :images, as: :imageable, dependent: :destroy
   mount_uploader :image, ImageUploader
   enum food_type: [:veg, :non_veg]
