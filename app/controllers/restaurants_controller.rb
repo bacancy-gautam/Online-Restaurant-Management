@@ -56,8 +56,15 @@ class RestaurantsController < ApplicationController
   end
 
   def food_by_category
-    @food_category = FoodCategory.find_by_name(params[:cat])
-    @food_items = @restaurant.food_items.where(food_category: @food_category.id)
+    if @food_category = FoodCategory.find_by_name(params[:cat])
+      @fooditems = @restaurant.food_items.where(food_category: @food_category.id)
+    else
+      @fooditems = @restaurant.food_items
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index

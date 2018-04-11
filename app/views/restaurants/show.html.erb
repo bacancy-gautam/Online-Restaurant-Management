@@ -77,6 +77,7 @@
         <div class="contact-info">
           <nav role='navigation'>
             <ul id="menu-list">
+              <li><a>All</li>
               <% unless @restaurant.food_categories.nil? %>
                 <% @restaurant.food_categories.each do |cat| %>
                   <li><a><%= cat.name %></a></li>
