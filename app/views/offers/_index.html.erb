@@ -13,9 +13,12 @@
     <th>edit</th>
     <th>delete</th>
   </tr>
+
   <%@offers.each_with_index do |offer,index|%>
     <tr>
+      <%offer.each do |offer|%>
       <td><%= index+1%></td>
+      
       <td><%=offer.restaurant.name%></td>
       <td><%=offer.food_item.category.name%></td>      
       <td><%=offer.food_item.name%></td>
@@ -23,11 +26,10 @@
       <td><%=offer.discount %></td>
       <td><%=offer.start_date %></td>
       <td><%=offer.end_date %></td>
-
-
-      <td><%= link_to "show", offer_path(offer), remote: true%></td>
+D      <td><%= link_to "show", offer_path(offer), remote: true%></td>
       <td><%= link_to "edit", edit_offer_path(offer), remote: true%></td>
       <td><%= link_to "delete", offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' }, remote: true%></td>
     </tr>
+    <%end%>
   <%end%>
 </table>

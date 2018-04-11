@@ -26,7 +26,7 @@
                 <!-- <li><div class= "users_add" >Add</div></li> -->
                 <li><%= link_to 'Add' , new_user_path, remote: true, class: "showpartials" %></li> 
                 <li><%= link_to 'Manage', users_path, remote: true, class: "showpartials" %></li>
-                <li><%= link_to 'Assign Role', role_assign_users_path, remote: true, class: "showpartials" %> </li>
+                <li><%= link_to 'Assign Role', role_assign_users_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;" >
@@ -67,14 +67,13 @@
           <li class="menu-list active" style="width:250px;">
             <a href="#"><i class="fa fa-reorder"></i>  <span> Offers</span></a>
             <ul class="child-list">
-                <li><%= link_to 'Add'  %></li>
-                <li><%= link_to 'Manage' %></li>
+                <li><%= link_to 'Manage', offers_view_all_offers_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
             <a href="#"><i class="fa fa-pencil-square-o"></i>  <span> Review</span></a>
             <ul class="child-list">
-                <li><%= link_to 'Manage', reviews_path, remote: true, class: "showpartials" %></li>
+              <li><%= link_to 'Manage', reviews_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
@@ -97,12 +96,11 @@
             <a href="#"><i class="fa fa-cutlery"></i>  <span> Restaurants</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' , new_restaurant_path, remote: true, class: "showpartials" %></li>
-                <li><%= link_to "Manage",restaurant_list_restaurants_path, remote: true, class: "showpartials" %>
-                </li>
+                <li><%= link_to "Manage",restaurant_list_restaurants_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-coffee"></i>  <span> Food-items</span></a>
+            <a href="#"><i class="fa fa-coffee"></i><span>Food-items</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add', new_food_item_path, remote: true, class: "showpartials" %></li>
                 <li><%= link_to 'Manage', food_items_path, remote: true, class: "showpartials" %></li>

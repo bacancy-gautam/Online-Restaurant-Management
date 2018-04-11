@@ -20,5 +20,9 @@
   <strong>discount in(%):</strong>
   <%= @offer.discount%>
 </p>
+<% if current_user.has_role? :super_admin %>
+  <%= link_to "back", offers_view_all_offers_path, remote: true%>
+<%else%>
+    <%= link_to "back", offers_path, remote: true%>
+<%end%>
 
-<%= link_to "back", offers_path, remote: true%>

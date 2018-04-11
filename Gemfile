@@ -13,7 +13,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'pry-rails'
 gem 'rubocop', require: false
 gem 'therubyracer'
 # Use Uglifier as compressor for JavaScript assets
@@ -21,7 +20,6 @@ gem 'therubyracer'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # ransack = for easy search data
-gem 'pry-rails'
 gem 'ransack', '~> 1.7'
 gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'
@@ -38,7 +36,6 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem "font-awesome-rails"
-gem 'pry-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'groupdate'
 gem 'chartkick'

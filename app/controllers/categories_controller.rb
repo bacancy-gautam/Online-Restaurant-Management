@@ -51,7 +51,7 @@ class CategoriesController < ApplicationController
         end
         format.js
       end
-      #redirect_to categories_path
+      # redirect_to categories_path
     else
       render 'edit'
     end

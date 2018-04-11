@@ -166,7 +166,7 @@ restaurant4.create_address(
   area: 'Paldi',
   city: 'Ahmedabad',
   state: 'Gujarat',
-  pincode: '380089',
+  pincode: '380089'
 )
 
 restaurant5 = Restaurant.create(
@@ -185,13 +185,23 @@ restaurant5.create_address(
   area: 'RTO',
   city: 'Ahmedabad',
   state: 'Gujarat',
-  pincode: '380003',
+  pincode: '380003'
 )
 
 #========================= CATEGORY =========================
 
+<<<<<<< HEAD
 category1 = Category.create(name: 'Punjabi')
 category2 = Category.create(name: 'Gujarati')
+=======
+category1 = Category.create(name: 'Fast Food')
+category2 = Category.create(name: 'Punjabi')
+category3 = Category.create(name: 'Gujarati')
+category4 = Category.create(name: 'Soups')
+category5 = Category.create(name: 'Pizza')
+category6 = Category.create(name: 'Starters')
+category7 = Category.create(name: 'manchurian')
+>>>>>>> offer with ajax added admin side CRUD and super admin side only show
 
 #========================= FOOD ITEM =========================
 
@@ -275,3 +285,31 @@ FoodItem.create(
   description: '6" Chatpata Chana Patty Sub',
   food_type: 0
 )
+
+
+FoodCategory.create(
+  restaurant_id: restaurant5.id , 
+  category_id: category5.id, 
+  name: 'Greek Pizza'
+)
+
+FoodCategory.create(
+  restaurant_id: restaurant5.id , 
+  category_id: category5.id, 
+  name: 'Margherita'
+)
+
+
+FoodCategory.create(
+  restaurant_id: restaurant4.id , 
+  category_id: category4.id, 
+  name: 'chinese Soups'
+)
+
+FoodCategory.create(
+  restaurant_id: restaurant4.id , 
+  category_id: category4.id, 
+  name: 'italian Soups'
+)
+
+#==============================Food category=========================================
