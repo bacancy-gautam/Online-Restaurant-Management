@@ -16,11 +16,19 @@ class UsersController < ApplicationController
   end
 
   def index
+    # if params[:search]
+    #   @users = User.search(params[:search])
+    #   respond_to do |format|
+    #     format.html { render(partial: 'users') }
+    #     format.js
+    #   end
+    # else
     @users = User.all
     respond_to do |format|
       format.html
       format.js
-    end  
+    end
+    # end
   end
 
   def edituser
@@ -54,6 +62,7 @@ class UsersController < ApplicationController
   def updateprofile
     @user = current_user
     if @user.update(user_profile_params)
+      # binding.pry
       respond_to do |format|
         format.html do
           render(partial: 'userprofile')
@@ -135,6 +144,14 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def add_address
+    @address = Address.new
     respond_to do |format|
       format.html
       format.js

@@ -1,5 +1,5 @@
 <div class="single-unique-product">
-  <%= image_tag(food_item.image.url, size: "100") if food_item.image?  %>
+  <%= image_tag(food_item.image.url, width: "100%") if food_item.image?  %>
   <%#= image_tag  food_item.image.url if food_item.image?  %>
   <%#= image_tag asset_path("dish-1.png") %>
   <span class="featured-rating-orange">6.5</span>
@@ -10,12 +10,6 @@
     <p>Restaurant </p>
     <span> • </span>
     <p><span>$$$</span>$$</p>
-    <ul>
-      <li>
-        <span class="icon-location-pin"></span>
-        <p>1301 Avenue, Brooklyn, NY 11230</p>
-      </li>
-    </ul>
       <% if food_item.restaurant.restaurant_open? %>
         <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post",remote: true, class: "primary-btn"%>
       <% else %>

@@ -24,7 +24,7 @@
 </div>
 
 <div class="cart-btns">
- <%=link_to "checkout",new_master_order_path%>
+ <%=link_to "checkout",new_master_order_path(orders: orders)%>
  <% if user_signed_in? %>
   <%=link_to "my order",master_orders_path%>
   <%end%>

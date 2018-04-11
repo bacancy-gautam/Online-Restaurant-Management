@@ -24,6 +24,7 @@
  *= require default-theme
  *= require _all
  *= require custom
+ *= require easy-autocomplete
  *= require jquery.steps
  */
 #usr_form{

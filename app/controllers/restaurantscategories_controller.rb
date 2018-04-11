@@ -5,28 +5,24 @@ class RestaurantscategoriesController < ApplicationController
   def new; end
 
   def create
-    @category = params[:restaurant][:category_ids]
-    @category = @category.reject(&:empty?)
-    @category_array = []
-    @category.each do |category|
-      @category_array.push(Category.find(category))
-    end
+    @category = params[:restaurant][:category_ids].reject(&:empty?)
+    @category_array = Category.find(@category)
+    @restaurant = Restaurant.find(params[:restaurant][:restaurant_id])
 
-    @restaurant = params[:restaurant][:restaurant_id]
-    @restaurant = Restaurant.find(@restaurant)
     @restaurant.categories.delete_all
     @category_array.each do |category|
       category.restaurants << @restaurant
     end
-    redirect_to restaurantscategories_path
+    @restaurants = Restaurant.where(user_id: current_user.id)
+    respond_to do |format|
+      format.html { render(partial: 'restaurant_category_list') }
+      format.js { render 'index' }
+    end
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @user = current_user
-    @category = {}
-    id = @restaurant.id
-    @category[id] = @restaurant.categories
+    @category = @restaurant.categories
   end
 
   def edit
@@ -34,28 +30,23 @@ class RestaurantscategoriesController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @category = {}
-    @restaurant = Restaurant.where(user_id: @user.id)
-    @restaurant.each do |restaurant|
-      @category[restaurant.id] = restaurant.categories
-    end
+    @restaurants = Restaurant.where(user_id: current_user.id)
   end
 
   def update
     @restaurant = Restaurant.find(params[:id])
     @restaurant.categories.delete_all
-    @category = params[:restaurant][:category_ids]
-    @category = @category.reject(&:empty?)
-    @category_array = []
-    @category.each do |category|
-      @category_array.push(Category.find(category))
-    end
-
+    @category_ids = params[:restaurant][:category_ids].reject(&:empty?)
+    @category_array = Category.find(@category_ids)
     @category_array.each do |category|
       category.restaurants << @restaurant
     end
 
-    redirect_to restaurantscategories_path
+    @restaurants = Restaurant.where(user_id: current_user.id)
+
+    respond_to do |format|
+      format.html { render(partial: 'restaurant_category_list') }
+      format.js { render 'index' }
+    end
   end
 end

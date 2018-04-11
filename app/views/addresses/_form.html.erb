@@ -1,17 +1,7 @@
 <div class="center jumbotron" align="center">
-<%=form_for @address do |form| %>
+<%=form_for @address, remote: true do |form| %>
   <% if @address.errors.any? %>
-    <div id="error_explanation">  
-      <h2>
-        <%= pluralize(@address.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @address.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render partial: 'shared/errors', locals: {resource: @address} %>
   <% end %>
 
   <%= form.label :addressline %>

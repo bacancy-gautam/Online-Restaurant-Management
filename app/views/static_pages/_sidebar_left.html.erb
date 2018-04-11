@@ -37,14 +37,14 @@
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;" >
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Category</span></a>
+            <a href="#"><i class="fa fa-tasks"></i>  <span>Category</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add', new_category_path, remote: true, class: "showpartials" %></li>
                 <li><%= link_to 'Manage', categories_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Restaurants</span></a>
+            <a href="#"><i class="fa fa-cutlery"></i>  <span> Restaurants</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' , new_restaurant_path, remote: true, class: "showpartials" %></li>
                 <li><%= link_to "Manage",restaurant_list_restaurants_path, remote: true, class: "showpartials" %>
@@ -52,33 +52,33 @@
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Food-items</span></a>
+            <a href="#"><i class="fa fa-coffee"></i>  <span> Food-items</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add', new_food_item_path, remote: true, class: "showpartials" %></li>
                 <li><%= link_to 'Manage', food_items_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Order</span></a>
+            <a href="#"><i class="fa fa-shopping-cart"></i>  <span>Order</span></a>
             <ul class="child-list">
                <li><%= link_to 'Order List', master_orders_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Offers</span></a>
+            <a href="#"><i class="fa fa-reorder"></i>  <span> Offers</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' %></li>
                 <li><%= link_to 'Manage' %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Feedback</span></a>
+            <a href="#"><i class="fa fa-pencil-square-o"></i>  <span> Review</span></a>
             <ul class="child-list">
-                <li><%= link_to 'Manage' %></li>
+                <li><%= link_to 'Manage', reviews_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Home-Delivery</span></a>
+            <a href="#"><i class="fa fa-road"></i>  <span>Home-Delivery</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' %></li>
                 <li><%= link_to 'Manage' %></li>
@@ -87,14 +87,14 @@
 
         <% elsif current_user.has_role? :admin %>
           <li class="menu-list active" style="width:250px;" >
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Category</span></a>
+            <a href="#"><i class="fa fa-tasks"></i>  <span>Category</span></a>
             <ul class="child-list">
-                <li><%= link_to 'Add', new_category_path, remote: true, class: "showpartials" %></li>
-                <li><%= link_to 'Manage', categories_path, remote: true, class: "showpartials" %></li>
+                <li><%= link_to 'Add',  new_restaurantscategory_path , remote: true, class: "showpartials" %></li>
+                <li><%= link_to 'Manage',  restaurantscategories_path , remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Restaurants</span></a>
+            <a href="#"><i class="fa fa-cutlery"></i>  <span> Restaurants</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' , new_restaurant_path, remote: true, class: "showpartials" %></li>
                 <li><%= link_to "Manage",restaurant_list_restaurants_path, remote: true, class: "showpartials" %>
@@ -102,27 +102,33 @@
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Food-items</span></a>
+            <a href="#"><i class="fa fa-coffee"></i>  <span> Food-items</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add', new_food_item_path, remote: true, class: "showpartials" %></li>
                 <li><%= link_to 'Manage', food_items_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Order</span></a>
+            <a href="#"><i class="fa fa-shopping-cart"></i>  <span>Order</span></a>
             <ul class="child-list">
                <li><%= link_to 'Order List',  master_orders_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Offers</span></a>
+            <a href="#"><i class="fa fa-reorder"></i>  <span> Offers</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' %></li>
                 <li><%= link_to 'Manage' %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Home-Delivery</span></a>
+            <a href="#"><i class="fa fa-pencil-square-o"></i>  <span> Review</span></a>
+            <ul class="child-list">
+                <li><%= link_to 'Manage', reviews_path, remote: true, class: "showpartials" %></li>
+            </ul>
+          </li>
+          <li class="menu-list active" style="width:250px;">
+            <a href="#"><i class="fa fa-road"></i>  <span>Home-Delivery</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' %></li>
                 <li><%= link_to 'Manage' %></li>
@@ -131,22 +137,22 @@
 
         <% elsif current_user.has_role? :customer %>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Order</span></a>
+            <a href="#"><i class="fa fa-shopping-cart"></i>  <span>Order</span></a>
             <ul class="child-list">
                <li><%= link_to 'Order List', master_orders_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span>Home-Delivery</span></a>
+            <a href="#"><i class="fa fa-road"></i>  <span>Home-Delivery</span></a>
             <ul class="child-list">
                 <li><%= link_to 'Add' %></li>
                 <li><%= link_to 'Manage' %></li>
             </ul>
           </li>
           <li class="menu-list active" style="width:250px;">
-            <a href="#"><i class="fa fa-laptop"></i>  <span> Feedback</span></a>
+            <a href="#"><i class="fa fa-pencil-square-o"></i>  <span> Reviews </span></a>
             <ul class="child-list">
-                <li><%= link_to 'Manage' %></li>
+                <li><%= link_to 'Manage', reviews_path, remote: true, class: "showpartials" %></li>
             </ul>
           </li>
         <% end %>

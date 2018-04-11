@@ -38,6 +38,13 @@ user4_attributes = {
   password_confirmation: '123456'
 }
 
+user5_attributes = {
+  username: 'vaishali',
+  email: 'vaishali.pitroda@bacancytechnology.com',
+  password: '123456',
+  password_confirmation: '123456'
+}
+
 def find_or_create_user(user_attrs)
   email = user_attrs[:email]
   user = User.find_by_email(email)
@@ -55,6 +62,7 @@ user1 = find_or_create_user(user1_attributes)
 user2 = find_or_create_user(user2_attributes)
 user3 = find_or_create_user(user3_attributes)
 user4 = find_or_create_user(user4_attributes)
+user5 = find_or_create_user(user5_attributes)
 
 user1.roles.delete_all
 user1.add_role(:super_admin)
@@ -64,6 +72,17 @@ user3.roles.delete_all
 user3.add_role(:super_admin)
 user4.roles.delete_all
 user4.add_role(:super_admin)
+user5.add_role(:super_admin)
+
+#========================= ADDRESS OF USER =========================
+
+user5.addresses.create(
+  addressline: 'Address: Shop No 5,6 Jawahar Shopping Center',
+  area: 'Manainagar',
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  pincode: '380009'
+  )
 
 Role.create(name: "admin")
 
@@ -171,9 +190,8 @@ restaurant5.create_address(
 
 #========================= CATEGORY =========================
 
-category1 = Category.create(name: 'Fast Food')
-Category.create(name: 'Punjabi')
-Category.create(name: 'Gujarati')
+category1 = Category.create(name: 'Punjabi')
+category2 = Category.create(name: 'Gujarati')
 
 #========================= FOOD ITEM =========================
 
@@ -198,7 +216,7 @@ FoodItem.create(
 FoodItem.create(
   name: 'Chocolate Pastry',
   price: 60,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant2.id,
   description: 'Chocolate Pastry',
   food_type: 0
@@ -207,7 +225,7 @@ FoodItem.create(
 FoodItem.create(
   name: 'Black Forest Pastry',
   price: 65,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant2.id,
   description: 'Black Forest Pastry',
   food_type: 0
@@ -225,7 +243,7 @@ FoodItem.create(
 FoodItem.create(
   name: 'Veggie Delite Salad',
   price: 102,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant3.id,
   description: 'Veggie Delite Salad',
   food_type: 0
@@ -252,7 +270,7 @@ FoodItem.create(
 FoodItem.create(
   name: '6" Chatpata Chana Patty Sub',
   price: 72,
-  category_id: category1.id,
+  category_id: category2.id,
   restaurant_id: restaurant3.id,
   description: '6" Chatpata Chana Patty Sub',
   food_type: 0

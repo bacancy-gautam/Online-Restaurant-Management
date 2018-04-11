@@ -8,21 +8,36 @@ Rails.application.routes.draw do
   get 'static_pages/my_account'
   get 'add_food_to_fav',                to: 'food_items#add_food_to_fav'
   get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
+  get 'food_by_category',               to: 'restaurants#food_by_category'
   get 'users/edit'
   get 'offers/change_foodlist'
+  get 'addresses/view_address'
+  get 'offers/change_category'
   get 'restaurants/new_release' => 'restaurants#new_release', as: :new_release
   get 'orders/session-orders' => 'orders#list_session_orders', as: :list_session_orders
+  get 'users/new_address' => 'users#add_address', as: :add_address
   get 'offers/change_category'
   get 'food_categories/change_category'
-  get "/change_city" => "addresses#change_city"
+  get '/change_city' => "addresses#change_city"
   get 'restaurants/area_wise_restaurants' =>
-      'restaurants#area_wise_restaurants', as: :area
+      "restaurants#area_wise_restaurants", as: :area
   get :search, controller: :restaurants
   get :location, controller: :restaurants
 
+  get :search_in_admin, controller: :static_pages
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :home_deliveries
+  namespace :charts do
+    get 'super_admin_new_users'
+    get 'super_admin_food_items'
+    get 'super_admin_orders'
+    get 'super_admin_revenue'
+    get 'admin_orders'
+    get 'admin_revenue'
+  end
   
+
   resources :home_deliveries do
     member do
       get :change_home_delivery_status
@@ -33,16 +48,26 @@ Rails.application.routes.draw do
       get :get_home_delivery
     end
   end
-    
+
+  resources :home_deliveries_delivery_boys
+
+
   resources :charges
   resources :orders do
     collection do
       get :show_cart
     end
+      delete :remove
   end
+  resources :home_deliveries
+  resources :contacts
   resources :addresses
   resources :favourites
-  resources :master_orders
+  resources :master_orders do
+    collection do
+      get :bill_details
+    end
+  end
   resources :offers
   resources :food_items
   resources :categories
@@ -55,7 +80,13 @@ Rails.application.routes.draw do
     end
   end
   resources :food_categories
-  resources :reviews
+  resources :reviews do
+    member do
+      get :review_edit
+      patch :review_update
+      delete :review_delete
+    end
+  end
   resources :restaurantscategories
   resources :users, path: 'customers' do
     collection do

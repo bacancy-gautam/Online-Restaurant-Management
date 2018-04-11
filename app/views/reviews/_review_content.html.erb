@@ -16,7 +16,7 @@
       <%= User.find(review.user_id).username %>
     </div>
      <% rate = review.user_rating %>
-    <div class="customer-rating"><%= rate.round(1) %></div>
+    <div class="customer-rating"><%= rate.round(1) if rate != nil %></div>
   </div>
   <p class="customer-text">
     <%= review.comment %>

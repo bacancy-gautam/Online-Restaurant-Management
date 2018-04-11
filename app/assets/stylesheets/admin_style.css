@@ -84,7 +84,6 @@ Author: Mosaddek Hossain
 @import url('jquery-ui-1.10.3.css');
 @import url('font-awesome.css');
 @import url('simple-line-icons.css');
-@import url('icomoon-weather.css');
 @import url('default-theme.css');
 
 
@@ -6560,4 +6559,28 @@ a.view-all:hover {
     border: 1px solid #ccc;
     height: 30px;
     margin: 5px;
+}
+
+.user-img{
+  height: 55px;
+  width: 55px;  
+}
+
+.reserve-rating {
+  font-size: 20px;
+  background: #46cd38;
+  padding: 7px 14px;
+  color: #fff;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: top; }
+
+.reserve-rating p{
+  position: relative;
+    font-size: .8rem;
+    text-align: center;
+    line-height: 60px;
+    color: #000;
+    display: block;
+    padding: 0px;
 }

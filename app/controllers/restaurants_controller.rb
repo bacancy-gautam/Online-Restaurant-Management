@@ -1,8 +1,8 @@
 # Controller for Restaurant
 class RestaurantsController < ApplicationController
 
-  before_action :fetch_restaurant, only: [:show, :edit,
-                                          :update, :add_restaurant_to_fav]
+  before_action :fetch_restaurant, only: [:show, :edit, :update,
+                                          :add_restaurant_to_fav, :food_by_category]
 
   def new
     @restaurant = Restaurant.new
@@ -50,13 +50,17 @@ class RestaurantsController < ApplicationController
   def show
     # @restaurant = Restaurant.find(params[:id])
     @categories = @restaurant.categories
-    @fooditems = @restaurant.food_items
+    @fooditems = @restaurant.food_items.includes(:category)
     @review = Review.new
-    @reviews = @restaurant.reviews
+    @reviews = @restaurant.reviews.order(created_at: :desc)
+  end
+
+  def food_by_category
+    @restaurant.food_categories
   end
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.includes(:address).active_restaurants
   end
 
   def destroy
@@ -74,7 +78,7 @@ class RestaurantsController < ApplicationController
   end
 
   def add_restaurant_to_fav
-    AddRestaurantToFavourite.new({user: current_user, restaurant: @restaurant}).create
+    AddRestaurantToFavourite.new({ user: current_user, restaurant: @restaurant }).create
     respond_to do |format|
       format.html do
         redirect_to restaurants_path, notice: 'Added to Favourite.'
@@ -136,7 +140,7 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(
       :name, :details, :phone_no, :email, :opening_time,
-      :closing_time, :delivery_types, :branch_name,
+      :closing_time, :delivery_types, :branch_name, :image,
       address_attributes: [:addressline, :area, :city, :state, :pincode]
     )
   end

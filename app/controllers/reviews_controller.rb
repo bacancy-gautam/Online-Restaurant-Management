@@ -25,9 +25,34 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def review_edit
+    @review = Review.find(params[:id])
+  end
+
+  def review_update
+    @review = Review.find(params[:id])
+    if @review.update_attributes(review_params)
+      @reviews = Review.all
+    end
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+  end
+
+  def index
+    @reviews = Review.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def review_delete
+    @review = Review.find(params[:id])
+    @review.destroy
+    @reviews = Review.all
   end
 
   private

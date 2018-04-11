@@ -1,7 +1,7 @@
 <div class="content clearfix">
   <div class="form-group clearfix formbackground">
   
-    <%= form_tag updateprofile_user_path(user) , method: :patch, class: 'form-horizontal', remote: true do %>
+    <%= form_tag updateprofile_user_path(user) , method: :patch, class: 'form-horizontal', remote: true, multipart: true do %>
     
       <div class="field">
         <%= label_tag :first_name %>
@@ -29,8 +29,8 @@
       </div>
       
       <div class="field">
-          <%= label_tag :Profile_Pic %>
-          <%= file_field_tag :image %>
+        <%= label_tag :image %>
+        <%= file_field_tag :image %>
       </div> 
 
       <div class="actions">

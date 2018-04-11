@@ -9,6 +9,7 @@ class Restaurant < ApplicationRecord
   has_many :favourites, as: :favouriteable
   has_many :reviews
   has_many :offer
+  has_and_belongs_to_many :categories
 
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -19,6 +20,18 @@ class Restaurant < ApplicationRecord
   validates :branch_name, presence: true
 
   accepts_nested_attributes_for :address
+
+  scope :active_restaurants, -> { Restaurant.where(status: true) }
+
+  def food_categories
+    categories = []
+    self.food_items.each do |food_item|
+      food_item.category.food_categories.each do |category|
+        categories << category.name
+      end
+    end
+    categories.uniq!
+  end
 
   def restaurant_open?
     self.opening_time.strftime('%I:%M %p') <= Time.now && self.closing_time.strftime('%I:%M %p') >= Time.now

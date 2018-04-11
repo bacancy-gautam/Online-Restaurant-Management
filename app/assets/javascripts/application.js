@@ -17,57 +17,54 @@
 //= require jquery-ui
 //= require bootstrap.min
 //= require bootstrap/modal
-// = require popper.min
-// = require jquery
-// = require jquery.easy-autocomplete
-// = require active
-// = require easing.min
-// = require hoverIntent
-// = require jquery.ajaxchimp.min
-// = require jquery.magnific-popup
-// = require jquery.nice-select.min
-// = require jquery.sticky
-// = require mail-script
-// = require main
-// = require parallax.min
-// = require plugins
-// = require slick
-// = require superfish
-// = require swiper.min
-// = require turbolinks
-// = require jquery.raty
-// = require ratyrate
-
-
+//= require popper.min
+//= require jquery.easy-autocomplete
+//= require active
+//= require easing.min
+//= require hoverIntent
+//= require jquery.ajaxchimp.min
+//= require jquery.magnific-popup
+//= require jquery.nice-select.min
+//= require jquery.sticky
+//= require mail-script
+//= require main
+//= require parallax.min
+//= require plugins
+//= require slick
+//= require superfish
+//= require swiper.min
+//= require turbolinks
+//= require jquery.raty
+//= require ratyrate
 
 $(document).ready(function(){
 
 $input = $("[data-behavior='autocomplete-1']")
 $input2 = $("[data-behavior='autocomplete-2']")
 
-  var options = {
-    getValue: "name",
-    url: function(phrase) {
-      return "/search.json?term=" + phrase;
-    },
-    categories: [
-      {
-        listLocation: "restaurants",
-        header: "<center><strong> -- RESTAURANTS -- </strong></center>",
-      },
-      {
-        listLocation: "fooditems",
-        header: "<center><strong> -- DISHES -- </strong></center>",
-      }
-    ],
-    list: {
-      onChooseEvent: function( ) {
-        var url = $input.getSelectedItemData().url
-        $input.val("")
-        Turbolinks.visit(url)
-      }
-    }
-  }
+ var options = {
+ getValue: "name",
+ url: function(phrase) {
+ return "/search.json?term=" + phrase;
+ },
+ categories: [
+ {
+ listLocation: "restaurants",
+ header: "<center><strong> -- RESTAURANTS -- </strong></center>",
+ },
+ {
+ listLocation: "fooditems",
+ header: "<center><strong> -- DISHES -- </strong></center>",
+ }
+ ],
+ list: {
+ onChooseEvent: function( ) {
+ var url = $input.getSelectedItemData().url
+ $input.val("")
+ Turbolinks.visit(url)
+ }
+ }
+ }
 
 var options2 = {
     getValue: "name",

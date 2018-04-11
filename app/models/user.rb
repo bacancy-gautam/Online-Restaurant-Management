@@ -10,10 +10,12 @@ class User < ApplicationRecord
          omniauth_providers: [:facebook, :google_oauth2]
 
   before_create :assign_default_role
+  has_many :contacts
   has_many :favourites
   has_many :restaurants
+  has_many :reviews
   has_many :addresses, as: :addressable, dependent: :destroy
-  has_many :images, as: :imageable, dependent: :destroy
+  has_many :images, as: :imageable, dependent: :destroy 
   mount_uploader :image, ImageUploader
 
   def favourite_food?(food_id)
@@ -44,6 +46,10 @@ class User < ApplicationRecord
       end
     end
   end
+
+  # def self.search(search)
+  #   where("username LIKE ?", "%#{search}%")
+  # end
 
   def self.new_with_session(params, session)
     super.tap do |user|

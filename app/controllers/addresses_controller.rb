@@ -23,16 +23,18 @@ class AddressesController < ApplicationController
     end
   end
 
-  def edit; end
-
-  def show; end
+  def edit
+    @address = Address.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def update
-    if @address.update(address_params)
-      redirect_to @address
-    else
-      render 'edit'
-    end
+    @address = Address.find(params[:id])
+    @address.update(address_params)
+    @addresses = current_user.addresses
   end
 
   def change_city
@@ -43,6 +45,14 @@ class AddressesController < ApplicationController
   def destroy
     @address.destroy
     redirect_to addresses_path
+  end
+
+  def view_address
+    @addresses = Address.where(addressable_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
