@@ -1,11 +1,34 @@
+<div id="customer" class="">
+    <h3>new</h3>
+    <section class="panel">
+      <header class="panel-heading head-border">
+          My orders
+      </header>
+      <table class="table table-striped custom-table table-hover">
+        <thead>
+          <tr>
+            <th>master order</th>
+            <th>Order Type</th>
+            <th>Order Status</th>
+            <th>Payment Status</th>
+            <th>Payment Type</th>
+            <th>date</th>
+            <th></th>
+            <th class="hidden-xs"> Action</th>
+          </tr>
+        </thead>
+        <tbody>
+       
 <% @master_orders.each do |m|%>
+ <tr>
 
-  Total amount::<%= m.total.to_i%><br>
-  Order Type::<%= m.order_type%><br>
-  Order Status::<%= m.order_status%><br>
-  Payment Status::<%= m.payment_status%><br>
-  Payment Type::<%= m.payment_type%><br>
-  date::<%= m.created_at%><br>
+  <td><%= m.total.to_i%></td>
+  <td><%= m.order_type%></td>
+  <td><%= m.order_status%></td>
+  <td><%= m.payment_status%></td>
+  <td><%= m.payment_type%></td>
+  <td><%= m.created_at%></td>
+  <td>
   <% if m.payment_type == "card"%>
     <%if m.payment_status == "pending" %>
       <%= form_tag charges_path(:m_id=>m) do %>
@@ -25,7 +48,12 @@
       <% end %>
     <%end%>
   <%end%>
-  <%= link_to "show",master_order_path(m)%></br>
-  <br>
-  <br>
+  </td>
+  <td><%= link_to "show",master_order_path(m)%></td>
+ </tr> 
 <%end%>
+
+</tbody>
+      </table>
+    </section>
+  </div> 
