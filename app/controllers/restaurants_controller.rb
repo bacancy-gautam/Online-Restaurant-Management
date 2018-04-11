@@ -73,8 +73,12 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-    flash[:success] = 'Restaurant updated!' if @restaurant.destroy
-    redirect_to restaurants_path
+    @restaurants = Restaurant.all
+    flash[:success] = 'Restaurant deleted!' if @restaurant.destroy
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new_release

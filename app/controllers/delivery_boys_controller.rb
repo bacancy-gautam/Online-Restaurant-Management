@@ -52,9 +52,31 @@ class DeliveryBoysController < ApplicationController
         end
         format.js
       end
-      # redirect_to @delivery_boy
     else
       render 'edit'
+    end
+  end
+
+  def editprofile
+    @delivery_boy = DeliveryBoy.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def updateprofile
+    @delivery_boy = DeliveryBoy.find(params[:id])
+    if @delivery_boy.update(delivery_boy_params)
+      @delivery_boys = DeliveryBoy.all
+      respond_to do |format|
+        format.html do
+          render(partial: 'userprofile')
+        end
+        format.js
+      end
+    else
+      render 'editprofile'
     end
   end
 
@@ -79,18 +101,33 @@ class DeliveryBoysController < ApplicationController
 
   def change_password_edit
     @delivery_boy = current_delivery_boy
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def change_password_update
     @delivery_boy = current_delivery_boy
     if @delivery_boy.update_with_password(change_password_params)
-      # Sign in the delivery_boy by passing validation
-      #   in case their password changed
       flash[:success] = 'Password updated'
       bypass_sign_in(@delivery_boy)
-      redirect_to root_path
+      respond_to do |format|
+        format.html do
+          render(partial: 'userprofile')
+        end
+        format.js
+      end
     else
       render 'change_password_edit'
+    end
+  end
+
+  def profile
+    @delivery_boy = current_delivery_boy
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

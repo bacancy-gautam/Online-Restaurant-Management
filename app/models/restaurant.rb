@@ -2,13 +2,13 @@
 class Restaurant < ApplicationRecord
   enum type: [:take_away, :home_delivery]
   ratyrate_rateable 'service', 'food'
-  has_many :food_items
+  has_many :food_items, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :categories
   has_many :favourites, as: :favouriteable
-  has_many :reviews
-  has_many :offers
+  has_many :reviews, dependent: :destroy
+  has_many :offers, dependent: :destroy
   has_and_belongs_to_many :categories
 
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/

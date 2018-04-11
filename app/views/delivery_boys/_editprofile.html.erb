@@ -1,6 +1,6 @@
 <h2>Edit</h2>
 
-<%= form_for @delivery_boy, :url=> url_for(controller: 'delivery_boys', action: 'update'), remote: true do |f| %>
+<%= form_for @delivery_boy, :url=> url_for(controller: 'delivery_boys', action: 'updateprofile'), remote: true do |f| %>
   
   <% if @delivery_boy.errors.any? %>
     <%= render partial: 'shared/errors', locals: {resource: @delivery_boy} %>
@@ -35,3 +35,5 @@
     <%= f.submit "Edit" %>
   </div>
 <% end %>
+
+<%= link_to 'show details'  %>
