@@ -190,10 +190,7 @@ restaurant5.create_address(
 
 #========================= CATEGORY =========================
 
-<<<<<<< HEAD
-category1 = Category.create(name: 'Punjabi')
-category2 = Category.create(name: 'Gujarati')
-=======
+
 category1 = Category.create(name: 'Fast Food')
 category2 = Category.create(name: 'Punjabi')
 category3 = Category.create(name: 'Gujarati')
@@ -201,7 +198,6 @@ category4 = Category.create(name: 'Soups')
 category5 = Category.create(name: 'Pizza')
 category6 = Category.create(name: 'Starters')
 category7 = Category.create(name: 'manchurian')
->>>>>>> offer with ajax added admin side CRUD and super admin side only show
 
 #========================= FOOD ITEM =========================
 
