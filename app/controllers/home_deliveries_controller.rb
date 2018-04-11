@@ -31,11 +31,8 @@ class HomeDeliveriesController < ApplicationController
     @home_deliveries = current_delivery_boy.home_deliveries
     if @home_delivery.update_attributes(home_delivery_params)
       master_order = @home_delivery.master_order
-      if @home_delivery.status == 'on the way'
-        master_order.update_attribute(:order_status, 'on the way')
-      elsif @home_delivery.status == 'delivered'
-        master_order.update_attribute(:order_status, 'delivered')
-      end
+     master_order.update_attribute(:order_status, @home_delivery.status)
+
       flash[:success] = 'Status updated!'
       respond_to do |format|
         format.html do

@@ -15,11 +15,13 @@
           </tr>
         </thead>
         <tbody>
+        <tr>
           <% @home_deliveries.each do |home_delivery|%>
             <td><%= home_delivery.master_order.id%></td>
             <td><%= home_delivery.status%></td>
             <td><%= home_delivery.address.addressline%></td>
             <td><%= link_to "change status", edit_home_delivery_path(home_delivery), remote: true %></td>
+            </tr>
           <%end%>
         </tbody>
       </table>
