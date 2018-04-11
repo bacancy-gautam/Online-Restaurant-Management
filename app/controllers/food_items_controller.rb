@@ -49,6 +49,10 @@ class FoodItemsController < ApplicationController
     # redirect_to food_items_path
   end
 
+  def category_list
+    @category = Category.find(params[:id])
+  end
+
   def add_food_to_fav
     AddFoodToFavourite.new({user: current_user, fooditem: @fooditem}).create
     respond_to do |format|
@@ -67,7 +71,7 @@ class FoodItemsController < ApplicationController
   end
 
   def food_item_params
-    params.require(:food_item).permit(:name, :price, :food_type,
+    params.require(:food_item).permit(:name, :price, :food_type, :food_category_id,
                                       :restaurant_id, :category_id, :image)
   end
 

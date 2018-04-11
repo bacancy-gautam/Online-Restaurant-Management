@@ -19,12 +19,24 @@
   <table align="center">
     <tr>
       <td><%=form.label :restaurant_id %></td> 
-      <td> <%=form.collection_select :restaurant_id, Restaurant.order(:id).where("user_id": current_user.id), :id,:full_name %></td><br>
+      <% if current_user.has_role? :super_admin %>
+        <td> <%=form.collection_select :restaurant_id, Restaurant.all.order(:id), :id,:full_name %></td><br>
+      <% else %>
+        <td> <%=form.collection_select :restaurant_id, Restaurant.order(:id).where("user_id": current_user.id), :id,:full_name %></td><br>
+      <% end %>
     </tr>
     
     <tr>
       <td><%=form.label :category_id %></td> 
       <td><%=form.collection_select :category_id, Category.order(:id), :id,:name %></td><br>
+    </tr>
+
+    <tr>
+      <td>
+        <div id='categories-list'>
+          <%= render partial: 'food_categories' %>
+        </div>
+      </td>
     </tr>
     
     <tr>
@@ -59,3 +71,18 @@
 </table>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#food_item_category_id").on("change", function(){
+      $.ajax({
+        url: "/category_list",
+        method: 'GET',
+        data: {
+          id: $(this).val()
+        }
+      });
+    });
+  });
+
+</script>

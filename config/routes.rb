@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'add_food_to_fav',                to: 'food_items#add_food_to_fav'
   get 'add_restaurant_to_fav',          to: 'restaurants#add_restaurant_to_fav'
   get 'food_by_category',               to: 'restaurants#food_by_category'
+  get 'category_list',                  to: 'food_items#category_list'
   get 'users/edit'
   get 'offers/change_foodlist'
   get 'addresses/view_address'
