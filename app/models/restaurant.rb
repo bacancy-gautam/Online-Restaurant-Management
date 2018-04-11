@@ -8,7 +8,7 @@ class Restaurant < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :favourites, as: :favouriteable
   has_many :reviews
-  has_many :offer
+  has_many :offers
   has_and_belongs_to_many :categories
 
   VALID_MOBILE_REGEX = /\A^[789]\d{9}$\z/

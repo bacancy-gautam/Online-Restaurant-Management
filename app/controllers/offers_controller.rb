@@ -8,15 +8,18 @@ class OffersController < ApplicationController
   end
 
   def create
-    
     @offer = Offer.new(offer_params)
     if @offer.save
-      redirect_to offers_path
+      find_offer
+      respond_to do |format|
+        format.html { render('index') }
+        format.js { render 'index' }
+      end
     else
       render 'new'
     end
   rescue ActiveRecord::RecordNotUnique
-    flash[:notice] = 'All ready crate a offer'
+    flash[:notice] = 'All ready create a offer'
     render :new
   end
 
@@ -24,28 +27,36 @@ class OffersController < ApplicationController
     @food = Restaurant.find(params[:food]).food_items
   end
 
-  def index
+  def view_all_offers
     @offers = Offer.all
+  end
+
+  def index
+    find_offer
   end
 
   def destroy
     @offer.destroy
-    redirect_to offers_path
+    find_offer
+    respond_to do |format|
+      format.html { render(partial: 'index') }
+      format.js { render 'index' }
+    end
   end
 
   def show; end
 
   def update
     if @offer.update(offer_params)
-      redirect_to offers_path
+      find_offer
+      respond_to do |format|
+        format.html { render(partial: 'index') }
+        format.js { render 'index' }
+      end
     else
       render 'new'
     end
   end
-  # begin
-  # params[:state]
-  #  @state = CS.states(:in).key(params[:state])
-  # end
 
   def edit
     @offer.restaurant_id = nil
@@ -57,11 +68,21 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def find_offer
+    @offers = []
+    current_user.restaurants.each do |restaurant|
+      if restaurant.offers.count != 0
+        @offers.push(restaurant.offers)
+      end
+    end
+  end
+
   def offer_params
-    params.require(:offer).permit(:restaurant_id, 
-                                  :food_item_id, 
-                                  :discount, 
-                                  :start_date, 
+    params.require(:offer).permit(:restaurant_id,
+                                  :food_item_id,
+                                  :discount,
+                                  :start_date,
                                   :end_date)
   end
+
 end

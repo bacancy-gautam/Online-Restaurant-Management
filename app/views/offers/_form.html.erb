@@ -1,4 +1,4 @@
-<%= form_for @offer do |form|%>
+<%= form_for @offer ,remote: true do |form|%>
 <%= render partial: "shared/errors", locals: {resource: @offer} %>
   <%=label_tag :Restaurant%>
   <%=form.collection_select :restaurant_id, Restaurant.where(user_id: current_user.id).order(:id), :id,:name ,include_blank: "Select Restaurant"%>

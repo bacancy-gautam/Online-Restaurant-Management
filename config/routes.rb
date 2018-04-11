@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'orders/session-orders' => 'orders#list_session_orders', as: :list_session_orders
   get 'users/new_address' => 'users#add_address', as: :add_address
   get 'offers/change_category'
+  get 'offers/view_all_offers'
+
   get 'food_categories/change_category'
   get '/change_city' => "addresses#change_city"
   get 'restaurants/area_wise_restaurants' =>
