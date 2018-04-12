@@ -1,11 +1,13 @@
 # Home_delivery controller
 class HomeDeliveriesController < ApplicationController
   def new
+    authorize HomeDelivery, :new?
     @home_delivery = HomeDelivery.new
     @master_order = MasterOrder.find(params[:master_order])
   end
 
   def create
+    authorize HomeDelivery, :create?
     @master_order = MasterOrder.find(params[:master_order_id])
     @home_delivery = @master_order.create_home_delivery(home_delivery_params)
     @home_delivery.update_attribute(:status, 'pending')
@@ -21,12 +23,24 @@ class HomeDeliveriesController < ApplicationController
   end
 
   def index
+    authorize HomeDelivery, :index?
     @home_deliveries = HomeDelivery.all.includes(:master_order, :address)
   end
 
-  def change_home_delivery_status; end
+  def change_home_delivery_status
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize HomeDelivery, :change_home_delivery_status?
+    end
+  end
 
   def edit
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize HomeDelivery, :edit?
+    end
     @home_delivery = HomeDelivery.find(params[:id])
     respond_to do |format|
       format.html
@@ -35,6 +49,11 @@ class HomeDeliveriesController < ApplicationController
   end
 
   def update
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize HomeDelivery, :update?
+    end
     @home_delivery = HomeDelivery.find(params[:id])
     @home_deliveries = current_delivery_boy.home_deliveries
     if @home_delivery.update_attributes(home_delivery_params)
@@ -53,7 +72,9 @@ class HomeDeliveriesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    authorize HomeDelivery, :show?
+  end
 
   private
 

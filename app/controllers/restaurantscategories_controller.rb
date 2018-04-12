@@ -1,10 +1,13 @@
 # Controller for Categories of Restaurant
 class RestaurantscategoriesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
-  def new; end
+  def new 
+    authorize Restaurantscategory, :new?
+  end
 
   def create
+    authorize Restaurantscategory, :create?
     @category = params[:restaurant][:category_ids].reject(&:empty?)
     @category_array = Category.find(@category)
     @restaurant = Restaurant.find(params[:restaurant][:restaurant_id])
@@ -21,19 +24,23 @@ class RestaurantscategoriesController < ApplicationController
   end
 
   def show
+    skip_authorization
     @restaurant = Restaurant.find(params[:id])
     @category = @restaurant.categories
   end
 
   def edit
+    authorize Restaurantscategory, :edit?
     @restaurant = Restaurant.find(params[:id])
   end
 
   def index
+    skip_authorization
     @restaurants = Restaurant.where(user_id: current_user.id)
   end
 
   def update
+    authorize Restaurantscategory, :update?
     @restaurant = Restaurant.find(params[:id])
     @restaurant.categories.delete_all
     @category_ids = params[:restaurant][:category_ids].reject(&:empty?)

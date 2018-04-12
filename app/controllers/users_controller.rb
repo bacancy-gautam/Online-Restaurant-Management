@@ -3,9 +3,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    authorize User, :new?
   end
 
   def create
+    authorize User, :create?
     @user = create_user
     @user.save ? (UserMailer.user_registration_mail(@user).deliver_now)  : (render 'new') 
     @users = User.all
@@ -16,22 +18,16 @@ class UsersController < ApplicationController
   end
 
   def index
-    # if params[:search]
-    #   @users = User.search(params[:search])
-    #   respond_to do |format|
-    #     format.html { render(partial: 'users') }
-    #     format.js
-    #   end
-    # else
+    authorize User, :index?
     @users = User.all
     respond_to do |format|
       format.html
       format.js
     end
-    # end
   end
 
   def edituser
+    authorize User, :edituser?
     @user = User.find(params[:id])
     respond_to do |format|
       format.html
@@ -40,11 +36,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize User, :edit?
     @user = User.find(params[:id])
     @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def update
+    authorize User, :update?
     @user = User.find(params[:id])
     if @user.update(user_params)
       @users = User.all
@@ -60,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def updateprofile
+    authorize User, :updateprofile?
     @user = current_user
     if @user.update(user_profile_params)
       # binding.pry
@@ -75,6 +74,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    authorize User, :show?
     @user = User.find(params[:id])
     respond_to do |format|
       format.html do
@@ -85,6 +85,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize User, :destroy?
     @users = User.all 
     @user = User.find(params[:id])
     @user.destroy
@@ -95,6 +96,7 @@ class UsersController < ApplicationController
   end
 
   def change_password_edit
+    authorize User, :change_password_edit?
     @user = current_user
     respond_to do |format|
       format.html
@@ -103,6 +105,7 @@ class UsersController < ApplicationController
   end
 
   def change_password_update
+    authorize User, :change_password_update?
     @user = current_user
     if @user.update_with_password(change_password_params)
       flash[:success] = 'Password updated'
@@ -119,11 +122,13 @@ class UsersController < ApplicationController
   end
 
   def role_assign
+    authorize User, :role_assign?
     @users = User.all
     @roles = Role.all 
   end
 
   def assign_role
+    authorize User, :assign_role?
     @users = User.all
     @user = User.find(params[:id])
     @roles = Role.all 
@@ -137,12 +142,14 @@ class UsersController < ApplicationController
   end
 
   def change_user_status
+    authorize User, :change_user_status?
     @user = User.find(params[:id])
     @user.is_active = !@user.is_active
     @user.save
   end
 
   def profile
+    authorize User, :profile?
     @user = current_user
     respond_to do |format|
       format.html
@@ -151,6 +158,7 @@ class UsersController < ApplicationController
   end
 
   def add_address
+    authorize User, :add_address?
     @address = Address.new
     respond_to do |format|
       format.html

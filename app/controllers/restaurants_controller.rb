@@ -5,11 +5,13 @@ class RestaurantsController < ApplicationController
                                           :add_restaurant_to_fav, :food_by_category]
 
   def new
+    authorize Restaurant, :new?
     @restaurant = Restaurant.new
     @address = @restaurant.create_address
   end
 
   def create
+    authorize Restaurant, :create?
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user_id = current_user.id
     if @restaurant.save
@@ -25,6 +27,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+    authorize Restaurant, :edit?
     @restaurant = Restaurant.find(params[:id])
     respond_to do |format|
       format.html
@@ -33,6 +36,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    authorize Restaurant, :update?
     if @restaurant.update_attributes(restaurant_params)
       @restaurants = Restaurant.all
       flash[:success] = 'Restaurant updated!'
@@ -72,6 +76,7 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    authorize Restaurant, :destroy?
     @restaurant = Restaurant.find(params[:id])
     @restaurants = Restaurant.all
     flash[:success] = 'Restaurant deleted!' if @restaurant.destroy
@@ -82,6 +87,7 @@ class RestaurantsController < ApplicationController
   end
 
   def new_release
+    authorize Restaurant, :new_release?
     @fooditem = FoodItem.new
     respond_to do |format|
       format.html
@@ -90,6 +96,7 @@ class RestaurantsController < ApplicationController
   end
 
   def add_restaurant_to_fav
+    authorize Restaurant, :add_restaurant_to_fav?
     AddRestaurantToFavourite.new({ user: current_user, restaurant: @restaurant }).create
     respond_to do |format|
       format.html do
@@ -115,6 +122,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_list
+    authorize Restaurant, :restaurant_list?
     @restaurants = Restaurant.all
     respond_to do |format|
       format.html
@@ -123,6 +131,7 @@ class RestaurantsController < ApplicationController
   end
 
   def change_restaurant_status
+    authorize Restaurant, :change_restaurant_status?
     @restaurant = Restaurant.find(params[:id])
     @restaurant.status = !@restaurant.status
     @restaurant.save

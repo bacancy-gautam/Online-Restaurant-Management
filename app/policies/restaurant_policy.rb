@@ -6,4 +6,40 @@ class RestaurantPolicy < ApplicationPolicy
       scope
     end
   end
+  def new?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def create?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def edit?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def update?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def destroy?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def new_release?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def add_restaurant_to_fav?
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.ha)
+  end
+
+  def restaurant_list?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
+  def change_restaurant_status?
+    (user.has_role? :super_admin)
+  end
+
 end

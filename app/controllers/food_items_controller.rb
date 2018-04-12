@@ -4,15 +4,18 @@ class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy, :add_food_to_fav]
 
   def index
+    skip_authorization
     @fooditems = FoodItem.all.includes(:restaurant, :category)
   end
 
   def new
+    authorize FoodItem, :new?
     @fooditem = FoodItem.new
     @fooditem.images.build
   end
 
   def create
+    authorize FoodItem, :create?
     @fooditem = FoodItem.new(food_item_params)
     
     if @fooditem.save
@@ -26,11 +29,16 @@ class FoodItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize FoodItem, :edit?
+  end
 
-  def show; end
+  def show
+    skip_authorization
+  end
 
   def update
+    authorize FoodItem, :update?
     if @fooditem.update(food_item_params)
       @fooditems = FoodItem.all
       render 'index'
@@ -40,6 +48,7 @@ class FoodItemsController < ApplicationController
   end
 
   def destroy
+    authorize FoodItem, :destroy?
     @fooditem.destroy
     @fooditems = FoodItem.all
     render('index')
@@ -51,7 +60,8 @@ class FoodItemsController < ApplicationController
   end
 
   def add_food_to_fav
-    AddFoodToFavourite.new({ user: current_user, fooditem: @fooditem }).create
+    authorize FoodItem, :add_food_to_fav?
+    AddFoodToFavourite.new({user: current_user, fooditem: @fooditem}).create
     respond_to do |format|
       format.html do
         redirect_to restaurant_path(@fooditem.restaurant),

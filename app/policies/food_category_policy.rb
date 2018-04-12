@@ -1,5 +1,6 @@
-# class policy for category module
-class CategoryPolicy < ApplicationPolicy
+# class policy for food_category module
+class FoodCategoryPolicy < ApplicationPolicy
+  # scope
   class Scope < Scope
     def resolve
       scope
@@ -23,6 +24,10 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def destroy?
+    user.has_role? :super_admin
+  end
+  
+  def change_category?
     user.has_role? :super_admin
   end
 end
