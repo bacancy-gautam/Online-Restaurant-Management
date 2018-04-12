@@ -2,6 +2,7 @@
 class FoodCategoriesController < ApplicationController
   def new
     @food_category = FoodCategory.new
+    authorize FoodCategory, :new?
   end
 
   def create
@@ -13,6 +14,8 @@ class FoodCategoriesController < ApplicationController
 
   def edit
     @food_category = FoodCategory.find(params[:id])
+    authorize FoodCategory, :edit?
+
   end
 
   def update
@@ -30,6 +33,7 @@ class FoodCategoriesController < ApplicationController
 
   def destroy
     @food_category = FoodCategory.find(params[:id])
+    authorize FoodCategory, :destroy?
     @food_category.destroy
     redirect_to food_categories_path
   end
@@ -40,6 +44,7 @@ class FoodCategoriesController < ApplicationController
 
   def change_category
     @category = Restaurant.find(params[:category]).id
+    authorize FoodCategory, :change_category?
   end
 
   private

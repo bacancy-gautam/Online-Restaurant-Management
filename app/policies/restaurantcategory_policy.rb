@@ -1,14 +1,10 @@
-# class policy for food-item module
-class FoodItemPolicy < ApplicationPolicy
+# class policy for restaurant_category module
+class RestaurantscategoryPolicy < ApplicationPolicy
   # scope
   class Scope < Scope
     def resolve
       scope
     end
-  end
-
-  def index?
-
   end
 
   def new?
@@ -19,24 +15,19 @@ class FoodItemPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+
+  end
+
   def edit?
     user.has_role? :admin
   end
 
-  def show?
+  def index?
 
   end
 
   def update?
     true
   end
-
-  def destroy?
-    user.has_role? :super_admin
-  end
-
-  def add_food_to_fav?
-    user.has_role? :customer
-  end
-
 end

@@ -16,8 +16,12 @@
       <td class="col-md-2"><%=food.price %></td>
       <td class="col-md-4">
       <%= link_to "show", food %>
-      <%= link_to "edit", edit_food_item_path(food)%>
-      <%= link_to "delete",food, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+      <% if policy(food).edit? %>
+        <%= link_to "edit", edit_food_item_path(food)%>
+      <%end%>
+      <% if policy(food).destroy? %>
+        <%= link_to "delete",food, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+      <%end%>
     </tr>
   <%end%>
 </table>
