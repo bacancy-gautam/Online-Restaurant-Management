@@ -10,7 +10,7 @@
   </tr>
   <% @fooditems.each do |food|%>
     <tr>
-      <td class="col-md-2"><%=food.restaurant.name %></td>
+      <td class="col-md-2"><%=food.restaurant.full_name %></td>
       <td class="col-md-2"><%=food.category.name %></td>
       <td class="col-md-2"><%=food.food_category.name %></td>
       <td class="col-md-2"><%=food.name %></td>

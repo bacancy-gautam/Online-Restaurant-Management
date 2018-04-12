@@ -19,7 +19,7 @@
       <%offer.each do |offer|%>
       <td><%= index+1%></td>
       
-      <td><%=offer.restaurant.name%></td>
+      <td><%=offer.restaurant.full_name %></td>
       <td><%=offer.food_item.category.name%></td>      
       <td><%=offer.food_item.name%></td>
       <td><%=offer.food_item.food_type%></td>

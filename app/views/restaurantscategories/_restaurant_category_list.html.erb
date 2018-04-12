@@ -1,14 +1,14 @@
 <h1>Category available in restaurant</h1>
 <table class="table table-striped custom-table table-hover">
   <tr>
-    <th>branch name</th>
-    <th>category</th>
+    <th>Branch Name</th>
+    <th>Categories</th>
     <th colspan="2">action</th>
   </tr> 
   <% @restaurants.each do |restaurant| %>
     <tr>
       <td>
-        <%= restaurant.name%>
+        <%= restaurant.full_name %>
       </td>
       <%counter=0%>
       <td>

@@ -25,10 +25,13 @@
         <td> <%=form.collection_select :restaurant_id, Restaurant.order(:id).where("user_id": current_user.id), :id,:full_name %></td><br>
       <% end %>
     </tr>
-    
+
     <tr>
-      <td><%=form.label :category_id %></td> 
-      <td><%=form.collection_select :category_id, Category.order(:id), :id,:name %></td><br>
+      <td>
+        <div id='main-categories-list'>
+          <%= render partial: 'food_main_categories' %>
+        </div>
+      </td>
     </tr>
 
     <tr>
@@ -73,14 +76,27 @@
 </div>
 
 <script type="text/javascript">
+
   $(document).ready(function(){
+    $("#food_item_restaurant_id").on("change", function(){
+      $.ajax({
+        url: "/main_category_list",
+        method: 'GET',
+        data: {
+          id: $(this).val()
+        },
+        type: 'script'
+      });
+    });
+
     $("#food_item_category_id").on("change", function(){
       $.ajax({
         url: "/category_list",
         method: 'GET',
         data: {
           id: $(this).val()
-        }
+        },
+        type: 'script'
       });
     });
   });
