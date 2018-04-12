@@ -23,6 +23,9 @@ class MasterOrdersController < ApplicationController
     @restaurants.each do |r|
       @m = MasterOrderHandler.new(params, session, current_user, r.id).manage_master_order
     end
+    if @m.order_type == 'pickup' && @m.payment_type == 'card'
+      @m.update_attribute(:order_status, 'ready')
+    end
     redirect_path = if @m.order_type == 'home delivery'
                       new_home_delivery_path(master_order: @m)
                     else static_pages_my_account_path
@@ -36,6 +39,9 @@ class MasterOrdersController < ApplicationController
     @masters = MasterOrder.all 
     @master_orders = MasterOrder.all if current_user.has_role? "super_admin"
     @masters.each do |master|
+      if master.order_type == 'pickup' && master.payment_status == 'paid'
+        master.update_attribute(:order_status, 'completed')
+      end
       if current_user.has_role? "admin"
         restaurants.include?(master.restaurant_id) ? @master_orders << master : @master_orders
       elsif current_user.has_role? "customer"
@@ -69,6 +75,11 @@ class MasterOrdersController < ApplicationController
               else
                 []
               end
+  end
+
+  def show_history
+    @master_order = MasterOrder.find(params[:id])
+    @orders = @master
   end
 
   private

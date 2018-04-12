@@ -20,6 +20,7 @@
         <tbody>
        
 <% @master_orders.each do |m|%>
+
  <tr>
 
   <td><%= m.total.to_i%></td>
@@ -29,6 +30,7 @@
   <td><%= m.payment_type%></td>
   <td><%= m.created_at%></td>
   <td>
+  <% if current_user.has_role? "customer"%>
   <% if m.payment_type == "card"%>
     <%if m.payment_status == "pending" %>
       <%= form_tag charges_path(:m_id=>m) do %>
@@ -48,8 +50,8 @@
       <% end %>
     <%end%>
   <%end%>
+  <%end%>
   </td>
-  <td><%= link_to "show",master_order_path(m)%></td>
  </tr> 
 <%end%>
 
