@@ -50,7 +50,7 @@ class FoodItemsController < ApplicationController
   end
 
   def add_food_to_fav
-    AddFoodToFavourite.new({user: current_user, fooditem: @fooditem}).create
+    AddFoodToFavourite.new({ user: current_user, fooditem: @fooditem }).create
     respond_to do |format|
       format.html do
         redirect_to restaurant_path(@fooditem.restaurant),

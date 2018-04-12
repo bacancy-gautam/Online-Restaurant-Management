@@ -20,7 +20,7 @@ class DeliveryBoysController < ApplicationController
       end
     else
       render 'new'
-      #redirect_to static_pages_my_account_path
+      # redirect_to static_pages_my_account_path
     end
   end
 
