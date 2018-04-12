@@ -68,7 +68,7 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.includes(:address).active_restaurants
+    @restaurants = Restaurant.includes(:address, :offers).active_restaurants
   end
 
   def destroy
