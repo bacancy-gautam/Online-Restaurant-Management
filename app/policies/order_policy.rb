@@ -7,7 +7,7 @@ class OrderPolicy < ApplicationPolicy
     end
   end
   def new?
-    
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer) ||(user==nil)
   end
 
   def create?

@@ -11,27 +11,23 @@ class MasterOrderPolicy < ApplicationPolicy
   end
 
   def create?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def index?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def destroy?
-
-  end
-
-  def edit?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def show?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def bill_details?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
 end

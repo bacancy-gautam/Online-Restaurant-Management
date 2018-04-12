@@ -1,9 +1,11 @@
 # Charges Controller
 class ChargesController < ApplicationController
   def new 
+    authorize MasterOrder, :index?
   end
 
   def create
+    authorize MasterOrder, :index?
     # Amount in cents
     @amount = MasterOrder.find(params[:m_id]).total.to_i
     error_message = ChargesHandler.new(params, @amount).manage_charges

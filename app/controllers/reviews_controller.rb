@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   def create
     authorize Review, :create?
     # @restaurant = Restaurant.find(params[:review][:restaurant_id])
+    authorize Review, :create?
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.name = current_user.username
