@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   def home
     # @restaurant = Restaurant.find(params[:id])
     @restaurants = Restaurant.all.includes(:address).sample(3)
+    @offers = Offer.all.sample(3)
   end
 
   def about; end

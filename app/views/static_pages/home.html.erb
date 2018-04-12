@@ -56,6 +56,27 @@
 </section>
 <!--//END FEATURED PLACES -->
 
+<section class="main-block light-bg">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="styled-heading">
+          <h3>Offers</h3>
+        </div>
+      </div>
+    </div>
+    <div class="search-rest justify-content-center">
+      <%= render @offers%>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="featured-btn-wrap">
+          <%= link_to "VIEW ALL",restaurants_path,class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!--============================= FOOTER =============================-->
 <footer class="main-block dark-bg">
   <div class="container">
