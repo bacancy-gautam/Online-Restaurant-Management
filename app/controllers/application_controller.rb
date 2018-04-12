@@ -26,14 +26,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  
-    def storable_location?
-      request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
-    end
 
-    def store_user_location!
-      store_location_for(:user, request.fullpath)
-    end
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
+  end
 
     def user_not_authorized
       flash[:alert] = "You are not authorized to perform this action."

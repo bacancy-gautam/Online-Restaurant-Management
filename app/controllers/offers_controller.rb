@@ -13,6 +13,9 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     if @offer.save
       find_offer
+
+      @fooditem = FoodItem.find(params[:offer][:food_item_id])
+      @fooditem.discount_price
       respond_to do |format|
         format.html { render('index') }
         format.js { render 'index' }
@@ -58,6 +61,8 @@ class OffersController < ApplicationController
     authorize Offer, :update?
     if @offer.update(offer_params)
       find_offer
+      @fooditem = FoodItem.find(params[:offer][:food_item_id])
+      @fooditem.discount_price
       respond_to do |format|
         format.html { render(partial: 'index') }
         format.js { render 'index' }

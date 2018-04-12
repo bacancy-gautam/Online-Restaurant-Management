@@ -11,7 +11,15 @@ class HomeDeliveriesController < ApplicationController
     @master_order = MasterOrder.find(params[:master_order_id])
     @home_delivery = @master_order.create_home_delivery(home_delivery_params)
     @home_delivery.update_attribute(:status, 'pending')
-    redirect_to master_orders_path
+    redirect_to static_pages_my_account_path
+  end
+
+  def add_address
+    @address = Address.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index

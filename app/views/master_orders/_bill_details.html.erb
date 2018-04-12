@@ -44,11 +44,6 @@
                       <%= f.label :cod, "Cash On Delivery"%>
                   </h6>
                 </div>
-                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos.</p>
-                  </div>
-                </div>
               </div>
              
               <div class="card">
@@ -59,11 +54,6 @@
                       <%= f.label :credit, "Credit card / Debit card"%>
                   </h6>
                 </div>
-                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                  <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae</p>
-                  </div>
-                </div>
               </div>
               <hr/>
 
@@ -72,15 +62,7 @@
                   <h6 class="mb-0">
                     <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       <%= f.radio_button :order_type, "home delivery", class: "hd" %><%= MasterOrder.order_types.keys[0] %>
-
-                        <!--<%= f.select(:order_type, MasterOrder.order_types.keys,selected: MasterOrder.order_types.first)%> </br>
-
--->                    </h6>
-                </div>
-                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos.</p>
-                  </div>
+                  </h6>
                 </div>
               </div>
                    
@@ -91,11 +73,7 @@
                       <%= f.radio_button :order_type, "pickup" %><%= MasterOrder.order_types.keys[1] %>
                   </h6>
                 </div>
-                <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos.</p>
-                  </div>
-                </div>
+
               </div>
           
             </div>

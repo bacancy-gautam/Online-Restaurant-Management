@@ -17,6 +17,7 @@ class FoodItemsController < ApplicationController
   def create
     authorize FoodItem, :create?
     @fooditem = FoodItem.new(food_item_params)
+    
     if @fooditem.save
       @fooditems = FoodItem.all
       respond_to do |format|
@@ -81,4 +82,5 @@ class FoodItemsController < ApplicationController
                                       :restaurant_id, :category_id, :image)
   end
 
+ 
 end

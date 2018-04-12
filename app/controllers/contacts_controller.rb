@@ -4,17 +4,19 @@ class ContactsController < ApplicationController
 		@contact = Contact.new
 		authorize Contact, :new?
 	end
+  
+  def create
+    authorize Contact, :create?
+    @contact = current_user.contacts.create(contact_params)
+      if @contact.save
+        redirect_to root_path
+      end
+  end
 
-	def create 
-		@contact = current_user.contacts.create(contact_params)
-			if @contact.save
-				redirect_to root_path
-			end
-	end
+  private
 
-	private
-	def contact_params
-		params.require(:contact).permit(:email, :description)
+  def contact_params
+    params.require(:contact).permit(:email, :description)
   end
 
 end

@@ -8,6 +8,10 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
   def new
     authorize User, :new?
     @home_delivery = HomeDelivery.find(params[:home_delivery])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -25,6 +29,7 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
       redirect_to home_deliveries_delivery_boys_path
     end
   end
+  
   def get_home_delivery
     if current_delivery_boy.present?
       skip_authorization

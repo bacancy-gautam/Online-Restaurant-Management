@@ -16,9 +16,7 @@
           </a>
           <ul class="dropdown-menu dropdown-usermenu purple pull-right">
               <li><%= link_to 'Home', root_path %></li>
-              <% if current_user.has_role? :customer %>
                 <li><%= link_to 'Favourite', favourites_path, remote: true, class: "showpartials" %></li>
-              <% end %>
               <li><%= link_to 'Profile', profile_user_path(current_user), remote: true, class: "showpartials" %></li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete  ) %></li>
           </ul>

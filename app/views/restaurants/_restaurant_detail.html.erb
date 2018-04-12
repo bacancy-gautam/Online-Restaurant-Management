@@ -24,10 +24,7 @@
   <div class="featured-title-box">
     <h6>  
       <%= restaurant.name %>
-    </h6>
-    <p>Restaurant </p>
-    <span> • </span>
-    <p><span>$$$</span>$$</p>
+    </h6> 
     <ul>
       <li>
         <span class="icon-location-pin"></span>
@@ -36,6 +33,17 @@
       <li>
         <span class="icon-screen-smartphone"></span>
         <p><%= restaurant.phone_no %></p>
+      </li>
+      <li>
+        <% if restaurant.offers %>
+          <% restaurant.offers.each do |off|%>
+         <% if off.end_date > Date.today %>
+        <span><i class="fa fa-certificate"></i></span>
+        <p><%= off.discount %> % off on <%= off.food_item.name %>.</p>
+        <p> Valid Till <%= off.end_date%></p><br>
+        <% end %>
+        <% end %>
+      <%end%>
       </li>
     </ul>
     <a class="primary-btn" href="#" ></a>

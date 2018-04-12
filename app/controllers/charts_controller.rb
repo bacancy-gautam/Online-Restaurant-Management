@@ -1,3 +1,4 @@
+# Contoller for Charts
 class ChartsController < ApplicationController
 
   def super_admin_new_users

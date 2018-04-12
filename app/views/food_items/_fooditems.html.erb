@@ -4,6 +4,7 @@
     <th>Image</th>
     <th>Restaurant Name</th>
     <th>Category Name</th>
+    <th>Sub-Category Name</th>
     <th>Food Name</th>
     <th>Food Type</th>
     <th>Price</th>
@@ -14,11 +15,12 @@
       <% if (Restaurant.find(food.restaurant_id)).user_id == current_user.id %>
         <tr>
           <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
-          <td><%=food.restaurant.name %></td>
-          <td><%=food.category.name %></td>
-          <td><%=food.name %></td>
-          <td><%=food.food_type %></td>
-          <td><%=food.price %></td>
+          <td><%= food.restaurant.name %></td>
+          <td><%= food.category.name %></td>
+          <td><%= food.food_category.name %></td>
+          <td><%= food.name %></td>
+          <td><%= food.food_type %></td>
+          <td><%= food.price %></td>
           <td>
           <%= link_to "", food, class: "btn btn-success btn-xs fa fa-check", remote: true %>
           <%= link_to "", edit_food_item_path(food), class: "btn btn-primary btn-xs fa fa-pencil", remote: true%>
@@ -30,6 +32,7 @@
         <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
         <td><%=food.restaurant.name %></td>
         <td><%=food.category.name %></td>
+        <td><%= food.food_category.name %></td>
         <td><%=food.name %></td>
         <td><%=food.food_type %></td>
         <td><%=food.price %></td>

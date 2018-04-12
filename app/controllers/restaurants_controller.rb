@@ -72,7 +72,7 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.includes(:address).active_restaurants
+    @restaurants = Restaurant.includes(:address, :offers).active_restaurants
   end
 
   def destroy
@@ -107,15 +107,16 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants = Restaurant.ransack(name_cont: params[:term])
-                             .result(distinct: true)
+    # @restaurants = Restaurant.ransack(name_cont: params[:term])
+    #                          .result(distinct: true)
     @fooditems = FoodItem.ransack(name_cont: params[:term])
                          .result(distinct: true)
+    @restaurants = Restaurant.find(@fooditems.pluck(:restaurant_id))
     respond_to do |format|
       format.html {}
       format.json do
-        @restaurants = @restaurants.limit(5)
         @fooditems = @fooditems.limit(5)
+        @restaurants = Restaurant.find(@fooditems.pluck(:restaurant_id))
       end
     end
   end
@@ -137,7 +138,7 @@ class RestaurantsController < ApplicationController
   end
 
   def location
-    @addresses = Address.ransack(area_cont: params[:loc])
+    @addresses = Address.ransack(area_or_city_cont: params[:loc])
                         .result(distinct: true)
     # @city = Restaurant.ransack(city_cont: params[:loc])
     #                .result(distinct: true)

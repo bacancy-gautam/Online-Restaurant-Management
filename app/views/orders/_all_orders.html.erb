@@ -1,5 +1,19 @@
-<h1>My Orders</h1>
-<table border="table table-striped custom-table table-hover">
+<div id="customer" class="">
+    <section class="panel">
+      <header class="panel-heading head-border">
+          My Orders
+      </header>
+      <table class="table table-striped custom-table table-hover">
+        <thead>
+          <tr>
+            <th>master order</th>
+            <th>status</th>
+            <th>address</th>
+            <th class="hidden-xs"> Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
   <% if @orders.count != 0 %>
     <% @orders.each do |order|%>
       <tr>
@@ -16,3 +30,7 @@
   <% else %>
     <h3>No orders Found</h3>
 <%end%>
+</tbody>
+      </table>
+    </section>
+  </div> 
