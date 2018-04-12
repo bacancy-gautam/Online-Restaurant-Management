@@ -18,17 +18,17 @@
   <% else %>
   <div class="featured-rating-green">
     <span><%= avg.round(1) %></span>
-  </div>  
+  </div>
   <% end %>
   <% end %>
   <div class="featured-title-box">
-    <h6>  
+    <h6>
       <%= restaurant.name %>
-    </h6> 
+    </h6>
     <ul>
       <li>
         <span class="icon-location-pin"></span>
-        <p><%= restaurant.address.addressline%>,<%= restaurant.address.area%>,<%= restaurant.address.city %></p>
+        <p><%= restaurant.address.addressline%><br><%= restaurant.address.area%>,<%= restaurant.address.city %></p>
       </li>
       <li>
         <span class="icon-screen-smartphone"></span>

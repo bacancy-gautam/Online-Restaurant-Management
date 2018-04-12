@@ -4,13 +4,16 @@
   <%#= image_tag asset_path("dish-1.png") %>
   <span class="featured-rating-orange">6.5</span>
   <div class="featured-title-box">
-    <h6>  
+    <h6>
       <%= food_item.name %>
     </h6>
     <span> • </span>
     <p><span>₹</span><%= food_item.price %></p>
       <% if food_item.restaurant.restaurant_open? %>
-        <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post",remote: true, class: "primary-btn"%>
+        <div class="popup" onclick="cartFunction(<%= food_item.id %>)">
+          <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post",remote: true, class: "primary-btn"%>
+          <span class="popuptext" id="myPopup_<%=food_item.id%>">Added To Cart</span>
+        </div>
       <% else %>
         <div class="popup" onclick="myFunction(<%= food_item.id %>)">
           <a class="text-uppercase primary-btn">ADD TO CART</a>
@@ -42,6 +45,13 @@
   });
 
   function myFunction(id) {
+    var popup = document.getElementById("myPopup_" + id);
+    popup.classList.add("show");
+    setInterval(function(){
+      popup.classList.remove("show");
+    },3000);
+  }
+  function cartFunction(id) {
     var popup = document.getElementById("myPopup_" + id);
     popup.classList.add("show");
     setInterval(function(){

@@ -1,9 +1,9 @@
 # Online Restaurant Management System
----
+
 A Ruby based web service to bring your restaurant business online. You just need to add your restaurant and provide home delivery/ take-away services for customers.
 
 ## Requirements
----
+
 ### Ruby and Rails
 This system requires Ruby **version >= 2.4.1** and Rails **version >= 5.1.5**.
 
