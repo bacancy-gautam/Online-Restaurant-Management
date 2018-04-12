@@ -14,9 +14,6 @@ class CategoryPolicy < ApplicationPolicy
     user.has_role? :super_admin
   end
 
-    true
-  end
-
   def edit?
     user.has_role? :super_admin
   end

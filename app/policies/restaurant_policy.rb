@@ -32,7 +32,7 @@ class RestaurantPolicy < ApplicationPolicy
   end
 
   def add_restaurant_to_fav?
-    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.ha)
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role?(:customer))
   end
 
   def restaurant_list?

@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
     if current_delivery_boy.present?
       skip_authorization
     else
-  	  authorize Category, :index?
+  	  authorize Category, :update?
     end
   end
 end
