@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
     @orders = session_orders
     respond_to do |f|
       f.html { redirect_to root_path }
+      f.js
     end
   end
 
