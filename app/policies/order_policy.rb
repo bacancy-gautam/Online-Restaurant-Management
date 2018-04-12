@@ -7,7 +7,7 @@ class OrderPolicy < ApplicationPolicy
     end
   end
   def new?
-  
+    
   end
 
   def create?

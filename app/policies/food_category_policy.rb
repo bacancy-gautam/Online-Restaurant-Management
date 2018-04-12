@@ -26,7 +26,7 @@ class FoodCategoryPolicy < ApplicationPolicy
   def destroy?
     user.has_role? :super_admin
   end
-  
+
   def change_category?
     user.has_role? :super_admin
   end

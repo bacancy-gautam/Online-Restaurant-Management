@@ -6,6 +6,7 @@ class RestaurantPolicy < ApplicationPolicy
       scope
     end
   end
+
   def new?
     (user.has_role? :super_admin) || (user.has_role? :admin)
   end

@@ -72,6 +72,7 @@ user3.roles.delete_all
 user3.add_role(:super_admin)
 user4.roles.delete_all
 user4.add_role(:super_admin)
+user5.roles.delete_all
 user5.add_role(:super_admin)
 
 #========================= ADDRESS OF USER =========================
