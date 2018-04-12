@@ -4,6 +4,7 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
+    authorize Offer, :new?
     @restaurant = Restaurant.where(user_id: current_user.id).first
   end
 
@@ -25,14 +26,18 @@ class OffersController < ApplicationController
 
   def change_foodlist
     @food = Restaurant.find(params[:food]).food_items
+    authorize Offer, :change_foodlist?
   end
 
   def view_all_offers
     @offers = Offer.all
+    authorize Offer, :view_all_offers?
+
   end
 
   def index
     find_offer
+    authorize Offer, :index?
   end
 
   def destroy
@@ -59,6 +64,7 @@ class OffersController < ApplicationController
   end
 
   def edit
+    authorize Offer, :edit?
     @offer.restaurant_id = nil
   end
 

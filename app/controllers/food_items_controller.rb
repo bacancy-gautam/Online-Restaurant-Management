@@ -9,6 +9,7 @@ class FoodItemsController < ApplicationController
 
   def new
     @fooditem = FoodItem.new
+    authorize FoodItem, :new?
     @fooditem.images.build
   end
 
@@ -25,7 +26,9 @@ class FoodItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize FoodItem, :edit?
+  end
 
   def show; end
 
@@ -40,6 +43,7 @@ class FoodItemsController < ApplicationController
 
   def destroy
     @fooditem.destroy
+    authorize FoodItem, :destroy?
     @fooditems = FoodItem.all
     render('index')
     # redirect_to food_items_path

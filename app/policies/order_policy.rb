@@ -6,4 +6,36 @@ class OrderPolicy < ApplicationPolicy
       scope
     end
   end
+  def new?
+  
+  end
+
+  def create?
+
+  end
+
+  def remove?
+
+  end
+
+  def index?
+
+  end
+
+  def edit?
+
+  end
+
+  def show?
+
+  end
+
+  def destroy?
+
+  end
+
+  def show_cart?
+
+  end
+
 end

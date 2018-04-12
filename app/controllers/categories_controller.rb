@@ -1,4 +1,4 @@
-# Controller for Categories of Food and Restaurant
+# Controller for Categories of Food and Restaurant  
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   # before_action :set_category, only: %i[show edit update destroy]
@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    authorize Category, :new?
   end
 
   def create
@@ -40,6 +41,8 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
+    authorize Category, :edit?
+
   end
 
   def update
@@ -59,6 +62,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
+    authorize Category, :destroy?
     @categories = Category.all
     respond_to do |format|
       format.html do

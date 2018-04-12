@@ -7,10 +7,12 @@ class AddressesController < ApplicationController
   def index
     # @addresses = Address.all
     @addresses = Address.where(addressable_id: current_user.id)
+    authorize Address, :index?
   end
 
   def new
     @address = Address.new
+    authorize Address, :new?
   end
 
   def create
@@ -24,6 +26,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
+    authorize Address, :edit?
     @address = Address.find(params[:id])
     respond_to do |format|
       format.html
@@ -38,16 +41,19 @@ class AddressesController < ApplicationController
   end
 
   def change_city
+    authorize Address, :change_city?
     params[:state]
     @state = CS.states(:in).key(params[:state])
   end
 
   def destroy
+    authorize Address, :destroy?
     @address.destroy
     redirect_to addresses_path
   end
 
   def view_address
+    authorize Address, :view_address?
     @addresses = Address.where(addressable_id: current_user.id)
     respond_to do |format|
       format.html
