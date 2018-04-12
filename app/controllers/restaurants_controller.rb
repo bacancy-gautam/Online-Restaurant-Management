@@ -101,9 +101,9 @@ class RestaurantsController < ApplicationController
 
   def search
     @restaurants = Restaurant.ransack(name_cont: params[:term])
-                             .result(distinct: true)
+                             .result(distinct: true).includes(:address)
     @fooditems = FoodItem.ransack(name_cont: params[:term])
-                         .result(distinct: true)
+                         .result(distinct: true).includes(:restaurant)
     respond_to do |format|
       format.html {}
       format.json do
