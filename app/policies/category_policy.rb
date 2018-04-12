@@ -19,7 +19,7 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def index?
-     true
+    true
   end
 
   def edit?

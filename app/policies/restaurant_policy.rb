@@ -7,62 +7,39 @@ class RestaurantPolicy < ApplicationPolicy
     end
   end
   def new?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def create?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def edit?
-    
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def update?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
-
-  def show?
-   
-  end
-
-  def food_by_category?
-    
-  end
-
-  def index?
-
-  end?
 
   def destroy?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def new_release?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def add_restaurant_to_fav?
-    
-  end
-
-  def search?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.ha)
   end
 
   def restaurant_list?
-   
+    (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def change_restaurant_status?
-   
+    (user.has_role? :super_admin)
   end
 
-  def location?
-   
-  end
-
-  def area_wise_restaurants?
-    
-  end
 end

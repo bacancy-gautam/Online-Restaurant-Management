@@ -12,11 +12,11 @@ class RestaurantscategoryPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.has_role? :admin
   end
 
   def show?
-
+    true
   end
 
   def edit?
@@ -24,10 +24,10 @@ class RestaurantscategoryPolicy < ApplicationPolicy
   end
 
   def index?
-
+    true
   end
 
   def update?
-    true
+    user.has_role? :admin
   end
 end
