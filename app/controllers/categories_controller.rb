@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
+    authorize Category, :create?
     @category = Category.new(category_params)
     if @category.save
       @categories = Category.all
@@ -27,9 +28,12 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    skip_authorization
+  end
 
   def index
+    skip_authorization
     @categories = Category.all
     respond_to do |format|
       format.html
@@ -46,6 +50,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    authorize Category, :update?
     if @category.update(category_params)
       @categories = Category.all
       respond_to do |format|
@@ -61,8 +66,8 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
     authorize Category, :destroy?
+    @category.destroy
     @categories = Category.all
     respond_to do |format|
       format.html do

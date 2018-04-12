@@ -14,14 +14,6 @@ class CategoryPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    true
-  end
-
-  def index?
-    true
-  end
-
   def edit?
     user.has_role? :super_admin
   end
