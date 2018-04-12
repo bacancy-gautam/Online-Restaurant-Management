@@ -1,7 +1,7 @@
 # controller of homedelivery_deliveryboys
 class HomeDeliveriesDeliveryBoysController < ApplicationController
   def index
-    @home_deliveries = HomeDelivery.all.includes(:master_order,:homedeliveries_delivery_boys, :delivery_boys)
+    @home_deliveries = HomeDelivery.all.includes(:master_order, :homedeliveries_delivery_boys, :delivery_boys)
   end
 
   def new
@@ -22,6 +22,7 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
       redirect_to home_deliveries_delivery_boys_path
     end
   end
+  
   def get_home_delivery
     @home_deliveries = current_delivery_boy.home_deliveries
   end

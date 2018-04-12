@@ -1,3 +1,4 @@
+# Controller for Ratings
 class RaterController < ApplicationController
 
   def create
@@ -5,9 +6,9 @@ class RaterController < ApplicationController
       obj = params[:klass].classify.constantize.find(params[:id])
       obj.rate params[:score].to_f, current_user, params[:dimension]
 
-      render :json => true
+      render json: true
     else
-      render :json => false
+      render json: false
     end
   end
 end
