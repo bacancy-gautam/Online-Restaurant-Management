@@ -23,18 +23,10 @@ class FoodCategoryPolicy < ApplicationPolicy
     true
   end
 
-  def index?
-
-  end
-
   def destroy?
     user.has_role? :super_admin
   end
-
-  def show?
-
-  end
-
+  
   def change_category?
     user.has_role? :super_admin
   end

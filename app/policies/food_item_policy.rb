@@ -7,10 +7,6 @@ class FoodItemPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-
-  end
-
   def new?
     user.has_role? :admin
   end
@@ -23,10 +19,6 @@ class FoodItemPolicy < ApplicationPolicy
     user.has_role? :admin
   end
 
-  def show?
-
-  end
-
   def update?
     true
   end
@@ -36,7 +28,7 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def add_food_to_fav?
-    user.has_role? :customer
+    true
   end
 
 end
