@@ -27,7 +27,7 @@
               <% if restaurant.user_id == current_user.id %>
                 <tr>
                   <td><%= image_tag(restaurant.image.url, alt:'Image', class: "user-img") if restaurant.image? %></td>
-                  <td><%= restaurant.name %></td>
+                  <td><%= restaurant.full_name %></td>
                   <td><%= restaurant.phone_no %></td>
                   <td><%= restaurant.email %></td>
                   <td><%= restaurant.opening_time %></td>

@@ -50,6 +50,10 @@ class FoodItemsController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def main_category_list
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   def add_food_to_fav
     AddFoodToFavourite.new({ user: current_user, fooditem: @fooditem }).create
     respond_to do |format|
