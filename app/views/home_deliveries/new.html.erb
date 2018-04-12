@@ -1,6 +1,11 @@
 <%= form_for @home_delivery do |f|%>
+
   <%= hidden_field_tag :master_order_id, @master_order.id%>
   <%= f.label :address %>
-  <%= f.collection_select :address_id, current_user.addresses.order(:id), :id,:addressline %>  
+  <%= f.collection_select :address_id, current_user.addresses.order(:id), :id,:addressline %>
+
   <%= f.submit "create home delivery"%>
+  <%= link_to "add new address", new_address_path, {:remote => true }%>
+ 
 <%end%>
+<div id="add_address"></div>

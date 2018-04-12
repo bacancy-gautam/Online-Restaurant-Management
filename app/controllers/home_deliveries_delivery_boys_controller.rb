@@ -6,6 +6,10 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
 
   def new
     @home_delivery = HomeDelivery.find(params[:home_delivery])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

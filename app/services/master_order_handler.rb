@@ -31,7 +31,8 @@ class MasterOrderHandler
       total: $sum,
       order_status: 'placed',
       payment_status: 'pending',
-      user_id: @current_user.id
+      user_id: @current_user.id,
+      restaurant_id: @restaurant.id
     )
     return @master_order
   end
