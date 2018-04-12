@@ -4,10 +4,12 @@ class FavouritesController < ApplicationController
   before_action :fetch_favourites, only: [:index, :destroy]
 
   def index
+    authorize Favourite, :index?
     fetch_favourites
   end
 
   def destroy
+    authorize Favourite, :destroy?
     @favourite = Favourite.find(params[:id])
     @favourite.delete
     fetch_favourites

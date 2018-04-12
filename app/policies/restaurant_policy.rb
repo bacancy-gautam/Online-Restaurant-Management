@@ -6,8 +6,9 @@ class RestaurantPolicy < ApplicationPolicy
       scope
     end
   end
+
   def new?
-   
+    
   end
 
   def create?
@@ -32,7 +33,7 @@ class RestaurantPolicy < ApplicationPolicy
 
   def index?
 
-  end?
+  end
 
   def destroy?
    

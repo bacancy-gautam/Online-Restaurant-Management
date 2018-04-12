@@ -11,15 +11,11 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.has_role? :super_admin
   end
 
   def show?
     true
-  end
-
-  def index?
-     true
   end
 
   def edit?

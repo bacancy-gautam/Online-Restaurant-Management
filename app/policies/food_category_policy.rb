@@ -24,7 +24,7 @@ class FoodCategoryPolicy < ApplicationPolicy
   end
 
   def index?
-
+    true
   end
 
   def destroy?

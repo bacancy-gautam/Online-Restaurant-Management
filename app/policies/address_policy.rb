@@ -15,7 +15,7 @@ class AddressPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    (user.has_role? :admin) || (user.has_role? :customer) 
   end
 
   def edit?
@@ -23,7 +23,7 @@ class AddressPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    (user.has_role? :admin) || (user.has_role? :customer) 
   end
 
   def change_city?

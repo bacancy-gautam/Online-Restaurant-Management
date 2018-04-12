@@ -14,8 +14,7 @@
       <td><%= index+1%></td>
       <td><%=Restaurant.find(food_category.restaurant_id).name%></td>
       <td><%=Category.find(food_category.category_id).name%></td>
-      <td><%=food_category.name %></td>
-      
+      <td><%=food_category.name %></td>     
       <td><%= link_to "show", food_category_path(food_category)%></td>
       <td><%= link_to "edit", edit_food_category_path(food_category)%></td>
       <td><%= link_to "delete", food_category_path(food_category), method: :delete, data: { confirm: 'Are you sure?' }%></td>

@@ -6,16 +6,17 @@ class AddressesController < ApplicationController
 
   def index
     # @addresses = Address.all
-    @addresses = Address.where(addressable_id: current_user.id)
     authorize Address, :index?
+    @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def new
+
     @address = Address.new
-    authorize Address, :new?
   end
 
   def create
+    authorize Address, :create?
     # @address = Address.new(address_params)
     @address = current_user.addresses.create(address_params)
     if @address.save
@@ -35,6 +36,7 @@ class AddressesController < ApplicationController
   end
 
   def update
+    authorize Address, :update?
     @address = Address.find(params[:id])
     @address.update(address_params)
     @addresses = current_user.addresses

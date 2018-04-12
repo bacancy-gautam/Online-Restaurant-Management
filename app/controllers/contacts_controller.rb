@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
 
 	def create 
 		@contact = current_user.contacts.create(contact_params)
+		authorize Contact, :create?
 			if @contact.save
 				redirect_to root_path
 			end

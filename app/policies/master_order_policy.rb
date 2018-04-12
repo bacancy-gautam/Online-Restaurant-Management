@@ -7,7 +7,7 @@ class MasterOrderPolicy < ApplicationPolicy
     end
   end
   def new?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def create?

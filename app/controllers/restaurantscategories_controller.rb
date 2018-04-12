@@ -1,8 +1,10 @@
 # Controller for Categories of Restaurant
 class RestaurantscategoriesController < ApplicationController
   before_action :authenticate_user!
-
-  def new; end
+  layout 'admin_panel', only: [:new]
+  def new
+    authorize Offer, :new?
+  end
 
   def create
     @category = params[:restaurant][:category_ids].reject(&:empty?)

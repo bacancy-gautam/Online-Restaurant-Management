@@ -6,11 +6,11 @@ class ContactPolicy < ApplicationPolicy
       scope
     end
   end
-  def new
+  def new?
     user.has_role? :customer
   end
 
-  def create
+  def create?
     user.has_role? :customer
   end
 end

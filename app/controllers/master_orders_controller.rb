@@ -40,7 +40,9 @@ class MasterOrdersController < ApplicationController
     redirect_to master_orders_path
   end
 
-  def edit; end
+  def edit
+    skip authorizated
+  end
 
   def show
     @master_order = MasterOrder.find(params[:id])

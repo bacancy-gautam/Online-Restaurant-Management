@@ -6,10 +6,12 @@ class ChargePolicy < ApplicationPolicy
       scope
     end
   end
-  def new?
 
+  def new?
+   (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def create?
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 end
