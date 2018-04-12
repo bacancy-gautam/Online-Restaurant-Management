@@ -1,4 +1,4 @@
-# FoodCategory Controller
+ # FoodCategory Controller
 class FoodCategoriesController < ApplicationController
   def new
     authorize FoodCategory, :new?

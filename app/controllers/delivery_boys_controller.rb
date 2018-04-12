@@ -1,10 +1,12 @@
 # Controller for Delivery Boys
 class DeliveryBoysController < ApplicationController
   def new
+    authorize DeliveryBoy, :new?
     @delivery_boy = DeliveryBoy.new
   end
 
   def create
+    authorize DeliveryBoy, :create?
     @delivery_boy = DeliveryBoy.new(delivery_boy_params) do |delivery_boy|
       password = SecureRandom.hex(8)
       delivery_boy.password = password
@@ -25,10 +27,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def index
+    authorize DeliveryBoy, :index?
     @delivery_boys = DeliveryBoy.all
   end
 
   def show
+    skip_authorization
     @delivery_boy = DeliveryBoy.find(params[:id])
     respond_to do |format|
       format.html do
@@ -39,10 +43,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def edit
+    authorize DeliveryBoy, :edit?
     @delivery_boy = DeliveryBoy.find(params[:id])
   end
 
   def update
+    authorize DeliveryBoy, :update?
     @delivery_boy = DeliveryBoy.find(params[:id])
     if @delivery_boy.update(delivery_boy_params)
       @delivery_boys = DeliveryBoy.all
@@ -58,6 +64,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def editprofile
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize DeliveryBoy, :editprofile?
+    end
+
     @delivery_boy = DeliveryBoy.find(params[:id])
     respond_to do |format|
       format.html
@@ -66,6 +78,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def updateprofile
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize DeliveryBoy, :editprofile?
+    end
+
     @delivery_boy = DeliveryBoy.find(params[:id])
     if @delivery_boy.update(delivery_boy_params)
       @delivery_boys = DeliveryBoy.all
@@ -81,12 +99,14 @@ class DeliveryBoysController < ApplicationController
   end
 
   def change_delivery_boy_status
+    authorize DeliveryBoy, :change_delivery_boy_status?
     @delivery_boy = DeliveryBoy.find(params[:id])
     @delivery_boy.is_active = !@delivery_boy.is_active
     @delivery_boy.save
   end
 
   def destroy
+    authorize DeliveryBoy, :destroy?
     @delivery_boys = DeliveryBoy.all
     @delivery_boy = DeliveryBoy.find(params[:id])
     if @delivery_boy.destroy
@@ -100,6 +120,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def change_password_edit
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize DeliveryBoy, :change_password_edit?
+    end
+
     @delivery_boy = current_delivery_boy
     respond_to do |format|
       format.html
@@ -108,6 +134,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def change_password_update
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize DeliveryBoy, :editprofile?
+    end
+
     @delivery_boy = current_delivery_boy
     if @delivery_boy.update_with_password(change_password_params)
       flash[:success] = 'Password updated'
@@ -124,6 +156,12 @@ class DeliveryBoysController < ApplicationController
   end
 
   def profile
+    if current_delivery_boy.present?
+      skip_authorization
+    else
+      authorize DeliveryBoy, :editprofile?
+    end
+
     @delivery_boy = current_delivery_boy
     respond_to do |format|
       format.html

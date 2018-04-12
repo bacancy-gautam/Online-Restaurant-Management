@@ -11,6 +11,9 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def create?
+    user.has_role? :super_admin
+  end
+
     true
   end
 

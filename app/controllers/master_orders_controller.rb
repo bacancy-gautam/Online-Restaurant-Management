@@ -3,6 +3,7 @@ class MasterOrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :bill_details]
 
   def new
+    authorize MasterOrder, :new?
     @address = Address.new
     @addresses = Address.where(addressable_id: current_user.id) if current_user
     @orders = []
@@ -18,6 +19,7 @@ class MasterOrdersController < ApplicationController
   end
 
   def create
+    authorize MasterOrder, :create?
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
     @restaurants.each do |r|
@@ -52,14 +54,18 @@ class MasterOrdersController < ApplicationController
   end
 
   def destroy
+    authorize MasterOrder, :destroy?
     @master_order = MasterOrder.find(params[:id])
     @master_order.destroy
     redirect_to master_orders_path
   end
 
-  def edit; end
+  def edit
+    skip authorizated
+  end
 
   def show
+    authorize MasterOrder, :show?
     @master_order = MasterOrder.find(params[:id])
     # a = session[:order].compact.keys
     # @order = []
@@ -69,6 +75,7 @@ class MasterOrdersController < ApplicationController
   end
 
   def bill_details
+    authorize MasterOrder, :bill_details?
     @master_order = MasterOrder.new
     @orders = if !session[:order].nil?
                 Order.where(id: session[:order].keys).includes(:food_item)

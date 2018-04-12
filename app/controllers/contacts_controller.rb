@@ -1,10 +1,10 @@
 # contact controller
 class ContactsController < ApplicationController
 	def new
-		@contact = Contact.new
 		authorize Contact, :new?
+		@contact = Contact.new
 	end
-  
+
   def create
     authorize Contact, :create?
     @contact = current_user.contacts.create(contact_params)

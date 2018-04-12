@@ -6,13 +6,13 @@ class AddressesController < ApplicationController
 
   def index
     # @addresses = Address.all
-    @addresses = Address.where(addressable_id: current_user.id)
     authorize Address, :index?
+    @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def new
+
     @address = Address.new
-    authorize Address, :new?
   end
 
   def create
