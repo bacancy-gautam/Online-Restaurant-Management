@@ -31,10 +31,6 @@ class OfferPolicy < ApplicationPolicy
     user.has_role? :admin
   end
 
-  def show?
-
-  end
-
   def update?
     true
   end

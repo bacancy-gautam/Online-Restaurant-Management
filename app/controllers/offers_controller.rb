@@ -3,12 +3,13 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy, :update]
 
   def new
-    @offer = Offer.new
     authorize Offer, :new?
+    @offer = Offer.new
     @restaurant = Restaurant.where(user_id: current_user.id).first
   end
 
   def create
+    authorize Offer, :create?
     @offer = Offer.new(offer_params)
     if @offer.save
       find_offer
@@ -25,22 +26,22 @@ class OffersController < ApplicationController
   end
 
   def change_foodlist
-    @food = Restaurant.find(params[:food]).food_items
     authorize Offer, :change_foodlist?
+    @food = Restaurant.find(params[:food]).food_items
   end
 
   def view_all_offers
-    @offers = Offer.all
     authorize Offer, :view_all_offers?
-
+    @offers = Offer.all
   end
 
   def index
-    find_offer
     authorize Offer, :index?
+    find_offer
   end
 
   def destroy
+    authorize Offer, :destroy?
     @offer.destroy
     find_offer
     respond_to do |format|
@@ -49,9 +50,12 @@ class OffersController < ApplicationController
     end
   end
 
-  def show; end
+  def show 
+    skip_authorization
+  end
 
   def update
+    authorize Offer, :update?
     if @offer.update(offer_params)
       find_offer
       respond_to do |format|
