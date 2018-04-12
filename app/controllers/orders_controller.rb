@@ -4,10 +4,12 @@ class OrdersController < ApplicationController
   protect_from_forgery except: :list_session_orders
 
   def new
+    skip_authorization
     @order = Order.new
   end
 
   def create
+    skip_authorization
     @master_order = MasterOrder.new
     OrderHandler.new(params, session).manage_order
     @orders = session_orders
@@ -18,6 +20,7 @@ class OrdersController < ApplicationController
   end
 
   def remove
+    skip_authorization
     @master_order = MasterOrder.new
     @order = Order.find(params[:order_id])
     qty = @order.quantity if @order
@@ -32,16 +35,21 @@ class OrdersController < ApplicationController
   end
 
   def index
+    authorize Order, :index?
     @orders = Order.all
   end
 
-  def edit; end
+  def edit
+    authorize Order, :edit?  
+  end
 
   def show
+    authorize Order, :show?
     @order = Order.find(params[:id])
   end
 
   def destroy
+    skip_authorization
     @order = Order.find(params[:id])
     session[:order][@order.id.to_s] = nil
     @order.destroy
@@ -53,6 +61,7 @@ class OrdersController < ApplicationController
   end
 
   def show_cart
+    authorize Order, :show_cart?
     @master_order = MasterOrder.new # if !@master_order.nil?
     @orders = session_orders
   end
