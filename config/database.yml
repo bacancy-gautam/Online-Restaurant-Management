@@ -22,7 +22,7 @@ default: &default
   pool: 5 
   timeout: 5000
   username: postgres
-  # password: postgres
+  password: postgres
   host: localhost
 
 development:
@@ -84,4 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: OnlineRestaturantManagement_production
+  database: online_restaturant_management_production
