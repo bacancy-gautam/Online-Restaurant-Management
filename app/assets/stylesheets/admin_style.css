@@ -6584,3 +6584,21 @@ a.view-all:hover {
     display: block;
     padding: 0px;
 }
+
+
+.listyle {
+    width: 100%;
+    height: 25px;
+    background: #29282e;
+    color: turquoise;
+    padding: 16px;
+    font-size: 15px;
+    padding-left: 20px;
+    cursor: pointer;
+    padding-bottom: 35px;
+}
+
+.libg{
+    color: white;
+    font-size: 15px;
+}
