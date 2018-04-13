@@ -124,14 +124,14 @@ class UsersController < ApplicationController
   def role_assign
     authorize User, :role_assign?
     @users = User.all
-    @roles = Role.all 
+    @roles = Role.all.where.not(name: 'super_admin')
   end
 
   def assign_role
     authorize User, :assign_role?
     @users = User.all
     @user = User.find(params[:id])
-    @roles = Role.all 
+    @roles = Role.all.where.not(name: 'super_admin')
     @role = Role.find(params[:role_id])
     @user.roles.delete_all
     @user.add_role @role.name
