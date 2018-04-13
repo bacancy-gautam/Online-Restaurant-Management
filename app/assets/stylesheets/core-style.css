@@ -845,7 +845,7 @@ img {
     font-size: 12px;
     text-transform: uppercase;
     padding: 10px !important;
-    border-bottom: 2px solid #ebebeb;    
+    border-bottom: 2px solid #ebebeb;
 }
 .order-details-confirmation .card-header h6 a {
     display: block;
@@ -873,7 +873,7 @@ img {
 }
 
 .deldet{
-  cursor: pointer;
+  cursor: default;
   border: 2px solid #ebebeb;
   padding: 10px;
   font-size: 25px;
@@ -1032,7 +1032,6 @@ img {
     line-height: 30px;
     padding: 5px;
     margin-right: 5%;
-    float: left;
 }
 .addform form .form-control,
 .addform form .custom-select {

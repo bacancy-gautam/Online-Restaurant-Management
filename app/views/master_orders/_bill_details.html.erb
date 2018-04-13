@@ -27,7 +27,7 @@
           </span> -->
       </div> <span><%=order.price%></span></li>
               <%sum = sum + order.price%>
-  
+
               <%end%>
 
               <li><span>Subtotal</span> <span><%=sum%></span></li>
@@ -40,12 +40,12 @@
                 <div class="card-header" role="tab" id="headingTwo">
                   <h6 class="mb-0">
                     <a class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      <%= f.radio_button :payment_type, "cod" %>
+                      <%= f.radio_button :payment_type, "cod", checked: true %>
                       <%= f.label :cod, "Cash On Delivery"%>
                   </h6>
                 </div>
               </div>
-             
+
               <div class="card">
                 <div class="card-header" role="tab" id="headingThree">
                   <h6 class="mb-0">
@@ -61,11 +61,11 @@
                 <div class="card-header" role="tab" id="headingTwo">
                   <h6 class="mb-0">
                     <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <%= f.radio_button :order_type, "home delivery", class: "hd" %><%= MasterOrder.order_types.keys[0] %>
+                      <%= f.radio_button :order_type, "home delivery", class: "hd", checked: true %><%= MasterOrder.order_types.keys[0] %>
                   </h6>
                 </div>
               </div>
-                   
+
               <div class="card">
                 <div class="card-header" role="tab" id="headingTwo">
                   <h6 class="mb-0">
@@ -75,9 +75,9 @@
                 </div>
 
               </div>
-          
+
             </div>
-              
+
 
             <%= f.submit "Place Order",class: "btn karl-checkout-btn"%>
             <%end%>

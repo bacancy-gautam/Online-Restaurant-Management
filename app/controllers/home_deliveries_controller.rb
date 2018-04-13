@@ -4,6 +4,8 @@ class HomeDeliveriesController < ApplicationController
     authorize HomeDelivery, :new?
     @home_delivery = HomeDelivery.new
     @master_order = MasterOrder.find(params[:master_order])
+    @address = Address.new
+    @addresses = Address.where(addressable_id: current_user.id)
   end
 
   def create
@@ -25,6 +27,8 @@ class HomeDeliveriesController < ApplicationController
   def index
     authorize HomeDelivery, :index?
     @home_deliveries = HomeDelivery.all.includes(:master_order, :address)
+    @useraddress = Address.where(addressable_id: current_user.id)
+    @homedeliveries = HomeDelivery.where(address_id: @useraddress.id)
   end
 
   def change_home_delivery_status
