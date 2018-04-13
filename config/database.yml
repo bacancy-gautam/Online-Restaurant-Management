@@ -84,4 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: OnlineRestaturantManagement_production
+  database: online_restaturant_management_production
