@@ -528,7 +528,7 @@
         background-size: 176px 22px;
     }
 }
- */
+*/
 /* iCheck plugin Line skin
 ----------------------------------- */
 .icheckbox_line,
@@ -1689,19 +1689,19 @@
 .iradio_minimal-yellow {
     background-position: -100px 0;
 }
-    .iradio_minimal-yellow.hover {
-        background-position: -120px 0;
-    }
-    .iradio_minimal-yellow.checked {
-        background-position: -140px 0;
-    }
-    .iradio_minimal-yellow.disabled {
-        background-position: -160px 0;
-        cursor: default;
-    }
-    .iradio_minimal-yellow.checked.disabled {
-        background-position: -180px 0;
-    }
+.iradio_minimal-yellow.hover {
+    background-position: -120px 0;
+}
+.iradio_minimal-yellow.checked {
+    background-position: -140px 0;
+}
+.iradio_minimal-yellow.disabled {
+    background-position: -160px 0;
+    cursor: default;
+}
+.iradio_minimal-yellow.checked.disabled {
+    background-position: -180px 0;
+}
 
 /* HiDPI support 
 @media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
@@ -2530,6 +2530,7 @@
     }
 
 /* HiDPI support */
+/*
 @media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
     .icheckbox_futurico,
     .iradio_futurico {
@@ -2537,4 +2538,6 @@
         -webkit-background-size: 144px 19px;
         background-size: 144px 19px;
     }
+}
 
+*/
