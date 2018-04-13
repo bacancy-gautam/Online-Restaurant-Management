@@ -1,6 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "3.10.1"
 
+server '159.65.145.139', port: 22, roles: [:web, :app, :db], primary: true
+
 set :application, "ORM"
 set :repo_url, "git@github.com:bacancy-gautam/Online-Restaurant-Management.git"
 set :user,     'root'
@@ -9,7 +11,7 @@ set :user,     'root'
 set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
-set :deploy_via,      :remote_cache
+# set :deploy_via,      :remote_cache
 set :deploy_to,       "/#{fetch(:user)}/apps/#{fetch(:application)}"
 
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
