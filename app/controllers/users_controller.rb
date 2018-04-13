@@ -138,7 +138,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { render(partial: 'role_assign') }
       format.js
-    end
+    endxx
   end
 
   def change_user_status
@@ -189,4 +189,5 @@ class UsersController < ApplicationController
       user.password = password
     end
   end
+end
 end
