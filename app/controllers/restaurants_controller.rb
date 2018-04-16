@@ -123,7 +123,11 @@ class RestaurantsController < ApplicationController
 
   def restaurant_list
     authorize Restaurant, :restaurant_list?
-    @restaurants = Restaurant.all
+    if current_user.has_role? :admin
+      @restaurants = Restaurant.all.where(user_id: current_user.id)
+    else
+      @restaurants = Restaurant.all
+    end
     respond_to do |format|
       format.html
       format.js
