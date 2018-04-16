@@ -5,7 +5,16 @@ class FoodItemsController < ApplicationController
 
   def index
     skip_authorization
-    @fooditems = FoodItem.all.includes(:restaurant, :category)
+    if current_user.has_role? :admin
+      @fooditems = []
+      Restaurant.where(user_id: current_user.id).each do |restaurant|
+        restaurant.food_items.each do |food|
+          @fooditems << food
+        end
+      end
+    else
+      @fooditems = FoodItem.all.includes(:restaurant, :category)
+    end
   end
 
   def new

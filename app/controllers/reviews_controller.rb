@@ -51,7 +51,18 @@ class ReviewsController < ApplicationController
 
   def index
     authorize Review, :index?
-    @reviews = Review.all
+    if current_user.has_role? :super_admin
+      @reviews = Review.all
+    elsif current_user.has_role? :admin
+      @reviews = []
+      Restaurant.where(user_id: current_user.id).each do |restaurant|
+        restaurant.reviews.each do |r|
+          @reviews << r
+        end
+      end
+    elsif current_user.has_role? :customer
+      @reviews = Review.all.where(user_id: current_user.id)
+    end
     respond_to do |format|
       format.html
       format.js
