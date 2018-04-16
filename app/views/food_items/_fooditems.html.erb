@@ -1,50 +1,62 @@
 <h1>Food-Items</h1>
-<table class="table table-striped custom-table table-hover">
-  <tr>
-    <th>Image</th>
-    <th>Restaurant Name</th>
-    <th>Category Name</th>
-    <th>Sub-Category Name</th>
-    <th>Food Name</th>
-    <th>Food Type</th>
-    <th>Price</th>
-    <th>Action  </th>
-  </tr>
-  <% @fooditems.each do |food|%>
-    <% if current_user.has_role? :admin %>
-      <% if (Restaurant.find(food.restaurant_id)).user_id == current_user.id %>
+<% cnt = 0 
+@fooditems.each do |food|
+  if current_user.has_role? :admin
+    if (Restaurant.find(food.restaurant_id)).user_id == current_user.id
+      cnt = cnt + 1
+    end
+  end
+end %>
+<% if cnt == 0 %>
+  <h3>You haven't added any Food-item </h3>
+<% else %>
+  <table class="table table-striped custom-table table-hover">
+    <tr>
+      <th>Image</th>
+      <th>Restaurant Name</th>
+      <th>Category Name</th>
+      <th>Sub-Category Name</th>
+      <th>Food Name</th>
+      <th>Food Type</th>
+      <th>Price</th>
+      <th>Action  </th>
+    </tr>
+    <% @fooditems.each do |food|%>
+      <% if current_user.has_role? :admin %>
+        <% if (Restaurant.find(food.restaurant_id)).user_id == current_user.id %>
+          <tr>
+            <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
+            <td><%= food.restaurant.full_name %></td>
+            <td><%= food.category.name %></td>
+            <td><%= food.food_category.name %></td>
+            <td><%= food.name %></td>
+            <td><%= food.food_type %></td>
+            <td><%= food.price %></td>
+            <td>
+            <%= link_to "", food, class: "btn btn-success btn-xs fa fa-check", remote: true %>
+            <%= link_to "", edit_food_item_path(food), class: "btn btn-primary btn-xs fa fa-pencil", remote: true%>
+            <%= link_to "", food, class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+          </tr>
+        <% end %>
+      <% elsif current_user.has_role? :super_admin %>
         <tr>
           <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
-          <td><%= food.restaurant.full_name %></td>
-          <td><%= food.category.name %></td>
+          <td><%=food.restaurant.name %></td>
+          <td><%=food.category.name %></td>
           <td><%= food.food_category.name %></td>
-          <td><%= food.name %></td>
-          <td><%= food.food_type %></td>
-          <td><%= food.price %></td>
+          <td><%=food.name %></td>
+          <td><%=food.food_type %></td>
+          <td><%=food.price %></td>
           <td>
           <%= link_to "", food, class: "btn btn-success btn-xs fa fa-check", remote: true %>
-          <%= link_to "", edit_food_item_path(food), class: "btn btn-primary btn-xs fa fa-pencil", remote: true%>
+          <%# if policy(food).edit? %>
+            <%= link_to "", edit_food_item_path(food), class: "btn btn-primary btn-xs fa fa-pencil", remote: true%>
+          <%# end %>
+          <%# if policy(food).delete? %>
           <%= link_to "", food, class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+          <%# end%>
         </tr>
-      <% end %>
-    <% elsif current_user.has_role? :super_admin %>
-      <tr>
-        <td><%= image_tag(food.image.url, alt:'Image', class: "user-img") if food.image? %></td>
-        <td><%=food.restaurant.name %></td>
-        <td><%=food.category.name %></td>
-        <td><%= food.food_category.name %></td>
-        <td><%=food.name %></td>
-        <td><%=food.food_type %></td>
-        <td><%=food.price %></td>
-        <td>
-        <%= link_to "", food, class: "btn btn-success btn-xs fa fa-check", remote: true %>
-        <% if policy(food).edit? %>
-          <%= link_to "", edit_food_item_path(food), class: "btn btn-primary btn-xs fa fa-pencil", remote: true%>
-        <% end %>
-        <% if policy(food).delete? %>
-        <%= link_to "", food, class: "btn btn-danger btn-xs fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
-        <%end%>
-      </tr>
+      <%end%>
     <%end%>
-  <%end%>
-</table>
+  </table>
+<% end %>
