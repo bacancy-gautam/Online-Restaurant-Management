@@ -8,23 +8,23 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def new?
-    user.has_role? :admin
+    (user.has_role? :admin) || (user.has_role? :super_admin)
   end
 
   def create?
-    true
+    (user.has_role? :admin) || (user.has_role? :super_admin)
   end
 
   def edit?
-    user.has_role? :admin
+    (user.has_role? :admin) || (user.has_role? :super_admin)
   end
 
   def update?
-    true
+    (user.has_role? :admin) || (user.has_role? :super_admin)
   end
 
   def destroy?
-    user.has_role? :super_admin
+    (user.has_role? :admin) || (user.has_role? :super_admin)
   end
 
   def add_food_to_fav?
