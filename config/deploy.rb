@@ -1,4 +1,4 @@
-# config valid for current version and patch releases of Capistrano
+  # config valid for current version and patch releases of Capistrano
 lock "3.10.1"
 
 server '159.65.145.139', port: 22, roles: [:web, :app, :db], primary: true
@@ -10,6 +10,7 @@ set :user,     'root'
 
 set :pty,             true
 set :use_sudo,        false
+set :passenger_restart_with_touch, true
 set :stage,           :production
 # set :deploy_via,      :remote_cache
 set :deploy_to,       "/#{fetch(:user)}/apps/#{fetch(:application)}"

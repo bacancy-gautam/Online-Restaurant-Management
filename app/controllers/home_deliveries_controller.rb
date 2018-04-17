@@ -62,8 +62,10 @@ class HomeDeliveriesController < ApplicationController
     @home_deliveries = current_delivery_boy.home_deliveries
     if @home_delivery.update_attributes(home_delivery_params)
       master_order = @home_delivery.master_order
-     master_order.update_attribute(:order_status, @home_delivery.status)
-
+      master_order.update_attribute(:order_status, @home_delivery.status)
+      if @home_delivery.status == 'delivered'
+        current_delivery_boy.update_attribute(:status, 'available')
+      end
       flash[:success] = 'Status updated!'
       respond_to do |format|
         format.html do
