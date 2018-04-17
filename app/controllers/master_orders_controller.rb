@@ -19,7 +19,11 @@ class MasterOrdersController < ApplicationController
   end
 
   def create
+
     authorize MasterOrder, :create?
+
+    order_types = MasterOrder.order_types.keys
+      payment_types = MasterOrder.payment_types.keys
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
     @restaurants.each do |r|
@@ -39,7 +43,7 @@ class MasterOrdersController < ApplicationController
     restaurants = current_user.restaurants
     @master_orders = [] 
     @masters = MasterOrder.all 
-    @master_orders = MasterOrder.all if current_user.has_role? "super_admin"
+    @master_orders = @masters if current_user.has_role? "super_admin"
     @masters.each do |master|
       if master.order_type == 'pickup' && master.payment_status == 'paid'
         master.update_attribute(:order_status, 'completed')

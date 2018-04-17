@@ -1,8 +1,8 @@
 <%= form_for @master_order do,remote: true |order|%>
   <%= order.label:order_type%>
-  <%= order.select(:order_type, MasterOrder.order_types.keys,selected: MasterOrder.order_types.first)%> </br>
+  <%= order.select(:order_type, order_types)%> </br>
   <%= order.label:payment_type%>
-  <%= order.select(:payment_type, MasterOrder.payment_types.keys) %> </br>
+  <%= order.select(:payment_type, payment_types) %> </br>
   <%= order.label:restaurant%>
 
   <%= order.select :restaurant_id, Restaurant.find(Order.find(session[:order].compact.keys).pluck(:restaurant_id).uniq).map{|r| [r.name, r.id]} %> </br>

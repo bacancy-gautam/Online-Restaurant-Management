@@ -1,3 +1,6 @@
+<%if @home_deliveries == []%>
+  <h1>No data found</h1>
+<%else%>
 <div id="customer" class="">
     <h3>new</h3>
     <section class="panel">
@@ -19,10 +22,13 @@
             <td><%= home_delivery.master_order.id%></td>
             <td><%= home_delivery.status%></td>
             <td><%= home_delivery.address.addressline%></td>
-            <td><%= link_to "change status", edit_home_delivery_path(home_delivery), remote: true %></td>
+            <td>
+            <%if home_delivery.status != 'delivered'%>
+            <%= link_to "change status", edit_home_delivery_path(home_delivery), remote: true %><%end%></td>
             </tr>
           <%end%>
         </tbody>
       </table>
     </section>
   </div> 
+  <%end%>
