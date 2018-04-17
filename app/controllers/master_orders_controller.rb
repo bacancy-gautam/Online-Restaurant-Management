@@ -23,7 +23,7 @@ class MasterOrdersController < ApplicationController
     authorize MasterOrder, :create?
 
     order_types = MasterOrder.order_types.keys
-    payment_types = MasterOrder.payment_types.keys
+      payment_types = MasterOrder.payment_types.keys
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
     @restaurants.each do |r|
