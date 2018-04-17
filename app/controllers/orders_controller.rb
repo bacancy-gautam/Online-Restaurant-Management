@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
   end
 
   def show_cart
-    authorize Order, :show_cart?
+    skip_authorization
     @master_order = MasterOrder.new # if !@master_order.nil?
     @orders = session_orders
   end

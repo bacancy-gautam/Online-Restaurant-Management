@@ -54,6 +54,11 @@
     <%end%>
   <%end%>
   <%end%>
+  <%if current_user.has_role? "admin"%>
+    <%if m.order_type == 'pickup' && m.payment_type == 'cod' && m.order_status != 'completed'%>
+      <%= link_to "change order status", edit_master_order_path(m), remote: true%>
+    <%end%>
+  <%end%>
   </td>
  </tr> 
 <%end%>
