@@ -9,7 +9,11 @@ class FoodCategoriesController < ApplicationController
     authorize FoodItem, :create?
     @food_category = FoodCategory.new(food_category_params)
     if @food_category.save
-      redirect_to food_category_path(@food_category)
+      # redirect_to food_category_path(@food_category)
+      respond_to do |format|
+        format.html { render(partial: 'foodcategorylist') }
+        format.js
+      end
     end
   end
 
@@ -32,6 +36,10 @@ class FoodCategoriesController < ApplicationController
   def index
     skip_authorization
     @food_categories = FoodCategory.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def destroy

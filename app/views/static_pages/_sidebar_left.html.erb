@@ -48,8 +48,18 @@
           </li>
           <div id="Category" class="collapse">
             <ul class="">
-                <li><%= link_to 'Add', new_category_path, remote: true, class: "showpartials libg" %></li>
-                <li><%= link_to 'Manage', categories_path, remote: true, class: "showpartials libg" %></li>
+              <li><%= link_to 'Add', new_category_path, remote: true, class: "showpartials libg" %></li>
+              <li><%= link_to 'Manage', categories_path, remote: true, class: "showpartials libg" %></li>
+            </ul>
+          </div>
+
+          <li class="listyle" data-toggle="collapse" data-target="#fCategory" >
+            <i class="fa fa-tasks"></i>  <span>Food-Category > </span>
+          </li>
+          <div id="fCategory" class="collapse">
+            <ul class="">
+              <li><%= link_to 'Add', new_food_category_path, remote: true, class: "showpartials libg" %></li>
+              <li><%= link_to 'Manage', food_categories_path, remote: true, class: "showpartials libg" %></li>
             </ul>
           </div>
           
