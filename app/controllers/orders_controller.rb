@@ -64,6 +64,10 @@ class OrdersController < ApplicationController
     skip_authorization
     @master_order = MasterOrder.new # if !@master_order.nil?
     @orders = session_orders
+    respond_to do |f|
+      f.html { redirect_to root_path }
+      f.js
+    end
   end
 
   private
