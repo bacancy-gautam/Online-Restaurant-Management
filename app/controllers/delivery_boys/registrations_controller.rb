@@ -8,12 +8,14 @@ module DeliveryBoys
 
     # GET /resource/sign_up
     def new
+      authorize User, :new?
       @delivery_boy = DeliveryBoy.new
     end
 
     # POST /resource
     def create
       # super
+      authorize User, :new?
       @delivery_boy = DeliveryBoy.new(delivery_boy_params) do |delivery_boy|
         password = SecureRandom.hex(8)
         delivery_boy.password = password
