@@ -55,33 +55,13 @@
   </div>
 </section>
 <!--//END FEATURED PLACES -->
-<!--============================= FOOTER =============================-->
-<footer class="main-block dark-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="copyright">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          <p><%= link_to 'About Us', static_pages_about_path, class: "about" %> | 
-          <%= link_to 'Contact Us', new_contact_path, class: "about" %></p>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          <ul>
-            <li><a href="#"><span class="ti-facebook"></span></a></li>
-            <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
-            <li><a href="#"><span class="ti-instagram"></span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-<!--//END FOOTER -->
+
 <script>
   var y = document.getElementById("place");
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
+    } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
@@ -96,7 +76,7 @@
         geocoder = new google.maps.Geocoder();
         geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        if (results[1]) {  
+        if (results[1]) {
           for (var ac = 0; ac < results[0].address_components.length; ac++) {
             var component = results[0].address_components[ac];
 
@@ -117,7 +97,7 @@
       }
       else {console.log("Geocoder failed: " + status)}
           y.value = city +", "+ country;
-    });    
+    });
         }
 
       </script>
@@ -137,6 +117,6 @@
           $('.fixed').removeClass('is-sticky');
 
         };
-      }); 
-      
+      });
+
     </script>
