@@ -66,6 +66,7 @@ class MasterOrdersController < ApplicationController
 
   def edit
     skip_authorization
+    @order_status = MasterOrder.order_statuses.keys.map {|status| [status.titleize,status]}
     respond_to do |format|
       format.html
       format.js
@@ -82,6 +83,7 @@ class MasterOrdersController < ApplicationController
   end
 
   def change_pickup_order_status
+    @order_status = MasterOrder.order_statuses.keys.map {|status| [status.titleize,status]}
   end
 
   def update
