@@ -3,11 +3,11 @@ class RestaurantscategoriesController < ApplicationController
   # before_action :authenticate_user!
 
   def new 
-    authorize Restaurantscategory, :new?
+    authorize Offer, :new?
   end
 
   def create
-    authorize Restaurantscategory, :create?
+    authorize Offer, :new?
     @category = params[:restaurant][:category_ids].reject(&:empty?)
     @category_array = Category.find(@category)
     @restaurant = Restaurant.find(params[:restaurant][:restaurant_id])
@@ -30,7 +30,7 @@ class RestaurantscategoriesController < ApplicationController
   end
 
   def edit
-    authorize Restaurantscategory, :edit?
+    authorize Offer, :new?
     @restaurant = Restaurant.find(params[:id])
   end
 
@@ -40,7 +40,7 @@ class RestaurantscategoriesController < ApplicationController
   end
 
   def update
-    authorize Restaurantscategory, :update?
+    authorize Offer, :new?
     @restaurant = Restaurant.find(params[:id])
     @restaurant.categories.delete_all
     @category_ids = params[:restaurant][:category_ids].reject(&:empty?)
