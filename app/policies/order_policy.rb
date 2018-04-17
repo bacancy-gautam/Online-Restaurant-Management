@@ -6,36 +6,21 @@ class OrderPolicy < ApplicationPolicy
       scope
     end
   end
-  def new?
-    
-  end
-
-  def create?
-
-  end
-
-  def remove?
-
-  end
 
   def index?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def edit?
-
+    (user.has_role? :customer)
   end
 
   def show?
-
-  end
-
-  def destroy?
-
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def show_cart?
-
+    (user.has_role? :customer)
   end
 
 end
