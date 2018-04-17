@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'food_by_category',               to: 'restaurants#food_by_category'
   get 'category_list',                  to: 'food_items#category_list'
   get 'main_category_list',             to: 'food_items#main_category_list'
+  get 'addresses_list',                 to: 'home_deliveries#addresses_list'
+  post 'create_address',                 to: 'home_deliveries#create_address'
   get 'users/edit'
   get 'offers/change_foodlist'
   get 'addresses/view_address'
