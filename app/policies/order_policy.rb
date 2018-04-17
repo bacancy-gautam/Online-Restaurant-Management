@@ -19,8 +19,4 @@ class OrderPolicy < ApplicationPolicy
     (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
-  def show_cart?
-    (user.has_role? :customer)
-  end
-
 end
