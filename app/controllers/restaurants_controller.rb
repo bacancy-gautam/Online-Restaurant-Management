@@ -110,13 +110,15 @@ class RestaurantsController < ApplicationController
     # @restaurants = Restaurant.ransack(name_cont: params[:term])
     #                          .result(distinct: true)
     @fooditems = FoodItem.ransack(name_cont: params[:term])
-                         .result(distinct: true)
+                         .result(distinct: true).includes(:restaurant)
     @restaurants = Restaurant.find(@fooditems.pluck(:restaurant_id))
+    @food_restaurants = Restaurant.ransack(name_cont: params[:term]).result(distinct: true)
     respond_to do |format|
       format.html {}
       format.json do
         @fooditems = @fooditems.limit(5)
         @restaurants = Restaurant.find(@fooditems.pluck(:restaurant_id))
+        @food_restaurants = Restaurant.ransack(name_cont: params[:term]).result(distinct: true).limit(5)
       end
     end
   end

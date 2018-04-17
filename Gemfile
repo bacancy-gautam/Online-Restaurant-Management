@@ -15,6 +15,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'rubocop', require: false
 gem 'therubyracer'
+gem "paranoia", "~> 2.2"
 # Use Uglifier as compressor for JavaScript assets
 
 # See https://github.com/rails/execjs#readme for more supported runtimes

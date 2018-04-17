@@ -1,5 +1,6 @@
 # this model will create instance of All FoodItems of all restaurants
 class FoodItem < ApplicationRecord
+  acts_as_paranoid
   belongs_to :category
   belongs_to :restaurant
   has_one :offer, dependent: :destroy
