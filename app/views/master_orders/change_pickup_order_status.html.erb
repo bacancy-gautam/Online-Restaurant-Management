@@ -1,9 +1,5 @@
-<div class="content clearfix">
-  <div class="form-group clearfix formbackground">
-    <%= form_for @master_order do |f|%>
-      <%= f.label :status%>
-      <%= f.select(:order_status, MasterOrder.order_statuses.keys.map {|status| [status.titleize,status]}) %>
-      <%= f.submit "edit status"%>
-    <% end %>
-  </div>
+
+
+ <div id="users-page">
+  <%= render partial: "change_pickup_status", locals: {master_order: @master_order}%>
 </div>

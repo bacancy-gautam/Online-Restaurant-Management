@@ -1,6 +1,8 @@
 # Controller for Master Order
 class MasterOrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :bill_details]
+  before_action :set_master_orders, only: [:index, :update]
+  before_action :set_master_order, only: [:destroy, :edit, :show, :change_pickup_order_status, :update, :show_history]
 
   def new
     authorize MasterOrder, :new?
@@ -40,9 +42,6 @@ class MasterOrdersController < ApplicationController
   end
 
   def index
-    restaurants = current_user.restaurants
-    @master_orders = [] 
-    @masters = MasterOrder.all 
     @master_orders = @masters if current_user.has_role? "super_admin"
     @masters.each do |master|
       if master.order_type == 'pickup' && master.payment_status == 'paid'
@@ -50,7 +49,7 @@ class MasterOrdersController < ApplicationController
       end
       if current_user.has_role? "admin"
         #restaurants.include?(master.restaurant_id) ? @master_orders << master : @master_orders
-        restaurants.where(id:master.restaurant_id).empty? ? @master_orders : @master_orders << master
+        @restaurants.where(id:master.restaurant_id).empty? ? @master_orders : @master_orders << master
 
       elsif current_user.has_role? "customer"
         master.user_id == current_user.id ? @master_orders << master : @master_orders
@@ -61,18 +60,20 @@ class MasterOrdersController < ApplicationController
 
   def destroy
     authorize MasterOrder, :destroy?
-    @master_order = MasterOrder.find(params[:id])
     @master_order.destroy
     redirect_to master_orders_path
   end
 
   def edit
-    skip authorizated
+    skip_authorization
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
     authorize MasterOrder, :show?
-    @master_order = MasterOrder.find(params[:id])
     # a = session[:order].compact.keys
     # @order = []
     # a.each do |i|
@@ -81,14 +82,21 @@ class MasterOrdersController < ApplicationController
   end
 
   def change_pickup_order_status
-    @master_order = MasterOrder.find(params[:id])
   end
 
   def update
-    @master_order = MasterOrder.find(params[:id])
+    @masters.each do |master|
+      @restaurants.where(id:master.restaurant_id).empty? ? @master_orders : @master_orders << master
+    end
     if @master_order.update_attributes(master_order_params)
       @master_order.update_attribute(:payment_status, 'paid')
-      redirect_to static_pages_my_account_path
+      flash[:success] = 'Status updated!'
+      respond_to do |format|
+        format.html do
+          render(partial: 'all_orders')
+        end
+        format.js
+      end
     end
   end
 
@@ -103,12 +111,21 @@ class MasterOrdersController < ApplicationController
   end
 
   def show_history
-    @master_order = MasterOrder.find(params[:id])
     @orders = @master
   end
 
   private
 
+  def set_master_order
+    @master_order = MasterOrder.find(params[:id])
+  end
+
+  def set_master_orders
+    @restaurants = current_user.restaurants
+    @master_orders = []
+    @masters = MasterOrder.all
+
+  end
   def master_order_params
     params.require(:master_order).permit(:total, :order_type, :payment_type,
                                          :order_status, :payment_status,
