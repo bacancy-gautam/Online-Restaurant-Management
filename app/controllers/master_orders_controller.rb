@@ -49,7 +49,9 @@ class MasterOrdersController < ApplicationController
         master.update_attribute(:order_status, 'completed')
       end
       if current_user.has_role? "admin"
-        restaurants.include?(master.restaurant_id) ? @master_orders << master : @master_orders
+        #restaurants.include?(master.restaurant_id) ? @master_orders << master : @master_orders
+        restaurants.where(id:master.restaurant_id).empty? ? @master_orders : @master_orders << master
+
       elsif current_user.has_role? "customer"
         master.user_id == current_user.id ? @master_orders << master : @master_orders
       end
@@ -76,6 +78,18 @@ class MasterOrdersController < ApplicationController
     # a.each do |i|
     # @order << Order.find_by(id: i) if Order.find_by(id: i) != nil
     # end
+  end
+
+  def change_pickup_order_status
+    @master_order = MasterOrder.find(params[:id])
+  end
+
+  def update
+    @master_order = MasterOrder.find(params[:id])
+    if @master_order.update_attributes(master_order_params)
+      @master_order.update_attribute(:payment_status, 'paid')
+      redirect_to static_pages_my_account_path
+    end
   end
 
   def bill_details
