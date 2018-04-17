@@ -1,6 +1,6 @@
 json.restaurants do
   json.array!(@food_restaurants) do |restaurant|
-    json.name restaurant.name
+    json.name restaurant.full_name
     json.url restaurant_path(restaurant)
   end
 end
