@@ -16,6 +16,16 @@ class HomeDeliveriesController < ApplicationController
     redirect_to static_pages_my_account_path
   end
 
+  def create_address
+    authorize Address, :create?
+    # @address = Address.new(address_params)
+    @address = current_user.addresses.create(address_params)
+    respond_to do |format|
+      format.html { redirect_to addresses_path, notice: 'Address successfully addeed.' }
+      format.js
+    end
+  end
+
   def add_address
     @address = Address.new
     respond_to do |format|
@@ -86,5 +96,10 @@ class HomeDeliveriesController < ApplicationController
 
   def home_delivery_params
     params.require(:home_delivery).permit(:status, :address_id, :master_order_id)
+  end
+
+  def address_params
+    params.require(:address).permit(:addressline, :area, :city,
+                                    :state, :pincode)
   end
 end
