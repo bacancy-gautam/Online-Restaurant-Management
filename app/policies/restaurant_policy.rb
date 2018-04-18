@@ -16,15 +16,15 @@ class RestaurantPolicy < ApplicationPolicy
   end
 
   def edit?
-    (user.has_role? :super_admin) || (user.has_role? :admin)
+    (user.has_role? :super_admin) || ((user.has_role? :admin) && (record.user == user))
   end
 
   def update?
-    (user.has_role? :super_admin) || (user.has_role? :admin)
+    (user.has_role? :super_admin) || ((user.has_role? :admin) && (record.user == user))
   end
 
   def destroy?
-    (user.has_role? :super_admin) || (user.has_role? :admin)
+    (user.has_role? :super_admin) || ((user.has_role? :admin) && (record.user == user))
   end
 
   def new_release?
