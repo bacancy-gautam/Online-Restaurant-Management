@@ -34,7 +34,6 @@ class FoodItemsController < ApplicationController
   end
 
   def edit
-    # authorize FoodItem, :edit?
     authorize(@fooditem, :edit?)
   end
 
@@ -43,7 +42,6 @@ class FoodItemsController < ApplicationController
   end
 
   def update
-    # authorize FoodItem, :update?
     authorize(@fooditem, :update?)
     if @fooditem.update(food_item_params)
       @fooditems = FoodItem.all
@@ -54,7 +52,6 @@ class FoodItemsController < ApplicationController
   end
 
   def destroy
-    # authorize FoodItem, :destroy?
     authorize(@fooditem, :destroy?)
     @fooditem.destroy
     @fooditems = FoodItem.all
