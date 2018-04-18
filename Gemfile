@@ -17,7 +17,6 @@ gem 'rubocop', require: false
 gem 'therubyracer'
 gem "paranoia", "~> 2.2"
 # Use Uglifier as compressor for JavaScript assets
-gem 'geocoder'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # ransack = for easy search data
