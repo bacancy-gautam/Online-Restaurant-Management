@@ -30,4 +30,8 @@ class MasterOrderPolicy < ApplicationPolicy
     (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
+  def my_orders?
+    (user.has_role? :super_admin) || (user.has_role? :admin)
+  end
+
 end

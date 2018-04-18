@@ -21,51 +21,54 @@
           </tr>
         </thead>
         <tbody>
+          <% @master_orders.each do |m|%>
+            <tr>
+            <td><%= m.total.to_i%></td>
+            <td><%= m.order_type%></td>
+            <td><%= m.order_status%></td>
+            <td><%= m.payment_status%></td>
+            <td><%= m.payment_type%></td>
+            <td><%= m.created_at%></td>
+            <td>
+            <% if current_user.has_role? "customer"%>
+              <% if m.payment_type == "card" && if m.payment_status == "pending"%>
+                  <%= form_tag charges_path(:m_id=>m) do %>
+                    <article>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                      <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
        
-<% @master_orders.each do |m|%>
+                    </article>
+                      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                      data-description="A month's subscription"
+                      data-amount=<%=m.total.to_i%>
+                      data-locale="auto"></script>
+                  <% end %>
+      
+              <%end%>
+            <%end%>
+            <%if current_user.has_role? "admin"%>
+              <%if m.order_type == 'pickup' && m.payment_type == 'cod' && m.order_status != 'completed'%>
+                <%= link_to "change order status", edit_master_order_path(m), remote: true%>
+              <%end%>
+            <%end%>
+            </td>
+            </tr> 
+          <%end%>
 
- <tr>
-
-  <td><%= m.total.to_i%></td>
-  <td><%= m.order_type%></td>
-  <td><%= m.order_status%></td>
-  <td><%= m.payment_status%></td>
-  <td><%= m.payment_type%></td>
-  <td><%= m.created_at%></td>
-  <td>
-  <% if current_user.has_role? "customer"%>
-  <% if m.payment_type == "card"%>
-    <%if m.payment_status == "pending" %>
-      <%= form_tag charges_path(:m_id=>m) do %>
-        <article>
-        <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
-        <% end %>
-       
-        </article>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount=<%=m.total.to_i%>
-          data-locale="auto"></script>
-      <% end %>
-    <%end%>
-  <%end%>
-  <%end%>
-  <%if current_user.has_role? "admin"%>
-    <%if m.order_type == 'pickup' && m.payment_type == 'cod' && m.order_status != 'completed'%>
-      <%= link_to "change order status", edit_master_order_path(m), remote: true%>
-    <%end%>
-  <%end%>
-  </td>
- </tr> 
-<%end%>
-
-</tbody>
+        </tbody>
       </table>
     </section>
   </div> 
-
 <%end%>
+
+
+
+
+
+
+
+
