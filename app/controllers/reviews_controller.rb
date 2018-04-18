@@ -43,8 +43,8 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def destroy2
-    authorize Review, :destroy2?
+  def destroy
+    authorize Review, :destroy?
     @review = Review.find(params[:id])
     @review.destroy
   end
