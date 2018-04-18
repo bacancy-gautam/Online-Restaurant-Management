@@ -21,7 +21,7 @@ class FoodItemsController < ApplicationController
   def create
     authorize FoodItem, :create?
     @fooditem = FoodItem.new(food_item_params)
-    
+
     if @fooditem.save
       @fooditems = FoodItem.all
       respond_to do |format|
@@ -34,7 +34,8 @@ class FoodItemsController < ApplicationController
   end
 
   def edit
-    authorize FoodItem, :edit?
+    # authorize FoodItem, :edit?
+    authorize(@fooditem, :edit?)
   end
 
   def show
@@ -42,7 +43,8 @@ class FoodItemsController < ApplicationController
   end
 
   def update
-    authorize FoodItem, :update?
+    # authorize FoodItem, :update?
+    authorize(@fooditem, :update?)
     if @fooditem.update(food_item_params)
       @fooditems = FoodItem.all
       render 'index'
@@ -52,7 +54,8 @@ class FoodItemsController < ApplicationController
   end
 
   def destroy
-    authorize FoodItem, :destroy?
+    # authorize FoodItem, :destroy?
+    authorize(@fooditem, :destroy?)
     @fooditem.destroy
     @fooditems = FoodItem.all
     render('index')
@@ -90,5 +93,5 @@ class FoodItemsController < ApplicationController
                                       :restaurant_id, :category_id, :image)
   end
 
- 
+
 end

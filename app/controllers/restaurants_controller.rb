@@ -27,8 +27,8 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    authorize Restaurant, :edit?
-    @restaurant = Restaurant.find(params[:id])
+    # authorize Restaurant, :edit?
+    authorize(@restaurant, :edit?)
     respond_to do |format|
       format.html
       format.js
@@ -36,7 +36,8 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    authorize Restaurant, :update?
+    # authorize Restaurant, :update?
+    authorize(@restaurant, :update?)
     if @restaurant.update_attributes(restaurant_params)
       @restaurants = Restaurant.all
       flash[:success] = 'Restaurant updated!'
