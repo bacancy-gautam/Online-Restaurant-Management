@@ -10,9 +10,11 @@
     <span> • </span>
     <p>
       <%if (food_item.offer.present?) && ((Date.today >= food_item.offer.start_date) && (Date.today <= food_item.offer.end_date))%>
+          <s><span>₹</span><%= food_item.price %></s>
+          &nbsp;&nbsp;
           <span>₹</span><%= food_item.offer_price %>
-        <%else%>
-          <span>₹</span><%= food_item.price %>
+      <%else%>
+        <span>₹</span><%= food_item.price %>
       <%end%>
 
     </p>
