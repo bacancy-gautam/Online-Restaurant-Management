@@ -64,6 +64,11 @@ class MasterOrdersController < ApplicationController
     redirect_to master_orders_path
   end
 
+  def my_orders
+    authorize MasterOrder, :my_orders?
+    @master_orders = MasterOrder.where(user_id:current_user.id)
+  end
+
   def edit
     skip_authorization
     @order_status = MasterOrder.order_statuses.keys.map {|status| [status.titleize,status]}

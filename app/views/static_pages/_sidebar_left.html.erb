@@ -93,6 +93,17 @@
             </ul>
           </div>
 
+
+          <li class="listyle" data-toggle="collapse" data-target="#myorder">
+            <i class="fa fa-coffee"></i>  <span> my orders > </span>
+          </li>
+          <div id="myorder" class="collapse">
+            <ul class="">
+                <li><%= link_to 'my orders', my_orders_master_orders_path, remote: true, class: "showpartials libg" %></li>
+            </ul>
+          </div>
+
+
           <li class="listyle" data-toggle="collapse" data-target="#Offers">
             <i class="fa fa-reorder"></i>  <span> Offers > </span>
           </li>
@@ -159,6 +170,17 @@
                <li><%= link_to 'Order List',  master_orders_path, remote: true, class: "showpartials libg" %></li>
             </ul>
           </div>
+
+
+          <li class="listyle" data-toggle="collapse" data-target="#myorder">
+            <i class="fa fa-coffee"></i>  <span> my orders > </span>
+          </li>
+          <div id="myorder" class="collapse">
+            <ul class="">
+                <li><%= link_to 'my orders', my_orders_master_orders_path, remote: true, class: "showpartials libg" %></li>
+            </ul>
+          </div>
+          
 
           <li class="listyle" data-toggle="collapse" data-target="#Offer">
             <i class="fa fa-reorder"></i>  <span> Offers > </span>

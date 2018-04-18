@@ -74,6 +74,9 @@ Rails.application.routes.draw do
     collection do
       get :bill_details
     end
+    collection do
+      get :my_orders
+    end
     member do 
       get :change_pickup_order_status
     end
