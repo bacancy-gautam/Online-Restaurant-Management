@@ -135,7 +135,7 @@
           <%end%>
           <%end%>
           <hr>
-          <h5><%= Review.count %> Reviews</h5>
+          <h5><%= @restaurant.reviews.count %> Reviews</h5>
           <hr>
           <div id="review-list">
             <% if @reviews.present? %>

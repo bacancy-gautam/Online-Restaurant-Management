@@ -3,12 +3,14 @@
   <span>
     <%= review.user_reviews %> Reviews
   </span>
-  <% if current_user.id == review.user_id%>
+  <% if user_signed_in? %>
+  <% if current_user.id == review.user_id %>
   <br>
   <%= link_to "Edit", edit_review_path(review.id),remote: true%>
   <br>
   <%= link_to "Delete", review_path(review.id),method: :delete, remote: true%>
-  <%end%>
+  <% end %>
+  <% end %>
 </div>
 <div class="customer-content-wrap">
   <div class="customer-content">
