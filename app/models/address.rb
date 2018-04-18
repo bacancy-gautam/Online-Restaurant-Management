@@ -9,4 +9,5 @@ class Address < ApplicationRecord
      City: #{self.city}
      State: #{self.state}"
   end
+
 end

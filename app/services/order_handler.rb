@@ -20,13 +20,13 @@ class OrderHandler
   def update_order
     @order = Order.where(food_item_id: @food.id).last
     qty = @session[:order].compact.include?(@order.id.to_s) ? @order.quantity + 1 : 1
-    @order.update_attributes(quantity: qty, price: qty * @food.price.to_i)
+    @order.update_attributes(quantity: qty, price: qty * @food.final_price.to_i)
   end
 
   def create_order
     @order = Order.create(
       order_datetime: Time.now,
-      price: @food.price.to_i,
+      price: @food.final_price.to_i,
       food_item_id: @food.id,
       quantity: 1,
       restaurant_id: @restaurant.id

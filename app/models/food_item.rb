@@ -15,9 +15,15 @@ class FoodItem < ApplicationRecord
             :food_type,
             :price, presence: true
 
-  def discount_price
-    offer_price = (self.price - ((self.price * self.offer.discount)/100))
-    self.update_attribute(:price, offer_price)
+  def offer_price
+   (self.price - ((self.price * self.offer.discount)/100)).to_i
   end
 
+  def final_price
+    if (self.offer.present?) && ((Date.today >= self.offer.start_date) && (Date.today <= self.offer.end_date))
+        offer_price        
+    else
+        self.price
+    end
+  end
 end

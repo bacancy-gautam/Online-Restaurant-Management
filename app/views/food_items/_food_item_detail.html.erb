@@ -8,7 +8,16 @@
       <%= food_item.name %>
     </h6>
     <span> • </span>
-    <p><span>₹</span><%= food_item.price %></p>
+    <p>
+      <%if (food_item.offer.present?) && ((Date.today >= food_item.offer.start_date) && (Date.today <= food_item.offer.end_date))%>
+          <s><span>₹</span><%= food_item.price %></s>
+          &nbsp;&nbsp;
+          <span>₹</span><%= food_item.offer_price %>
+      <%else%>
+        <span>₹</span><%= food_item.price %>
+      <%end%>
+
+    </p>
       <% if food_item.restaurant.restaurant_open? %>
         <div class="popup" onclick="cartFunction(<%= food_item.id %>)">
           <%= link_to "Add To Cart", orders_path(:food_item => food_item.id, restaurant_id:food_item.restaurant.id), method: "post",remote: true, class: "primary-btn"%>

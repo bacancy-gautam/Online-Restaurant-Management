@@ -53,7 +53,7 @@ class RestaurantsController < ApplicationController
   def show
     # @restaurant = Restaurant.find(params[:id])
     @categories = @restaurant.categories
-    @fooditems = @restaurant.food_items.includes(:food_category)
+    @fooditems = @restaurant.food_items.includes(:food_category, :offer)
     @review = Review.new
     @reviews = @restaurant.reviews.order(created_at: :desc)
   end
