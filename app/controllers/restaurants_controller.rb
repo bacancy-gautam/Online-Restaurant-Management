@@ -27,7 +27,6 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    # authorize Restaurant, :edit?
     authorize(@restaurant, :edit?)
     respond_to do |format|
       format.html
@@ -36,7 +35,6 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    # authorize Restaurant, :update?
     authorize(@restaurant, :update?)
     if @restaurant.update_attributes(restaurant_params)
       @restaurants = Restaurant.all
@@ -77,7 +75,7 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    authorize Restaurant, :destroy?
+    authorize(@restaurant, :destroy?)
     @restaurant = Restaurant.find(params[:id])
     @restaurants = Restaurant.all
     flash[:success] = 'Restaurant deleted!' if @restaurant.destroy

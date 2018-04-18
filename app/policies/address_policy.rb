@@ -6,12 +6,13 @@ class AddressPolicy < ApplicationPolicy
       scope
     end
   end
+
   def index?
     (user.has_role? :super_admin) || (user.has_role? :admin)
   end
 
   def new?
-    (user.has_role? :admin) || (user.has_role? :customer) 
+    (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def create?
@@ -19,11 +20,15 @@ class AddressPolicy < ApplicationPolicy
   end
 
   def edit?
-    (user.has_role? :admin) || (user.has_role? :customer)
+    (user.has_role? :admin) || ((user.has_role? :customer) && (record.addressable_id == user.id))
   end
 
   def update?
-    (user.has_role? :admin) || (user.has_role? :customer)
+    (user.has_role? :admin) || ((user.has_role? :customer) && (record.addressable_id == user.id))
+  end
+
+  def show?
+    (user.has_role? :admin) || ((user.has_role? :customer) && (record.addressable_id == user.id))
   end
 
   def change_city?
@@ -31,11 +36,11 @@ class AddressPolicy < ApplicationPolicy
   end
 
   def destroy?
-    (user.has_role? :admin) || (user.has_role? :customer)
+    (user.has_role? :admin) || ((user.has_role? :customer) && (record.addressable_id == user.id))
   end
 
   def view_address?
     (user.has_role? :admin) || (user.has_role? :customer)
   end
-    
+
 end

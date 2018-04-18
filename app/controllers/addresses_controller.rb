@@ -11,7 +11,6 @@ class AddressesController < ApplicationController
   end
 
   def new
-
     @address = Address.new
   end
 
@@ -27,7 +26,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    authorize Address, :edit?
+    authorize(@address, :edit?)
     @address = Address.find(params[:id])
     respond_to do |format|
       format.html
@@ -36,7 +35,7 @@ class AddressesController < ApplicationController
   end
 
   def update
-    authorize Address, :update?
+    authorize(@address, :update?)
     @address = Address.find(params[:id])
     @address.update(address_params)
     @addresses = current_user.addresses
@@ -49,9 +48,13 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    authorize Address, :destroy?
+    authorize(@address, :destroy?)
     @address.destroy
     redirect_to addresses_path
+  end
+
+  def show
+    authorize(@address, :show?)
   end
 
   def view_address
