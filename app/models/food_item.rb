@@ -20,14 +20,10 @@ class FoodItem < ApplicationRecord
   end
 
   def final_price
-    if !self.offer.nil?
-      if (Date.today >= self.offer.start_date) && (Date.today <= self.offer.end_date)
+    if (self.offer.present?) && ((Date.today >= self.offer.start_date) && (Date.today <= self.offer.end_date))
         offer_price        
-      else
-        self.price
-      end  
     else
-      self.price
+        self.price
     end
   end
 end
