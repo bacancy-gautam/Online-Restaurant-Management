@@ -21,7 +21,7 @@ gem "paranoia", "~> 2.2"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # ransack = for easy search data
-gem 'pry-rails'  
+gem 'pry-rails'
 gem 'ransack', '~> 1.7'
 gem 'bootstrap-sass','3.3.7'
 gem 'jquery-rails'
@@ -33,7 +33,7 @@ gem 'ratyrate'
 gem "carrierwave"
 gem 'jquery-turbolinks'
 gem 'stripe'
-gem 'city-state' 
+gem 'city-state'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
@@ -41,6 +41,7 @@ gem "font-awesome-rails"
 gem 'turbolinks', '~> 5.0.0'
 gem 'groupdate'
 gem 'chartkick'
+gem 'rails_real_favicon'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -79,4 +80,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-  
