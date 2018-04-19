@@ -1,7 +1,7 @@
 # Controller for Restaurant
 class RestaurantsController < ApplicationController
 
-  before_action :fetch_restaurant, only: [:show, :edit, :update,
+  before_action :fetch_restaurant, only: [:show, :edit, :update, :destroy,
                                           :add_restaurant_to_fav, :food_by_category]
 
   def new
@@ -47,6 +47,14 @@ class RestaurantsController < ApplicationController
       end
     else
       render 'edit'
+    end
+  end
+
+  def show_rest
+    @restaurant = Restaurant.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -167,7 +175,7 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(
       :name, :details, :phone_no, :email, :opening_time,
-      :closing_time, :delivery_types, :branch_name, :image,
+      :closing_time, :delivery_types, :branch_name, {images: []},
       address_attributes: [:addressline, :area, :city, :state, :pincode]
     )
   end

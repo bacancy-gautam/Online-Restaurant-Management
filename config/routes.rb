@@ -85,11 +85,13 @@ Rails.application.routes.draw do
   resources :food_items
   resources :categories
   resources :restaurants do
+    resources :images, :only => [:create, :destroy]
     collection do
       get :restaurant_list
     end
     member do
       get :change_restaurant_status
+      get :show_rest
     end
   end
   resources :food_categories

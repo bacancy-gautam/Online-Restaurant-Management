@@ -1,5 +1,6 @@
 # Model for Restaurant
 class Restaurant < ApplicationRecord
+  mount_uploaders :images, ImageUploader
   enum type: [:take_away, :home_delivery]
   ratyrate_rateable 'service', 'food'
   has_many :food_items, dependent: :destroy
@@ -35,7 +36,8 @@ class Restaurant < ApplicationRecord
   def restaurant_open?
     self.opening_time.strftime('%I:%M %p') <= Time.now && self.closing_time.strftime('%I:%M %p') >= Time.now
   end
-  mount_uploader :image, ImageUploader
+  
+  # mount_uploader :image, ImageUploader
 
   def avg_rate
     stars = Rate.all.where(rateable_id: self.id).pluck(:stars)
