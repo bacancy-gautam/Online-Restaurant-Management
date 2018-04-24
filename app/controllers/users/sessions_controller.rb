@@ -13,11 +13,20 @@ module Users
     def create
       self.resource = warden.authenticate!(auth_options)
       user = User.find(self.resource.id)
-      if user.is_active
+      if (user.is_active && user.has_role?(:customer))
         set_flash_message!(:success, :signed_in)
         sign_in(resource_name, resource)
         yield resource if block_given?
         respond_with resource, location: after_sign_in_path_for(resource)
+      elsif (user.is_active && user.has_role?(:admin))
+        unless user.stripe_account
+          redirect_to stripe_accounts_full_path and return
+        end
+        set_flash_message!(:success, :signed_in)
+        redirect_to static_pages_my_account_path
+      elsif (user.is_active && user.has_role?(:super_admin))
+        set_flash_message!(:success, :signed_in)
+        redirect_to static_pages_my_account_path
       else
         flash[:danger] = "Your account is deactivated"
         sign_out user

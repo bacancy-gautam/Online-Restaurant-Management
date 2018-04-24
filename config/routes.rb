@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   get :location, controller: :restaurants
 
   get :search_in_admin, controller: :static_pages
+
+  get 'terms', to: 'static_pages#terms'
+  get 'stripe_accounts/full', to: 'stripe_accounts#full'
+  resources :stripe_accounts
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :home_deliveries
@@ -43,8 +48,8 @@ Rails.application.routes.draw do
     get 'admin_orders'
     get 'admin_revenue'
   end
-  
 
+  resources :bank_accounts
   resources :home_deliveries do
     member do
       get :change_home_delivery_status
@@ -77,7 +82,7 @@ Rails.application.routes.draw do
     collection do
       get :my_orders
     end
-    member do 
+    member do
       get :change_pickup_order_status
     end
   end
