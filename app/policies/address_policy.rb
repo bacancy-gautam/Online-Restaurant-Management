@@ -12,11 +12,11 @@ class AddressPolicy < ApplicationPolicy
   end
 
   def new?
-    (user.has_role? :admin) || (user.has_role? :customer)
+    (user.has_role? :admin) || (user.has_role? :customer) || (user.has_role? :super_admin)
   end
 
   def create?
-    (user.has_role? :admin) || (user.has_role? :customer)
+    (user.has_role? :admin) || (user.has_role? :customer) || (user.has_role? :super_admin)
   end
 
   def edit?

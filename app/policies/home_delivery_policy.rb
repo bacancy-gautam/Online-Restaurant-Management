@@ -1,4 +1,4 @@
-# class policy for home-delivery module
+ # class policy for home-delivery module
 class HomeDeliveryPolicy < ApplicationPolicy
   # scope
   class Scope < Scope
@@ -8,11 +8,11 @@ class HomeDeliveryPolicy < ApplicationPolicy
   end
 
   def new?
-    user.has_role? :customer
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def create?
-    user.has_role? :customer
+    (user.has_role? :super_admin) || (user.has_role? :admin) || (user.has_role? :customer)
   end
 
   def index?

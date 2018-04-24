@@ -23,7 +23,6 @@ class MasterOrdersController < ApplicationController
   def create
   
     authorize MasterOrder, :create?
-
     order_types = MasterOrder.order_types.keys
     payment_types = MasterOrder.payment_types.keys
     @orders = Order.find(session[:order].compact.keys)

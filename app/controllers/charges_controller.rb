@@ -5,27 +5,30 @@ class ChargesController < ApplicationController
   end
 
   def create
-      authorize MasterOrder, :index?
-
-      sum = 0
-      session[:order].keys.each do |order|
-       o= Order.find(order)
-        sum = sum + o.price 
-      end 
-      @amount = sum.to_i
-
-      error_message = ChargesHandler.new(params, @amount).manage_charges
-      order_types = MasterOrder.order_types.keys
+    authorize MasterOrder, :index?
+    sum = 0
+    session[:order].keys.each do |order|
+      o= Order.find(order)
+      sum = sum + o.price 
+    end 
+    @amount = sum.to_i
+    error_message = ChargesHandler.new(params, @amount).manage_charges
+    order_types = MasterOrder.order_types.keys
     payment_types = MasterOrder.payment_types.keys
     @orders = Order.find(session[:order].compact.keys)
     @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
-    binding.pry
-    @restaurants.each do |r|
-      @m = MasterOrderHandler.new(params[:o_type],params[:p_type], session, current_user, r.id).manage_master_order
+    params[:master_order] = {}
+    params[:master_order][:order_type] = params[:o_type]
+    params[:master_order][:payment_type] = params[:p_type]
 
+    @restaurants.each do |r|
+      @m = MasterOrderHandler.new(params, session, current_user, r.id).manage_master_order
     end
     if @m.order_type == 'pickup' && @m.payment_type == 'card'
-      @m.update_attribute(:order_status, 'ready')
+      @m.update_attributes(order_status: 'ready', payment_status: 'paid')
+
+    elsif @m.order_type == 'home delivery' && @m.payment_type == 'card'
+      @m.update_attribute(:payment_status, 'paid')
     end
     redirect_path = if @m.order_type == 'home delivery'
                       new_home_delivery_path(master_order: @m)
@@ -40,11 +43,12 @@ class ChargesController < ApplicationController
   
   end
 
-  private
+
 
   def master_order_params
-    params.require(:master_order).permit(:total, :order_type, :payment_type,
+    params.permit(:total, :order_type, :payment_type,
                                          :order_status, :payment_status,
                                          :transaction_id, :user_id)
   end
+
 end

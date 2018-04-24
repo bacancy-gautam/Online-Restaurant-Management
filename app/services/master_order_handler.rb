@@ -2,9 +2,8 @@
 class MasterOrderHandler
   attr_accessor :params
 
-  def initialize(params[:o_type],params[:p_type], session, current_user,id)
-    @params_order = params[:o_type]
-    @params_payment = params[:p_type]
+  def initialize(params, session, current_user,id)
+    @params = params
     @session = session
     @current_user = current_user
     @restaurant = Restaurant.find(id)
@@ -39,7 +38,9 @@ class MasterOrderHandler
   end
 
   def create_master_order
+
     @master_order = MasterOrder.create(master_order_params)
+
     $sum = 0
     orders = Order.where(restaurant_id: @restaurant.id)
     orders.where(id: @session[:order].compact.keys).each do |o|
@@ -56,4 +57,6 @@ class MasterOrderHandler
                                          :order_status, :payment_status,
                                          :transaction_id, :user_id)
   end
+ 
+  
 end
