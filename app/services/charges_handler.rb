@@ -4,6 +4,7 @@ class ChargesHandler
   def initialize(params, amount)
     @params = params
     @amount = amount
+
   end
 
   def manage_charges
@@ -38,11 +39,14 @@ class ChargesHandler
   end
 
   def order_crete
-    @order = MasterOrder.find(params[:m_id])
-    @order.payment_status = 'paid'
-    if @order.order_type == 'pickup'
-      @order.order_status = 'completed'
-    end
-    @order.save
+   # @order = MasterOrder.find(params[:m_id])
+    #@order.payment_status = 'paid'
+    #if @order.order_type == 'pickup'
+     # @order.order_status = 'completed'
+    #end
+    #@order.save
   end
+
+
+  
 end

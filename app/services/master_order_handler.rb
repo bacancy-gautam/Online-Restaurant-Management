@@ -2,8 +2,9 @@
 class MasterOrderHandler
   attr_accessor :params
 
-  def initialize(params, session, current_user,id)
-    @params = params
+  def initialize(params[:o_type],params[:p_type], session, current_user,id)
+    @params_order = params[:o_type]
+    @params_payment = params[:p_type]
     @session = session
     @current_user = current_user
     @restaurant = Restaurant.find(id)
