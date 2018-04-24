@@ -39,6 +39,7 @@ class HomeDeliveriesDeliveryBoysController < ApplicationController
     @home_deliveries = current_delivery_boy.home_deliveries
   end
 
+
   def edit
     authorize User, :new?
   end
