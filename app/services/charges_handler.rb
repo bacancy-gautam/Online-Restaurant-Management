@@ -1,15 +1,16 @@
 # service for charges controller
 class ChargesHandler
   attr_accessor :params
-  def initialize(params, amount)
+  def initialize(params, amount, admins)
     @params = params
     @amount = amount
-
+    @admins = admins
   end
 
   def manage_charges
     customer_create
     charges_create
+    transfer_create
     order_crete
     error_handle
   end
@@ -19,7 +20,8 @@ class ChargesHandler
   def customer_create
     @customer = Stripe::Customer.create(
       email: params[:stripeEmail],
-      source: params[:stripeToken]
+      source: params[:stripeToken],
+      description: "Customer On Foodle"
     )
   end
 
@@ -32,6 +34,20 @@ class ChargesHandler
     )
   end
 
+  def transfer_create
+    total_persons = @admins.count + 1
+    transfer_amount = @amount/total_persons
+    binding.pry
+    @admins.each do |key, value|
+      binding.pry
+      Stripe::Transfer.create(
+        :amount => value * 90,
+        :currency => "usd",
+        :destination => key
+      )
+    end
+
+  end
   def error_handle
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -48,5 +64,5 @@ class ChargesHandler
   end
 
 
-  
+
 end

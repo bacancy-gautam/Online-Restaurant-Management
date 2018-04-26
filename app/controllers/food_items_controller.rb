@@ -25,7 +25,7 @@ class FoodItemsController < ApplicationController
     if @fooditem.save
       @fooditems = FoodItem.all
       respond_to do |format|
-        format.html { render(partial: 'fooditems') }
+        format.html { render(partial: 'restaurants/show') }
         format.js { render 'index' }
       end
     else

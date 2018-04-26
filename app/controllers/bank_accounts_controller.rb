@@ -9,7 +9,7 @@ class BankAccountsController < ApplicationController
     cust = Stripe::Customer.create(
       description: "Restaurant Owner On Foodle",
       source: "tok_visa",
-      email: params[:user][:email]
+      email: current_user.email
     )
     current_user.customer_id = cust.id
     current_user.save

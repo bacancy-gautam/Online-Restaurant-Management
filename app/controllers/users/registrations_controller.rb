@@ -13,28 +13,33 @@ module Users
 
     # POST /resource
     def create
-      build_resource(sign_up_params)
-      yield resource if block_given?
-      if resource.persisted?
-        if resource.active_for_authentication?
-          set_flash_message! :notice, :signed_up
-          sign_up(resource_name, resource)
-          if (params[:user][:role] == "Customer")
-            respond_with resource, location: after_sign_up_path_for(resource)
-          else
-            redirect_to new_bank_account_path
-          end
-        else
-            set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-            expire_data_after_sign_in!
-            respond_with resource, location: after_inactive_sign_up_path_for(resource)
-          end
-        else
-          clean_up_passwords resource
-          set_minimum_password_length
-          respond_with resource
-        end
+  build_resource(sign_up_params)
+
+  resource.save
+  yield resource if block_given?
+  if resource.persisted?
+    if resource.active_for_authentication?
+      set_flash_message! :notice, :signed_up
+      sign_up(resource_name, resource)
+      if (params[:role] == "Customer")
+        resource.add_role :customer
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        resource.add_role :admin
+        binding.pry
+        redirect_to new_bank_account_path
       end
+    else
+      set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+      expire_data_after_sign_in!
+      respond_with resource, location: after_inactive_sign_up_path_for(resource)
+    end
+  else
+    clean_up_passwords resource
+    set_minimum_password_length
+    respond_with resource
+  end
+end
 
       # GET /resource/edit
       # def edit
@@ -63,7 +68,7 @@ module Users
       # protected
       # If you have extra params to permit, append them to the sanitizer.
       def sign_up_params
-        params.require(:user).permit(:firstname, :lastname, :username, :phoneno, :email, :password, :password_confirmation, :role, :customer_id, :account_id)
+        params.require(:user).permit(:firstname, :lastname, :username, :phoneno, :email, :password, :password_confirmation, :customer_id, :account_id)
       end
 
       # If you have extra params to permit, append them to the sanitizer.

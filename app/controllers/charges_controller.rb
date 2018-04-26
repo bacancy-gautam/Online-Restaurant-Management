@@ -1,46 +1,55 @@
 # Charges Controller
 class ChargesController < ApplicationController
-  def new 
+  def new
     authorize MasterOrder, :index?
   end
 
   def create
-    authorize MasterOrder, :index?
-    sum = 0
-    session[:order].keys.each do |order|
-      o= Order.find(order)
-      sum = sum + o.price 
-    end 
-    @amount = sum.to_i
-    error_message = ChargesHandler.new(params, @amount).manage_charges
-    order_types = MasterOrder.order_types.keys
-    payment_types = MasterOrder.payment_types.keys
-    @orders = Order.find(session[:order].compact.keys)
-    @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
-    params[:master_order] = {}
-    params[:master_order][:order_type] = params[:o_type]
-    params[:master_order][:payment_type] = params[:p_type]
+    ActiveRecord::Base.transaction do
+      authorize MasterOrder, :index?
+      sum = 0
+      session[:order].keys.each do |order|
+        o= Order.find(order)
+        sum = sum + o.price
+      end
+      @amount = (sum.to_i)*100
+      @orders = Order.find(session[:order].compact.keys)
+      @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
+      @admins = {}
+      binding.pry
+      @restaurants.each do |r|
+        price = Order.where(restaurant_id: r.id, id: session[:order].compact.keys).map{ |o| o.price }.sum.to_i
+        @admins[r.user.account_id] = price
 
-    @restaurants.each do |r|
-      @m = MasterOrderHandler.new(params, session, current_user, r.id).manage_master_order
-    end
-    if @m.order_type == 'pickup' && @m.payment_type == 'card'
-      @m.update_attributes(order_status: 'ready', payment_status: 'paid')
+      end
+      error_message = ChargesHandler.new(params, @amount,@admins).manage_charges
+      order_types = MasterOrder.order_types.keys
+      payment_types = MasterOrder.payment_types.keys
+      params[:master_order] = {}
+      params[:master_order][:order_type] = params[:o_type]
+      params[:master_order][:payment_type] = params[:p_type]
 
-    elsif @m.order_type == 'home delivery' && @m.payment_type == 'card'
-      @m.update_attribute(:payment_status, 'paid')
+      @restaurants.each do |r|
+        @m = MasterOrderHandler.new(params, session, current_user, r.id).manage_master_order
+      end
+      if @m.order_type == 'pickup' && @m.payment_type == 'card'
+        @m.update_attributes(order_status: 'ready', payment_status: 'paid')
+
+      elsif @m.order_type == 'home delivery' && @m.payment_type == 'card'
+        @m.update_attribute(:payment_status, 'paid')
+      end
+      redirect_path = if @m.order_type == 'home delivery'
+                        new_home_delivery_path(master_order: @m)
+                      else  static_pages_my_account_path
+                      end
     end
-    redirect_path = if @m.order_type == 'home delivery'
-                      new_home_delivery_path(master_order: @m)
-                    else static_pages_my_account_path
-                    end
-    redirect_to redirect_path
+    redirect_to root_path
    # if current_user.has_role? 'customer'
     #  error_message.nil? ? (redirect_to master_orders_path) : (redirect_to new_charge_path)
     #else
      # error_message.nil? ? (redirect_to  my_orders_master_orders_path ) : (redirect_to new_charge_path)
 
-  
+
   end
 
 

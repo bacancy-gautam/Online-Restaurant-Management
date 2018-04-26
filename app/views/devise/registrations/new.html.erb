@@ -176,8 +176,8 @@
           </div>
           <div class="field">
             <%= f.label :role %><br />
-             <%= f.radio_button :role, "Customer", class: "md-input col-xs-12" %> Customer
-             <%= f.radio_button :role, "Admin", class: "md-input col-xs-12" %> Admin
+             <%= radio_button_tag :role, "Customer", class: "md-input col-xs-12" %> Customer
+             <%= radio_button_tag :role, "Admin", class: "md-input col-xs-12" %> Admin
           </div>
           <div class="field">
               <%= f.label :user_name %><br />
