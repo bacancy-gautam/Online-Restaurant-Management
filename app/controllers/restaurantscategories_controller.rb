@@ -11,7 +11,6 @@ class RestaurantscategoriesController < ApplicationController
     @category = params[:restaurant][:category_ids].reject(&:empty?)
     @category_array = Category.find(@category)
     @restaurant = Restaurant.find(params[:restaurant][:id])
-    binding.pry
     @restaurant.categories.delete_all
     @category_array.each do |category|
       category.restaurants << @restaurant

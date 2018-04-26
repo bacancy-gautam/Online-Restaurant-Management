@@ -16,7 +16,6 @@ class ChargesController < ApplicationController
       @orders = Order.find(session[:order].compact.keys)
       @restaurants = Restaurant.find(@orders.pluck(:restaurant_id).uniq)
       @admins = {}
-      binding.pry
       @restaurants.each do |r|
         price = Order.where(restaurant_id: r.id, id: session[:order].compact.keys).map{ |o| o.price }.sum.to_i
         @admins[r.user.account_id] = price

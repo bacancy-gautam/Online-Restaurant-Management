@@ -1,30 +1,41 @@
 class BankAccountsController < ApplicationController
+require "stripe"
+Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
 
   def new
     @baccount = BankAccount.new
   end
 
   def create
-    binding.pry
-    cust = Stripe::Customer.create(
-      description: "Restaurant Owner On Foodle",
-      source: "tok_visa",
-      email: current_user.email
-    )
-    current_user.customer_id = cust.id
-    current_user.save
-    @baccount = BankAccount.new(bankaccount_params)
-    customer = Stripe::Customer.retrieve("#{current_user.customer_id}")
-    token = generate_bank_token(customer)
-    customer.sources.create(source: token)
-    admin = Stripe::Account.create(
-        :type => 'standard',
-        :country => 'US',
-        :email => current_user.email
-      )
-    current_user.account_id = admin.id
-    current_user.save
-    redirect_to new_restaurant_path
+    # binding.pry
+    begin
+      # @customer = Stripe::Customer.create(
+      #   description: "Restaurant Owner On Foodle",
+      #   source: "tok_visa",
+      #   email: current_user.email
+      # )
+            # @customer = Stripe::Customer.retrieve("#{current_user.customer_id}")
+      
+      @admin = Stripe::Account.create(
+          :type => 'standard',
+          :country => 'US',
+          :email => current_user.email
+        )
+      current_user.customer_id = @admin.id
+      current_user.save
+      # token = generate_bank_token(@customer)
+      # # @customer.sources.create(source: token)
+      @baccount = BankAccount.create(bankaccount_params)
+
+      current_user.account_id = @admin.id
+      current_user.save
+      redirect_to new_restaurant_path
+    rescue => e
+      # @customer.delete
+      flash[:notice] = e.message
+      redirect_to new_bank_account_path
+    end
+
   end
 
   def edit

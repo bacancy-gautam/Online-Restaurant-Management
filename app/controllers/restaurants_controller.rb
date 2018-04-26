@@ -13,7 +13,6 @@ class RestaurantsController < ApplicationController
   def create
     authorize Restaurant, :create?
     @restaurant = Restaurant.new(restaurant_params)
-    binding.pry
     @restaurant.user_id = current_user.id
     if @restaurant.save
       @restaurants = Restaurant.all

@@ -11,11 +11,14 @@
                  
                   <% if user_signed_in? %>
 
+                  <% if current_user.has_role? "admin" && current_user.account_id == nil %>
+                  <%else%>
                     <li class= "btn btn-outline-light top-btn" style="color: white;"> 
                       <%= image_tag  current_user.image.url, style:"height:20px;width:20px;border-radius:50%;" if current_user.image?  %>
                       <%= link_to('My Account', static_pages_my_account_path, class: " btn-outline-light top-btn" ) %>
                     </li>&nbsp; &nbsp;
                      <li> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light top-btn") %></li>&nbsp;&nbsp;
+                     <%end%>
                   
                   <% elsif delivery_boy_signed_in? %>
 

@@ -32,14 +32,13 @@ class ChargesHandler
       description: 'Rails Stripe customer',
       currency:    'usd'
     )
+    
   end
 
   def transfer_create
     total_persons = @admins.count + 1
     transfer_amount = @amount/total_persons
-    binding.pry
     @admins.each do |key, value|
-      binding.pry
       Stripe::Transfer.create(
         :amount => value * 90,
         :currency => "usd",

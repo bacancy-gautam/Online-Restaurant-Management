@@ -26,7 +26,6 @@ module Users
         respond_with resource, location: after_sign_up_path_for(resource)
       else
         resource.add_role :admin
-        binding.pry
         redirect_to new_bank_account_path
       end
     else

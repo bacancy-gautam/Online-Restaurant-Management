@@ -42,6 +42,8 @@
             <%= f.radio_button :account_holder_type, "Company"%> Company
           </div>
         </div>
+        <%= f.hidden_field :user_id, value: current_user.id -%>
+
       </div>
       <div class="row">
         <div class="col-md-12">

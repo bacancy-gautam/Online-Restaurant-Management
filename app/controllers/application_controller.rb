@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   before_action :devise_parameter_sanitizer, if: :devise_controller?
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
+  before_action :check_stripe_authentication_for_admin, unless: :devise_controller?
   protected
 
   def devise_parameter_sanitizer
@@ -26,6 +26,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def check_stripe_authentication_for_admin
+    if current_user && current_user.has_role?(:admin) && 
+      current_user.account_id.nil? && params[:controller] != "bank_accounts" && 
+      params[:action] != "new"
+      flash[:notice] = "Bank detail is mandatory for restaurant admin..."
+      redirect_to new_bank_account_path 
+    end
+  end
 
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
