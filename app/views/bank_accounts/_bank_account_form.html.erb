@@ -3,12 +3,14 @@
     <%= form_for @baccount do |f| %>
       <div class="errors"></div>
       <div class="row">
+
         <div class="col-md-8">
           <div class="form-group">
             <%= f.label :Country %>
             <%= f.text_field :country, value: "US", readonly: true %>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="form-group">
             <%= f.label :currency %>
@@ -16,6 +18,7 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-md-6" id="routing_number_div">
           <div class="form-group">

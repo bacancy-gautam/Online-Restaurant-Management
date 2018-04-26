@@ -36,6 +36,7 @@ Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
       redirect_to new_bank_account_path
     end
 
+
   end
 
   def edit
