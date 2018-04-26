@@ -5,7 +5,6 @@ class BankAccountsController < ApplicationController
   end
 
   def create
-    binding.pry
     cust = Stripe::Customer.create(
       description: "Restaurant Owner On Foodle",
       source: "tok_visa",
