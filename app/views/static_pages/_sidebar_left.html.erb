@@ -26,8 +26,11 @@
           </li>
           <div id="user" class="collapse">
             <ul class="">
-              <!-- <li><div class= "users_add" >Add</div></li> -->
+              <!-- <li><div class= "users_add" >Add</div></li> --> 
+              <% if CommissionSetting.all.count==1%>
+              <% else %>
               <li><%= link_to 'Add' , new_user_path, remote: true, class: "showpartials libg" %></li> 
+              <% end %>
               <li><%= link_to 'Manage', users_path, remote: true, class: "showpartials libg" %></li>
               <li><%= link_to 'Assign Role', role_assign_users_path, remote: true, class: "showpartials libg" %></li>
             </ul>
@@ -130,6 +133,17 @@
                 <li><%= link_to 'Manage',home_deliveries_delivery_boys_path, remote: true, class: "showpartials libg" %></li>
             </ul>
           </div>
+          <li class="listyle" data-toggle="collapse" data-target="#commission" >
+            <i class="fa fa-users"></i>  <span>Commission > </span>
+          </li>
+          <div id="commission" class="collapse">
+            <ul class="">
+              <!-- <li><div class= "users_add" >Add</div></li> -->
+              <li><%= link_to 'Add' , new_commission_setting_path, remote: true, class: "showpartials libg" %></li> 
+              <li><%= link_to 'Manage', commission_settings_path, remote: true, class: "showpartials libg" %></li>
+            </ul>
+          </div>
+
 
         <% elsif current_user.has_role? :admin %>
           <li class="listyle" data-toggle="collapse" data-target="#cat">
