@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :addresses
   resources :favourites
+  resources :commission_settings
   resources :master_orders do
     collection do
       get :bill_details

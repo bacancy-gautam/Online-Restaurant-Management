@@ -75,4 +75,3 @@ food_category11 = category3.food_categories.create(name: 'Pastas')
 
 #========================= FOOD ITEM =========================
 
-
