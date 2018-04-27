@@ -40,7 +40,7 @@ class ChargesHandler
     transfer_amount = @amount/total_persons
     @admins.each do |key, value|
       Stripe::Transfer.create(
-        :amount => value * 90,
+        :amount => value * (100-CommissionSetting.first.commission_percentage.to_i),
         :currency => "usd",
         :destination => key
       )
