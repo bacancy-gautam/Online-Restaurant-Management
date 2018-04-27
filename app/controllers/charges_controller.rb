@@ -42,7 +42,11 @@ class ChargesController < ApplicationController
                       else  static_pages_my_account_path
                       end
     end
-    redirect_to root_path
+    if @m.order_type == 'home delivery'
+      redirect_to new_home_delivery_path(master_order: @m)
+    else
+      static_pages_my_account_path
+    end
    # if current_user.has_role? 'customer'
     #  error_message.nil? ? (redirect_to master_orders_path) : (redirect_to new_charge_path)
     #else

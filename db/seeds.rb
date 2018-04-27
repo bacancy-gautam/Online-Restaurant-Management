@@ -12,7 +12,7 @@
 
 user1_attributes = {
   username: 'super admin',
-  email: 'online.restaurant.management12@gmail.com',
+  email: 'online.restaurant.management12@gmail.command',
   password: '123456',
   password_confirmation: '123456'
 }

@@ -15,7 +15,8 @@ Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
       #   email: current_user.email
       # )
             # @customer = Stripe::Customer.retrieve("#{current_user.customer_id}")
-      
+      binding.pry
+      customer = Stripe::Account.retrieve("#{current_user.customer_id}")
       @admin = Stripe::Account.create(
           :type => 'standard',
           :country => 'US',
