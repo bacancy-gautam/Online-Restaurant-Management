@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-md-6" id="routing_number_div">
           <div class="form-group">
@@ -50,6 +50,8 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+          <%= f.check_box :tos %>
+          <%= f.label :tos, "I agree to the terms and services" %>
           <button class="btn btn-lg btn-block btn-primary btn-custom submit" type="submit">Add Bank Account</button>
         </div>
       </div>

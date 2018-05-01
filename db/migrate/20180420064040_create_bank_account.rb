@@ -7,6 +7,7 @@ class CreateBankAccount < ActiveRecord::Migration[5.1]
       t.string :account_holder_type
       t.string :route_no
       t.string :number
+      t.boolean :tos
       t.references :user, foreign_key: true
     end
   end

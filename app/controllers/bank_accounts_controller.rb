@@ -15,17 +15,22 @@ Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
       #   email: current_user.email
       # )
             # @customer = Stripe::Customer.retrieve("#{current_user.customer_id}")
-      
+
      # customer = Stripe::Account.retrieve("#{current_user.customer_id}")
       @admin = Stripe::Account.create(
-          :type => 'standard',
+          :type => 'custom',
           :country => 'US',
           :email => current_user.email
         )
-      current_user.customer_id = @admin.id
-      current_user.save
-      # token = generate_bank_token(@customer)
-      # # @customer.sources.create(source: token)
+        binding.pry
+      # current_user.customer_id = @admin.id
+      # current_user.save
+      acct = Stripe::Account.retrieve(@admin.id)
+      acct.tos_acceptance.date = Time.now.to_i
+      acct.tos_acceptance.ip = request.remote_ip
+      acct.save
+      token = generate_bank_token(@admin)
+      @admin.external_accounts.create(external_account: token)
       @baccount = BankAccount.create(bankaccount_params)
 
       current_user.account_id = @admin.id
@@ -84,7 +89,7 @@ Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
 
   private
     def bankaccount_params
-      params.require(:bank_account).permit(:country, :currency, :account_holder_name, :account_holder_type,:route_no,:number)
+      params.require(:bank_account).permit(:country, :currency, :account_holder_name, :account_holder_type,:route_no,:number,:tos)
     end
     def generate_bank_token(user)
      response = Stripe::Token.create(
