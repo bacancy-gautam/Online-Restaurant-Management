@@ -1,4 +1,3 @@
-<!-- page head start-->
 <div class="page-head">
   <h3>
       Add Restaurant Category
@@ -17,14 +16,14 @@
 
 <div class="content clearfix">
   <div class="form-group clearfix formbackground">
-    <%= form_tag restaurantscategories_path, remote: true, class: 'form-horizontal' do %>
+    <%= form_tag restaurantscategories_path,  class: 'form-horizontal' do %>
       <table>
         <tr>
           <td>
             <%= label_tag "restaurant", nil, class: "control-label col-sm-2"%>
           </td>
           <td>
-            <%= collection_select(:restaurant,:restaurant_id, Restaurant.where(user_id: current_user.id).order(:id), :id, :full_name ) %>
+            <%= collection_select(:restaurant,:id, Restaurant.where(user_id: current_user.id).order(:id), :id, :full_name ) %>
           </td>
         </tr>
         <tr>

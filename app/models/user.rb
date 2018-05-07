@@ -9,13 +9,13 @@ class User < ApplicationRecord
          :trackable, :omniauthable,
          omniauth_providers: [:facebook, :google_oauth2]
 
-  before_create :assign_default_role
-  has_many :contacts
-  has_many :favourites
-  has_many :restaurants
-  has_many :reviews
+  # before_create :assign_default_role
+  has_many :contacts, dependent: :destroy
+  has_many :favourites, dependent: :destroy
+  has_many :restaurants, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :addresses, as: :addressable, dependent: :destroy
-  has_many :images, as: :imageable, dependent: :destroy 
+  has_many :images, as: :imageable, dependent: :destroy
   mount_uploader :image, ImageUploader
 
   def favourite_food?(food_id)
@@ -67,9 +67,9 @@ class User < ApplicationRecord
     end
   end
 
-  private
-
-  def assign_default_role
-    add_role(:customer) # if self.roles.blank?
-  end
+  # private
+  #
+  # def assign_default_role
+  #   add_role(:customer) # if self.roles.blank?
+  # end
 end

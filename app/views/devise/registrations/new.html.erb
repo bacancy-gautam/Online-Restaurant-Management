@@ -30,7 +30,7 @@
     position: relative;
     margin: 5% auto;
     width: 600px;
-    height: 900px;
+    height: 1200px;
     background: #FFF;
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -174,7 +174,11 @@
             <%= f.label :Last_name %><br />
              <%= f.text_field :lastname, class: "md-input col-xs-12" %>
           </div>
-
+          <div class="field">
+            <%= f.label :role %><br />
+             <%= radio_button_tag :role, "Customer", class: "md-input col-xs-12" %> Customer
+             <%= radio_button_tag :role, "Admin", class: "md-input col-xs-12" %> Admin
+          </div>
           <div class="field">
               <%= f.label :user_name %><br />
               <%= f.text_field :username,class: "md-input col-xs-12" %>
@@ -206,7 +210,7 @@
             <div class="field">
               <%= f.label :Profile_Pic %><br />
               <%= f.file_field :image%>
-          </div> 
+          </div>
 
           <div class="actions">
               <%= f.submit "Sign up", class:"md-button narrow" %>
@@ -218,7 +222,7 @@
 
           <div class="right">
             <span class="loginwith">Sign in with<br />social network</span>
-            
+
             <%= link_to 'Log in with facebook', user_facebook_omniauth_authorize_path, class: "btn btn-primary" %><br><br>
             <%= link_to 'Log in with Google+', user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger" %>
 

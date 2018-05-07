@@ -2,7 +2,7 @@
 class RestaurantscategoriesController < ApplicationController
   # before_action :authenticate_user!
 
-  def new 
+  def new
     authorize Offer, :new?
   end
 
@@ -10,17 +10,13 @@ class RestaurantscategoriesController < ApplicationController
     authorize Offer, :new?
     @category = params[:restaurant][:category_ids].reject(&:empty?)
     @category_array = Category.find(@category)
-    @restaurant = Restaurant.find(params[:restaurant][:restaurant_id])
-
+    @restaurant = Restaurant.find(params[:restaurant][:id])
     @restaurant.categories.delete_all
     @category_array.each do |category|
       category.restaurants << @restaurant
     end
     @restaurants = Restaurant.where(user_id: current_user.id)
-    respond_to do |format|
-      format.html { render(partial: 'restaurant_category_list') }
-      format.js { render 'index' }
-    end
+    redirect_to static_pages_my_account_path
   end
 
   def show

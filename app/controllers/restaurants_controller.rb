@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
       flash[:success] = 'Restaurant created!'
       respond_to do |format|
-        format.html { render(partial: 'active_restaurant') }
+        format.html { render(partial: 'restaurantscategories/new') }
         format.js
       end
     else

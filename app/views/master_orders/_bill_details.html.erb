@@ -41,7 +41,7 @@
           <div class="card-header" role="tab" id="headingTwo">
             <h6 class="mb-0">
               <a class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              <%= f.radio_button :payment_type, "cod", checked: true %>
+              <%= f.radio_button :payment_type, "cod", checked: true ,class: "payment-cod" %>
               <%= f.label :cod, "Cash On Delivery"%>
             </h6>
           </div>
@@ -94,6 +94,13 @@
             $("#submit-button").hide();
 
         });
+    $('.payment-cod').click(function(){
+        debugger;
+            $("#stripe-form").hide();
+            $("#submit-button").show();
+
+        });
+    
     
      });
    

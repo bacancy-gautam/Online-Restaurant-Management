@@ -5,7 +5,7 @@
   <h2>Add Restaurant</h2><hr>
     <%=form_for restaurant, remote: true do |f| %>
       <% if restaurant.errors.any? %>
-        <div id="error_explanation">  
+        <div id="error_explanation">
           <h2>
             <%= pluralize(restaurant.errors.count, "error") %> prohibited
             this user from being saved:
@@ -19,42 +19,42 @@
       <% end %>
 
       <div class="field col-md-12">
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= link_to 'Add food_item', new_release_path,  {:remote => true}  %>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Name : </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.text_field :name, autofocus: true, class: "form-input" %>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Details : </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.text_field :details, class: "form-input"%>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Phone No : </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.text_field :phone_no, class: "form-input" %>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Email : </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.email_field :email, class: "form-input" %>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Opening Time: </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.time_select :opening_time, class: "form-input" %>
         </div>
       </div>
@@ -62,21 +62,21 @@
       <hr/>
       <div class="field col-md-12">
         <label class="col-lg-2">Closing_Time: </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.time_select :closing_time, class: "form-input" %>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Delivery Types: </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
         <%= select_tag :delivery_types, options_for_select(Restaurant.types.map {|k, v| [k, v]}) , class: "form-input" %>
         </div>
       </div><br>
 
       <div class="field col-md-12">
         <label class="col-lg-2">Branch Name : </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.text_field :branch_name, class: "form-input" %>
         </div>
       </div><br>
@@ -84,7 +84,7 @@
       <%= f.fields_for :address do |f| %>
           <div class="field col-md-12">
             <label class="col-lg-2">Address Line: </label>
-            <div class ="col-lg-10"> 
+            <div class ="col-lg-10">
               <%= f.text_field :addressline, class: "form-input"%>
             </div>
           </div>
@@ -92,28 +92,28 @@
 
           <div class="field col-md-12">
             <label class="col-lg-2"> Area: </label>
-            <div class ="col-lg-10"> 
+            <div class ="col-lg-10">
               <%= f.text_field :area, class: "form-input" %>
             </div>
           </div><br>
 
           <div class="field col-md-12">
             <label class="col-lg-2">City: </label>
-            <div class ="col-lg-10"> 
+            <div class ="col-lg-10">
               <%= f.text_field :city, class: "form-input"%>
             </div>
           </div><br>
 
           <div class="field  col-md-12">
             <label class="col-lg-2"> State: </label>
-            <div class ="col-lg-10"> 
+            <div class ="col-lg-10">
               <%= f.text_field :state, class: "form-input" %>
             </div>
           </div><br>
 
           <div class="field col-md-12">
             <label class="col-lg-2">Pincode: </label>
-            <div class ="col-lg-10"> 
+            <div class ="col-lg-10">
               <%= f.text_field :pincode, class: "form-input"%>
             </div>
           </div><br>
@@ -122,7 +122,7 @@
       <% if restaurant.new_record? %>
       <div class="field col-md-12">
         <label class="col-lg-2"> Upload Images: </label>
-        <div class ="col-lg-10"> 
+        <div class ="col-lg-10">
           <%= f.file_field :images, multiple: true, class: "form-input" %>
         </div>
       </div><br>
