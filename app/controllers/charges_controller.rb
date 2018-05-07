@@ -55,7 +55,12 @@ class ChargesController < ApplicationController
 
   end
 
-
+  def get_account
+    data = {client_secret: "sk_test_yK8JeCfpwfzeaMyUU5krUOXo", code: params[:code], grant_type: "authorization_code"}
+    x = Net::HTTP.post_form(URI.parse('https://connect.stripe.com/oauth/token'), data)
+    current_user.update_attributes(account_id:  JSON.parse(x.body)["stripe_user_id"])
+    redirect_to root_path
+  end
 
   def master_order_params
     params.permit(:total, :order_type, :payment_type,

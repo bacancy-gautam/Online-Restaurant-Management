@@ -7,24 +7,12 @@ Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
   end
 
   def create
-    # binding.pry
     begin
-      # @customer = Stripe::Customer.create(
-      #   description: "Restaurant Owner On Foodle",
-      #   source: "tok_visa",
-      #   email: current_user.email
-      # )
-            # @customer = Stripe::Customer.retrieve("#{current_user.customer_id}")
-
-     # customer = Stripe::Account.retrieve("#{current_user.customer_id}")
       @admin = Stripe::Account.create(
           :type => 'custom',
           :country => 'US',
           :email => current_user.email
         )
-        binding.pry
-      # current_user.customer_id = @admin.id
-      # current_user.save
       acct = Stripe::Account.retrieve(@admin.id)
       acct.tos_acceptance.date = Time.now.to_i
       acct.tos_acceptance.ip = request.remote_ip
@@ -100,8 +88,8 @@ Stripe.api_key = "sk_test_yK8JeCfpwfzeaMyUU5krUOXo"
        account_number: params[:bank_account][:number],
        account_holder_name: params[:bank_account][:account_holder_name],
        account_holder_type: params[:bank_account][:account_holder_type],
-     },
-   )
-   return response
- end
+       },
+     )
+    return response
+    end
 end

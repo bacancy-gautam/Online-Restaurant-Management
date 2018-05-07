@@ -64,7 +64,11 @@ Rails.application.routes.draw do
   resources :home_deliveries_delivery_boys
 
 
-  resources :charges
+  resources :charges do
+    collection do
+      get :get_account
+    end
+  end
   resources :orders do
     collection do
       get :show_cart

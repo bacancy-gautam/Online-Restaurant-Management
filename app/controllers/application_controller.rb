@@ -28,11 +28,11 @@ class ApplicationController < ActionController::Base
   private
 
   def check_stripe_authentication_for_admin
-    if current_user && current_user.has_role?(:admin) && 
-      current_user.account_id.nil? && params[:controller] != "bank_accounts" && 
-      params[:action] != "new"
+    if current_user && current_user.has_role?(:admin) &&
+      current_user.account_id.nil? && params[:controller] != "bank_accounts" &&
+      params[:action] != "new" && !(params[:controller] == 'charges')
       flash[:notice] = "Bank detail is mandatory for restaurant admin..."
-      redirect_to new_bank_account_path 
+      redirect_to new_bank_account_path
     end
   end
 
