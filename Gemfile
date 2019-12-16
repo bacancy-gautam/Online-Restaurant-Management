@@ -22,7 +22,7 @@ gem "paranoia", "~> 2.2"
 # ransack = for easy search data
 gem 'pry-rails'
 gem 'ransack', '~> 1.7'
-gem 'bootstrap-sass','3.3.7'
+gem 'bootstrap-sass','3.4.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'devise'
