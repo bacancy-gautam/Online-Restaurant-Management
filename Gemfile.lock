@@ -197,7 +197,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
-    puma (3.11.3)
+    puma (3.12.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.4)
@@ -353,7 +353,7 @@ DEPENDENCIES
   paranoia (~> 2.2)
   pg (>= 0.18, < 2.0)
   pry-rails
-  puma (~> 3.7)
+  puma (~> 3.12)
   pundit
   rails (~> 5.1.5)
   rails_real_favicon
